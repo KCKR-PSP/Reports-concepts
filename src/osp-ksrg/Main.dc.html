@@ -1,0 +1,1658 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Karta jednostki OSP KSRG</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fx{--bg:#ebeef0;--fg:#1c2427;--mut:#535f65;--line:#d3dadd;--soft:#e1e6e9;--cell:#f6f8f9;--warn:#e2b53e;--alert:#b42318;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;color:var(--fg);background:var(--bg)}
+.fx.dark{--bg:#121518;--fg:#e6ecee;--mut:#a9b3b8;--line:#363d43;--soft:#22282c;--cell:#191d20}
+:where(.fx) button,:where(.fx) input,:where(.fx) textarea{font:inherit;color:inherit}
+.fx a{color:var(--fg)}
+.fx a:hover{opacity:.7}
+.fx button:focus-visible,.fx a:focus-visible,.fx input:focus-visible,.fx textarea:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.crumb{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-left:-12px;padding:0 12px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.eyebrow{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.note{margin:0;font-size:13px;color:var(--mut)}
+.sec{margin:0;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.tab{display:inline-block;background:none;border:0;border-bottom:2px solid transparent;margin:0 32px -1px 0;padding:12px 0;cursor:pointer;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.tab:hover{color:var(--fg)}
+.tab[aria-pressed="true"]{color:var(--fg);border-bottom-color:var(--fg)}
+.outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:none;padding:9px 14px;min-height:40px;cursor:pointer;font-size:13px;font-weight:500}
+.outline:hover{border-color:var(--fg)}
+.solid{display:inline-flex;align-items:center;border:1px solid var(--fg);background:var(--fg);color:var(--bg) !important;padding:9px 18px;min-height:40px;cursor:pointer;font-size:13px;font-weight:600}
+.solid:disabled{opacity:.35;cursor:default}
+.lnk{background:none;border:0;padding:6px 0;min-height:32px;cursor:pointer;font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.icon{width:44px;height:44px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:none;cursor:pointer}
+.icon:hover{border-color:var(--fg)}
+.cols{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:40px 56px}
+.grid2{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));column-gap:56px}
+.row{display:flex;align-items:baseline;justify-content:space-between;gap:24px;width:calc(100% + 16px);margin:0 -8px;box-sizing:border-box;padding:13px 8px;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;font-size:14px}
+.row:hover{background:var(--soft)}
+.row .lab{color:var(--mut)}
+.row .v{display:inline-flex;align-items:center;gap:8px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.grow{display:grid;grid-template-columns:minmax(0, 1fr) 64px 56px;align-items:baseline;gap:12px}
+.vbtn{display:inline-flex;align-items:center;gap:10px;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+.vbtn:hover .v{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.mk{display:inline-block;width:6px;height:6px;flex:none;background:var(--fg)}
+.zero{color:var(--mut) !important;font-weight:400}
+.kpis{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));column-gap:32px}
+.kpi{padding:16px 0 24px;border-top:1px solid var(--line)}
+.big{font-size:40px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums}
+.sub{margin:12px 0 0;min-height:18px;font-size:13px;color:var(--mut);font-variant-numeric:tabular-nums}
+.trow{border-bottom:1px solid var(--line)}
+.cell{padding:12px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.cbtn{width:100%;min-height:44px;justify-content:flex-end;padding:0 8px;font-size:18px;font-variant-numeric:tabular-nums}
+.cbtn:hover{background:var(--soft)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.kpis4{display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));column-gap:32px}
+.yr{background:none;border:0;padding:6px 0;min-height:32px;cursor:pointer;font-size:13px;color:var(--mut);text-underline-offset:6px}
+.yr:hover{color:var(--fg)}
+.yr[aria-pressed="true"]{color:var(--fg);text-decoration:underline;text-decoration-thickness:2px}
+.rng{position:absolute;inset:0;width:100%;height:32px;margin:0;background:none;pointer-events:none;-webkit-appearance:none;appearance:none}
+.rng::-webkit-slider-runnable-track{background:none;height:32px}
+.rng::-moz-range-track{background:none}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;pointer-events:auto;width:14px;height:32px;background:var(--fg);border:4px solid var(--bg);box-sizing:border-box;cursor:ew-resize}
+.rng::-moz-range-thumb{pointer-events:auto;width:14px;height:32px;background:var(--fg);border:4px solid var(--bg);border-radius:0;box-sizing:border-box;cursor:ew-resize}
+.rng:focus-visible{outline:none}
+.rng:focus-visible::-webkit-slider-thumb{outline:2px solid var(--fg);outline-offset:2px}
+.vw{width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;background:none;border:1px solid var(--line);cursor:pointer;color:var(--mut)}
+.vw + .vw{border-left:0}
+.vw:hover{color:var(--fg)}
+.vw[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.sheet-wrap{overflow-x:auto}
+.sheet{min-width:680px;font-size:14px}
+.srow{display:grid;grid-template-columns:minmax(0, 1fr) 150px 190px 190px;border-bottom:1px solid var(--line)}
+.srow:hover{background:var(--soft)}
+.srow > div{display:flex;align-items:center;min-height:46px;padding:0 16px 0 0;box-sizing:border-box}
+.sr-num{justify-content:flex-end;text-align:right;font-variant-numeric:tabular-nums}
+.shead{position:sticky;top:0;z-index:2;background:var(--bg);border-bottom-color:var(--fg)}
+.shead:hover{background:var(--bg)}
+.shead > div{min-height:36px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.sgroup > div{display:flex;align-items:baseline;gap:10px;padding:28px 0 10px;border-bottom:1px solid var(--line);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.sedit{position:relative}
+.cellin{width:100%;height:34px;box-sizing:border-box;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;padding:0 4px;font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
+.cellin:hover{border-bottom-color:var(--mut)}
+.cellin:focus{outline:none;border-bottom:2px solid var(--fg)}
+.sedit.dirty .cellin{font-weight:700;border-bottom:2px solid var(--fg)}
+.sstat{gap:8px;font-size:12px}
+.tiles{display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));column-gap:24px}
+.tile{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:12px;min-height:100px;padding:14px 8px 16px 0;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left}
+.tile:hover .v{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
+.cd{flex:none;display:inline-flex;align-items:center;padding:3px 7px;border:1px solid var(--fg);background:none;cursor:pointer;white-space:nowrap}
+.cd.warn{background:var(--warn);border-color:var(--warn);color:#1c2427}
+.cdnum{font-size:12px;line-height:1.2;font-weight:700;font-variant-numeric:tabular-nums}
+.hk{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));column-gap:32px}
+.pop{position:absolute;right:0;top:calc(100% + 8px);z-index:30;min-width:240px;padding:6px 0;background:var(--bg);border:1px solid var(--line);box-shadow:0 18px 48px rgba(0,0,0,.14)}
+.fx.dark .pop{background:#1d2226}
+.menu{display:flex;align-items:baseline;justify-content:space-between;gap:16px;width:100%;min-height:44px;box-sizing:border-box;text-align:left;background:none;border:0;padding:10px 16px;cursor:pointer;font-size:14px;white-space:nowrap}
+.menu:hover{background:var(--soft)}
+.v.below{background:var(--fg);color:var(--bg) !important;padding:2px 8px}
+.minv{font-size:11px;font-weight:400;letter-spacing:.04em;color:var(--mut);white-space:nowrap}
+.req{display:inline-block;padding:6px 10px;border:0;background:var(--soft);color:var(--fg);cursor:pointer;font-size:14px;line-height:1;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.req:hover{background:var(--line)}
+.req.bad,.cd.alert{background:var(--alert);border-color:var(--alert);color:#fff}
+.req.bad:hover{background:#912018}
+.ftxt{display:flex;flex-direction:column;align-items:flex-start;gap:8px;width:100%;padding:14px 8px 16px 0;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left}
+.ftxt:hover{background:var(--soft)}
+.bar5{position:relative;display:block;height:4px;background:var(--line)}
+.bar5 > span{display:block;height:100%;background:var(--fg)}
+.outline.sm,.solid.sm{min-height:32px;padding:5px 10px;gap:6px;font-size:12px}
+.outline.sm svg{width:14px;height:14px}
+.chip{display:inline-block;padding:6px 10px;background:var(--fg);color:var(--bg);font-size:14px;line-height:1;font-weight:700;letter-spacing:.08em}
+.inp{width:100%;box-sizing:border-box;min-height:44px;padding:10px 12px;border:1px solid var(--line);border-radius:0;background:none;font-size:15px}
+.inp:focus{border-color:var(--fg);outline:none}
+.seg{min-height:44px;min-width:96px;border:1px solid var(--line);background:none;cursor:pointer;font-size:14px;font-weight:600}
+.seg[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+@media (max-width: 760px){.kpis,.kpis4,.tiles{grid-template-columns:repeat(2, minmax(0, 1fr))}.cols,.grid2,.loc{grid-template-columns:1fr !important}}
+@media (max-width: 480px){.kpis4{grid-template-columns:minmax(0, 1fr)}}
+</style>
+</helmet>
+<div class="fx {{ themeClass }}" style="min-height: 100%">
+<div style="max-width: 1360px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+
+<a class="crumb" href="Main.dc.html">
+<svg width="32" height="12" viewBox="0 0 32 12" aria-hidden="true"><path d="M32 6H2M7 1L2 6l5 5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg>Jednostki ochrony przeciwpożarowej
+</a>
+
+<header>
+<p class="eyebrow" style="font-variant-numeric: tabular-nums">1420042</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 8px">
+<h1 style="margin: 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em">OSP Nowa Wieś</h1>
+<span class="chip">KSRG</span>
+<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}"><button type="button" class="req {{ minBtn.cls }}" onClick="{{ openMinima }}">{{ minBtn.label }}</button></sc-if>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto">
+<div style="position: relative">
+<button type="button" class="outline sm" aria-haspopup="menu" aria-expanded="{{ expOpen }}" onClick="{{ toggleExp }}">
+<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round"><path d="M12 4v11M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg>Wyciąg
+</button>
+<sc-if value="{{ expOpen }}" hint-placeholder-val="{{ false }}">
+<div role="menu" aria-label="Wyciąg z karty jednostki" class="pop">
+<button type="button" role="menuitem" class="menu" onClick="{{ expPick }}"><span style="font-weight: 600">PDF</span></button>
+<button type="button" role="menuitem" class="menu" onClick="{{ expPick }}"><span style="font-weight: 600">DOCX</span></button>
+</div>
+</sc-if>
+</div>
+<button type="button" class="outline sm" aria-label="{{ reqAria }}" onClick="{{ openRequests }}">
+<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round"><path d="M6 3h9l4 4v14H6z"></path><path d="M15 3v4h4M9 12h6M9 16h6"></path></svg>Wnioski<sc-if value="{{ reqOpenCount }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="min-width: 18px; padding: 2px 5px; box-sizing: border-box; background: var(--fg); color: var(--bg); font-size: 11px; line-height: 14px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums">{{ reqOpenCount }}</span></sc-if>
+</button>
+<button type="button" class="outline sm" onClick="{{ openHistory }}">
+<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5M12 7v5l3 2"></path></svg>Historia
+</button>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 24px; margin-top: 10px">
+<p style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin: 0; font-size: 14px; color: var(--mut)">Nowa Wieś ·
+<span title="{{ risk.title }}" style="display: inline-block; padding: 4px 8px; line-height: 1; font-weight: 700; letter-spacing: 0.02em; background: {{ risk.bg }}; color: {{ risk.fg }}; border: 1px solid {{ risk.border }}">gmina Baboszewo<span class="sr">, {{ risk.title }}</span></span>
+· powiat płoński · województwo mazowieckie</p>
+</div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 24px; border-bottom: 1px solid var(--line)">
+<nav aria-label="Karty jednostki" style="display: flex; flex-wrap: wrap">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+<button type="button" class="tab" aria-pressed="{{ t.on }}" onClick="{{ t.pick }}">{{ t.label }}</button>
+</sc-for>
+</nav>
+<div role="group" aria-label="Widok danych" style="display: flex; gap: 0; padding-bottom: 6px">
+<button type="button" class="vw" aria-pressed="{{ viewCards }}" aria-label="Widok kart" title="Widok kart" onClick="{{ showCards }}"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.4px"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg></button>
+<button type="button" class="vw" aria-pressed="{{ viewCompact }}" aria-label="Widok kompaktowy" title="Widok kompaktowy" onClick="{{ showCompact }}"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.4px"><path d="M4 5h2v2H4zM4 11h2v2H4zM4 17h2v2H4z"></path><path d="M9 6h11M9 12h11M9 18h11"></path></svg></button>
+<button type="button" class="vw" aria-pressed="{{ viewGrid }}" aria-label="Widok tabeli do masowej edycji" title="Widok tabeli do masowej edycji" onClick="{{ showGrid }}"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.4px"><path d="M3 5h18v14H3zM3 10h18M3 15h18M9 5v14"></path></svg></button>
+</div>
+</div>
+
+<sc-if value="{{ compactOn }}" hint-placeholder-val="{{ false }}">
+<div class="cols">
+<sc-for list="{{ compactGroups }}" as="g" hint-placeholder-count="4">
+<section aria-label="{{ g.section }}">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
+<h2 class="sec">{{ g.section }}</h2>
+</div>
+<sc-for list="{{ g.rows }}" as="i" hint-placeholder-count="5">
+<sc-if value="{{ i.editable }}" hint-placeholder-val="{{ true }}">
+<button type="button" class="row" onClick="{{ i.open }}"><span class="{{ i.cls }}" style="color: var(--fg); font-weight: 400">{{ i.label }}</span><span class="v {{ i.cls }}" style="font-size: 16px"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span></button>
+</sc-if>
+<sc-if value="{{ i.readonly }}" hint-placeholder-val="{{ false }}">
+<div class="row" style="cursor: default; background: none"><span style="color: var(--fg)">{{ i.label }}</span><span class="v {{ i.cls }}" style="font-size: 16px">{{ i.value }}</span></div>
+</sc-if>
+</sc-for>
+</section>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ gridOn }}" hint-placeholder-val="{{ false }}">
+<section aria-label="Edycja tabelaryczna" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px">
+<div>
+<p class="eyebrow">Edycja tabelaryczna</p>
+<p style="margin: 6px 0 0; font-size: 22px; font-weight: 600">{{ gridTab }}</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px">
+<label for="g-q" class="sr">Szukaj pola</label>
+<input id="g-q" type="search" class="inp" placeholder="Szukaj pola" style="width: 240px; min-height: 40px" value="{{ gq }}" onChange="{{ onGq }}">
+<button type="button" class="yr" aria-pressed="{{ onlyDiff }}" onClick="{{ toggleDiff }}">Tylko różne od SWD-PSP</button>
+</div>
+</div>
+<div class="sheet-wrap">
+<div role="table" aria-label="{{ gridTitle }}" class="sheet">
+<div role="row" class="srow shead">
+<div role="columnheader">Pole</div>
+<div role="columnheader" class="sr-num">SWD-PSP</div>
+<div role="columnheader" class="sr-num">Reports</div>
+<div role="columnheader">Status</div>
+</div>
+<sc-for list="{{ gridGroups }}" as="g" hint-placeholder-count="3">
+<div role="rowgroup">
+<div role="row" class="sgroup"><div role="rowheader"><span>{{ g.section }}</span></div></div>
+<sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="4">
+<div role="row" class="srow">
+<div role="rowheader">{{ r.label }}</div>
+<div role="cell" class="sr-num" style="color: var(--mut)">{{ r.swd }}</div>
+<div role="cell" class="sedit {{ r.dirty }}" style="padding-right: 24px">
+<sc-if value="{{ r.isNum }}" hint-placeholder-val="{{ false }}"><input type="number" min="0" step="1" class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"></sc-if>
+<sc-if value="{{ r.isText }}" hint-placeholder-val="{{ true }}"><input type="text" class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"></sc-if>
+<sc-if value="{{ r.isBool }}" hint-placeholder-val="{{ false }}"><select class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"><option value="">—</option><option value="Tak">Tak</option><option value="Nie">Nie</option></select></sc-if>
+<sc-if value="{{ r.isAlarm }}" hint-placeholder-val="{{ false }}"><select class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"><option value="">—</option><option value="Selektywne">Selektywne</option><option value="Inny">Inny</option><option value="Brak">Brak</option></select></sc-if>
+</div>
+<div role="cell" class="sstat" style="color: {{ r.statusColor }}; font-weight: {{ r.statusWeight }}"><sc-if value="{{ r.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-hidden="true"></span></sc-if>{{ r.status }}</div>
+</div>
+</sc-for>
+</div>
+</sc-for>
+</div>
+</div>
+<sc-if value="{{ noGridRows }}" hint-placeholder-val="{{ false }}">
+<p class="note">Brak pól.</p>
+</sc-if>
+<sc-if value="{{ gridDirty }}" hint-placeholder-val="{{ false }}">
+<div style="position: sticky; bottom: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px; padding: 16px 0; background: var(--bg); border-top: 1px solid var(--fg)">
+<p style="margin: 0 8px 10px 0; font-weight: 600; font-variant-numeric: tabular-nums">{{ gridCount }}</p>
+<div style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 6px">
+<label for="g-r" class="eyebrow">Powód zmiany</label>
+<input id="g-r" type="text" class="inp" value="{{ greason }}" onChange="{{ onGReason }}">
+</div>
+<button type="button" class="solid" disabled="{{ gridCantSave }}" onClick="{{ gridSave }}">Zapisz zmiany</button>
+<button type="button" class="outline" onClick="{{ gridDiscard }}">Odrzuć</button>
+</div>
+</sc-if>
+</section>
+</sc-if>
+
+<sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+<p class="note">Wczytywanie…</p>
+</sc-if>
+
+<sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px">
+<p style="margin: 0; font-size: 18px; font-weight: 600">Nie udało się wczytać karty jednostki</p>
+<button type="button" class="outline" onClick="{{ retry }}">Spróbuj ponownie</button>
+</div>
+</sc-if>
+
+<sc-if value="{{ show.podstawowe }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 40px">
+<section aria-label="Lokalizacja" class="loc" style="display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: 24px 48px; align-items: center; padding: 8px 0 24px; border-bottom: 1px solid var(--line)">
+<div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
+<div style="position: relative; height: 300px">
+<svg viewBox="1622 872 234 255" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Położenie jednostki w powiecie płońskim, gmina Baboszewo" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<sc-for list="{{ county }}" as="g" hint-placeholder-count="12">
+<path d="{{ g.d }}" style="fill: var(--fg); fill-opacity: {{ g.op }}; stroke: var(--bg); stroke-width: 1px; vector-effect: non-scaling-stroke"></path>
+</sc-for>
+<circle cx="1716" cy="962" r="9" style="fill: none; stroke: var(--fg); stroke-opacity: 0.35; stroke-width: 1px; vector-effect: non-scaling-stroke"></circle>
+<circle cx="1716" cy="962" r="3.6" style="fill: var(--fg); stroke: var(--bg); stroke-width: 2px; vector-effect: non-scaling-stroke"></circle>
+</svg>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 18px; padding: 0 4px">
+<span class="note" style="font-size: 12px; font-variant-numeric: tabular-nums">{{ loc.coords.value }}</span>
+<a href="{{ loc.gmaps }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px; font-size: 12px; color: var(--mut)">Google Maps<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg></a>
+<a href="{{ loc.street }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px; font-size: 12px; color: var(--mut)">Street View<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg></a>
+<a href="{{ loc.osm }}" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; min-height: 32px; font-size: 12px; color: var(--mut)">OpenStreetMap<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg></a>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; min-width: 0">
+<div class="hk">
+<sc-for list="{{ heroKpi }}" as="k" hint-placeholder-count="4">
+<div class="kpi" style="padding: 14px 0 18px">
+<div style="display: flex; align-items: center; gap: 10px">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<p class="eyebrow">{{ k.label }}</p>
+</div>
+<p class="big" style="margin: 12px 0 0; font-size: 36px">{{ k.value }}</p>
+<p class="sub" style="margin-top: 8px">{{ k.sub }}</p>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+<section aria-label="KSRG i strażnica" class="kpis4">
+<sc-for list="{{ ks }}" as="k" hint-placeholder-count="8">
+<div class="kpi">
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
+<div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 10px; margin-top: 10px; min-width: 0">
+<button type="button" class="vbtn big" style="font-size: 32px" onClick="{{ k.f.open }}"><sc-if value="{{ k.f.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v {{ k.f.cls }}">{{ k.f.value }}</span></button>
+<sc-if value="{{ k.hasCd }}" hint-placeholder-val="{{ false }}">
+<button type="button" class="cd {{ k.cd.cls }}" aria-label="{{ k.cd.aria }}" title="{{ k.cd.aria }}" onClick="{{ k.cd.open }}"><span class="cdnum">{{ k.cd.days }}</span></button>
+</sc-if>
+</div>
+<sc-if value="{{ k.hasSubField }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 10px">
+<button type="button" class="vbtn sub" onClick="{{ k.sf.open }}"><sc-if value="{{ k.sf.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ k.sfPrefix }}{{ k.sf.value }}</span></button>
+<sc-if value="{{ k.hasCd }}" hint-placeholder-val="{{ false }}"><button type="button" class="vbtn sub" onClick="{{ k.cd.open }}"><span class="v">· włączenie do {{ k.cd.date }}</span></button></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ k.hasSub }}" hint-placeholder-val="{{ false }}">
+<p class="sub">{{ k.sub }}</p>
+</sc-if>
+</div>
+</sc-for>
+</section>
+<div>
+<sc-for list="{{ basic }}" as="g" hint-placeholder-count="1">
+<section aria-label="{{ g.title }}">
+<h2 class="sec" style="margin-bottom: 10px">{{ g.title }}</h2>
+<div class="grid2">
+<sc-for list="{{ g.items }}" as="i" hint-placeholder-count="2">
+<div style="display: flex; align-items: stretch; min-width: 0">
+<button type="button" class="row" style="flex: 1 1 auto; width: auto; min-width: 0; margin-right: 0" onClick="{{ i.open }}"><span class="lab">{{ i.label }}</span><span class="v {{ i.cls }}"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span></button>
+<sc-if value="{{ i.hasLink }}" hint-placeholder-val="{{ false }}"><a href="{{ i.link }}" target="_blank" rel="noopener" aria-label="{{ i.linkLabel }}" title="{{ i.linkLabel }}" style="flex: none; display: inline-flex; align-items: center; justify-content: center; width: 44px; border-bottom: 1px solid var(--line); color: var(--mut)"><svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg></a></sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ show.strazacy }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 48px">
+<section aria-labelledby="ff-h">
+<h2 id="ff-h" class="sec" style="margin-bottom: 14px">Liczba strażaków ratowników</h2>
+<div class="kpis4">
+<sc-for list="{{ ffk }}" as="k" hint-placeholder-count="7">
+<div class="kpi">
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
+<div style="margin-top: 10px">
+<button type="button" class="vbtn big" onClick="{{ k.f.open }}"><sc-if value="{{ k.f.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v {{ k.f.cls }}">{{ k.f.value }}</span></button>
+<sc-if value="{{ k.f.hasMin }}" hint-placeholder-val="{{ false }}"><p class="minv" style="margin: 8px 0 0">min. {{ k.f.min }}</p></sc-if>
+</div>
+<p class="sub">{{ k.sub }}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<div class="cols">
+<section aria-labelledby="board-h">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
+<h2 id="board-h" class="sec">Zarząd OSP</h2>
+
+</div>
+<dl style="margin: 0">
+<sc-for list="{{ board }}" as="b" hint-placeholder-count="6">
+<div class="row" style="cursor: default; background: none"><dt class="lab">{{ b.role }}</dt><dd class="v" style="margin: 0">{{ b.name }}</dd></div>
+</sc-for>
+</dl>
+</section>
+<section aria-labelledby="kp-h">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
+<h2 id="kp-h" class="sec">Nadrzędna komenda PSP</h2>
+
+</div>
+<p style="margin: 16px 0 6px; font-size: 22px; line-height: 1.2; font-weight: 600">{{ cmd.name }}</p>
+<p class="note" style="margin-bottom: 6px">{{ cmd.address }}</p>
+<dl style="margin: 0">
+<sc-for list="{{ cmd.lead }}" as="b" hint-placeholder-count="2">
+<div class="row" style="cursor: default; background: none"><dt class="lab">{{ b.role }}</dt><dd class="v" style="margin: 0">{{ b.name }}</dd></div>
+</sc-for>
+</dl>
+<p class="eyebrow" style="margin-top: 22px">Nadrzędna JRG</p>
+<p style="margin: 8px 0 6px; font-size: 22px; line-height: 1.2; font-weight: 600">{{ cmd.jrg.name }}</p>
+<dl style="margin: 0">
+<sc-for list="{{ cmd.jrg.lead }}" as="b" hint-placeholder-count="2">
+<div class="row" style="cursor: default; background: none"><dt class="lab">{{ b.role }}</dt><dd class="v" style="margin: 0">{{ b.name }}</dd></div>
+</sc-for>
+</dl>
+</section>
+</div>
+
+<section aria-labelledby="duty-h">
+<h2 id="duty-h" class="sec" style="margin-bottom: 10px">Pełniący dyżur w strażnicy</h2>
+<div class="grid2">
+<sc-for list="{{ duty }}" as="i" hint-placeholder-count="2">
+<button type="button" class="row" onClick="{{ i.open }}"><span class="lab">{{ i.label }}</span><span class="v {{ i.cls }}" style="font-size: 18px"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span></button>
+</sc-for>
+</div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{ show.szkolenia }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 40px">
+<sc-for list="{{ training }}" as="g" hint-placeholder-count="2">
+<section aria-label="{{ g.title }}">
+<div style="display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ g.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<h2 class="sec" style="flex: 1">{{ g.title }}</h2>
+</div>
+<div class="tiles">
+<sc-for list="{{ g.items }}" as="i" hint-placeholder-count="5">
+<button type="button" class="tile" onClick="{{ i.open }}">
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ i.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<span class="eyebrow" style="font-size: 11px; line-height: 1.35">{{ i.label }}</span>
+<span class="v {{ i.cls }}" style="display: inline-flex; align-items: center; gap: 8px; font-size: 30px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span>
+<sc-if value="{{ i.hasMin }}" hint-placeholder-val="{{ false }}"><span class="minv">min. {{ i.min }}</span></sc-if>
+</button>
+</sc-for>
+</div>
+</section>
+</sc-for>
+
+<section aria-labelledby="drv-h" style="display: flex; flex-direction: column; gap: 28px">
+<h2 id="drv-h" class="sec">Kierowcy-konserwatorzy z zezwoleniem na pojazd uprzywilejowany</h2>
+<sc-for list="{{ drivers }}" as="r" hint-placeholder-count="2">
+<div>
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 24px; margin-bottom: 12px">
+<div style="min-width: 0">
+<p style="margin: 0; font-size: 15px; font-weight: 600">{{ r.label }}</p>
+<p class="note" style="margin-top: 4px">{{ r.desc }}</p>
+</div>
+</div>
+<div class="kpis">
+<sc-for list="{{ r.cards }}" as="k" hint-placeholder-count="3">
+<div class="kpi">
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
+<div style="margin-top: 10px">
+<button type="button" class="vbtn big" onClick="{{ k.f.open }}"><sc-if value="{{ k.f.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v {{ k.f.cls }}">{{ k.f.value }}</span></button>
+<sc-if value="{{ k.f.hasMin }}" hint-placeholder-val="{{ false }}"><p class="minv" style="margin: 8px 0 0">min. {{ k.f.min }}</p></sc-if>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</section>
+<section aria-label="{{ trFree.title }}">
+<h2 class="sec" style="padding-bottom: 10px; border-bottom: 1px solid var(--line)">{{ trFree.title }}</h2>
+<div class="grid2">
+<sc-for list="{{ trFree.items }}" as="i" hint-placeholder-count="2">
+<button type="button" class="ftxt" onClick="{{ i.open }}"><span class="eyebrow" style="font-size: 11px">{{ i.label }}</span><span class="{{ i.cls }}" style="display: inline-flex; gap: 8px; font-size: 15px; line-height: 1.5; white-space: pre-line"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports" style="margin-top: 8px"></span></sc-if>{{ i.value }}</span></button>
+</sc-for>
+</div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{ show.sprzet }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 48px">
+<section aria-labelledby="veh-h">
+<div style="display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ truckIcon }}" as="p" hint-placeholder-count="3"><path d="{{ p }}"></path></sc-for></svg>
+<h2 id="veh-h" class="sec" style="flex: 1">Pojazdy</h2>
+<p class="note" style="font-variant-numeric: tabular-nums">{{ vehicleCount }}</p>
+</div>
+<sc-if value="{{ hasVehicles }}" hint-placeholder-val="{{ true }}">
+<ul class="kpis" style="margin: 0; padding: 0; list-style: none">
+<sc-for list="{{ vehicles }}" as="v" hint-placeholder-count="3">
+<li class="kpi" style="border-top: 0; padding: 20px 0 8px">
+<button type="button" class="vbtn" onClick="{{ v.type.open }}" style="font-size: 28px; line-height: 1.1; font-weight: 600; min-height: 44px"><sc-if value="{{ v.type.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ v.type.value }}</span></button>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 10px; font-size: 14px; color: var(--mut)">
+<button type="button" class="vbtn" onClick="{{ v.model.open }}" style="min-height: 32px"><sc-if value="{{ v.model.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ v.model.value }}</span></button>
+<span aria-hidden="true">·</span>
+<button type="button" class="vbtn" onClick="{{ v.year.open }}" style="min-height: 32px; font-variant-numeric: tabular-nums"><sc-if value="{{ v.year.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ v.year.value }}</span></button>
+<span aria-hidden="true">·</span>
+<button type="button" class="vbtn" onClick="{{ v.heavy.open }}" style="min-height: 32px"><sc-if value="{{ v.heavy.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ v.heavyText }}</span></button>
+</div>
+</li>
+</sc-for>
+</ul>
+</sc-if>
+<sc-if value="{{ noVehicles }}" hint-placeholder-val="{{ false }}">
+<p class="note" style="margin-top: 14px">Brak pojazdów.</p>
+</sc-if>
+</section>
+
+<div style="display: flex; flex-direction: column; gap: 40px">
+<sc-for list="{{ equipment }}" as="g" hint-placeholder-count="8">
+<section aria-label="{{ g.title }}">
+<div style="display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ g.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<h2 class="sec" style="flex: 1">{{ g.title }}</h2>
+<p class="note" style="font-variant-numeric: tabular-nums">{{ g.total }}</p>
+</div>
+<div class="tiles">
+<sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3">
+<button type="button" class="tile" onClick="{{ i.open }}">
+<span class="eyebrow" style="font-size: 11px; line-height: 1.35">{{ i.label }}</span>
+<span class="v {{ i.cls }}" style="display: inline-flex; align-items: center; gap: 8px; font-size: 30px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span>
+<sc-if value="{{ i.hasMin }}" hint-placeholder-val="{{ false }}"><span class="minv">min. {{ i.min }}</span></sc-if>
+</button>
+</sc-for>
+</div>
+</section>
+</sc-for>
+</div>
+<section aria-label="{{ eqFree.title }}">
+<h2 class="sec" style="padding-bottom: 10px; border-bottom: 1px solid var(--line)">{{ eqFree.title }}</h2>
+<div class="grid2">
+<sc-for list="{{ eqFree.items }}" as="i" hint-placeholder-count="2">
+<button type="button" class="ftxt" onClick="{{ i.open }}"><span class="eyebrow" style="font-size: 11px">{{ i.label }}</span><span class="{{ i.cls }}" style="display: inline-flex; gap: 8px; font-size: 15px; line-height: 1.5; white-space: pre-line"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports" style="margin-top: 8px"></span></sc-if>{{ i.value }}</span></button>
+</sc-for>
+</div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{ show.wyjazdy }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 40px">
+<section aria-labelledby="per-h" style="display: flex; flex-direction: column; gap: 14px; padding-bottom: 24px; border-bottom: 1px solid var(--line)">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px">
+<div>
+<p id="per-h" class="eyebrow">Okres</p>
+<p style="margin: 6px 0 0; font-size: 22px; font-weight: 600">{{ rg.period }}</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px">
+<div role="group" aria-label="Szybki wybór okresu" style="display: flex; flex-wrap: wrap; gap: 0 20px">
+<sc-for list="{{ rg.presets }}" as="p" hint-placeholder-count="4">
+<button type="button" class="yr" aria-pressed="{{ p.on }}" onClick="{{ p.pick }}">{{ p.label }}</button>
+</sc-for>
+</div>
+<button type="button" class="icon" aria-label="Wybierz okres w kalendarzu" aria-expanded="{{ rg.calOpen }}" onClick="{{ rg.toggleCal }}">
+<svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v10h-11zM2.5 6.5h11M5.5 1.5v3M10.5 1.5v3" style="fill: none; stroke: currentColor; stroke-width: 1.3px"></path></svg>
+</button>
+</div>
+</div>
+<sc-if value="{{ rg.calOpen }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: flex-end; gap: 12px 16px">
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="rg-f" class="eyebrow">Od</label><input id="rg-f" type="date" class="inp" min="{{ rg.minIso }}" max="{{ rg.maxIso }}" value="{{ rg.fromIso }}" onChange="{{ rg.onFromDate }}"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="rg-t" class="eyebrow">Do</label><input id="rg-t" type="date" class="inp" min="{{ rg.minIso }}" max="{{ rg.maxIso }}" value="{{ rg.toIso }}" onChange="{{ rg.onToDate }}"></div>
+</div>
+</sc-if>
+<div style="display: flex; flex-direction: column; gap: 14px">
+<div style="padding: 0 7px">
+<svg viewBox="0 0 1000 56" preserveAspectRatio="none" role="img" aria-label="{{ rg.aria }}" style="display: block; width: 100%; height: 56px">
+<path d="{{ rg.outside }}" style="fill: var(--fg); fill-opacity: 0.16"></path>
+<path d="{{ rg.inside }}" style="fill: var(--fg)"></path>
+</svg>
+</div>
+<div style="position: relative; height: 32px; margin-top: -6px">
+<div style="position: absolute; left: 7px; right: 7px; top: 15px; height: 2px; background: var(--line)"></div>
+<div style="position: absolute; top: 14px; height: 4px; background: var(--fg); left: {{ rg.trackLeft }}; width: {{ rg.trackWidth }}"></div>
+<input class="rng" type="range" min="{{ rg.min }}" max="{{ rg.last }}" step="1" value="{{ rg.from }}" onChange="{{ rg.onFrom }}" aria-label="Początek okresu">
+<input class="rng" type="range" min="{{ rg.min }}" max="{{ rg.last }}" step="1" value="{{ rg.to }}" onChange="{{ rg.onTo }}" aria-label="Koniec okresu">
+</div>
+<div aria-hidden="true" style="position: relative; height: 22px; margin: -8px 7px 4px; font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums">
+<sc-for list="{{ rg.tags }}" as="t" hint-placeholder-count="2">
+<span style="position: absolute; top: 0; left: {{ t.left }}; transform: translateX({{ t.shift }}); padding: 3px 7px; background: var(--fg); color: var(--bg); line-height: 16px; white-space: nowrap">{{ t.label }}</span>
+</sc-for>
+</div>
+<div aria-hidden="true" style="position: relative; height: 16px; margin: 0 7px; font-size: 11px; color: var(--mut)">
+<sc-for list="{{ rg.ticks }}" as="t" hint-placeholder-count="12">
+<span style="position: absolute; top: 0; left: {{ t.left }}; padding-left: 4px; border-left: 1px solid var(--line); line-height: 16px; font-weight: {{ t.weight }}">{{ t.label }}</span>
+</sc-for>
+</div>
+</div>
+</section>
+<sc-for list="{{ dsp.rows }}" as="r" hint-placeholder-count="3">
+<section aria-label="{{ r.title }}">
+<h2 class="sec" style="margin-bottom: 14px">{{ r.title }}</h2>
+<div class="kpis4">
+<sc-for list="{{ r.cards }}" as="k" hint-placeholder-count="4">
+<div class="kpi">
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
+<p class="big {{ k.cls }}" style="margin: 10px 0 0">{{ k.value }}</p>
+<p class="sub">{{ k.sub }}</p>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ show.igo }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 48px">
+<section aria-labelledby="igo-last-h">
+<h2 id="igo-last-h" class="sec" style="margin-bottom: 14px">Ocena ostatniej inspekcji</h2>
+<div class="kpis4">
+<sc-for list="{{ igo.kpi }}" as="k" hint-placeholder-count="4">
+<div class="kpi">
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
+<p class="big" style="margin: 10px 0 0"><span class="v {{ k.cls }}">{{ k.value }}</span></p>
+<p class="sub">{{ k.sub }}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-labelledby="igo-h-h">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
+<h2 id="igo-h-h" class="sec">Inspekcje gotowości operacyjnej</h2>
+<button type="button" class="outline sm" onClick="{{ openIgo }}"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v12M2 8h12" style="fill: none; stroke: currentColor; stroke-width: 1.4px"></path></svg>Wpisz ocenę</button>
+</div>
+<div style="overflow-x: auto">
+<div role="table" aria-labelledby="igo-h-h" style="min-width: 640px; font-size: 14px">
+<div role="row" style="display: grid; grid-template-columns: 130px minmax(0, 1fr) 110px 200px; border-bottom: 1px solid var(--fg); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mut)">
+<div role="columnheader" style="padding: 10px 12px 10px 0">Data</div>
+<div role="columnheader" style="padding: 10px 12px">Zespół</div>
+<div role="columnheader" class="cell">Punkty</div>
+<div role="columnheader" style="padding: 10px 12px">Ocena</div>
+</div>
+<sc-for list="{{ igo.rows }}" as="r" hint-placeholder-count="3">
+<div role="row" class="trow" style="display: grid; grid-template-columns: 130px minmax(0, 1fr) 110px 200px; align-items: center; min-height: 48px">
+<div role="cell" style="padding: 0 12px 0 0; font-variant-numeric: tabular-nums">{{ r.at }}</div>
+<div role="cell" style="padding: 0 12px">{{ r.team }}</div>
+<div role="cell" class="cell" style="font-weight: 600">{{ r.points }}</div>
+<div role="cell" style="padding: 0 12px"><span class="v {{ r.cls }}" style="font-weight: 600">{{ r.grade }}</span></div>
+</div>
+</sc-for>
+</div>
+</div>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{ show.specjalizacje }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 48px">
+<sc-for list="{{ specGroups }}" as="g" hint-placeholder-count="2">
+<section aria-label="{{ g.title }}">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
+<h2 class="sec">{{ g.title }}</h2>
+<p class="note" style="font-variant-numeric: tabular-nums">{{ g.count }}</p>
+</div>
+<div class="grid2">
+<sc-for list="{{ g.items }}" as="s" hint-placeholder-count="6">
+<div style="position: relative; min-width: 0">
+<button type="button" class="row" onClick="{{ s.open }}" style="justify-content: flex-start; align-items: flex-start; gap: 14px; padding: 16px {{ s.padR }} 16px 8px">
+<span aria-hidden="true" style="flex: none; width: 12px; height: 12px; margin-top: 5px; box-sizing: border-box; border: 1.5px solid {{ s.mark }}; background: {{ s.fill }}"></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
+<span class="{{ s.cls }}" style="font-size: 16px; line-height: 1.35; font-weight: 500">{{ s.label }}</span>
+<sc-if value="{{ s.hasNote }}" hint-placeholder-val="{{ false }}"><span class="note" style="display: inline-flex; align-items: center; gap: 8px"><sc-if value="{{ s.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ s.state }}</span></sc-if>
+</span>
+</button>
+<sc-if value="{{ s.hasSub }}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{ s.sub.open }}" style="position: absolute; top: 0; right: 0; bottom: 1px; display: inline-flex; align-items: center; gap: 10px; padding: 0 8px; background: none; border: 0; cursor: pointer">
+<span aria-hidden="true" style="flex: none; width: 10px; height: 10px; box-sizing: border-box; border: 1.5px solid {{ s.sub.mark }}; background: {{ s.sub.fill }}"></span>
+<span class="{{ s.sub.cls }}" style="font-size: 14px">Specjalistyczne</span>
+<sc-if value="{{ s.sub.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>
+</button>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-for>
+</div>
+</sc-if>
+
+</div>
+
+<sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+<button type="button" aria-label="Zamknij panel" onClick="{{ close }}" style="position: fixed; inset: 0; z-index: 40; border: 0; padding: 0; background: rgba(0, 0, 0, 0.18); cursor: default"></button>
+<aside aria-label="{{ panelTitle }}" style="position: fixed; top: 0; right: 0; bottom: 0; z-index: 50; width: min(460px, 100%); box-sizing: border-box; overflow-y: auto; background: var(--bg); border-left: 1px solid var(--fg); box-shadow: -18px 0 48px rgba(0, 0, 0, 0.12); padding: 28px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
+<div style="min-width: 0">
+<p class="eyebrow">{{ panelEyebrow }}</p>
+<h2 style="margin: 8px 0 0; font-size: 22px; line-height: 1.25; font-weight: 600">{{ panelTitle }}</h2>
+</div>
+<button type="button" class="icon" aria-label="Zamknij panel" onClick="{{ close }}"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" style="fill: none; stroke: currentColor; stroke-width: 1.4px"></path></svg></button>
+</div>
+
+<sc-if value="{{ isEdit }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 24px">
+<dl style="margin: 0">
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 14px"><dt style="color: var(--mut)">Źródło</dt><dd style="margin: 0; font-weight: 600; display: inline-flex; align-items: center; gap: 8px"><sc-if value="{{ ed.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-hidden="true"></span></sc-if>{{ ed.source }}</dd></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px"><dt style="color: var(--mut)">Wartość w SWD-PSP</dt><dd style="margin: 0; font-weight: 600; font-variant-numeric: tabular-nums">{{ ed.swd }}</dd></div>
+</dl>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<sc-if value="{{ ed.isNum }}" hint-placeholder-val="{{ false }}">
+<label for="ed-v" class="eyebrow">Wartość w Reports</label>
+<input id="ed-v" type="number" min="0" step="1" class="inp" value="{{ draft }}" onChange="{{ onDraft }}">
+</sc-if>
+<sc-if value="{{ ed.isText }}" hint-placeholder-val="{{ true }}">
+<label for="ed-t" class="eyebrow">Wartość w Reports</label>
+<input id="ed-t" type="text" class="inp" value="{{ draft }}" onChange="{{ onDraft }}">
+</sc-if>
+<sc-if value="{{ ed.isLong }}" hint-placeholder-val="{{ false }}">
+<label for="ed-l" class="eyebrow">Wartość w Reports</label>
+<textarea id="ed-l" rows="6" class="inp" style="resize: vertical" value="{{ draft }}" onChange="{{ onDraft }}"></textarea>
+</sc-if>
+<sc-if value="{{ ed.isBool }}" hint-placeholder-val="{{ false }}">
+<p id="ed-b" class="eyebrow">Wartość w Reports</p>
+<div role="group" aria-labelledby="ed-b" style="display: flex; gap: 8px">
+<sc-for list="{{ ed.options }}" as="o" hint-placeholder-count="2">
+<button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<label for="ed-r" class="eyebrow">Powód zmiany</label>
+<textarea id="ed-r" rows="3" class="inp" style="resize: vertical" value="{{ reason }}" onChange="{{ onReason }}"></textarea>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; gap: 8px">
+<button type="button" class="solid" disabled="{{ cantSave }}" onClick="{{ save }}">Zapisz</button>
+<button type="button" class="outline" onClick="{{ close }}">Anuluj</button>
+</div>
+<sc-if value="{{ ed.over }}" hint-placeholder-val="{{ false }}">
+<button type="button" class="lnk" onClick="{{ restore }}">Przywróć wartość z SWD-PSP</button>
+</sc-if>
+</div>
+
+<section aria-labelledby="fh-h" style="display: flex; flex-direction: column">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--line)">
+<h3 id="fh-h" class="sec" style="font-size: 12px">Historia pola</h3>
+<button type="button" class="lnk" onClick="{{ openHistory }}">Cała historia</button>
+</div>
+<ol style="margin: 8px 0 0; padding: 0; list-style: none">
+<sc-for list="{{ ed.history }}" as="h" hint-placeholder-count="1">
+<li style="position: relative; padding-left: 28px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: {{ h.lineTop }}; bottom: {{ h.lineBottom }}; width: 1px; background: var(--line)"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; top: 17px; width: 11px; height: 11px; box-sizing: border-box; border: 1.5px solid var(--fg); background: {{ h.dot }}"></span>
+<button type="button" class="vbtn" aria-expanded="{{ h.on }}" onClick="{{ h.toggle }}" style="width: 100%; min-height: 44px; padding: 10px 0; flex-direction: column; align-items: flex-start; gap: 2px">
+<span class="note" style="font-variant-numeric: tabular-nums">{{ h.at }}</span>
+<span class="v" style="font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums">{{ h.change }}</span>
+</button>
+<sc-if value="{{ h.on }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 4px; padding: 0 0 12px">
+<span class="note" style="color: var(--fg)">{{ h.by }}</span>
+<span class="note">{{ h.reason }}</span>
+</div>
+</sc-if>
+</li>
+</sc-for>
+</ol>
+<sc-if value="{{ ed.noHistory }}" hint-placeholder-val="{{ false }}">
+<p class="note" style="padding: 12px 0">Brak zmian.</p>
+</sc-if>
+</section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isHistory }}" hint-placeholder-val="{{ false }}">
+<dl style="margin: 0 0 8px">
+<sc-for list="{{ histFacts }}" as="x" hint-placeholder-count="2">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 13px"><dt style="color: var(--mut)">{{ x.label }}</dt><dd style="margin: 0; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">{{ x.value }}</dd></div>
+</sc-for>
+</dl>
+<ol style="margin: 0; padding: 0; list-style: none">
+<sc-for list="{{ allHistory }}" as="h" hint-placeholder-count="3">
+<li style="position: relative; padding-left: 28px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: {{ h.lineTop }}; bottom: {{ h.lineBottom }}; width: 1px; background: var(--line)"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; top: 17px; width: 11px; height: 11px; box-sizing: border-box; border: 1.5px solid var(--fg); background: {{ h.dot }}"></span>
+<button type="button" class="vbtn" aria-expanded="{{ h.on }}" onClick="{{ h.toggle }}" style="width: 100%; min-height: 44px; padding: 10px 0; flex-direction: column; align-items: flex-start; gap: 2px">
+<span class="note" style="font-variant-numeric: tabular-nums">{{ h.at }}</span>
+<span class="v" style="font-size: 14px; font-weight: 600">{{ h.field }}</span>
+</button>
+<sc-if value="{{ h.on }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 0 0 12px; font-size: 14px">
+<span style="font-variant-numeric: tabular-nums">{{ h.change }}</span>
+<span class="note" style="color: var(--fg)">{{ h.by }}</span>
+<span class="note">{{ h.reason }}</span>
+<button type="button" class="lnk" onClick="{{ h.open }}">Przejdź do pola</button>
+</div>
+</sc-if>
+</li>
+</sc-for>
+</ol>
+<sc-if value="{{ noHistory }}" hint-placeholder-val="{{ false }}">
+<p class="note">Brak zmian.</p>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ isIgo }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 22px">
+<label style="display: flex; flex-direction: column; gap: 8px"><span class="eyebrow">Data inspekcji</span><input type="date" class="inp" value="{{ igoForm.date }}" onChange="{{ igoForm.onDate }}"></label>
+<div style="display: flex; flex-direction: column; gap: 8px"><p id="igo-team" class="eyebrow">Zespół inspekcyjny</p>
+<div role="group" aria-labelledby="igo-team" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ igoForm.teams }}" as="o" hint-placeholder-count="3"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for>
+</div></div>
+<label style="display: flex; flex-direction: column; gap: 8px"><span class="eyebrow">Liczba punktów (0–100)</span><input type="number" min="0" max="100" step="1" class="inp" value="{{ igoForm.points }}" onChange="{{ igoForm.onPoints }}"></label>
+<div style="display: flex; flex-direction: column; gap: 8px"><p id="igo-grade" class="eyebrow">Ocena</p>
+<div role="group" aria-labelledby="igo-grade" style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{ igoForm.grades }}" as="o" hint-placeholder-count="6"><button type="button" class="seg" style="min-width: 48px" aria-pressed="{{ o.on }}" title="{{ o.title }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for>
+</div>
+<p class="note">{{ igoForm.gradeName }}</p></div>
+<label style="display: flex; flex-direction: column; gap: 8px"><span class="eyebrow">Uwagi</span><textarea rows="3" class="inp" style="resize: vertical" value="{{ igoForm.notes }}" onChange="{{ igoForm.onNotes }}"></textarea></label>
+<div style="display: flex; gap: 8px">
+<button type="button" class="solid" disabled="{{ igoForm.cantSave }}" onClick="{{ igoForm.save }}">Zapisz</button>
+<button type="button" class="outline" onClick="{{ close }}">Anuluj</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMinima }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column">
+<sc-for list="{{ minima }}" as="m" hint-placeholder-count="12">
+<button type="button" class="row" onClick="{{ m.open }}" style="align-items: center">
+<span style="display: flex; align-items: center; gap: 10px; min-width: 0"><span aria-hidden="true" style="flex: none; width: 10px; height: 10px; box-sizing: border-box; border: 1.5px solid var(--fg); background: {{ m.dot }}"></span><span style="color: var(--fg); font-weight: {{ m.weight }}">{{ m.label }}</span></span>
+<span class="v" style="font-weight: {{ m.weight }}">{{ m.value }}<span class="minv" style="margin-left: 8px">min. {{ m.min }}</span></span>
+</button>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isRequests }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<a class="solid sm" href="Wnioski.dc.html" style="text-decoration: none">Otwórz wnioski</a>
+<a class="outline sm" href="Wnioski.dc.html" style="text-decoration: none">Ponowne włączenie</a>
+<a class="outline sm" href="Wnioski.dc.html" style="text-decoration: none">Wyłączenie</a>
+</div>
+<ol style="margin: 0; padding: 0; list-style: none">
+<sc-for list="{{ requests }}" as="w" hint-placeholder-count="3">
+<li style="position: relative; padding-left: 28px">
+<span aria-hidden="true" style="position: absolute; left: 5px; top: {{ w.lineTop }}; bottom: {{ w.lineBottom }}; width: 1px; background: var(--line)"></span>
+<span aria-hidden="true" style="position: absolute; left: 0; top: 17px; width: 11px; height: 11px; box-sizing: border-box; border: 1.5px solid var(--fg); background: {{ w.dot }}"></span>
+<button type="button" class="vbtn" aria-expanded="{{ w.on }}" onClick="{{ w.toggle }}" style="width: 100%; min-height: 44px; padding: 10px 0; flex-direction: column; align-items: flex-start; gap: 2px">
+<span class="note" style="font-variant-numeric: tabular-nums">{{ w.at }} · <span style="color: var(--fg); font-weight: {{ w.statusWeight }}">{{ w.status }}</span></span>
+<span class="v" style="font-size: 14px; font-weight: 600">{{ w.title }}</span>
+</button>
+<sc-if value="{{ w.on }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 0 0 12px; font-size: 14px">
+<span>{{ w.detail }}</span>
+<span class="note" style="color: var(--fg)">{{ w.by }}</span>
+<span class="note">{{ w.step }}</span>
+</div>
+</sc-if>
+</li>
+</sc-for>
+</ol>
+</div>
+</sc-if>
+</aside>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["jasny","ciemny"],"default":"jasny","section":"Wygląd"},"karta":{"editor":"enum","options":["Dane podstawowe","Członkowie","Szkolenia i uprawnienia","Sprzęt","Specjalizacje","IGO","Wyjazdowość"],"default":"Dane podstawowe","section":"Widok"},"stan":{"editor":"enum","options":["dane","niepełne dane","wczytywanie","błąd"],"default":"dane","section":"Widok"},"zagrozenie":{"editor":"enum","options":["niski","średni","wysoki","bardzo wysoki","brak oceny"],"default":"średni","section":"Widok"},"$preview":{"width":1440,"height":1500}}'>
+const COUNTY = [{"d":"M1742 1015l2 -3 6 0 1 -11 -4 0 -1 -6 -5 2 -4 3 1 5 -2 4 3 1 0 4 3 1z","own":false},{"d":"M1687 984l16 4 0 9 11 1 8 3 2 -8 3 -8 8 2 2 -2 4 -11 2 1 4 -3 2 -6 0 -3 3 -3 -2 -4 0 -4 -10 -7 0 -6 -7 2 -3 -1 -3 -6 -3 -1 -8 3 -3 6 -6 -6 -6 4 -2 4 11 8 -3 5 -3 0 -3 -3 -8 3 -2 9 -5 0 -2 6 1 5 -1 4 3 3z","own":true},{"d":"M1698 1041l5 6 8 -2 -3 -7 4 0 9 -3 0 -7 2 -3 3 -5 -2 -9 2 -4 -3 -2 -1 -4 -8 -3 -11 -1 0 -9 -16 -4 -4 9 6 1 -5 11 0 9 2 2 -1 4 5 5 -2 7 6 2 4 7z","own":false},{"d":"M1709 1073l4 -1 4 3 1 3 7 0 4 -1 3 -8 6 5 10 2 2 -5 6 2 -1 5 8 2 6 0 0 -4 -2 -4 3 -4 -4 -2 5 -11 -3 -3 -3 -12 -2 -3 -3 -4 -10 0 -3 -5 -3 1 -7 0 -2 3 -4 -1 -8 -6 -2 3 0 7 -9 3 -4 0 3 7 -8 2 -5 -6 -2 12 -1 4 2 -1 8 1 1 5 3 5 0 6z","own":false},{"d":"M1712 1114l16 -2 19 2 5 3 3 -2 11 -8 15 -9 -3 -2 -1 -8 -4 -7 -4 -1 -6 0 -8 -2 1 -5 -6 -2 -2 5 -10 -2 -6 -5 -3 8 -4 1 -7 0 -1 -3 -4 -3 -4 1 2 3 -3 6 -4 3 5 3 -2 4 0 4 5 12 0 6z","own":false},{"d":"M1674 940l6 -3 3 -4 1 -3 -3 -2 -10 0 -3 4 2 8 4 0z","own":false},{"d":"M1662 974l6 6 -1 2 3 4 3 0 4 -7 7 2 1 -4 -1 -5 2 -6 5 0 2 -9 8 -3 3 3 3 0 3 -5 -11 -8 2 -4 6 -4 6 6 3 -6 -5 -1 -9 -7 -1 -6 1 -7 7 -3 7 -7 -6 -3 -1 -3 3 -5 -8 -3 0 -5 -5 0 -5 -3 -4 -1 -3 5 -3 -1 -1 1 -1 1 0 9 -4 4 4 2 -3 5 -2 6 -12 -4 -8 2 -3 -2 -3 2 -9 -10 -2 11 1 1 1 9 -7 -2 -1 6 -2 3 0 5 4 4 6 -2 8 2 5 6 5 0 -1 10 -5 3 0 4 5 3 0 4 -3 3 6 2zM1674 940l-4 0 -2 -8 3 -4 10 0 3 2 -1 3 -3 4 -6 3z","own":false},{"d":"M1812 1053l3 -4 -1 -8 -3 -9 7 -5 -2 -7 -5 -8 1 -7 -5 -2 2 -7 -7 -1 -5 1 -6 2 -3 7 -7 8 -1 3 8 2 0 7 1 9 -1 5 8 -4 4 12 4 3 2 -1 6 4z","own":false},{"d":"M1763 1037l7 -2 2 -5 -2 -2 0 -4 7 -1 3 3 8 -1 0 -7 -8 -2 1 -3 -3 -2 -2 -3 -5 -3 -4 -7 -1 -4 -4 -1 -1 -2 -6 -2 -2 -4 1 -4 -8 -4 1 -5 -4 3 -2 -1 -4 11 -2 2 -8 -2 -3 8 -2 8 1 4 3 2 -2 4 2 9 -3 5 8 6 4 1 2 -3 7 0 3 -1 3 5 10 0 3 4zM1742 1015l-3 -1 0 -4 -3 -1 2 -4 -1 -5 4 -3 5 -2 1 6 4 0 -1 11 -6 0 -2 3z","own":false},{"d":"M1818 1027l2 -2 6 1 1 -2 -2 -5 13 3 4 -1 -1 -3 3 -4 -2 -5 -4 2 1 -11 -1 -6 3 -5 -5 -7 10 -6 -2 -2 1 -4 -2 -2 -4 4 -2 -3 -1 -5 -5 2 -5 1 -2 -5 -5 0 -5 -2 -6 3 -2 6 -1 8 -3 5 -3 2 1 11 2 0 7 1 -2 7 5 2 -1 7 5 8 2 7z","own":false},{"d":"M1777 1088l4 -1 5 -5 7 -4 9 1 3 -10 0 -7 2 -6 5 -3 -6 -4 -2 1 -4 -3 -4 -12 -8 4 1 -5 -1 -9 -8 1 -3 -3 -7 1 0 4 2 2 -2 5 -7 2 2 3 3 12 3 3 -5 11 4 2 -3 4 2 4 0 4 4 1 4 7z","own":false},{"d":"M1781 1013l7 -8 3 -7 6 -2 5 -1 -2 0 -1 -11 3 -2 3 -5 1 -8 2 -6 6 -3 -1 -4 -3 0 -5 1 1 4 -5 2 0 2 -8 4 0 -5 -5 3 -1 4 -6 -4 2 -2 -3 -3 -6 2 1 -4 -3 -3 -5 -1 -2 -2 -4 0 -7 4 -4 -2 2 4 -3 3 0 3 -2 6 -1 5 8 4 -1 4 2 4 6 2 1 2 4 1 1 4 4 7 5 3 2 3 3 2z","own":false}];
+
+// Przykładowe nadpisania i dziennik zmian (audyt): kto, kiedy, z czego na co, powód.
+const SEED_OVERRIDES = { garages: { value: 4 }, 'duty.periodic': { value: 8 } };
+const SEED_HISTORY = [
+  { at: '28.10.2026 09:42', by: 'A. Nowak · KP PSP Płońsk', id: 'garages', from: '3', to: '4', reason: 'Rozbudowa strażnicy, odbiór 10.2026.' },
+  { at: '15.10.2026 13:05', by: 'A. Nowak · KP PSP Płońsk', id: 'duty.periodic', from: '6', to: '8', reason: 'Grafik dyżurów na sezon.' },
+  { at: '20.09.2026 14:02', by: 'M. Wiśniewska · KW PSP Warszawa', id: 'heating', restore: true, to: 'Tak', reason: 'Naprawa pieca zakończona.' },
+  { at: '12.09.2026 10:20', by: 'A. Nowak · KP PSP Płońsk', id: 'heating', from: 'Tak', to: 'Nie', reason: 'Awaria pieca.' }
+];
+
+// Przykładowe wyjazdy dzień po dniu od 1.01.2022 do wczoraj (2.11.2026), stałe ziarno.
+// Kolumny: P, MZ, AF, ZO na terenie własnego działania; P, MZ, AF na pozostałym terenie; dysponowania.
+const DAY0 = Date.UTC(2022, 0, 1);
+const dayOf = (iso) => { const t = Date.parse(String(iso) + 'T00:00:00Z'); return Number.isNaN(t) ? 0 : Math.round((t - DAY0) / 86400000) + 1; };
+const isoOf = (d) => new Date(DAY0 + (d - 1) * 86400000).toISOString().slice(0, 10);
+const DAYS = (() => {
+  let s = 20261103;
+  const rnd = () => { s = (s + 0x6D2B79F5) | 0; let t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+  const out = [];
+  const n = dayOf('2026-11-02');
+  for (let d = 1; d <= n; d++) {
+    const m = +isoOf(d).slice(5, 7);
+    const summer = m >= 4 && m <= 9 ? 1.45 : 0.8;
+    const c = [0, 0, 0, 0, 0, 0, 0, 0];
+    for (let k = 0; k < 4; k++) {
+      if (rnd() >= 0.075 * summer) continue;
+      const r = rnd();
+      const cat = r < (summer > 1 ? 0.34 : 0.18) ? 0 : r < 0.88 ? 1 : r < 0.96 ? 2 : 3;
+      const idx = rnd() < 0.19 ? (cat === 3 ? 5 : 4 + cat) : cat;
+      c[idx]++;
+      c[7]++;
+      if (rnd() < 0.07) c[7]++;
+    }
+    out.push(c);
+  }
+  return out;
+})();
+
+class Component extends DCLogic {
+  state = { tab: null, retried: false, overrides: SEED_OVERRIDES, history: SEED_HISTORY, panel: null, draft: '', reason: '', entry: null,
+    igo: [{ at: '14.05.2026', team: 'KW PSP Warszawa', pts: 86, grade: 4 }, { at: '22.09.2025', team: 'KP PSP Płońsk', pts: 71, grade: 3 }, { at: '10.06.2024', team: 'KG PSP', pts: 94, grade: 5 }], igoDraft: {} };
+
+  renderVals() {
+    const TABS = [
+      ['podstawowe', 'Dane podstawowe'],
+      ['strazacy', 'Członkowie'],
+      ['szkolenia', 'Szkolenia i uprawnienia'],
+      ['sprzet', 'Sprzęt'],
+      ['specjalizacje', 'Specjalizacje'],
+      ['igo', 'IGO'],
+      ['wyjazdy', 'Wyjazdowość']
+    ];
+    const fromProp = TABS.find(([, label]) => label === this.props.karta);
+    const tab = this.state.tab ?? (fromProp ? fromProp[0] : 'podstawowe');
+
+    let stan = this.props.stan ?? 'dane';
+    if (stan === 'błąd' && this.state.retried) stan = 'dane';
+    const loading = stan === 'wczytywanie';
+    const failed = stan === 'błąd';
+    const ready = !loading && !failed;
+    const partial = stan === 'niepełne dane';
+    const gap = (v) => (partial ? null : v);
+
+    const ov = this.state.overrides;
+    const hist = this.state.history;
+    const F = {};
+    // Każde pole pamięta kartę, na której leży (widok tabeli pokazuje pola bieżącej karty).
+    let curTab = 'podstawowe';
+    const def = (id, section, label, type, swd) => { F[id] = { id, section, label, type, swd, tab: curTab }; return id; };
+    const val = (id) => (ov[id] ? ov[id].value : F[id].swd);
+    const fmt = (v) => (v === null || v === undefined || v === '' ? '—' : String(v));
+    const quiet = (v) => (v === null || v === undefined || v === 0 || v === 'Nie' || v === 'Brak' ? 'zero' : '');
+    // Wymagania minimalne (rozporządzenie / wzór karty): próg przy polu, wartość poniżej progu w odwróconym znaczniku.
+    const MIN = {};
+    const field = (id) => {
+      const v = val(id);
+      const m = MIN[id];
+      const below = m !== undefined && typeof v === 'number' && v < m;
+      return { id, label: F[id].label, value: fmt(v), raw: v, cls: quiet(v) + (below ? ' below' : ''), over: !!ov[id], min: m, hasMin: m !== undefined, open: () => this.openField(id, v) };
+    };
+
+    // Dane podstawowe
+    const BASIC = [
+      ['Identyfikacja', [['name', 'Nazwa', 'text', 'Ochotnicza Straż Pożarna w Nowej Wsi'], ['krs', 'Numer KRS', 'text', gap('0000123456')], ['addr', 'Adres siedziby', 'text', gap('ul. Strażacka 5, 09-130 Nowa Wieś')]]],
+      ['Położenie', [['voi', 'Województwo', 'text', 'mazowieckie'], ['county', 'Powiat', 'text', 'płoński'], ['gmina', 'Gmina', 'text', 'Baboszewo'], ['place', 'Miejscowość', 'text', 'Nowa Wieś']]]
+    ];
+    const groups = BASIC.map(([title, rows]) => ({ title, items: rows.map(([id, label, type, swd]) => field(def(id, title, label, type, swd))) }));
+    const basic = groups.slice(0, 1);
+    // KRS: ikona otwiera aktualny odpis tej jednostki w publicznym API KRS Ministerstwa Sprawiedliwości (rejestr S – stowarzyszenia).
+    basic[0].items.forEach((it) => {
+      const krs = it.id === 'krs' && it.raw ? String(it.raw).replace(/\D/g, '').padStart(10, '0') : '';
+      it.hasLink = !!krs;
+      it.link = krs ? 'https://api-krs.ms.gov.pl/api/krs/OdpisAktualny/' + krs + '?rejestr=S&format=json' : '';
+      it.linkLabel = 'Odpis aktualny z KRS ' + krs + ' (Ministerstwo Sprawiedliwości)';
+    });
+    def('coords', 'Położenie', 'Współrzędne', 'text', '52.6800, 20.2500');
+    // Położenie jest na sztywno z SWD-PSP: bez edycji, także w widoku tabeli.
+    ['voi', 'county', 'gmina', 'place', 'coords'].forEach((id) => { F[id].ro = true; });
+    const coords = field('coords');
+    const q = String(coords.raw ?? '').replace(/\s+/g, '');
+    const loc = {
+      place: groups[1].items.concat([coords]),
+      gmaps: 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q),
+      street: 'https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=' + encodeURIComponent(q),
+      osm: (() => {
+        const [lat, lon] = q.split(',');
+        return 'https://www.openstreetmap.org/?mlat=' + encodeURIComponent(lat || '') + '&mlon=' + encodeURIComponent(lon || '') + '#map=16/' + encodeURIComponent(lat || '') + '/' + encodeURIComponent(lon || '');
+      })()
+    };
+
+    def('ksrg.first', 'KSRG', 'Data pierwszego włączenia', 'text', '14.05.2004');
+    def('ksrg.last', 'KSRG', 'Data ostatniego włączenia', 'text', '02.09.2019');
+    def('ksrg.decision', 'KSRG', 'Numer decyzji (ostatnie włączenie)', 'text', gap('47/2019'));
+    // Włączenie jest na czas określony: do 30.04 albo 31.12 wskazanego roku (dwa terminy włączeń).
+    def('ksrg.until', 'KSRG', 'Włączenie do (koniec terminu)', 'text', gap('31.12.2026'));
+    def('woo', 'KSRG', 'Przynależność do WOO', 'bool', 'Tak');
+    def('garages', 'Strażnica', 'Liczba stanowisk garażowych', 'int', 3);
+    def('heating', 'Strażnica', 'Ogrzewanie garażu', 'bool', gap('Tak'));
+    // System alarmowania: selektywne wywoływanie albo inny system (wtedy opis jaki), albo brak.
+    def('alarm', 'Strażnica', 'System alarmowania', 'enum', 'Selektywne');
+    F.alarm.options = ['Selektywne', 'Inny', 'Brak'];
+    def('alarm.other', 'Strażnica', 'Inny system alarmowania – jaki', 'text', null);
+    def('siren', 'Strażnica', 'Syrena alarmowa', 'bool', 'Tak');
+    // Sieć OSP w gminie liczona automatycznie z SWD-PSP (bez edycji).
+    def('net', 'Sieć OSP w gminie', 'OSP KSRG / wszystkie OSP w gminie', 'text', '2 / 6');
+    F.net.ro = true;
+    // Cienkie ikony liniowe (ścieżki SVG w siatce 24×24).
+    const ICONS = {
+      shield: ['M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z', 'M9 12l2 2 4-4'],
+      cal: ['M3 5h18v16H3z', 'M3 10h18M8 3v4M16 3v4'],
+      layers: ['M12 3l9 5-9 5-9-5z', 'M3 13l9 5 9-5'],
+      garage: ['M3 21V9l9-6 9 6v12', 'M7 21v-8h10v8M7 16h10'],
+      heat: ['M8 20c-1.5-2.5 1.5-4.5 0-8s1.5-5.5 0-8M12 20c-1.5-2.5 1.5-4.5 0-8s1.5-5.5 0-8M16 20c-1.5-2.5 1.5-4.5 0-8s1.5-5.5 0-8'],
+      signal: ['M10.5 11a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0', 'M12 12.5V21M8.5 7.5a5 5 0 0 0 0 7M15.5 7.5a5 5 0 0 1 0 7M5.5 4.5a9 9 0 0 0 0 13M18.5 4.5a9 9 0 0 1 0 13'],
+      users: ['M5.5 8a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0', 'M2.5 20c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5', 'M16 4.6a3.5 3.5 0 0 1 0 6.8M18 13.8c2.1.8 3.5 3 3.5 6.2'],
+      age: ['M7 3h10M7 21h10', 'M8 3v3l4 6-4 6v3M16 3v3l-4 6 4 6v3'],
+      helmet: ['M5 17a7 7 0 0 1 14 0', 'M3 17h18v3H3z', 'M12 10V6'],
+      star: ['M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z'],
+      pin: ['M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z', 'M9.5 10a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0'],
+      doc: ['M6 3h9l4 4v14H6z', 'M15 3v4h4', 'M9 14l2 2 4-4'],
+      car: ['M3 16v-4l2.5-5h13l2.5 5v4z', 'M3 12h18', 'M5.5 18a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0M15.5 18a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0'],
+      truck: ['M2 5h11v11H2z', 'M13 9h5l3 4v3h-8z', 'M4.5 18a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0M15.5 18a1.5 1.5 0 1 0 3 0a1.5 1.5 0 1 0 -3 0'],
+      bus: ['M4 3h16v14H4z', 'M4 10h16', 'M7 17v3M17 17v3', 'M7.5 13.5h1M15.5 13.5h1'],
+      siren: ['M7 17v-5a5 5 0 0 1 10 0v5', 'M5 17h14v4H5z', 'M12 2v2M4.2 5.2l1.4 1.4M19.8 5.2l-1.4 1.4'],
+      out: ['M14 4h6v6', 'M20 4l-9 9', 'M18 14v6H4V6h6'],
+      gauge: ['M4 17a8 8 0 1 1 16 0', 'M12 17l4-5'],
+      flame: ['M12 21c-4 0-7-2.7-7-6.5 0-3.5 2.5-5.5 4-8 .5 2 1.5 3 3 3.5C12 7 13 5 12.5 3c3.5 2.5 6.5 6.5 6.5 11.5 0 3.8-3 6.5-7 6.5z'],
+      warn: ['M12 3l10 18H2z', 'M12 10v5M12 18v.5'],
+      bellOff: ['M6 16v-5a6 6 0 0 1 9.5-4.9', 'M18 11v5l2 2H6', 'M10 21h4', 'M3 3l18 18'],
+      net: ['M5 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0', 'M15 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0', 'M10 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0', 'M8.5 7.5l2.5 8.5M15.5 7.5L13 16M9 6h6'],
+      medal: ['M8 3l4 6 4-6', 'M7 15a5 5 0 1 0 10 0a5 5 0 1 0 -10 0', 'M12 13v4'],
+      sum: ['M4 4h16v16H4z', 'M8 9h8M8 13h8M8 17h5'],
+      repeat: ['M4 12a8 8 0 0 1 14-5.3', 'M18 3v4h-4', 'M20 12a8 8 0 0 1-14 5.3', 'M6 21v-4h4']
+    };
+    const kp = (icon, label, id, sub, subId) => ({
+      icon: ICONS[icon], label, f: field(id), sub: sub ?? '', hasSub: !!sub, hasSubField: !!subId, sf: subId ? field(subId) : field(id), sfPrefix: subId === 'ksrg.decision' ? 'Decyzja nr ' : ''
+    });
+    const ks = [
+      kp('shield', 'Pierwsze włączenie do KSRG', 'ksrg.first'),
+      kp('cal', 'Ostatnie włączenie', 'ksrg.last', null, 'ksrg.decision'),
+      kp('layers', 'Przynależność do WOO', 'woo', 'Wojewódzki odwód operacyjny'),
+      kp('garage', 'Stanowiska garażowe', 'garages'),
+      kp('heat', 'Ogrzewanie garażu', 'heating'),
+      kp('signal', 'System alarmowania', 'alarm', null, val('alarm') === 'Inny' ? 'alarm.other' : null),
+      kp('siren', 'Syrena alarmowa', 'siren'),
+      Object.assign(kp('net', 'Sieć OSP w gminie', 'net', 'OSP KSRG / wszystkie OSP'), { f: Object.assign(field('net'), { open: () => {} }) })
+    ];
+    // Odliczanie do wyłączenia z KSRG: od ostatniego włączenia do terminu; ≤ 90 dni = odwrócony, wyróżniony blok.
+    const TODAY = Date.UTC(2026, 10, 3);
+    const pd = (s) => { const m = /^(\d{1,2})\.(\d{1,2})\.(\d{4})$/.exec(String(s || '').trim()); return m ? Date.UTC(+m[3], +m[2] - 1, +m[1]) : null; };
+    const until = pd(val('ksrg.until'));
+    const since = pd(val('ksrg.last'));
+    const dni = (n) => (n === 1 ? 'dzień' : 'dni');
+    ks.forEach((k) => { k.hasCd = false; k.cd = {}; });
+    if (until !== null) {
+      const left = Math.round((until - TODAY) / 86400000);
+      const span = since !== null && until > since ? until - since : null;
+      const done = span ? Math.min(1, Math.max(0, (TODAY - since) / span)) : 1;
+      ks[1].hasCd = true;
+      ks[1].cd = {
+        title: left >= 0 ? 'do końca włączenia' : 'po terminie włączenia',
+        date: val('ksrg.until'),
+        days: Math.abs(left) + ' ' + dni(Math.abs(left)),
+        pct: (done * 100).toFixed(1) + '%',
+        // Mniej niż miesiąc (albo po terminie) – czerwony, mniej niż 6 miesięcy – pomarańczowy, dalej neutralny.
+        cls: left < 30 ? 'alert' : left < 183 ? 'warn' : '',
+        aria: 'Włączenie do KSRG do ' + val('ksrg.until') + ', ' + (left >= 0 ? 'zostało ' + left + ' ' + dni(left) : 'minął ' + Math.abs(left) + ' ' + dni(Math.abs(left)) + ' temu'),
+        open: () => this.openField('ksrg.until', val('ksrg.until'))
+      };
+    }
+
+    curTab = 'strazacy';
+    // Strażacy ratownicy. Członkowie stowarzyszenia ogółem to nie strażacy ratownicy, więc nie liczymy udziałów procentowych.
+    const prow = (id, section, label, type, swd) => {
+      def(id, section, label, type, swd);
+      return Object.assign(field(id), { pct: '', weight: 400 });
+    };
+    const S1 = 'Liczba strażaków ratowników';
+    const S2 = 'Pełniący dyżur w strażnicy';
+    def('ff.members', S1, 'Członkowie stowarzyszenia ogółem', 'int', 48);
+    def('ff.rescuers', S1, 'Strażacy ratownicy', 'int', 32);
+    MIN['ff.rescuers'] = 12;
+    def('ff.age', S1, 'W wieku 18–65 lat', 'int', 29);
+    def('ff.psp', S1, 'Jednocześnie strażacy PSP', 'int', 3);
+    def('ff.jop', S1, 'Strażacy JOP innych niż PSP', 'int', 1);
+    def('ff.local', S1, 'Mieszkający i pracujący w miejscowości jednostki', 'int', 21);
+    def('ff.agreement', S1, 'Zgodność z liczbą w porozumieniu', 'bool', gap('Tak'));
+    // Zarząd OSP i nadrzędna komenda PSP: na sztywno z SWD-PSP (bez edycji). Osoby przykładowe.
+    const board = partial ? [{ role: 'Prezes', name: '—' }] : [
+      { role: 'Prezes', name: 'Marek Zieliński' },
+      { role: 'Wiceprezes – naczelnik', name: 'Tomasz Wójcik' },
+      { role: 'Wiceprezes', name: 'Anna Kamińska' },
+      { role: 'Sekretarz', name: 'Paweł Szymański' },
+      { role: 'Skarbnik', name: 'Ewa Dąbrowska' },
+      { role: 'Gospodarz', name: 'Krzysztof Wróbel' }
+    ];
+    const cmd = {
+      name: 'KP PSP w Płońsku',
+      address: 'Komenda Powiatowa Państwowej Straży Pożarnej w Płońsku',
+      lead: [
+        { role: 'Komendant powiatowy', name: 'bryg. Piotr Lewandowski' },
+        { role: 'Zastępca komendanta powiatowego', name: 'mł. bryg. Rafał Kowalczyk' }
+      ],
+      jrg: {
+        name: 'JRG Płońsk',
+        lead: [
+          { role: 'Dowódca JRG', name: 'kpt. Michał Pawlak' },
+          { role: 'Zastępca dowódcy JRG', name: 'st. kpt. Łukasz Grabowski' }
+        ]
+      }
+    };
+    const ffk = [
+      kp('users', 'Członkowie stowarzyszenia ogółem', 'ff.members'),
+      kp('helmet', 'Strażacy ratownicy', 'ff.rescuers'),
+      kp('age', 'W wieku 18–65 lat', 'ff.age'),
+      kp('helmet', 'Jednocześnie strażacy PSP', 'ff.psp'),
+      kp('star', 'Strażacy JOP innych niż PSP', 'ff.jop'),
+      kp('pin', 'Mieszkający i pracujący w miejscowości jednostki', 'ff.local'),
+      kp('doc', 'Zgodność z liczbą w porozumieniu', 'ff.agreement')
+    ];
+    const duty = [
+      prow('duty.year', S2, 'Całorocznie', 'int', 0),
+      prow('duty.periodic', S2, 'Okresowo', 'int', gap(6))
+    ];
+
+
+    // Szkolenia i uprawnienia
+    curTab = 'szkolenia';
+    const TRAIN = [
+      ['Uprawnienia', [['Lekarz, pielęgniarz, ratownik medyczny', 2], ['Operator drabin mechanicznych', 0], ['Obsługa podnośników hydraulicznych', 1], ['Obsługa żurawi HDS', 0], ['Sternik motorowodny i stermotorzysta', gap(3)]]],
+      ['Szkolenia OSP', [['Podstawowe strażaka ratownika OSP', 30], ['Kierowcy-konserwatora sprzętu ratowniczego OSP', 14], ['Kwalifikowana pierwsza pomoc', 22], ['Kierującego działaniem ratowniczym (dowódców)', 6], ['Naczelników OSP', 1], ['Komendanta gminnego ochrony przeciwpożarowej', 1], ['Współdziałanie z LPR', 12]]]
+    ];
+    // Ikony uprawnień i szkoleń (siatka 24×24, cienka linia) – kolejność jak w TRAIN.
+    const TR_ICONS = [
+      [['M9 3h6v6h6v6h-6v6H9v-6H3V9h6z'], ['M8 3v18M16 3v18M8 7h8M8 11h8M8 15h8M8 19h8'], ['M4 21h16', 'M7 21v-6h10v6', 'M12 15V5', 'M9 5h6'], ['M5 21V4h4v17', 'M9 5l11 4', 'M18 8v5', 'M16 13h4v3h-4z'], ['M10 4a2 2 0 1 0 4 0a2 2 0 1 0 -4 0', 'M12 6v15', 'M5 13a7 7 0 0 0 14 0', 'M9 9h6']],
+      [ICONS.helmet, ICONS.truck, ['M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z'], ICONS.star, ['M5 21V4', 'M5 4h12l-2.5 4L17 12H5'], ICONS.shield, ['M3 6h18', 'M12 6v3', 'M6 13a6 4 0 0 0 12 0a6 4 0 0 0 -12 0', 'M18 13h3l1-2', 'M9 17l-1 3M15 17l1 3']]
+    ];
+    Object.assign(MIN, { 'tr.1.0': 12, 'tr.1.1': 2, 'tr.1.2': 8, 'tr.1.3': 3, 'tr.1.4': 2, 'tr.1.6': 4 });
+    const training = TRAIN.map(([title, rows], gi) => {
+      const items = rows.map(([label, v], i) => Object.assign(prow('tr.' + gi + '.' + i, title, label, 'int', v), { icon: TR_ICONS[gi][i] }));
+      const n = items.filter((it) => typeof it.raw === 'number' && it.raw > 0).length;
+      return { title, items, icon: gi === 0 ? ['M6 3h9l4 4v14H6z', 'M15 3v4h4', 'M9 14l2 2 4-4'] : ICONS.age, total: n + ' z ' + items.length + ' obecnych w jednostce' };
+    });
+    // Wolne listy (wpisuje KP): szkolenia specjalistyczne z § 2 ust. 7 porozumienia i inne szkolenia.
+    def('tr.spec', 'Szkolenia – listy', 'Szkolenia specjalistyczne (§ 2 ust. 7 porozumienia)', 'long', gap('Ratownictwo wodne – podstawowe (4 os.)\nRatownictwo techniczne – podstawowe (6 os.)'));
+    def('tr.other', 'Szkolenia – listy', 'Inne szkolenia', 'long', gap('Obsługa pilarek (8 os.)\nBHP – okresowe (32 os.)'));
+    const trFree = { title: 'Pozostałe szkolenia', items: [field('tr.spec'), field('tr.other')] };
+    const CATS = [['b', 'kat. B', 'car'], ['bc', 'kat. B i C', 'truck'], ['bcd', 'kat. B, C i D', 'bus']];
+    const drvRow = (key, label, desc, vals) => {
+      const cards = CATS.map(([c, cl, icon], i) => {
+        def('drv.' + key + '.' + c, 'Kierowcy-konserwatorzy', label + ' · ' + cl, 'int', vals[i]);
+        return kp(icon, cl, 'drv.' + key + '.' + c);
+      });
+      const known = cards.map((k) => k.f.raw).filter((v) => typeof v === 'number');
+      return { label, desc, cards, sum: known.length ? known.reduce((a, b) => a + b, 0) : '—' };
+    };
+    const drivers = [
+      drvRow('u', 'Poniżej 65 lat', 'Prawo jazdy, szkolenie kierowcy-konserwatora, zezwolenie, ważne badania kierowców', [4, 9, 1]),
+      drvRow('o', '65 lat i więcej', 'Zezwolenie na kierowanie pojazdem uprzywilejowanym, prawo jazdy', [0, 2, gap(0)])
+    ];
+
+    // Sprzęt
+    curTab = 'sprzet';
+    const VEH = partial ? [] : [['GCBA 5/32', 'Scania P 360', '2019', 'Tak'], ['GBA 2,5/16', 'MAN TGM 13.290', '2011', 'Tak'], ['SLRt', 'Ford Transit', '2016', 'Nie']];
+    const vehicles = VEH.map(([t, m, y, h], i) => ({
+      heavy: field(def('veh.' + i + '.heavy', 'Pojazd ' + (i + 1), 'DMC powyżej 3,5 t', 'bool', h)),
+      heavyText: val('veh.' + i + '.heavy') === 'Tak' ? 'pow. 3,5 t' : 'do 3,5 t',
+      type: field(def('veh.' + i + '.type', 'Pojazd ' + (i + 1), 'Pojazd', 'text', t)),
+      model: field(def('veh.' + i + '.model', 'Pojazd ' + (i + 1), 'Marka i model', 'text', m)),
+      year: field(def('veh.' + i + '.year', 'Pojazd ' + (i + 1), 'Rok produkcji', 'text', y))
+    }));
+    const plural = (n) => (n === 1 ? 'pojazd' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'pojazdy' : 'pojazdów');
+
+    const EQ = [
+      ['Łączność bezprzewodowa', [['Radiotelefony przewoźne', 3], ['Radiotelefony noszone', 8], ['Radiotelefony bazowe', gap(1)], ['Zgodność z DMR Tier II (szyfrowanie 40-bit)', 'Tak', 'bool']]],
+      ['Środki ochrony indywidualnej', [['Ubrania specjalne (przed 2018 r.)', 6], ['Ubrania specjalne (od 2018 r.)', 18], ['Kurtka lekka ubrania specjalnego (od 2018 r.)', 10], ['Hełmy strażackie', 24], ['Hełmy strażackie lekkie', 8], ['Rękawice specjalne', 24], ['Rękawice techniczne', 20], ['Buty strażackie gumowe', 14], ['Buty strażackie skórzane', 12], ['Kominiarki', 24], ['Multitool lub nóż wielofunkcyjny', 12]]],
+      ['Ochrona dróg oddechowych', [['Maski', 10], ['Aparaty powietrzne', 8], ['Butle dodatkowe', 8], ['Sygnalizatory bezruchu', 8]]],
+      ['Asekuracja i oświetlenie', [['Szelki bezpieczeństwa (uprząż)', 4], ['Karabinek stalowy', 4], ['Lonża regulowana (2–3 m)', 2], ['Taśma 120–150 cm', 2], ['Latarki ATEX', 6]]],
+      ['Ratownictwo medyczne', [['Zestaw ratownictwa medycznego R1', 1], ['Automatyczny defibrylator zewnętrzny', 1]]],
+      ['Narzędzia hydrauliczne', [['Nożyco-rozpieracze hydrauliczne', 1], ['Nożyce hydrauliczne', 1], ['Rozpieracze hydrauliczne', 1], ['Pompa hydrauliczna (agregat zasilający)', 1], ['Hydrauliczne narzędzia akumulatorowe', 0]]],
+      ['Poduszki podnoszące z osprzętem (zestaw)', [['Niskiego podnoszenia (wysokociśnieniowe)', 1], ['Wysokiego podnoszenia (niskociśnieniowe)', 0]]],
+      ['Motopompy', [['Pożarnicze', 2], ['Pływające', 1], ['Szlamowe (do wody zanieczyszczonej)', gap(1)]]],
+      ['Agregaty prądotwórcze', [['Poniżej 2,2 kW', 1], ['2,2 kW i więcej', 1]]],
+      ['Piły i wentylatory', [['Piły łańcuchowe (pilarki)', 2], ['Piły tarczowe (do stali i betonu)', 1], ['Wentylatory oddymiające', 1]]]
+    ];
+    Object.assign(MIN, { 'eq.0.0': 1, 'eq.0.1': 4, 'eq.1.3': 12, 'eq.1.5': 12, 'eq.1.6': 12, 'eq.1.9': 12, 'eq.2.1': 4, 'eq.3.0': 2, 'eq.3.1': 2, 'eq.3.2': 2, 'eq.3.3': 2, 'eq.3.4': 6, 'eq.4.0': 1, 'eq.4.1': 1 });
+    // Kategorie sprzętu z ikoną i sumą sztuk.
+    const EQ_ICONS = [
+      ['M7 9h10v12H7z', 'M9 9V3', 'M10 13h4M10 16h4'],
+      ICONS.helmet,
+      ['M9 3h6v4H9z', 'M8 7h8v14H8z', 'M8 11h8'],
+      ['M8 4h5a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4z', 'M10 8v8'],
+      ['M9 3h6v6h6v6h-6v6H9v-6H3V9h6z'],
+      ['M6 3l6 9 6-9', 'M12 12v6', 'M9 21h6'],
+      ['M3 16h18v4H3z', 'M5 12h14v4H5z', 'M8 8h8v4H8z'],
+      ['M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z'],
+      ['M13 2L4 14h7l-1 8 9-12h-7z'],
+      ['M10 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0', 'M12 10c0-4 2-6 5-6-1 3-2 5-5 6zM14 12c4 0 6 2 6 5-3-1-5-2-6-5zM12 14c0 4-2 6-5 6 1-3 2-5 5-6zM10 12c-4 0-6-2-6-5 3 1 5 2 6 5z']
+    ];
+    const szt = (n) => (n === 1 ? 'sztuka' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'sztuki' : 'sztuk');
+    const equipment = EQ.map(([title, rows], gi) => {
+      const items = rows.map(([label, v, type], i) => field(def('eq.' + gi + '.' + i, title, label, type || 'int', v)));
+      const n = items.reduce((a, it) => a + (typeof it.raw === 'number' ? it.raw : 0), 0);
+      return { title, items, icon: EQ_ICONS[gi], total: n + ' ' + szt(n) };
+    });
+    // Wolne listy (wpisuje KP): sprzęt specjalistyczny z § 2 ust. 7 porozumienia i inny sprzęt.
+    def('eq.spec', 'Sprzęt – listy', 'Sprzęt specjalistyczny (§ 2 ust. 7 porozumienia)', 'long', gap('Łódź płaskodenna z silnikiem 15 KM\nZestaw do ratownictwa lodowego'));
+    def('eq.other', 'Sprzęt – listy', 'Inny sprzęt', 'long', gap('Kamera termowizyjna\nDetektor wielogazowy'));
+    const eqFree = { title: 'Pozostały sprzęt', items: [field('eq.spec'), field('eq.other')] };
+
+    // Wymagania minimalne – zestawienie do panelu i przycisku w nagłówku.
+    const num = (id) => (typeof val(id) === 'number' ? val(id) : 0);
+    const chk = (label, value, min, id) => ({ label, value, min, ok: value >= min, id });
+    const heavy = VEH.some((v, i) => val('veh.' + i + '.heavy') === 'Tak');
+    const CHECKS = [
+      chk('Strażacy ratownicy', num('ff.rescuers'), 12, 'ff.rescuers'),
+      chk('Szkolenie podstawowe', num('tr.1.0'), 12, 'tr.1.0'),
+      chk('Naczelnicy OSP', num('tr.1.4'), 2, 'tr.1.4'),
+      chk('Kierujący działaniem ratowniczym', num('tr.1.3'), 3, 'tr.1.3'),
+      chk('Kwalifikowana pierwsza pomoc', num('tr.1.2'), 8, 'tr.1.2'),
+      chk('Współdziałanie z LPR', num('tr.1.6'), 4, 'tr.1.6'),
+      chk('Kierowcy z zezwoleniem (do 65 lat)', num('drv.u.b') + num('drv.u.bc') + num('drv.u.bcd'), 4, 'drv.u.b'),
+      chk('Kierowcy-konserwatorzy', num('tr.1.1'), 2, 'tr.1.1')
+    ].concat(heavy ? [chk('Kierowcy kat. C (pojazd pow. 3,5 t)', num('drv.u.bc') + num('drv.u.bcd'), 4, 'drv.u.bc')] : []).concat([
+      chk('Aparaty powietrzne', num('eq.2.1'), 4, 'eq.2.1'),
+      chk('Zestaw narzędzi hydraulicznych', Math.max(num('eq.5.0'), Math.min(num('eq.5.1'), num('eq.5.2'))), 1, 'eq.5.0'),
+      chk('Zestaw R1', num('eq.4.0'), 1, 'eq.4.0'),
+      chk('AED', num('eq.4.1'), 1, 'eq.4.1'),
+      chk('Radiotelefony noszone', num('eq.0.1'), 4, 'eq.0.1'),
+      chk('Radiotelefony przewoźne', num('eq.0.0'), 1, 'eq.0.0'),
+      chk('Ubrania specjalne', num('eq.1.0') + num('eq.1.1'), 12, 'eq.1.1'),
+      chk('Buty strażackie', num('eq.1.7') + num('eq.1.8'), 12, 'eq.1.7'),
+      chk('Szelki, karabinki, lonże, taśmy (po 2 szt.)', Math.min(num('eq.3.0'), num('eq.3.1'), num('eq.3.2'), num('eq.3.3')), 2, 'eq.3.0'),
+      chk('Latarki ATEX', num('eq.3.4'), 6, 'eq.3.4')
+    ]);
+    const minFailed = CHECKS.filter((c) => !c.ok).length;
+    const brak = (n) => (n === 1 ? 'brak' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'braki' : 'braków');
+    const minBtn = minFailed ? { label: 'Wymagania: ' + minFailed + ' ' + brak(minFailed), cls: 'bad' } : { label: 'Wymagania spełnione', cls: '' };
+    // W panelu braki na górze, potem spełnione wymagania (kolejność w grupach bez zmian).
+    const minima = CHECKS.filter((c) => !c.ok).concat(CHECKS.filter((c) => c.ok)).map((c) => ({
+      label: c.label, value: c.value, min: c.min, dot: c.ok ? 'transparent' : 'var(--fg)', weight: c.ok ? 400 : 700,
+      open: () => this.openField(c.id, val(c.id))
+    }));
+
+    // Specjalizacje
+    curTab = 'specjalizacje';
+    const SPEC = [
+      ['Ratownictwo specjalistyczne', 'sp', [['Ratownictwo medyczne', 'Tak'], ['Ratownictwo techniczne', 'Tak'], ['Działania poszukiwawczo-ratownicze', 'Tak', 'Nie'], ['Ratownictwo wodne', 'Tak'], ['Ratownictwo wysokościowe', 'Nie'], ['Ratownictwo chemiczno-ekologiczne', 'Nie']]],
+      ['Profilowanie OLiOC', 'ol', [
+        ['Pomoc w dostarczaniu lub przygotowywaniu wyżywienia dla ludności', 'Tak'],
+        ['Dostarczanie wody pitnej oraz wody do celów higieniczno-sanitarnych', 'Tak'],
+        ['Pomoc w organizacji miejsc tymczasowego zakwaterowania', 'Nie'],
+        ['Wsparcie działań z użyciem sprzętu logistycznego i inżynieryjnego', 'Tak'],
+        ['Pomoc medyczna oraz pomoc w organizacji polowych punktów medycznych', 'Nie'],
+        ['Wsparcie działań informacyjnych oraz powiadamianie, ostrzeganie i alarmowanie ludności w miejscach pozbawionych dostępu do usług cyfrowych oraz powszechnego systemu ostrzegania i alarmowania', 'Tak'],
+        ['Ewakuacja ludzi, zwierząt, mienia oraz dóbr kultury', 'Tak'],
+        ['Organizacja obsługi obiektów zbiorowej ochrony', 'Nie'],
+        ['Wsparcie w poszukiwaniu osób zaginionych w terenie oraz realizacja innych czynności pomocniczych na potrzeby działań ratowniczych lub w ramach działań pomocowych', 'Tak']
+      ]]
+    ];
+    // IGO: inspekcje gotowości operacyjnej (protokół: działy I–V, 0–100 pkt, ocena 1–6). Dane przykładowe.
+    const GRADES = [[98, 6, 'celujący'], [93, 5, 'bardzo dobry'], [80, 4, 'dobry'], [65, 3, 'dostateczny'], [50, 2, 'dopuszczający'], [-1, 1, 'niedostateczny']];
+    const gradeOf = (p) => GRADES.find(([lo]) => p > lo);
+    const IGO = partial ? [] : this.state.igo;
+    const igoRows = IGO.map((r) => {
+      const g = GRADES.find(([, n]) => n === r.grade) || gradeOf(r.pts ?? 0);
+      return { at: r.at, team: r.team, points: r.pts === null || r.pts === undefined ? '—' : r.pts + ' / 100', grade: g[1] + ' · ' + g[2], cls: g[1] === 1 ? 'below' : '', g: g[1] };
+    });
+    let failRun = 0;
+    for (const r of igoRows) { if (r.g === 1) failRun++; else break; }
+    const lastIgo = IGO[0];
+    const igo = {
+      lastTitle: lastIgo ? 'Ostatnia inspekcja · ' + lastIgo.at : 'Ostatnia inspekcja',
+      kpi: [
+        { icon: ICONS.medal, label: 'Ocena', value: igoRows[0] ? igoRows[0].grade : '—', sub: igoRows[0] ? igoRows[0].team : '', cls: igoRows[0] ? igoRows[0].cls : 'zero' },
+        { icon: ICONS.sum, label: 'Punkty', value: igoRows[0] ? igoRows[0].points : '—', sub: '', cls: '' },
+        { icon: ICONS.cal, label: 'Data inspekcji', value: lastIgo ? lastIgo.at : '—', sub: '', cls: '' },
+        { icon: ICONS.repeat, label: 'Oceny niedostateczne z rzędu', value: failRun + ' / 3', sub: '', cls: failRun ? 'below' : '' }
+      ],
+      rows: igoRows
+    };
+    // Formularz oceny IGO (panel boczny): data, zespół, punkty (opcjonalnie), ocena 1–6 – punkty podpowiadają ocenę.
+    const fd = this.state.igoDraft || {};
+    const setD = (patch) => this.setState({ igoDraft: Object.assign({}, fd, patch) });
+    const fPts = fd.points === undefined || fd.points === '' ? null : Math.max(0, Math.min(100, Math.round(Number(fd.points))));
+    const fGrade = fd.grade ?? (fPts === null ? null : gradeOf(fPts)[1]);
+    const igoForm = {
+      date: fd.date || '', points: fd.points ?? '', notes: fd.notes || '',
+      onDate: (e) => setD({ date: e.target.value }),
+      onPoints: (e) => setD({ points: e.target.value, grade: undefined }),
+      onNotes: (e) => setD({ notes: e.target.value }),
+      teams: ['KG PSP', 'KW PSP Warszawa', 'KP PSP Płońsk'].map((label) => ({ label, on: fd.team === label, pick: () => setD({ team: label }) })),
+      grades: GRADES.slice().reverse().map(([, n, name]) => ({ label: String(n), title: name, on: fGrade === n, pick: () => setD({ grade: n }) })),
+      gradeName: fGrade ? (GRADES.find(([, n]) => n === fGrade) || [])[2] : '',
+      cantSave: !fd.date || !fd.team || !fGrade,
+      save: () => {
+        const iso = /^(\d{4})-(\d{2})-(\d{2})$/.exec(fd.date || '');
+        const at = iso ? iso[3] + '.' + iso[2] + '.' + iso[1] : fd.date;
+        this.setState({ igo: [{ at, team: fd.team, pts: fPts, grade: fGrade, notes: fd.notes || '' }].concat(this.state.igo), igoDraft: {}, panel: null });
+      }
+    };
+
+    const specGroups = SPEC.map(([title, key, rows]) => {
+      const items = rows.map(([label, v, spec], i) => {
+        const f = field(def(key + '.' + i, title, label, 'bool', gap(v)));
+        const on = f.raw === 'Tak';
+        const known = f.raw === 'Tak' || f.raw === 'Nie';
+        // Działania poszukiwawczo-ratownicze mają dodatkowo poziom „specjalistyczne” (osobne pole z historią).
+        const sf = spec === undefined ? null : field(def(key + '.' + i + '.spec', title, label + ' – specjalistyczne', 'bool', gap(spec)));
+        const sOn = !!sf && sf.raw === 'Tak';
+        const sub = sf ? { open: sf.open, over: sf.over, mark: sOn ? 'var(--fg)' : 'var(--line)', fill: sOn ? 'var(--fg)' : 'transparent', cls: sOn ? '' : 'zero' }
+          : { open: () => {}, over: false, mark: 'transparent', fill: 'transparent', cls: '' };
+        return Object.assign(f, {
+          hasSub: !!sf, sub, padR: sf ? '160px' : '8px',
+          state: known ? '' : 'Brak danych', hasNote: !known || f.over,
+          cls: on ? '' : 'zero',
+          mark: on ? 'var(--fg)' : 'var(--line)',
+          fill: on ? 'var(--fg)' : 'transparent'
+        });
+      });
+      const declared = items.filter((s) => s.raw === 'Tak').length;
+      return { title, items, count: declared + ' z ' + items.length };
+    });
+
+    // Wyjazdowość: liczona z SWD-PSP za okres, nie do nadpisania (bez panelu edycji).
+    // Okres jak PeriodBar/PeriodTimeline w zasobach SK PSP: presety, kalendarz, histogram dzienny z suwakiem, oś 5 lat.
+    const last = DAYS.length;
+    const ytd = dayOf('2026-01-01');
+    // Oś jak PeriodTimeline w raportach SK PSP (np. ranni w tlenku węgla): słupki dzienne, znacznik co miesiąc, w styczniu rok.
+    const ds = dayOf('2025-01-01');
+    let from = Math.min(Math.max(this.state.from ?? ytd, ds), last);
+    let to = Math.min(Math.max(this.state.to ?? last, from), last);
+    const total = (a, b) => {
+      const t = [0, 0, 0, 0, 0, 0, 0, 0];
+      for (let d = a; d <= b; d++) for (let k = 0; k < 8; k++) t[k] += DAYS[d - 1][k];
+      return t;
+    };
+    const cur = total(from, to);
+    const prev = from - 365 >= 1 ? total(from - 365, to - 365) : null;
+    const sum = (a) => a.reduce((x, y) => x + y, 0);
+    const own = cur.slice(0, 4);
+    const pt = cur.slice(4, 7);
+    const ownT = sum(own);
+    const ptT = sum(pt);
+    const wyj = (n) => (n === 1 ? 'wyjazd' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'wyjazdy' : 'wyjazdów');
+    const card = (icon, label, v, pv) => ({ icon: ICONS[icon], label, value: fmt(v), cls: quiet(v), sub: pv === null ? '' : 'rok wcześniej: ' + pv });
+    const pick = (i) => (prev ? prev[i] : null);
+    const pickSum = (a, b) => (prev ? sum(prev.slice(a, b)) : null);
+    const disp = gap(cur[7]);
+
+    const share = (d) => (last > ds ? (d - ds) / (last - ds) : 0);
+    const max = Math.max(1, ...DAYS.slice(ds - 1).map((c) => sum(c.slice(0, 7))));
+    const w = 1000 / (last - ds + 1);
+    let inside = '';
+    let outside = '';
+    DAYS.forEach((c, i) => {
+      const v = sum(c.slice(0, 7));
+      if (!v) return;
+      const d = i + 1;
+      if (d < ds) return;
+      const h = Math.max(2, (v / max) * 54);
+      const bar = 'M' + (share(d) * (1000 - w)).toFixed(1) + ' ' + (56 - h).toFixed(1) + 'h' + (w * 0.72).toFixed(2) + 'V56h-' + (w * 0.72).toFixed(2) + 'z';
+      if (d >= from && d <= to) inside += bar; else outside += bar;
+    });
+    const MS = ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'];
+    const MG = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+    const parts = (d) => { const iso = isoOf(d); return { y: +iso.slice(0, 4), m: +iso.slice(5, 7) - 1, day: +iso.slice(8, 10) }; };
+    const a = parts(from);
+    const b = parts(to);
+    const period = from === to
+      ? b.day + ' ' + MG[b.m] + ' ' + b.y
+      : a.y === b.y
+        ? a.day + ' ' + (a.m === b.m ? '' : MG[a.m] + ' ') + '– ' + b.day + ' ' + MG[b.m] + ' ' + b.y
+        : a.day + ' ' + MG[a.m] + ' ' + a.y + ' – ' + b.day + ' ' + MG[b.m] + ' ' + b.y;
+    // Etykiety pod uchwytami: rozsuwane, gdy uchwyty są blisko, i trzymane w obrębie osi.
+    const tag = (d) => { const p = parts(d); return p.day + ' ' + MS[p.m] + ' ' + p.y; };
+    const fs = share(from);
+    const ts = share(to);
+    const close = ts - fs < 0.12;
+    const shiftOf = (s, side) => (s < 0.04 ? '0' : s > 0.96 ? '-100%' : close ? (side === 'from' ? '-100%' : '0') : '-50%');
+    const tags = from === to
+      ? [{ left: 'calc(100% * ' + fs.toFixed(4) + ')', shift: shiftOf(fs, 'one'), label: tag(from) }]
+      : [{ left: 'calc(100% * ' + fs.toFixed(4) + ')', shift: shiftOf(fs, 'from'), label: tag(from) },
+         { left: 'calc(100% * ' + ts.toFixed(4) + ')', shift: shiftOf(ts, 'to'), label: tag(to) }];
+    const ticks = [];
+    for (let y = 2025; y <= 2026; y++) {
+      MS.forEach((label, m) => {
+        const d = dayOf(y + '-' + String(m + 1).padStart(2, '0') + '-01');
+        if (d < ds || d > last) return;
+        ticks.push({ left: 'calc(100% * ' + share(d).toFixed(4) + ')', label: m === 0 ? String(y) : label, weight: 400 });
+      });
+    }
+    const PRE = [['Od początku roku', ytd, last], ['Ostatnie 30 dni', last - 29, last], ['Ostatnie 7 dni', last - 6, last], ['Ostatnia doba', last, last]];
+    const rg = {
+      period, last, min: ds, from, to, tags, ticks,
+      inside: inside || 'M0 0', outside: outside || 'M0 0',
+      aria: 'Wyjazdy dzień po dniu od 1 stycznia 2025; wybrany okres: ' + period + ', ' + (ownT + ptT) + ' ' + wyj(ownT + ptT),
+      trackLeft: 'calc(7px + (100% - 14px) * ' + fs.toFixed(4) + ')',
+      trackWidth: 'calc((100% - 14px) * ' + (ts - fs).toFixed(4) + ' + 2px)',
+      presets: PRE.map(([label, f, t]) => ({ label, on: from === f && to === t, pick: () => this.setState({ from: f, to: t, cal: false }) })),
+      calOpen: !!this.state.cal,
+      toggleCal: () => this.setState({ cal: !this.state.cal }),
+      minIso: isoOf(ds), maxIso: isoOf(last), fromIso: isoOf(from), toIso: isoOf(to),
+      onFromDate: (e) => { const d = dayOf(e.target.value); if (d >= 1) this.setState({ from: Math.min(d, to) }); },
+      onToDate: (e) => { const d = dayOf(e.target.value); if (d >= 1) this.setState({ to: Math.max(Math.min(d, last), from) }); },
+      onFrom: (e) => this.setState({ from: Math.min(Number(e.target.value), to) }),
+      onTo: (e) => this.setState({ to: Math.max(Number(e.target.value), from) })
+    };
+    const dsp = {
+      rows: [
+        { title: 'Ogółem', cards: [
+          card('siren', 'Wyjazdy ogółem', ownT + ptT, prev ? pickSum(0, 7) : null),
+          card('pin', 'Na terenie własnego działania', ownT, pickSum(0, 4)),
+          card('out', 'Pozostały teren', ptT, pickSum(4, 7)),
+          { icon: ICONS.gauge, label: 'Dyspozycyjność', value: disp ? Math.round(((ownT + ptT) / disp) * 100) + '%' : '—', cls: disp ? '' : 'zero',
+            sub: disp ? (ownT + ptT) + ' ' + wyj(ownT + ptT) + ' z ' + disp + ' dysponowań' : '' }
+        ] },
+        { title: 'Na terenie własnego działania', cards: [
+          card('flame', 'Pożar', own[0], pick(0)),
+          card('warn', 'Miejscowe zagrożenie', own[1], pick(1)),
+          card('bellOff', 'Alarm fałszywy', own[2], pick(2)),
+          card('shield', 'Udział w zabezpieczeniu operacyjnym obszaru chronionego', own[3], pick(3))
+        ] },
+        { title: 'Pozostały teren (PT)', cards: [
+          card('flame', 'Pożar', pt[0], pick(4)),
+          card('warn', 'Miejscowe zagrożenie', pt[1], pick(5)),
+          card('bellOff', 'Alarm fałszywy', pt[2], pick(6))
+        ] }
+      ]
+    };
+
+    // Stopień zagrożenia gminy przyjdzie z modułu „Metodyka i plan sieci jednostek” (w budowie); poziomy są założeniem.
+    const RISK = {
+      'niski': { bg: '#3d6b88', fg: '#ffffff' },
+      'średni': { bg: 'var(--warn)', fg: '#1c2427' },
+      'wysoki': { bg: '#e0803a', fg: '#1c2427' },
+      'bardzo wysoki': { bg: 'var(--alert)', fg: '#ffffff' }
+    };
+    const level = this.props.zagrozenie ?? 'średni';
+    const rc = RISK[level];
+    const risk = rc
+      ? { bg: rc.bg, fg: rc.fg, border: rc.bg, title: 'stopień zagrożenia gminy: ' + level }
+      : { bg: 'transparent', fg: 'var(--fg)', border: 'var(--line)', title: 'stopień zagrożenia gminy: brak oceny' };
+
+    // Widok tabeli (masowa edycja) dotyczy kart z danymi edytowalnymi; Wyjazdowość zostaje widokiem kart.
+    // Widoki danych: karty (domyślny), kompaktowy (każda karta jako listy etykieta–wartość) i tabela do masowej edycji.
+    const view = this.state.view ?? 'cards';
+    const gridOn = ready && view === 'grid' && tab !== 'wyjazdy' && tab !== 'igo';
+    const compactOn = ready && view === 'compact';
+    const show = {};
+    TABS.forEach(([id]) => { show[id] = ready && tab === id && !gridOn && !compactOn; });
+
+    // Panel boczny
+    const panel = this.state.panel;
+    const isEdit = !!panel && panel.mode === 'edit' && !!F[panel.id];
+    const isHistory = !!panel && panel.mode === 'history';
+    const isRequests = !!panel && panel.mode === 'requests';
+    const isMinima = !!panel && panel.mode === 'minima';
+    const isIgo = !!panel && panel.mode === 'igo';
+    // Wnioski jednostki (przykładowe): oś czasu jak historia; otwarte = pełny znacznik i pogrubiony status.
+    // Wnioski dotyczą tylko KSRG: włączenie albo wyłączenie. Ścieżka: OSP → opinia KP → opinia KW → decyzja KG PSP.
+    const REQ = [
+      { at: '20.10.2026', title: 'Wniosek o ponowne włączenie do KSRG do 31.12.2027', status: 'Porozumienie w przygotowaniu (KP)', open: true,
+        detail: 'Przedłużenie włączenia przed końcem terminu 31.12.2026.', by: 'Prowadzi: KP PSP Płońsk',
+        step: 'Następny krok: podpisanie porozumienia i przekazanie do KW PSP Warszawa.' },
+      { at: '12.06.2019', title: 'Wniosek o ponowne włączenie do KSRG', status: 'Zatwierdzony', open: false,
+        detail: 'Ponowne włączenie po uzupełnieniu liczby ratowników i sprzętu.', by: 'Złożył: zarząd OSP',
+        step: 'KP PSP Płońsk: pozytywna · KW PSP Warszawa: pozytywna · KG PSP: decyzja nr 47/2019 z 02.09.2019' },
+      { at: '20.02.2017', title: 'Wniosek o wyłączenie z KSRG', status: 'Zatwierdzony', open: false,
+        detail: 'Brak wymaganej liczby strażaków ratowników z aktualnymi badaniami.', by: 'Złożył: KP PSP Płońsk',
+        step: 'KW PSP Warszawa: pozytywna · KG PSP: decyzja nr 12/2017 z 11.04.2017' },
+      { at: '10.03.2004', title: 'Wniosek o włączenie do KSRG', status: 'Zatwierdzony', open: false,
+        detail: 'Pierwsze włączenie jednostki do KSRG.', by: 'Złożył: zarząd OSP',
+        step: 'KP PSP Płońsk: pozytywna · KW PSP Warszawa: pozytywna · KG PSP: decyzja z 14.05.2004' }
+    ];
+    const reqKey = this.state.req;
+    const requests = REQ.map((w, i) => {
+      const key = w.at + '|' + w.title;
+      const on = reqKey === key;
+      return Object.assign({}, w, {
+        on, dot: w.open ? 'var(--fg)' : 'transparent', statusWeight: w.open ? 700 : 400,
+        lineTop: i === 0 ? '22px' : '0', lineBottom: i === REQ.length - 1 ? 'calc(100% - 22px)' : '0',
+        toggle: () => this.setState({ req: on ? null : key })
+      });
+    });
+    const reqOpen = REQ.filter((w) => w.open).length;
+    const change = (h) => (h.restore ? 'Przywrócono z SWD-PSP: ' + h.to : h.from + ' → ' + h.to);
+    // Oś czasu: domyślnie data i pole, szczegóły (zmiana, kto, powód) po kliknięciu wpisu.
+    const histView = (h, i, list) => {
+      const key = h.at + '|' + h.id;
+      const on = this.state.entry === key;
+      return {
+        at: h.at, by: h.by, reason: h.reason || 'Bez podanego powodu', change: change(h), on,
+        field: F[h.id] ? F[h.id].label : h.id,
+        dot: h.restore ? 'transparent' : 'var(--fg)',
+        lineTop: i === 0 ? '22px' : '0',
+        lineBottom: i === list.length - 1 ? 'calc(100% - 22px)' : '0',
+        toggle: () => this.setState({ entry: on ? null : key }),
+        open: () => F[h.id] && this.openField(h.id, val(h.id))
+      };
+    };
+    const parse = (type, s) => {
+      if (type === 'int') { const n = Number(s); return s === '' || Number.isNaN(n) ? null : Math.max(0, Math.round(n)); }
+      if (type === 'bool') return s === 'Tak' || s === 'Nie' ? s : null;
+      if (type === 'enum') return s === 'Selektywne' || s === 'Inny' || s === 'Brak' ? s : null;
+      const t = String(s).trim();
+      return t === '' ? null : t;
+    };
+    let ed = { isNum: false, isText: false, isLong: false, isBool: false, options: [], history: [], noHistory: true, over: false, source: '', swd: '' };
+    let cantSave = true;
+    if (isEdit) {
+      const f = F[panel.id];
+      const cur = val(panel.id);
+      const next = parse(f.type, this.state.draft);
+      const fh = hist.filter((h) => h.id === panel.id).map((h, i, list) => histView(h, i, list));
+      ed = {
+        isNum: f.type === 'int', isText: f.type === 'text', isLong: f.type === 'long', isBool: f.type === 'bool' || f.type === 'enum',
+        options: (f.options || ['Tak', 'Nie']).map((o) => ({ label: o, on: this.state.draft === o, pick: () => this.setState({ draft: o }) })),
+        history: fh, noHistory: fh.length === 0, over: !!ov[panel.id],
+        source: ov[panel.id] ? 'Nadpisane w Reports' : 'SWD-PSP', swd: fmt(f.swd)
+      };
+      cantSave = fmt(next) === fmt(cur) || this.state.reason.trim() === '';
+    }
+    const now = () => {
+      const d = new Date();
+      const p = (n) => String(n).padStart(2, '0');
+      return p(d.getDate()) + '.' + p(d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+    };
+    // Siatka: wiersz na pole bieżącej karty; komórka Reports edytowalna, zmiany zbierane i zapisywane razem z jednym powodem.
+    const gd = this.state.gdraft || {};
+    const greason = this.state.greason || '';
+    const gridIds = Object.keys(F).filter((id) => F[id].tab === tab && !F[id].ro);
+    const dirtyIds = gridIds.filter((id) => gd[id] !== undefined && fmt(parse(F[id].type, gd[id])) !== fmt(val(id)));
+    const gq = this.state.gq || '';
+    const onlyDiff = !!this.state.onlyDiff;
+    const gqn = gq.trim().toLowerCase();
+    const gridGroups = [];
+    let rowNo = 0;
+    gridIds.forEach((id) => {
+      const f = F[id];
+      const v = val(id);
+      const dirty = dirtyIds.includes(id);
+      const differs = dirty || !!ov[id];
+      if (gqn && !(f.label + ' ' + f.section).toLowerCase().includes(gqn)) return;
+      if (onlyDiff && !differs) return;
+      let g = gridGroups[gridGroups.length - 1];
+      if (!g || g.section !== f.section) { g = { section: f.section, rows: [] }; gridGroups.push(g); }
+      g.rows.push({
+        n: ++rowNo,
+        label: f.label, swd: fmt(f.swd), over: !!ov[id] && !dirty,
+        isNum: f.type === 'int', isText: f.type === 'text' || f.type === 'long', isBool: f.type === 'bool', isAlarm: f.type === 'enum',
+        draft: gd[id] !== undefined ? gd[id] : v === null || v === undefined ? '' : String(v),
+        dirty: dirty ? 'dirty' : '', rowCls: dirty ? 'changed' : '',
+        status: dirty ? 'Zmiana do zapisu' : ov[id] ? 'Nadpisane w Reports' : 'Z SWD-PSP',
+        statusColor: dirty || ov[id] ? 'var(--fg)' : 'var(--mut)', statusWeight: dirty ? 700 : 400,
+        aria: f.section + ', ' + f.label + ', wartość w Reports',
+        onCell: (e) => this.setState({ gdraft: Object.assign({}, gd, { [id]: e.target.value }) })
+      });
+    });
+    const pol = (n) => (n === 1 ? 'pole' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'pola' : 'pól');
+    gridGroups.forEach((g) => { g.count = g.rows.length + ' ' + pol(g.rows.length); });
+    // Widok kompaktowy: wszystkie pola bieżącej karty pogrupowane sekcjami; pola z SWD-PSP tylko do odczytu.
+    const compactGroups = [];
+    const pushRow = (section, row) => {
+      let g = compactGroups.find((x) => x.section === section);
+      if (!g) { g = { section, rows: [] }; compactGroups.push(g); }
+      g.rows.push(row);
+    };
+    const ro = (label, value) => ({ label, value: fmt(value), cls: quiet(value), editable: false, readonly: true, over: false });
+    if (tab === 'igo') {
+      igoRows.forEach((r) => pushRow('Inspekcje gotowości operacyjnej', ro(r.at + ' · ' + r.team, r.points + ' · ' + r.grade)));
+    } else if (tab === 'wyjazdy') {
+      dsp.rows.forEach((r) => r.cards.forEach((c) => pushRow(r.title, ro(c.label, c.value === '—' ? null : c.value))));
+    } else {
+      Object.keys(F).filter((id) => F[id].tab === tab).forEach((id) => {
+        const f = field(id);
+        pushRow(F[id].section, Object.assign(f, { editable: !F[id].ro, readonly: !!F[id].ro }));
+      });
+      if (tab === 'strazacy') {
+        board.forEach((b) => pushRow('Zarząd OSP', ro(b.role, b.name === '—' ? null : b.name)));
+        pushRow('Nadrzędna komenda PSP', ro('Komenda', cmd.name));
+        cmd.lead.forEach((b) => pushRow('Nadrzędna komenda PSP', ro(b.role, b.name)));
+        pushRow('Nadrzędna komenda PSP', ro('Nadrzędna JRG', cmd.jrg.name));
+        cmd.jrg.lead.forEach((b) => pushRow('Nadrzędna komenda PSP', ro(b.role, b.name)));
+      }
+    }
+    compactGroups.forEach((g) => { g.count = g.rows.length + ' ' + pol(g.rows.length); });
+    const zm = (n) => (n === 1 ? 'zmiana' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'zmiany' : 'zmian');
+    // Krótkie KPI obok mapy: wyjazdy i dyspozycyjność od początku roku (SWD-PSP), członkowie / strażacy, pojazdy.
+    const ytdT = [0, 0, 0, 0, 0, 0, 0, 0];
+    for (let d = dayOf('2026-01-01'); d <= DAYS.length; d++) for (let k = 0; k < 8; k++) ytdT[k] += DAYS[d - 1][k];
+    const ytdTrips = ytdT.slice(0, 7).reduce((x, y) => x + y, 0);
+    const ytdDisp = gap(ytdT[7]);
+    const heroKpi = [
+      { icon: ICONS.siren, label: 'Wyjazdy', value: fmt(ytdTrips), sub: 'od początku roku' },
+      { icon: ICONS.gauge, label: 'Dyspozycyjność', value: ytdDisp ? Math.round((ytdTrips / ytdDisp) * 100) + '%' : '—', sub: ytdDisp ? ytdTrips + ' z ' + ytdDisp + ' dysponowań' : '' },
+      { icon: ICONS.users, label: 'Strażacy ratownicy / członkowie OSP', value: fmt(val('ff.rescuers')) + ' / ' + fmt(val('ff.members')), sub: '' },
+      { icon: ICONS.truck, label: 'Pojazdy', value: fmt(vehicles.length || null), sub: VEH.map((v) => v[0].split(' ')[0]).join(' · ') }
+    ];
+    const overCount = Object.keys(ov).filter((id) => F[id]).length;
+    const polePlural = (n) => (n === 1 ? 'pole nadpisane' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'pola nadpisane' : 'pól nadpisanych');
+
+    return {
+      themeClass: (this.props.theme ?? 'jasny') === 'ciemny' ? 'dark' : '',
+      tabs: TABS.map(([id, label]) => ({ label, on: tab === id, pick: () => this.setState({ tab: id }) })),
+      loading, failed, ready,
+      retry: () => this.setState({ retried: true }),
+      show, county: COUNTY.map((g) => ({ d: g.d, op: g.own ? 0.22 : 0.07 })), loc,
+      basic, ks, ffk, duty, drivers, training, board, cmd, heroKpi, trFree, eqFree, igo,
+      vehicles, hasVehicles: vehicles.length > 0, noVehicles: vehicles.length === 0,
+      truckIcon: ICONS.truck,
+      vehicleCount: vehicles.length ? vehicles.length + ' ' + plural(vehicles.length) : '',
+      equipment, specGroups, dsp, rg, risk,
+      hasOver: ready && overCount > 0,
+      overText: overCount + ' ' + polePlural(overCount) + ' w Reports',
+      lastChange: hist.length ? 'Ostatnia zmiana ' + hist[0].at + ' · ' + hist[0].by : 'Bez zmian w Reports',
+      viewCards: view === 'cards', viewCompact: view === 'compact', viewGrid: view === 'grid',
+      showCards: () => this.setState({ view: 'cards' }),
+      showCompact: () => this.setState({ view: 'compact' }),
+      showGrid: () => this.setState({ view: 'grid' }),
+      compactOn, compactGroups,
+      gridOn, gridGroups, greason, gq, onlyDiff,
+      noGridRows: gridGroups.length === 0,
+      gridTab: (TABS.find(([id]) => id === tab) || ['', ''])[1],
+      onGq: (e) => this.setState({ gq: e.target.value }),
+      toggleDiff: () => this.setState({ onlyDiff: !onlyDiff }),
+      gridTitle: 'Edycja tabelaryczna: ' + (TABS.find(([id]) => id === tab) || ['', ''])[1],
+      gridDirty: gridOn && dirtyIds.length > 0,
+      gridCount: dirtyIds.length + ' ' + zm(dirtyIds.length),
+      gridCantSave: dirtyIds.length === 0 || greason.trim() === '',
+      onGReason: (e) => this.setState({ greason: e.target.value }),
+      gridDiscard: () => this.setState({ gdraft: {}, greason: '' }),
+      gridSave: () => {
+        if (!dirtyIds.length || !greason.trim()) return;
+        const at = now();
+        const next = Object.assign({}, ov);
+        const entries = dirtyIds.map((id) => {
+          const nv = parse(F[id].type, gd[id]);
+          next[id] = { value: nv };
+          return { at, by: 'Ty', id, from: fmt(val(id)), to: fmt(nv), reason: greason.trim() };
+        });
+        this.setState({ overrides: next, history: entries.concat(hist), gdraft: {}, greason: '' });
+      },
+      panelOpen: isEdit || isHistory || isRequests || isMinima || isIgo,
+      isIgo, igoForm,
+      openIgo: () => this.setState({ panel: { mode: 'igo' }, igoDraft: {} }),
+      isMinima, minima, minBtn,
+      openMinima: () => this.setState({ panel: { mode: 'minima' } }),
+      histFacts: [
+        { label: 'Zgodność z SWD-PSP potwierdził (KP)', value: 'A. Duda, KP PSP Płońsk · 14.10.2026' },
+        { label: 'Ostatnia zmiana', value: hist.length ? hist[0].at + ' · ' + hist[0].by : 'brak' }
+      ],
+      isRequests, requests,
+      reqOpenCount: reqOpen || '',
+      reqAria: 'Wnioski' + (reqOpen ? ', otwarte: ' + reqOpen : ''),
+      openRequests: () => this.setState({ panel: { mode: 'requests' } }),
+      // Wyciąg: podsumowanie karty jednostki generowane jako PDF albo DOCX (na kanwie tylko menu).
+      expOpen: !!this.state.exp,
+      toggleExp: () => this.setState({ exp: !this.state.exp }),
+      expPick: () => this.setState({ exp: false }),
+      isEdit, isHistory,
+      panelEyebrow: isEdit ? F[panel.id].section : 'OSP Nowa Wieś',
+      panelTitle: isEdit ? F[panel.id].label : isRequests ? 'Wnioski' : isMinima ? 'Wymagania minimalne' : isIgo ? 'Ocena z inspekcji IGO' : 'Historia zmian',
+      ed, draft: this.state.draft, reason: this.state.reason, cantSave,
+      allHistory: hist.map((h, i, list) => histView(h, i, list)), noHistory: hist.length === 0,
+      openHistory: () => this.setState({ panel: { mode: 'history' } }),
+      close: () => this.setState({ panel: null }),
+      onDraft: (e) => this.setState({ draft: e.target.value }),
+      onReason: (e) => this.setState({ reason: e.target.value }),
+      save: () => {
+        if (cantSave) return;
+        const f = F[panel.id];
+        const next = parse(f.type, this.state.draft);
+        const entry = { at: now(), by: 'Ty', id: panel.id, from: fmt(val(panel.id)), to: fmt(next), reason: this.state.reason.trim() };
+        this.setState({ overrides: Object.assign({}, ov, { [panel.id]: { value: next } }), history: [entry].concat(hist), panel: null });
+      },
+      restore: () => {
+        const f = F[panel.id];
+        const rest = Object.assign({}, ov);
+        delete rest[panel.id];
+        const entry = { at: now(), by: 'Ty', id: panel.id, restore: true, to: fmt(f.swd), reason: this.state.reason.trim() };
+        this.setState({ overrides: rest, history: [entry].concat(hist), panel: null });
+      }
+    };
+  }
+
+  openField(id, current) {
+    this.setState({ panel: { mode: 'edit', id }, draft: current === null || current === undefined ? '' : String(current), reason: '' });
+  }
+}
+</script>
+</body>
+</html>

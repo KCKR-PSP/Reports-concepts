@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Wnioski KSRG</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fx{--bg:#ebeef0;--fg:#1c2427;--mut:#535f65;--line:#d3dadd;--soft:#e1e6e9;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;font-size:15px;line-height:1.45;color:var(--fg);background:var(--bg)}
+.fx.dark{--bg:#121518;--fg:#e6ecee;--mut:#a9b3b8;--line:#363d43;--soft:#22282c}
+:where(.fx) button,:where(.fx) input,:where(.fx) textarea,:where(.fx) select{font:inherit;color:inherit}
+.fx a{color:var(--fg)}
+.fx button:focus-visible,.fx a:focus-visible,.fx input:focus-visible,.fx textarea:focus-visible,.fx select:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.crumb{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-left:-12px;padding:0 12px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none}
+.eyebrow{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.note{margin:0;font-size:13px;color:var(--mut)}
+.sec{margin:0;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.h2{margin:0;font-size:24px;line-height:1.2;font-weight:600;letter-spacing:-0.005em}
+.chip{display:inline-block;padding:6px 10px;background:var(--fg);color:var(--bg);font-size:12px;line-height:1;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);background:none;padding:9px 16px;min-height:44px;cursor:pointer;font-size:14px;font-weight:500;text-decoration:none;box-sizing:border-box}
+.outline:hover{border-color:var(--fg)}
+.outline.sm{min-height:34px;padding:4px 12px;font-size:13px}
+.solid{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--fg);background:var(--fg);color:var(--bg) !important;padding:9px 20px;min-height:44px;cursor:pointer;font-size:14px;font-weight:600;box-sizing:border-box}
+.solid:disabled,.outline:disabled{opacity:.35;cursor:default}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld > .lb{font-size:13px;font-weight:500;color:var(--mut)}
+.inp{width:100%;box-sizing:border-box;min-height:44px;padding:10px 12px;border:1px solid var(--line);border-radius:0;background:transparent;font-size:15px}
+.inp:focus{outline:none;border-color:var(--fg)}
+textarea.inp{resize:vertical;min-height:96px}
+.grid2{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:20px 24px}
+.full{grid-column:1 / -1}
+.seg{min-height:44px;padding:0 18px;border:1px solid var(--line);background:none;cursor:pointer;font-size:14px;font-weight:600}
+.seg + .seg{border-left:0}
+.seg[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.steps{display:grid;gap:0;border-top:1px solid var(--line)}
+.step{display:flex;align-items:center;gap:10px;padding:14px 12px 16px 0;background:none;border:0;border-top:3px solid transparent;margin-top:-2px;cursor:pointer;text-align:left}
+.step[aria-current="step"]{border-top-color:var(--fg)}
+.step .sn{flex:none;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;box-sizing:border-box;border:1.5px solid var(--fg);font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.step.done .sn{background:var(--fg);color:var(--bg)}
+.step.todo{color:var(--mut)}
+.step.todo .sn{border-color:var(--line)}
+.layout{display:grid;gap:40px 48px;align-items:start}
+.rail{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border-left:1px solid var(--line)}
+.rail button{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;padding:6px 12px 6px 16px;margin-left:-1px;background:none;border:0;border-left:2px solid transparent;cursor:pointer;text-align:left;font-size:15px;color:var(--mut)}
+.rail button[aria-current="step"]{border-left-color:var(--fg);color:var(--fg);font-weight:600}
+.rail .dot{flex:none;width:12px;height:12px;box-sizing:border-box;border:1.5px solid currentColor}
+.rail .dot.ok{background:currentColor}
+.group{display:flex;flex-direction:column;gap:16px;padding-top:16px;border-top:1px solid var(--fg)}
+.facts{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.fact{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.fact > :first-child{color:var(--mut);font-size:14px}
+.fact > :last-child{font-weight:600;text-align:right}
+.ck{display:inline-flex;align-items:center;gap:12px;min-height:44px;cursor:pointer}
+.ck input{width:18px;height:18px;accent-color:var(--fg);margin:0;flex:none}
+.ck.off{color:var(--mut);cursor:default}
+.chk{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line)}
+.mk{display:inline-block;width:10px;height:10px;box-sizing:border-box;border:1.5px solid var(--fg);flex:none}
+.miss{display:flex;flex-direction:column;border-top:1px solid var(--fg)}
+.miss button{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;padding:0;background:none;border:0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;font-weight:600}
+.miss button span:last-child{font-weight:500;font-size:13px;color:var(--mut)}
+.req{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line)}
+.doc{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;padding-top:20px;border-top:1px solid var(--line)}
+.tl{list-style:none;margin:16px 0 0;padding:0}
+.tl li{display:grid;grid-template-columns:76px 14px minmax(0, 1fr);column-gap:12px}
+.tl .tm{display:flex;flex-direction:column;align-items:flex-end;padding-top:1px;font-variant-numeric:tabular-nums}
+.tl .rl{position:relative;display:block}
+.tl .ln{position:absolute;left:6px;top:13px;bottom:-3px;width:1px;background:var(--line)}
+.tl .mk2{position:absolute;left:2px;top:4px;width:9px;height:9px;box-sizing:border-box;border:1.5px solid var(--fg)}
+.tl .tx{display:flex;flex-direction:column;gap:2px;padding-bottom:20px;font-size:14px;line-height:1.4}
+@media (max-width: 1180px){.layout.w3{grid-template-columns:200px minmax(0, 1fr) !important}.layout.w3 > aside,.layout.w2 > aside{grid-column:1 / -1}.layout.w2{grid-template-columns:minmax(0, 1fr) !important}}
+@media (max-width: 760px){.grid2{grid-template-columns:1fr}.layout.w3{grid-template-columns:minmax(0, 1fr) !important}.steps{grid-template-columns:repeat(2, minmax(0, 1fr)) !important}}
+</style>
+</helmet>
+<div class="fx {{ themeClass }}" style="min-height: 100%">
+<div style="max-width: 1360px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px">
+
+<a class="crumb" href="Main.dc.html">
+<svg width="32" height="12" viewBox="0 0 32 12" aria-hidden="true"><path d="M32 6H2M7 1L2 6l5 5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg>OSP Nowa Wieś · Wnioski
+</a>
+
+<header style="display: flex; flex-direction: column; gap: 8px">
+<p class="eyebrow">{{ head.eyebrow }}</p>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px">
+<h1 style="margin: 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em">{{ head.title }}</h1>
+<span class="chip">{{ head.status }}</span>
+</div>
+</header>
+
+<nav aria-label="Etapy wniosku" class="steps" style="grid-template-columns: repeat({{ stepCols }}, minmax(0, 1fr))">
+<sc-for list="{{ steps }}" as="t" hint-placeholder-count="4">
+<button type="button" class="step {{ t.cls }}" aria-current="{{ t.current }}" onClick="{{ t.pick }}">
+<span class="sn">{{ t.no }}</span>
+<span style="font-size: 15px; font-weight: 600; line-height: 1.3">{{ t.label }}</span>
+</button>
+</sc-for>
+</nav>
+
+<div class="layout {{ layout.cls }}" style="grid-template-columns: {{ layout.cols }}">
+
+<sc-if value="{{ view.s1 }}" hint-placeholder-val="{{ true }}">
+<nav aria-label="Kroki kreatora">
+<ol class="rail">
+<sc-for list="{{ wz }}" as="w" hint-placeholder-count="5">
+<li><button type="button" aria-current="{{ w.current }}" onClick="{{ w.pick }}"><span class="dot {{ w.dot }}" aria-hidden="true"></span>{{ w.label }}</button></li>
+</sc-for>
+</ol>
+</nav>
+</sc-if>
+
+<main style="min-width: 0; display: flex; flex-direction: column; gap: 28px">
+
+<sc-if value="{{ view.s1 }}" hint-placeholder-val="{{ true }}">
+<h2 class="h2">{{ wzTitle }}</h2>
+
+<sc-if value="{{ wzv.a }}" hint-placeholder-val="{{ true }}">
+<section aria-label="Typ i termin" style="display: flex; flex-direction: column; gap: 24px">
+<div class="fld"><span class="lb">Rodzaj wniosku</span>
+<div role="group" aria-label="Rodzaj wniosku" style="display: flex; flex-wrap: wrap">
+<sc-for list="{{ kinds }}" as="k" hint-placeholder-count="3"><button type="button" class="seg" aria-pressed="{{ k.on }}" onClick="{{ k.pick }}">{{ k.label }}</button></sc-for>
+</div></div>
+<sc-if value="{{ include }}" hint-placeholder-val="{{ true }}">
+<div class="grid2">
+<div class="fld"><span class="lb">Termin włączenia</span>
+<div role="group" aria-label="Termin włączenia" style="display: flex; flex-wrap: wrap">
+<sc-for list="{{ terms }}" as="k" hint-placeholder-count="2"><button type="button" class="seg" aria-pressed="{{ k.on }}" onClick="{{ k.pick }}">{{ k.label }}</button></sc-for>
+</div></div>
+<label class="fld"><span class="lb">Rok</span><input class="inp" type="number" min="2026" max="2035" step="1" value="{{ f.year }}" onChange="{{ on.year }}" style="max-width: 140px"></label>
+</div>
+</sc-if>
+<sc-if value="{{ exclude }}" hint-placeholder-val="{{ false }}">
+<div class="grid2">
+<label class="fld"><span class="lb">Wyłączenie z dniem</span><input class="inp" type="date" value="{{ f.exFrom }}" onChange="{{ on.exFrom }}"></label>
+<label class="fld full"><span class="lb">Przyczyna wyłączenia</span><textarea rows="4" class="inp" value="{{ f.exReason }}" onChange="{{ on.exReason }}"></textarea></label>
+</div>
+</sc-if>
+<div class="facts">
+<div class="fact"><span>Obecne włączenie</span><span>do 31.12.2026 · decyzja nr 47/2019</span></div>
+<sc-if value="{{ include }}" hint-placeholder-val="{{ true }}"><div class="fact"><span>Wnioskowane włączenie</span><span>do {{ termLabel }}</span></div></sc-if>
+<sc-if value="{{ exclude }}" hint-placeholder-val="{{ false }}"><div class="fact"><span>Wnioskowane wyłączenie</span><span>z dniem {{ exFromLabel }}</span></div></sc-if>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ wzv.b }}" hint-placeholder-val="{{ false }}">
+<section aria-label="Strony porozumienia" style="display: flex; flex-direction: column; gap: 36px">
+<div class="group">
+<p class="sec">Komenda PSP</p>
+<div class="grid2">
+<label class="fld full"><span class="lb">Nazwa</span><input class="inp" value="{{ f.kpName }}" onChange="{{ on.kpName }}"></label>
+<label class="fld"><span class="lb">Komendant</span><input class="inp" value="{{ f.kpChief }}" onChange="{{ on.kpChief }}"></label>
+<label class="fld"><span class="lb">Adres</span><input class="inp" value="{{ f.kpAddr }}" onChange="{{ on.kpAddr }}"></label>
+</div>
+</div>
+<div class="group">
+<p class="sec">Gmina</p>
+<div class="grid2">
+<label class="fld"><span class="lb">Organ</span>
+<select class="inp" value="{{ f.organ }}" onChange="{{ on.organ }}"><optgroup label="Organ"><option value="Wójt">Wójt</option><option value="Wójt Gminy">Wójt Gminy</option><option value="Burmistrz">Burmistrz</option><option value="Burmistrz Gminy">Burmistrz Gminy</option><option value="Burmistrz Miasta">Burmistrz Miasta</option><option value="Burmistrz Miasta i Gminy">Burmistrz Miasta i Gminy</option><option value="Prezydent">Prezydent</option><option value="Prezydent Miasta">Prezydent Miasta</option></optgroup><optgroup label="Zastępca"><option value="Zastępca Wójta">Zastępca Wójta</option><option value="Zastępca Wójta Gminy">Zastępca Wójta Gminy</option><option value="Zastępca Burmistrza">Zastępca Burmistrza</option><option value="Zastępca Burmistrza Gminy">Zastępca Burmistrza Gminy</option><option value="Zastępca Burmistrza Miasta">Zastępca Burmistrza Miasta</option><option value="Zastępca Burmistrza Miasta i Gminy">Zastępca Burmistrza Miasta i Gminy</option><option value="Zastępca Prezydenta">Zastępca Prezydenta</option><option value="Zastępca Prezydenta Miasta">Zastępca Prezydenta Miasta</option></optgroup><optgroup label="Inne"><option value="inne">Inne – uzupełnij ręcznie</option></optgroup></select></label>
+<label class="fld"><span class="lb">Imię i nazwisko</span><input class="inp" value="{{ f.mayor }}" onChange="{{ on.mayor }}"></label>
+<sc-if value="{{ organOther }}" hint-placeholder-val="{{ false }}">
+<label class="fld"><span class="lb">Władza</span><input class="inp" value="{{ f.orgPower }}" onChange="{{ on.orgPower }}"></label>
+<label class="fld"><span class="lb">Jednostka</span><input class="inp" value="{{ f.orgUnit }}" onChange="{{ on.orgUnit }}"></label>
+</sc-if>
+<label class="fld full"><span class="lb">Adres urzędu</span><input class="inp" value="{{ f.gmAddr }}" onChange="{{ on.gmAddr }}"></label>
+</div>
+</div>
+<div class="group">
+<p class="sec">OSP</p>
+<div class="grid2">
+<label class="fld full"><span class="lb">Nazwa</span><input class="inp" value="{{ f.ospName }}" onChange="{{ on.ospName }}"></label>
+<label class="fld"><span class="lb">KRS</span><input class="inp" value="{{ f.krs }}" onChange="{{ on.krs }}"></label>
+<label class="fld"><span class="lb">Adres siedziby</span><input class="inp" value="{{ f.ospAddr }}" onChange="{{ on.ospAddr }}"></label>
+<label class="fld"><span class="lb">Reprezentant 1 (wg statutu)</span><input class="inp" value="{{ f.rep1 }}" onChange="{{ on.rep1 }}"></label>
+<label class="fld"><span class="lb">Reprezentant 2 (wg statutu)</span><input class="inp" value="{{ f.rep2 }}" onChange="{{ on.rep2 }}"></label>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ wzv.c }}" hint-placeholder-val="{{ false }}">
+<section aria-label="Zakres porozumienia" style="display: flex; flex-direction: column; gap: 36px">
+<div class="group" style="gap: 4px">
+<p class="sec" style="padding-bottom: 8px">Czynności ratownicze (§ 2 ust. 7)</p>
+<sc-for list="{{ domains }}" as="d" hint-placeholder-count="6">
+<div class="chk"><label class="ck"><input type="checkbox" checked="{{ d.on }}" onChange="{{ d.toggle }}">{{ d.label }}<sc-if value="{{ d.changed }}" hint-placeholder-val="{{ false }}"><span class="mk" style="background: var(--fg)" title="Zmiana na karcie jednostki" aria-label="zmiana na karcie jednostki"></span></sc-if></label>
+<sc-if value="{{ d.sar }}" hint-placeholder-val="{{ false }}"><label class="{{ d.specCls }}"><input type="checkbox" checked="{{ d.specOn }}" disabled="{{ d.specOff }}" onChange="{{ d.toggleSpec }}">Specjalistyczne<sc-if value="{{ d.specChanged }}" hint-placeholder-val="{{ false }}"><span class="mk" style="background: var(--fg)" title="Zmiana na karcie jednostki" aria-label="zmiana na karcie jednostki"></span></sc-if></label></sc-if></div>
+</sc-for>
+</div>
+<div class="group">
+<p class="sec">Obszar i alarmowanie</p>
+<div class="grid2">
+<label class="fld"><span class="lb">Obszar chroniony poza powiatem (ustala KW)</span><input class="inp" value="{{ f.area }}" onChange="{{ on.area }}"></label>
+<label class="fld"><span class="lb">Dodatkowe sposoby alarmowania (§ 5 ust. 2)</span><input class="inp" value="{{ f.alarm }}" onChange="{{ on.alarm }}"></label>
+</div>
+<div class="facts"><div class="fact"><span>Podstawowy sposób alarmowania</span><span>syrena + selektywne wywoływanie</span></div></div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ wzv.d }}" hint-placeholder-val="{{ false }}">
+<section aria-label="Podpisanie" style="display: flex; flex-direction: column; gap: 36px">
+<div class="group">
+<p class="sec">Porozumienie</p>
+<div class="grid2">
+<label class="fld"><span class="lb">Data podpisania</span><input class="inp" type="date" value="{{ f.signDate }}" onChange="{{ on.signDate }}"></label>
+<label class="fld"><span class="lb">Miejscowość</span><input class="inp" value="{{ f.signPlace }}" onChange="{{ on.signPlace }}"></label>
+</div>
+</div>
+<div class="group">
+<p class="sec">Karta jednostki</p>
+<div class="grid2">
+<label class="fld"><span class="lb">Zgodność z SWD-PSP potwierdził (KP)</span><input class="inp" value="{{ f.confKp }}" onChange="{{ on.confKp }}"></label>
+<label class="fld"><span class="lb">Stan faktyczny z ramienia OSP</span><input class="inp" value="{{ f.confOsp }}" onChange="{{ on.confOsp }}"></label>
+</div>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ wzv.e }}" hint-placeholder-val="{{ false }}">
+<section aria-label="Podsumowanie" style="display: flex; flex-direction: column; gap: 36px">
+<sc-if value="{{ hasTodo }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p class="sec">Do uzupełnienia przed przekazaniem</p>
+<div class="miss">
+<sc-for list="{{ todo }}" as="t" hint-placeholder-count="2"><button type="button" onClick="{{ t.go }}"><span>{{ t.label }}</span><span>{{ t.where }} →</span></button></sc-for>
+</div>
+</div>
+</sc-if>
+<sc-if value="{{ include }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p class="sec">Wymagania minimalne</p>
+<div style="border-top: 1px solid var(--fg)">
+<sc-for list="{{ minima }}" as="m" hint-placeholder-count="6">
+<div class="req"><span style="display: flex; align-items: center; gap: 12px; font-weight: {{ m.weight }}"><span class="mk" style="background: {{ m.dot }}"></span>{{ m.label }}</span><span style="font-weight: {{ m.weight }}; font-variant-numeric: tabular-nums; white-space: nowrap">{{ m.value }} <span class="note" style="display: inline">/ min. {{ m.min }}</span></span></div>
+</sc-for>
+</div>
+</div>
+<sc-if value="{{ hasCardChanges }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p class="sec">Zmiany na karcie jednostki</p>
+<div style="border-top: 1px solid var(--fg)">
+<sc-for list="{{ cardChanges }}" as="c" hint-placeholder-count="2">
+<div class="req"><span style="display: flex; align-items: center; gap: 12px"><span class="mk" style="background: var(--fg)"></span>{{ c.label }}</span><span style="font-variant-numeric: tabular-nums; white-space: nowrap"><span class="note" style="display: inline">{{ c.from }}</span> → <strong>{{ c.to }}</strong></span></div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+</sc-if>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<p class="sec">Wniosek</p>
+<div class="facts" style="border-top-color: var(--fg)">
+<sc-if value="{{ include }}" hint-placeholder-val="{{ true }}">
+<div class="fact"><span>Strony</span><span>{{ f.kpName }} · {{ organLabel }} · {{ f.ospName }}</span></div>
+<div class="fact"><span>Włączenie</span><span>do {{ termLabel }}</span></div>
+</sc-if>
+<sc-if value="{{ exclude }}" hint-placeholder-val="{{ false }}">
+<div class="fact"><span>Wyłączenie z dniem</span><span>{{ exFromLabel }}</span></div>
+<div class="fact" style="align-items: flex-start"><span>Przyczyna</span><span style="white-space: pre-line">{{ exReasonLabel }}</span></div>
+</sc-if>
+</div>
+</div>
+</section>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{ view.s2 }}" hint-placeholder-val="{{ false }}">
+<h2 class="h2">Wniosek komendanta wojewódzkiego do KG PSP</h2>
+<div class="grid2">
+<label class="fld"><span class="lb">Znak sprawy</span><input class="inp" value="{{ f.kwSign }}" onChange="{{ on.kwSign }}"></label>
+<label class="fld"><span class="lb">Data wniosku</span><input class="inp" type="date" value="{{ f.kwDate }}" onChange="{{ on.kwDate }}"></label>
+<label class="fld full"><span class="lb">Podpisuje</span><input class="inp" value="{{ f.kwChief }}" onChange="{{ on.kwChief }}"></label>
+</div>
+</sc-if>
+
+<sc-if value="{{ view.s3 }}" hint-placeholder-val="{{ false }}">
+<h2 class="h2">Decyzja Komendanta Głównego PSP</h2>
+<div class="grid2">
+<label class="fld"><span class="lb">Numer decyzji</span><input class="inp" value="{{ f.decNo }}" onChange="{{ on.decNo }}"></label>
+<label class="fld"><span class="lb">Data podpisania przez KG</span><input class="inp" type="date" value="{{ f.decDate }}" onChange="{{ on.decDate }}"></label>
+<sc-if value="{{ include }}" hint-placeholder-val="{{ true }}">
+<label class="fld"><span class="lb">Włącza z dniem</span><input class="inp" type="date" value="{{ f.decFrom }}" onChange="{{ on.decFrom }}"></label>
+<div class="fld"><span class="lb">Do dnia</span><p style="margin: 0; min-height: 44px; display: flex; align-items: center; font-weight: 600">{{ termLabel }}</p></div>
+</sc-if>
+<sc-if value="{{ exclude }}" hint-placeholder-val="{{ false }}">
+<label class="fld"><span class="lb">Wyłącza z dniem</span><input class="inp" type="date" value="{{ f.exFrom }}" onChange="{{ on.exFrom }}"></label>
+</sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ view.s4 }}" hint-placeholder-val="{{ false }}">
+<h2 class="h2">Akt włączenia do KSRG</h2>
+<div style="max-width: 560px; padding: 44px 36px; border: 1px solid var(--fg); text-align: center; display: flex; flex-direction: column; gap: 10px">
+<p class="eyebrow">Decyzja o włączeniu jednostki</p>
+<p style="margin: 0; font-size: 14px">Komendant Główny Państwowej Straży Pożarnej z dniem {{ actFrom }} włącza</p>
+<p style="margin: 6px 0; font-size: 26px; font-weight: 600">{{ f.ospName }}</p>
+<p style="margin: 0; font-size: 14px">do krajowego systemu ratowniczo-gaśniczego decyzją nr {{ f.decNo }} KSRG</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ showDocs }}" hint-placeholder-val="{{ true }}">
+<section aria-labelledby="sd-h" style="display: flex; flex-direction: column; gap: 12px">
+<p id="sd-h" class="sec">Dokumentacja</p>
+<div style="border-top: 1px solid var(--fg)">
+<sc-for list="{{ stepDocs }}" as="d" hint-placeholder-count="2">
+<div class="doc"><span style="display: flex; align-items: center; gap: 12px; font-weight: 600"><span class="mk" style="background: {{ d.dot }}"></span>{{ d.label }}</span>
+<span style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+<sc-if value="{{ d.has }}" hint-placeholder-val="{{ false }}"><span class="note">{{ d.file }}</span></sc-if>
+<sc-if value="{{ d.gen }}" hint-placeholder-val="{{ true }}"><button type="button" class="outline sm" disabled="{{ d.genOff }}">Wygeneruj {{ d.format }}</button></sc-if>
+<button type="button" class="outline sm" onClick="{{ d.attach }}">{{ d.attachLabel }}</button>
+</span></div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<sc-if value="{{ nav.show }}" hint-placeholder-val="{{ true }}">
+<div class="foot">
+<span><sc-if value="{{ nav.hasBack }}" hint-placeholder-val="{{ false }}"><button type="button" class="outline" onClick="{{ nav.back }}">← {{ nav.backLabel }}</button></sc-if></span>
+<button type="button" class="solid" disabled="{{ nav.off }}" onClick="{{ nav.go }}">{{ nav.label }}</button>
+</div>
+</sc-if>
+</main>
+
+<aside aria-label="Historia wniosku" style="min-width: 0">
+<p class="sec" style="padding-bottom: 10px; border-bottom: 1px solid var(--fg)">Historia wniosku</p>
+<ol class="tl" aria-label="Oś czasu wniosku">
+<sc-for list="{{ log }}" as="h" hint-placeholder-count="4">
+<li><span class="tm"><span style="font-size: 14px; font-weight: 600">{{ h.day }}</span><span class="note" style="font-size: 12px">{{ h.time }}</span></span><span class="rl" aria-hidden="true"><span class="ln" style="display: {{ h.line }}"></span><span class="mk2" style="background: {{ h.dot }}"></span></span><span class="tx"><span>{{ h.text }}</span><span class="note" style="font-size: 12px">{{ h.by }}</span></span></li>
+</sc-for>
+</ol>
+</aside>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["jasny","ciemny"],"default":"jasny","section":"Wygląd"},"rola":{"editor":"enum","options":["KP PSP","KW PSP","KG PSP"],"default":"KP PSP","section":"Widok"},"$preview":{"width":1440,"height":1600}}'>
+// Wniosek o (ponowne) włączenie do KSRG: porozumienie i karta (KP, wysyłka do KW) → wniosek KW do KG → decyzja KG → akt.
+// Dwa terminy włączeń: 30 kwietnia albo 31 grudnia wskazanego roku.
+// Kreator KP: kroki po lewej (pełny kwadrat = komplet danych), jedna sekcja naraz, Wstecz / Dalej, w podsumowaniu braki z przejściem do kroku.
+const STEPS = ['Porozumienie i karta', 'Wniosek do KG', 'Decyzja', 'Akt KSRG'];
+// Wyłączenie: ten sam obieg KP → KW → KG, bez porozumienia, bez wzorów dokumentów i bez aktu.
+const EXCLUDE_STEPS = ['Wniosek o wyłączenie', 'Wniosek do KG', 'Decyzja'];
+const WZ = [['a', 'Typ i termin'], ['b', 'Strony porozumienia'], ['c', 'Zakres'], ['d', 'Podpisanie'], ['e', 'Podsumowanie']];
+// Pełny katalog z sekcji „Ratownictwo specjalistyczne” karty; przy ponownym włączeniu zaznaczone jak na karcie.
+const DOMAINS = ['Ratownictwo medyczne', 'Ratownictwo techniczne', 'Działania poszukiwawczo-ratownicze', 'Ratownictwo wodne', 'Ratownictwo wysokościowe', 'Ratownictwo chemiczno-ekologiczne'];
+const SAR = 2;
+const CARD_DOMAINS = { 0: true, 1: true, 2: true, 3: true, 4: false, 5: false };
+const CARD_SAR_SPEC = false;
+// Z karty jednostki: wymagania minimalne (dane przykładowe jak na karcie). Tylko ostrzegają, niczego nie blokują.
+const MINIMA = [['Strażacy ratownicy', 32, 12], ['Szkolenie podstawowe', 30, 12], ['Naczelnicy OSP', 1, 2], ['Kierujący działaniem ratowniczym', 6, 3], ['Kwalifikowana pierwsza pomoc', 22, 8], ['Współdziałanie z LPR', 12, 4], ['Kierowcy z zezwoleniem (do 65 lat)', 14, 4], ['Kierowcy kat. C (pojazd pow. 3,5 t)', 10, 4], ['Kierowcy-konserwatorzy', 14, 2], ['Aparaty powietrzne', 8, 4], ['Radiotelefony noszone', 8, 4], ['Latarki ATEX', 6, 6]];
+const MONTHS = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+
+class Component extends DCLogic {
+  state = {
+    step: 0, wz: 'a', sent: false,
+    f: {
+      kind: 'renew', term: '1231', year: '2027',
+      kpName: 'KP PSP w Płońsku', kpChief: 'bryg. Piotr Lewandowski', kpAddr: 'ul. Sienkiewicza 1, 09-100 Płońsk',
+      organ: 'Wójt Gminy', orgPower: '', orgUnit: '', mayor: '', gmAddr: 'ul. Warszawska 9, 09-130 Baboszewo',
+      ospName: 'Ochotnicza Straż Pożarna w Nowej Wsi', krs: '0000123456', ospAddr: 'ul. Strażacka 5, 09-130 Nowa Wieś',
+      rep1: 'Marek Zieliński – prezes', rep2: 'Ewa Dąbrowska – skarbnik',
+      area: '', alarm: 'SMS do strażaków ratowników', signDate: '', signPlace: 'Płońsk',
+      confKp: 'st. kpt. Adam Duda – KP PSP Płońsk, 14.10.2026',
+      confOsp: 'dh Marek Zieliński – prezes OSP Nowa Wieś, 14.10.2026',
+      kwSign: '', kwDate: '', kwChief: 'nadbryg. — Komendant Wojewódzki PSP', decNo: 'I/…', decDate: '', decFrom: '2027-01-01', exFrom: '', exReason: ''
+    },
+    domains: Object.assign({}, CARD_DOMAINS), sarSpec: false, files: {}
+  };
+
+  renderVals() {
+    const s = this.state;
+    const f = s.f;
+    const role = this.props.rola ?? 'KP PSP';
+    const setF = (k) => (e) => this.setState({ f: Object.assign({}, f, { [k]: e.target.value }) });
+    const pickF = (k, v) => () => this.setState({ f: Object.assign({}, f, { [k]: v }) });
+    const on = Object.fromEntries(Object.keys(f).map((k) => [k, setF(k)]));
+    const goWz = (k) => () => this.setState({ step: 0, wz: k });
+    const exclude = f.kind === 'exclude';
+    const steps = exclude ? EXCLUDE_STEPS : STEPS;
+    const fmtDate = (iso) => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ''); return m ? +m[3] + ' ' + MONTHS[+m[2] - 1] + ' ' + m[1] + ' r.' : '—'; };
+    const termLabel = (f.term === '0430' ? '30 kwietnia ' : '31 grudnia ') + (f.year || '—') + ' r.';
+    // Organ: wójt, burmistrz, prezydent w wariantach z porozumień (także zastępca) albo „inne” – władza i jednostka wpisane ręcznie.
+    const organOther = f.organ === 'inne';
+    const organName = organOther ? [f.orgPower, f.orgUnit].filter(Boolean).join(' ') : f.organ;
+    const organLabel = (organName || '—') + (f.mayor ? ' ' + f.mayor : '');
+    // Niespełnione wymagania na górze (jak na karcie), spełnione pod nimi w dotychczasowej kolejności.
+    const minima = MINIMA.filter(([, value, min]) => value < min).concat(MINIMA.filter(([, value, min]) => value >= min))
+      .map(([label, value, min]) => ({ label, value, min, ok: value >= min, dot: value >= min ? 'transparent' : 'var(--fg)', weight: value >= min ? 400 : 700 }));
+
+    // Braki blokujące przekazanie: każdy wskazuje krok kreatora, w którym się go uzupełnia.
+    const wzName = Object.fromEntries(WZ);
+    const need = (cond, label, k) => (cond ? [{ label, k, where: wzName[k], go: goWz(k) }] : []);
+    const todo = exclude
+      ? [].concat(need(!f.exFrom, 'Data wyłączenia', 'a'), need(!f.exReason.trim(), 'Przyczyna wyłączenia', 'a'))
+      : [].concat(need(organOther && !(f.orgPower && f.orgUnit), 'Władza i jednostka organu', 'b'), need(!f.mayor, 'Imię i nazwisko organu gminy', 'b'),
+        need(!f.signDate, 'Data podpisania porozumienia', 'd'));
+    const wzDone = (k) => !todo.some((t) => t.k === k);
+    const keys = WZ.map(([k]) => k).filter((k) => !exclude || k === 'a' || k === 'e');
+    const wzKey = keys.includes(s.wz) ? s.wz : 'a';
+    const wzIdx = keys.indexOf(wzKey);
+
+    const current = s.sent ? 1 : 0;
+    const view = {};
+    STEPS.forEach((_, i) => { view['s' + (i + 1)] = s.step === i && i < steps.length; });
+
+    // Dokumentacja etapu: dokument wygenerowany ze wzoru (na żądanie, bez przechowywania) i załączony skan podpisanego egzemplarza.
+    // Wyłączenie nie ma wzorów – tylko załączniki. W kreatorze dokumenty są w podsumowaniu.
+    const DOCS = exclude
+      ? [['exr', 'Wniosek o wyłączenie', 0], ['kw', 'Wniosek KW do KG PSP', 1], ['dec', 'Decyzja KG PSP', 2]].map(([k, l, st]) => [k, l, st, null, false])
+      : [['agr', 'Porozumienie trójstronne', 0, 'DOCX', todo.length > 0], ['card', 'Karta jednostki (zał. 1)', 0, 'DOCX', false], ['kw', 'Wniosek KW do KG PSP', 1, 'DOCX', false],
+        ['dec', 'Decyzja KG PSP', 2, 'DOCX', false], ['act', 'Akt KSRG', 3, 'PDF', false]];
+    const stepDocs = DOCS.filter(([, , st]) => st === s.step).map(([k, label, , format, genOff]) => {
+      const file = s.files[k];
+      return { label, gen: !!format, format: format || '', genOff, has: !!file, file: file || '', dot: file ? 'var(--fg)' : 'transparent',
+        attachLabel: file ? 'Zmień skan' : 'Załącz skan',
+        attach: () => this.setState({ files: Object.assign({}, s.files, { [k]: label.replace(/[^\p{L}\d]+/gu, '_') + '_podpisany.pdf' }) }) };
+    });
+
+    // Zakres różny od karty to zmiana karty jednostki: wchodzi na kartę (z historią i powodem „wniosek KSRG”) przy przekazaniu do KW.
+    const decl = (v) => (v ? 'Tak' : 'Nie');
+    const sarSpecNow = !!s.domains[SAR] && s.sarSpec;
+    const cardChanges = exclude ? [] : DOMAINS.flatMap((label, i) => (!!s.domains[i] !== CARD_DOMAINS[i] ? [{ label, from: decl(CARD_DOMAINS[i]), to: decl(!!s.domains[i]) }] : []))
+      .concat(sarSpecNow !== CARD_SAR_SPEC ? [{ label: DOMAINS[SAR] + ' – specjalistyczne', from: CARD_SAR_SPEC ? 'Tak' : 'Nie', to: sarSpecNow ? 'Tak' : 'Nie' }] : []);
+    // Oś czasu jak „Przebieg w czasie” w panelu zdarzenia: data i godzina, znacznik, co i kto; najnowszy wpis u góry, pełny znacznik.
+    const log = [
+      { day: '20.10.2026', time: '09:12', by: 'A. Nowak · KP PSP Płońsk', text: exclude ? 'Rozpoczęto wniosek o wyłączenie' : 'Rozpoczęto wniosek o ponowne włączenie' }
+    ].concat(exclude ? [] : [
+      { day: '22.10.2026', time: '13:40', by: 'st. kpt. A. Duda · KP PSP Płońsk', text: 'Potwierdzono zgodność karty jednostki z SWD-PSP' },
+      { day: '28.10.2026', time: '10:05', by: 'A. Nowak · KP PSP Płońsk', text: 'Uzupełniono strony i zakres porozumienia' }
+    ]).concat(s.sent ? [{ day: '03.11.2026', time: '11:20', by: 'A. Nowak · KP PSP Płońsk', text: 'Przekazano do KW PSP Warszawa' }] : [])
+      .concat(s.sent && cardChanges.length ? [{ day: '03.11.2026', time: '11:20', by: 'A. Nowak · KP PSP Płońsk', text: 'Zaktualizowano kartę jednostki: ' + cardChanges.map((c) => c.label + ' ' + c.from + ' → ' + c.to).join(', ') }] : []).reverse()
+      .map((h, i, all) => Object.assign({}, h, { dot: i === 0 ? 'var(--fg)' : 'var(--bg)', line: i < all.length - 1 ? 'block' : 'none' }));
+
+    // Stopka: w kreatorze Wstecz / Dalej, na końcu kreatora przekazanie do KW; w kolejnych etapach czynność danego poziomu.
+    const send = () => this.setState({ sent: true, step: 1 });
+    const inWizard = s.step === 0;
+    const last = wzIdx === keys.length - 1;
+    const stepAction = [null, ['Wyślij do KG PSP', role !== 'KW PSP' || !s.sent], [exclude ? 'Wydaj decyzję o wyłączeniu' : 'Wydaj decyzję', role !== 'KG PSP'], null][s.step];
+    const nav = inWizard
+      ? { hasBack: wzIdx > 0, backLabel: wzIdx > 0 ? WZ.find(([k]) => k === keys[wzIdx - 1])[1] : '', back: () => this.setState({ wz: keys[Math.max(0, wzIdx - 1)] }),
+          label: last ? 'Przekaż do KW PSP' : 'Dalej: ' + WZ.find(([k]) => k === keys[wzIdx + 1])[1], off: last && (role !== 'KP PSP' || s.sent || todo.length > 0),
+          go: last ? send : () => this.setState({ wz: keys[wzIdx + 1] }) }
+      : { hasBack: false, backLabel: '', back: () => {}, label: stepAction ? stepAction[0] : '', off: stepAction ? stepAction[1] : true, go: () => {} };
+    nav.show = inWizard || !!stepAction;
+
+    return {
+      themeClass: (this.props.theme ?? 'jasny') === 'ciemny' ? 'dark' : '',
+      head: {
+        eyebrow: 'Wniosek KSRG · OSP Nowa Wieś',
+        title: exclude ? 'Wyłączenie z KSRG' : f.kind === 'renew' ? 'Ponowne włączenie do KSRG' : 'Włączenie do KSRG',
+        status: s.sent ? 'W KW PSP' : 'W przygotowaniu'
+      },
+      layout: inWizard ? { cls: 'w3', cols: '220px minmax(0, 1fr) 300px' } : { cls: 'w2', cols: 'minmax(0, 1fr) 300px' },
+      stepCols: steps.length, include: !exclude, exclude, exFromLabel: fmtDate(f.exFrom), exReasonLabel: f.exReason.trim() || '—',
+      steps: steps.map((label, i) => ({ no: i + 1, label, current: s.step === i ? 'step' : 'false',
+        cls: i < current ? 'done' : i === current ? '' : 'todo', pick: () => this.setState({ step: i }) })),
+      view,
+      wz: keys.map((k) => ({ label: wzName[k], current: wzKey === k ? 'step' : 'false', dot: k === 'e' ? (todo.length ? '' : 'ok') : wzDone(k) ? 'ok' : '', pick: () => this.setState({ wz: k }) })),
+      wzv: Object.fromEntries(WZ.map(([k]) => [k, wzKey === k])),
+      wzTitle: wzName[wzKey],
+      f, on, termLabel, organLabel, organOther,
+      kinds: [['new', 'Włączenie'], ['renew', 'Ponowne włączenie'], ['exclude', 'Wyłączenie']].map(([k, label]) => ({ label, on: f.kind === k,
+        pick: () => this.setState({ f: Object.assign({}, f, { kind: k }), step: Math.min(s.step, (k === 'exclude' ? EXCLUDE_STEPS : STEPS).length - 1) }) })),
+      terms: [['0430', '30 kwietnia'], ['1231', '31 grudnia']].map(([k, label]) => ({ label, on: f.term === k, pick: pickF('term', k) })),
+      cardChanges, hasCardChanges: cardChanges.length > 0,
+      domains: DOMAINS.map((label, i) => ({ label, on: !!s.domains[i], changed: !!s.domains[i] !== CARD_DOMAINS[i], sar: i === SAR, specOn: i === SAR && sarSpecNow, specChanged: i === SAR && sarSpecNow !== CARD_SAR_SPEC,
+        specOff: !s.domains[i], specCls: s.domains[i] ? 'ck' : 'ck off',
+        toggle: () => this.setState({ domains: Object.assign({}, s.domains, { [i]: !s.domains[i] }), sarSpec: i === SAR && s.domains[i] ? false : s.sarSpec }),
+        toggleSpec: () => this.setState({ sarSpec: !s.sarSpec }) })),
+      minima, todo, hasTodo: todo.length > 0,
+      showDocs: stepDocs.length > 0 && (!inWizard || wzKey === 'e'),
+      nav, actFrom: fmtDate(f.decFrom),
+      stepDocs, log
+    };
+  }
+}
+</script>
+</body>
+</html>

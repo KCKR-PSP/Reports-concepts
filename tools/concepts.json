@@ -1,0 +1,30 @@
+{
+  "concepts": [
+    {
+      "id": "osp-ksrg",
+      "title": "Karta jednostki OSP KSRG",
+      "description": "Karta jednej OSP z danymi z SWD-PSP poprawianymi przez KP, wymaganiami minimalnymi, IGO i wyjazdowością oraz kreator wniosku o włączenie, ponowne włączenie albo wyłączenie z KSRG z obiegiem KP → KW → KG.",
+      "boards": [
+        {
+          "source": "Main.dc.html",
+          "page": "karta.html",
+          "title": "Karta jednostki",
+          "controls": [
+            "theme",
+            "stan",
+            "zagrozenie"
+          ]
+        },
+        {
+          "source": "Wnioski.dc.html",
+          "page": "wnioski.html",
+          "title": "Wnioski KSRG",
+          "controls": [
+            "theme",
+            "rola"
+          ]
+        }
+      ]
+    }
+  ]
+}
