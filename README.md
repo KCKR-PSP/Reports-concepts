@@ -12,13 +12,13 @@ z SWD-PSP.
 | Koncepcja | Strony |
 |---|---|
 | Inspekcje gotowości operacyjnej | `igo/index.html` (pulpit), dalej zestawienie, plan, kreator inspekcji JRG krok po kroku (stoper, automatyczna ocena), szkice i dokumenty, reguły oceny, baza pytań, test na telefonie, powiadomienia, e-dokumenty (upoważnienie, protokół, wystąpienie poinspekcyjne) i widok podmiotu inspekcjonowanego |
-| Karta jednostki OSP KSRG | `osp-ksrg/karta.html` (karta jednostki), `osp-ksrg/wnioski.html` (kreator i obieg wniosku KSRG) |
+| Karta jednostki OSP i wnioski KSRG | `osp-ksrg/` (Planowanie operacyjne z kaflem „Wnioski KSRG” w „Wymaga reakcji”), `osp-ksrg/jednostki.html` (lista jednostek w powiecie), `osp-ksrg/wnioski-ksrg.html` (kolejka wniosków KP/KW/KG), `osp-ksrg/karta.html` (karta jednostki), `osp-ksrg/wnioski.html` (kreator i obieg wniosku) |
 | Działania międzynarodowe | `dzialania-miedzynarodowe/index.html`: wybór poziomu (KG PSP, KW PSP Poznań, KP PSP Chodzież, członek modułu), dalej moduły GFFF, GFFFV, USAR, DSIM i HCP klikalne jak w aplikacji; poziom zmienia pasek „Widok”. Dokumenty wyjazdu (XLSX, PDF) w `dzialania-miedzynarodowe/dokumenty/`. Stary adres `grupy-miedzynarodowe/` przekierowuje |
 
 Na górze każdej strony jest pasek koncepcji z przełącznikami:
 - motyw (jasny, ciemny);
 - na karcie: stan danych i stopień zagrożenia gminy;
-- na wnioskach: widok KP, KW albo KG PSP, który odblokowuje czynności danego poziomu.
+- w Planowaniu operacyjnym, kolejce i wnioskach: widok KP, KW albo KG PSP (licznik „Wymaga reakcji”, zakres kolejki, czynności danego poziomu).
 
 ## Struktura
 

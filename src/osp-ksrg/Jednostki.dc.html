@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Jednostki ochrony przeciwpożarowej</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fx{--bg:#ebeef0;--fg:#1c2427;--mut:#535f65;--line:#d3dadd;--soft:#e1e6e9;--cell:#f6f8f9;--warn:#e2b53e;--alert:#b42318;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;font-size:15px;line-height:1.45;color:var(--fg);background:var(--bg)}
+.fx.dark{--bg:#121518;--fg:#e6ecee;--mut:#a9b3b8;--line:#363d43;--soft:#22282c;--cell:#191d20}
+:where(.fx) button{font:inherit;color:inherit}
+.fx a{color:var(--fg);text-decoration:none}
+.fx button:focus-visible,.fx a:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.crumb{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-left:-12px;padding:0 12px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.eyebrow{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.note{margin:0;font-size:13px;color:var(--mut)}
+.sec{margin:0;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:32px}
+.kpi{padding:16px 0 24px;border-top:1px solid var(--line)}
+.kpi .v{margin:10px 0 0;font-size:40px;line-height:1;font-weight:600;font-variant-numeric:tabular-nums}
+.tabs{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tab{background:none;border:0;border-bottom:2px solid transparent;margin:0 28px -1px 0;padding:12px 0;cursor:pointer;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.tab[aria-pressed="true"]{color:var(--fg);border-bottom-color:var(--fg)}
+.grid{display:flex;flex-direction:column;font-size:14px}
+.gr{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 90px minmax(0,1fr) 110px minmax(0,1.4fr);column-gap:16px;align-items:center;min-height:52px;padding:0 8px;margin:0 -8px;border-bottom:1px solid var(--line)}
+.gr > span{display:flex;align-items:center;gap:8px;min-width:0}
+.gh{min-height:40px;border-bottom-color:var(--fg);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+a.gr.link:hover{background:var(--soft)}
+a.gr:not(.link){cursor:default}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.cd{flex:none;display:inline-flex;align-items:center;padding:3px 7px;border:1px solid var(--fg);font-size:12px;line-height:1.2;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cd.warn{background:var(--warn);border-color:var(--warn);color:#1c2427}
+.cd.alert{background:var(--alert);border-color:var(--alert);color:#fff}
+.ktag{display:inline-block;padding:4px 8px;font-size:11px;line-height:1;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--fg)}
+.ktag.solid{background:var(--fg);color:var(--bg)}
+.bad{color:var(--alert);font-weight:700}
+.mk{display:inline-block;width:10px;height:10px;box-sizing:border-box;border:1.5px solid var(--fg);flex:none}
+.mk.red{background:var(--alert);border-color:var(--alert)}
+@media (max-width: 900px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.hide-s{display:none !important}.gr{grid-template-columns:minmax(0,1.3fr) 70px minmax(0,1.2fr) 90px}}
+</style>
+</helmet>
+<div class="fx {{ themeClass }}" style="min-height: 100%">
+<div style="max-width: 1360px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px">
+
+<a class="crumb" href="Planowanie.dc.html"><svg width="32" height="12" viewBox="0 0 32 12" aria-hidden="true"><path d="M32 6H2M7 1L2 6l5 5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg>Planowanie operacyjne</a>
+
+<header>
+<h1 style="margin: 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em">Jednostki ochrony przeciwpożarowej</h1>
+<p style="margin: 8px 0 0; font-size: 14px; color: var(--mut)">powiat płoński</p>
+</header>
+
+<section class="kpis" aria-label="Jednostki w powiecie">
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="4">
+<div class="kpi"><p class="eyebrow">{{ k.label }}</p><p class="v">{{ k.value }}</p></div>
+</sc-for>
+</section>
+
+<section aria-labelledby="units-h" style="display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px">
+<h2 id="units-h" class="sec">Jednostki w powiecie</h2>
+<a href="WnioskiLista.dc.html" style="font-size: 13px; text-decoration: underline; text-underline-offset: 4px">Wnioski KSRG w powiecie</a>
+</div>
+<nav class="tabs" aria-label="Filtr jednostek">
+<sc-for list="{{ filters }}" as="t" hint-placeholder-count="4"><button type="button" class="tab" aria-pressed="{{ t.on }}" onClick="{{ t.pick }}">{{ t.label }}</button></sc-for>
+</nav>
+<div class="grid" role="table" aria-label="Jednostki w powiecie">
+<div class="gr gh" role="row"><span role="columnheader">Jednostka</span><span class="hide-s" role="columnheader">Gmina</span><span role="columnheader">KSRG</span><span role="columnheader">Włączenie do</span><span role="columnheader">Wymagania</span><span class="hide-s" role="columnheader">Wniosek</span></div>
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+<a class="gr {{ r.cls }}" role="row" href="{{ r.href }}">
+<span role="cell" style="font-weight: 600">{{ r.name }}</span>
+<span class="hide-s" role="cell">{{ r.gmina }}</span>
+<span role="cell"><span class="ktag {{ r.ksrgCls }}">{{ r.ksrg }}</span></span>
+<span class="num" role="cell">{{ r.until }}<sc-if value="{{ r.hasCd }}" hint-placeholder-val="{{ false }}"><span class="cd {{ r.cdCls }}">{{ r.cd }}</span></sc-if></span>
+<span class="{{ r.reqCls }}" role="cell">{{ r.req }}</span>
+<span class="hide-s" role="cell"><sc-if value="{{ r.appRed }}" hint-placeholder-val="{{ false }}"><span class="mk red" aria-hidden="true"></span></sc-if>{{ r.app }}</span>
+</a>
+</sc-for>
+</div>
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}"><p class="note">Brak jednostek dla tego filtra.</p></sc-if>
+</section>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"theme":{"editor":"enum","options":["jasny","ciemny"],"default":"jasny","section":"Wygląd"},"$preview":{"width":1440,"height":1300}}'>
+// Pulpit „Jednostki ochrony przeciwpożarowej” po wybraniu powiatu (dziś: oś czasu, KPI, mapa, tabela gmin – bez zmian).
+// Zmiana jest w liście „Jednostki w powiecie”: OSP otwiera kartę jednostki, kolumny KSRG pokazują koniec włączenia
+// (odliczanie: < 6 mies. pomarańczowe, < 1 mies. czerwone), braki wymagań minimalnych i stan wniosku KSRG.
+const TODAY = Date.UTC(2026, 10, 3);
+const UNITS = [
+  ['JRG Płońsk', 'Płońsk', 'jrg', null, 0, null],
+  ['OSP Nowa Wieś', 'Baboszewo', 'ksrg', '2026-12-31', 1, ['Ponowne włączenie · u KP', false]],
+  ['OSP Stara Wieś', 'Płońsk', 'ksrg', '2026-12-31', 0, null],
+  ['OSP Wola', 'Sochocin', 'ksrg', '2026-12-31', 0, ['Ponowne włączenie · w KW PSP', false]],
+  ['OSP Zalesie', 'Załuski', 'ksrg', '2027-04-30', 0, null],
+  ['OSP Dąbrowa', 'Joniec', 'out', null, 2, ['Włączenie · zwrócony do KP', true]],
+  ['OSP Borowe', 'Dzierzążnia', 'ksrg', '2028-12-31', 1, null],
+  ['OSP Górki', 'Naruszewo', 'ksrg', '2029-12-31', 0, null],
+  ['OSP Kępa', 'Czerwińsk nad Wisłą', 'ksrg', '2031-12-31', 0, null],
+  ['OSP Lipa', 'Raciąż', 'out', null, 0, null],
+  ['OSP Brzozowo', 'Nowe Miasto', 'out', null, 0, null]
+];
+const FILTERS = [['all', 'Wszystkie'], ['ending', 'Kończy się włączenie'], ['req', 'Braki wymagań'], ['app', 'Z wnioskiem']];
+const plural = (n, one, few, many) => (n === 1 ? one : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? few : many);
+
+class Component extends DCLogic {
+  state = { filter: 'all' };
+
+  renderVals() {
+    const s = this.state;
+    const units = UNITS.map(([name, gmina, kind, until, req, app]) => {
+      const left = until ? Math.round((Date.UTC(+until.slice(0, 4), +until.slice(5, 7) - 1, +until.slice(8, 10)) - TODAY) / 86400000) : null;
+      return { name, gmina, kind, until, req, app, left, ending: left !== null && left < 183 };
+    });
+    const pass = (u) => s.filter === 'all' || (s.filter === 'ending' && u.ending) || (s.filter === 'req' && u.req > 0) || (s.filter === 'app' && !!u.app);
+    const rows = units.filter(pass).map((u) => ({
+      name: u.name, gmina: u.gmina, href: u.kind === 'jrg' ? 'Jednostki.dc.html' : 'Main.dc.html', cls: u.kind === 'jrg' ? '' : 'link',
+      ksrg: u.kind === 'out' ? 'Poza' : 'KSRG', ksrgCls: u.kind === 'out' ? '' : 'solid',
+      until: u.until ? u.until.slice(8, 10) + '.' + u.until.slice(5, 7) + '.' + u.until.slice(0, 4) : '—',
+      hasCd: u.ending, cd: u.left + ' ' + plural(u.left, 'dzień', 'dni', 'dni'), cdCls: u.left < 30 ? 'alert' : 'warn',
+      req: u.kind === 'jrg' ? '—' : u.req ? u.req + ' ' + plural(u.req, 'brak', 'braki', 'braków') : 'Spełnione', reqCls: u.req ? 'bad' : '',
+      app: u.app ? u.app[0] : '—', appRed: !!(u.app && u.app[1])
+    }));
+    const osp = units.filter((u) => u.kind !== 'jrg');
+    return {
+      themeClass: (this.props.theme ?? 'jasny') === 'ciemny' ? 'dark' : '',
+      kpis: [
+        { label: 'Jednostki', value: units.length },
+        { label: 'JRG', value: units.filter((u) => u.kind === 'jrg').length },
+        { label: 'OSP w KSRG', value: osp.filter((u) => u.kind === 'ksrg').length },
+        { label: 'OSP poza KSRG', value: osp.filter((u) => u.kind === 'out').length }
+      ],
+      filters: FILTERS.map(([k, label]) => ({ label, on: s.filter === k, pick: () => this.setState({ filter: k }) })),
+      rows, empty: rows.length === 0
+    };
+  }
+}
+</script>
+</body>
+</html>
