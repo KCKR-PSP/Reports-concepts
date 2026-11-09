@@ -68,25 +68,143 @@ a{color:inherit;text-decoration:none}
 <a class="pi" href="Uzytkownicy.dc.html" aria-label="Użytkownicy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></a>
 <span class="pi" aria-label="Panel administracyjny"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
 <a class="pi" href="Konto.dc.html" aria-label="Konto"><span style="width:32px;height:32px;border-radius:8px;background:#d3dadd;color:#1c2427;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">KG</span></a>
-</nav><div class="main"><div class="wrap">
+</nav><div class="main"><style>
+.ob-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}
+.ob-sec{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 10px;border-bottom:1px solid #1c2427}
+.ob-row{display:grid;grid-template-columns:40px minmax(0,1.3fr) 70px minmax(0,1fr) minmax(0,1fr) minmax(0,.9fr);gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgb(28 36 39/.1);font-size:14px}
+.ob-drop{min-height:40px;box-sizing:border-box;border:1px dashed #b4bec3;display:flex;align-items:center;gap:8px;padding:0 10px;font-size:13px;color:#8a959a}
+.ob-drop.full{border:1px solid #1c2427;background:#fff;color:#1c2427}
+.ob-drop.warn{border-color:#b3261e}
+.ob-x{margin-left:auto;cursor:pointer;color:#535f65;font-size:16px;line-height:1}
+.ob-cand{display:flex;flex-direction:column;gap:2px;padding:10px 12px;background:#fff;border:1px solid #d3dadd;cursor:grab;font-size:13px}
+.ob-cand:hover{border-color:#1c2427}
+.ob-cand.used{opacity:.35}
+</style>
+<div class="wrap">
 <header style="display:flex;flex-direction:column;gap:28px">
 <h1 style="margin:0;font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.01em">Grupy międzynarodowe</h1>
 <nav class="optabs"><a class="optab" href="Pulpit.dc.html">Pulpit</a><a class="optab" href="Sprzet.dc.html">Sprzęt</a><a class="optab" href="Psy.dc.html">Psy</a><a class="optab on" href="Dyzury.dc.html">Dyżury</a><a class="optab" href="Wyjazdy.dc.html">Wyjazdy</a><a class="optab" href="Ustawienia.dc.html">Ustawienia</a></nav>
 </header>
-<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid #d3dadd;margin-top:-12px"><nav style="display:flex;flex-wrap:wrap"><a class="cz-tab" href="Dyzury.dc.html">GFFF</a><a class="cz-tab on" href="Dyzury.dc.html">GFFFV</a><a class="cz-tab" href="Dyzury.dc.html">USAR</a><a class="cz-tab" href="Dyzury.dc.html">DSIM</a><a class="cz-tab" href="Dyzury.dc.html">HCP</a></nav><div style="display:flex;gap:8px;padding-bottom:8px"><span style="display:flex;gap:16px" class="ghost"><span>Wcześniej</span><span>Od bieżącego</span><span>Później</span></span></div></div>
-<div class="guide"><span><p class="eyebrow">Następny krok · 2 z 3</p><span style="font-size:17px;font-weight:500">Obsadź 10 wolnych stanowisk, potem potwierdź dyżur</span></span><a class="pillp" href="Dyzury-obsada.dc.html">Obsadź</a></div>
-<div style="display:flex;gap:10px;align-items:center"><span class="inp" style="width:240px">Jednostka</span><span class="inp" style="width:170px">Miesiąc</span><span class="pillb">Zaplanuj jednostkę</span></div>
-<div style="display:grid;grid-template-columns:170px repeat(6,minmax(0,1fr));gap:6px;font-size:13px"><span class="gh">Jednostka</span><span class="gh">lis 2026</span><span class="gh">gru 2026</span><span class="gh">sty 2027</span><span class="gh">lut 2027</span><span class="gh">mar 2027</span><span class="gh">kwi 2027</span><span style="padding:12px 0;font-size:14px">KW PSP Poznań</span><a href="Dyzury-komorka.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:#1c2427;color:#fff;border-color:#1c2427;outline:2px solid #1c2427;outline-offset:2px">potwierdzony · 40 os.<span class="dot"></span></a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">zaplanowany · 40 os.<span class="dot"></span></a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><span style="padding:12px 0;font-size:14px">KW [woj. 5]</span><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:#1c2427;color:#fff;border-color:#1c2427">potwierdzony · 40 os.</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><span style="padding:12px 0;font-size:14px">KW [woj. 6]</span><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">zaplanowany · 40 os.</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><span style="padding:12px 0;font-size:14px">KW [woj. 7]</span><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">zaplanowany · 40 os.</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a><a href="Dyzury.dc.html" style="border:1px solid #d3dadd;padding:9px 10px;min-height:42px;box-sizing:border-box;background:rgb(255 255 255/.55)">—</a></div>
-<section style="background:rgb(255 255 255/.72);padding:24px 28px;display:flex;flex-direction:column;gap:20px">
-<div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-weight:600;font-size:16px">KW PSP Poznań · listopad 2026</b><a class="ghost" href="Dyzury.dc.html">Zamknij</a></div>
-<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;font-size:14px"><label style="display:flex;flex-direction:column;gap:6px">Plan dyżuru<span class="inp">zaplanowany</span></label><label style="display:flex;flex-direction:column;gap:6px">Odpowiedź jednostki<span class="inp" style="color:#1c2427">potwierdzony</span></label><label style="display:flex;flex-direction:column;gap:6px">Komentarz jednostki<span class="inp"></span></label></div>
-<div><div style="display:flex;justify-content:space-between;font-size:14px;padding-bottom:8px"><b style="font-weight:600">Obsada · 30 z 40</b><a href="Dyzury-kontrola.dc.html" style="text-decoration:underline">Kontrola gotowości: 2 błędy</a></div><a class="row" href="Dyzury-obsada.dc.html"><b style="font-weight:600">Zespół dowodzenia<span class=dot></span></b><span style="color:#6b777c">zmiana II 3 z 5</span><span class="ghost" style="text-align:right">Obsadź</span></a><a class="row" href="Dyzury-obsada.dc.html"><b style="font-weight:600">Zespół logistyczny</b><span style="color:#6b777c">komplet</span><span class="ghost" style="text-align:right">Obsadź</span></a><a class="row" href="Dyzury-obsada.dc.html"><b style="font-weight:600">Pluton A</b><span style="color:#6b777c">komplet</span><span class="ghost" style="text-align:right">Obsadź</span></a><a class="row" href="Dyzury-obsada.dc.html"><b style="font-weight:600">Pluton B<span class=dot></span></b><span style="color:#6b777c">zmiana I 6 z 8 · zmiana II 1 z 8</span><span class="ghost" style="text-align:right">Obsadź</span></a><a class="row" href="Dyzury-obsada.dc.html"><b style="font-weight:600">Rezerwa</b><span style="color:#6b777c">komplet</span><span class="ghost" style="text-align:right">Obsadź</span></a></div>
-<span style="display:flex;gap:8px"><span class="pillp">Potwierdź</span><span class="pillb">Niedostępna</span></span>
-</section>
-</div></div><div class="scrim"></div><aside class="drawer"><div style="display:flex;justify-content:space-between;gap:16px"><div><p class="eyebrow">Obsada sekcji</p><h2 style="margin:6px 0 0;font-size:24px;font-weight:600">Pluton B</h2><p style="margin:8px 0 0;font-size:14px;color:#535f65">listopad 2026 · KW PSP Poznań</p></div><a class="cz-nav" href="Dyzury-komorka.dc.html" aria-label="Zamknij"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M1 1l12 12M13 1L1 13" style="fill:none;stroke:#1c2427;stroke-width:1.5px"></path></svg></a></div><dl class="cz-dl"><div><dt>Zmiana I</dt><dd style="">6 z 8</dd></div><div><dt>Zmiana II</dt><dd style="color:#b3261e">1 z 8</dd></div></dl><section><div style="border-bottom:1px solid #d3dadd"><span class="cz-tab">Zmiana I</span><span class="cz-tab on">Zmiana II</span></div><div class="srow"><span style="color:#535f65;font-variant-numeric:tabular-nums">61</span><span><span style="font-weight:500">Ratownik kierowca</span><span style="display:block;font-size:12.5px;color:#535f65">GCBA</span></span><a class="cz-outline" href="Dyzury-obsada.dc.html" style="min-height:32px;padding:5px 12px">Obsadź</a></div><div class="srow"><span style="color:#535f65;font-variant-numeric:tabular-nums">62</span><span><span style="font-weight:500">Dowódca zastępu</span></span><a class="cz-outline" href="Dyzury-obsada.dc.html" style="min-height:32px;padding:5px 12px">Obsadź</a></div><div class="srow"><span style="color:#535f65;font-variant-numeric:tabular-nums">63</span><span><span style="font-weight:500">Dowódca plutonu</span><span style="display:block;font-size:12.5px;color:#535f65">GCBA</span></span><a class="cz-outline" href="Dyzury-obsada.dc.html" style="min-height:32px;padding:5px 12px">Obsadź</a></div><div class="srow"><span style="color:#535f65;font-variant-numeric:tabular-nums">64</span><span><span style="font-weight:500">Ratownik</span></span><span>mł. asp. [osoba 13]</span></div><div class="srow"><span style="color:#535f65;font-variant-numeric:tabular-nums">65</span><span><span style="font-weight:500">Ratownik</span></span><a class="cz-outline" href="Dyzury-obsada.dc.html" style="min-height:32px;padding:5px 12px">Obsadź</a></div><div class="srow"><span style="color:#535f65;font-variant-numeric:tabular-nums">66</span><span><span style="font-weight:500">Ratownik</span></span><a class="cz-outline" href="Dyzury-obsada.dc.html" style="min-height:32px;padding:5px 12px">Obsadź</a></div></section><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="cz-outline" href="Dyzury-komorka.dc.html">Zapisz obsadę</a></div></aside></div>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:-8px">
+<div><a href="Dyzury-komorka.dc.html" style="font-size:13px;font-weight:500">← Dyżur KW PSP Poznań · listopad 2026</a><h2 style="margin:10px 0 0;font-size:24px;font-weight:600">Tabela gotowości GFFFV</h2></div>
+<div style="display:flex;gap:28px;font-size:14px"><span>Zmiana I <b>{{k.s1}}</b></span><span>Zmiana II <b>{{k.s2}}</b></span><span>Pojazdy <b>{{k.v}}</b></span></div>
+</div>
+<div class="ob-grid">
+<div>
+<div class="ob-row" style="font-size:12px;color:#6b777c;border-bottom:0;padding-bottom:0"><span>Nr</span><span>Funkcja</span><span>Typ</span><span>Zmiana I</span><span>Zmiana II</span><span>Pojazd</span></div>
+<sc-for list="{{sections}}" as="sec" hint-placeholder-count="4">
+<div class="ob-sec"><b style="font-weight:600;font-size:15px">{{sec.name}}</b><span style="font-size:13px;color:#535f65">{{sec.count}}</span></div>
+<sc-for list="{{sec.slots}}" as="s" hint-placeholder-count="4">
+<div class="ob-row">
+<span style="color:#535f65">{{s.nr}}</span><span>{{s.fn}}</span><span style="color:#535f65">{{s.type}}</span>
+<div class="{{s.c1}}" onDragOver="{{allow}}" onDrop="{{s.drop1}}" onClick="{{s.click1}}"><span>{{s.p1}}</span><sc-if value="{{s.has1}}"><span class="ob-x" onClick="{{s.clear1}}">×</span></sc-if></div>
+<div class="{{s.c2}}" onDragOver="{{allow}}" onDrop="{{s.drop2}}" onClick="{{s.click2}}"><span>{{s.p2}}</span><sc-if value="{{s.has2}}"><span class="ob-x" onClick="{{s.clear2}}">×</span></sc-if></div>
+<div class="{{s.cv}}" onDragOver="{{allow}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><span>{{s.pv}}</span><sc-if value="{{s.hasv}}"><span class="ob-x" onClick="{{s.clearv}}">×</span></sc-if></div>
+</div>
+<sc-if value="{{s.warn}}"><div style="padding:0 0 8px 50px;font-size:12px;color:#b3261e">{{s.warnText}}</div></sc-if>
+</sc-for>
+</sc-for>
+<div style="display:flex;gap:8px;padding-top:24px"><a class="pillp" href="Dyzury-komorka.dc.html">Zapisz obsadę</a><a class="pillb" href="Dyzury-komorka.dc.html">Anuluj</a></div>
+</div>
+<aside style="position:sticky;top:24px;display:flex;flex-direction:column;gap:14px;background:rgb(255 255 255/.6);padding:18px 18px 20px">
+<div style="display:flex;border-bottom:1px solid #d3dadd"><sc-for list="{{ctabs}}" as="t" hint-placeholder-count="2"><span class="{{t.cls}}" onClick="{{t.pick}}" style="cursor:pointer">{{t.label}}</span></sc-for></div>
+<span style="font-size:13px;color:#535f65">{{hint}}</span>
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<div style="display:flex;flex-direction:column;gap:6px"><span class="lbl">{{g.unit}}</span>
+<sc-for list="{{g.items}}" as="p" hint-placeholder-count="3"><div class="{{p.cls}}" draggable="true" onDragStart="{{p.start}}" onClick="{{p.pick}}"><b style="font-weight:600">{{p.name}}</b><span style="color:#535f65">{{p.sub}}</span></div></sc-for>
+</div>
+</sc-for>
+</aside>
+</div>
+</div>
+</div></div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1400}}'>
-class Component extends DCLogic { renderVals() { return {}; } }
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
+const SECTIONS = [
+ ['Zespół dowodzenia', [[1,'Dowódca grupy','SLOp'],[2,'Zastępca dowódcy grupy',''],[3,'Oficer łącznikowy','SLOp'],[4,'Info/media manager',''],[5,'Operator SDŁ, kierowca','SDŁ']]],
+ ['Zespół logistyczny', [[10,'Dowódca zespołu logistycznego','SLKw'],[11,'Kierowca ratownik','SCKn'],[12,'Kierowca ratownik','SCKw']]],
+ ['Pluton A', [[31,'Dowódca plutonu','GCBA'],[32,'Ratownik kierowca',''],[33,'Ratownik',''],[34,'Ratownik','']]],
+ ['Pluton B', [[61,'Ratownik kierowca','GCBA'],[62,'Dowódca zastępu',''],[63,'Dowódca plutonu, kierowca','GCBA'],[64,'Ratownik','']]]
+];
+const PEOPLE = [
+ ['p1','bryg. [osoba 01]','KW PSP Poznań','Dowódca grupy',true],['p2','st. kpt. [osoba 02]','KW PSP Poznań','Zastępca dowódcy grupy',true],
+ ['p3','kpt. [osoba 03]','KM PSP Poznań','Oficer łącznikowy',true],['p4','mł. kpt. [osoba 04]','KM PSP Poznań','Info/media manager',false],
+ ['p10','mł. kpt. [osoba 10]','KM PSP Poznań','Dowódca zespołu logistycznego',true],['p5','asp. [osoba 05]','KM PSP Poznań','Operator SDŁ, kierowca',true],
+ ['p6','asp. [osoba 06]','KP PSP Chodzież','Operator SDŁ, kierowca',true],['p7','st. ogn. [osoba 07]','KP PSP Chodzież','Kierowca ratownik',true],
+ ['p8','ogn. [osoba 08]','KP PSP Chodzież','Ratownik',false],['p9','mł. ogn. [osoba 09]','KP PSP Chodzież','Ratownik kierowca',true],
+ ['p11','st. sekc. [osoba 11]','KP PSP Czarnków','Kierowca ratownik',true],['p12','asp. [osoba 12]','KM PSP Piła','Dowódca plutonu',true],
+ ['p13','mł. asp. [osoba 13]','KM PSP Piła','Ratownik kierowca',true],['p14','st. str. [osoba 14]','KM PSP Leszno','Ratownik',false],
+ ['p15','kpt. [osoba 15]','KM PSP Konin','Dowódca plutonu',true]
+];
+const VEH = [['v1','SLOp · [nr op.]','KW PSP Poznań','SLOp'],['v2','SLOp · [nr op.]','KM PSP Poznań','SLOp'],['v3','SDŁ · [nr op.]','KP PSP Chodzież','SDŁ'],['v4','SLKw · [nr op.]','KM PSP Poznań','SLKw'],['v5','SCKn · [nr op.]','KP PSP Czarnków','SCKn'],['v6','SCKw · [nr op.]','KP PSP Chodzież','SCKw'],['v7','GCBA · [nr op.]','KM PSP Piła','GCBA'],['v8','GCBA · [nr op.]','KM PSP Konin','GCBA'],['v9','GCBA · [nr op.]','KM PSP Leszno','GCBA']];
+const byId = {};
+PEOPLE.forEach(p => { byId[p[0]] = {name: p[1], unit: p[2], fn: p[3], decl: p[4]}; });
+VEH.forEach(v => { byId[v[0]] = {name: v[1], unit: v[2], type: v[3]}; });
+class Component extends DCLogic {
+ constructor(props) {
+  super(props);
+  this.drag = null;
+  this.state = {tab: 'p', picked: null, a: {'1:1':'p1','1:2':'p2','2:1':'p2','3:1':'p3','5:1':'p6','5:2':'p5','10:1':'p10','11:1':'p11','12:1':'p7','31:1':'p12','32:1':'p13','33:1':'p8','61:1':'p9','1:v':'v1','3:v':'v2','5:v':'v3','10:v':'v4','11:v':'v5','12:v':'v6','31:v':'v7'}};
+ }
+ put(key, id) {
+  if (!id) return;
+  const isVeh = id.startsWith('v');
+  if (isVeh !== key.endsWith(':v')) return;
+  const a = Object.assign({}, this.state.a);
+  const shift = key.split(':')[1];
+  Object.keys(a).forEach(k => { if (a[k] === id && k.split(':')[1] === shift) delete a[k]; });
+  a[key] = id;
+  this.setState({a, picked: null});
+ }
+ clear(key, e) { if (e && e.stopPropagation) e.stopPropagation(); const a = Object.assign({}, this.state.a); delete a[key]; this.setState({a}); }
+ renderVals() {
+  const s = this.state, a = s.a;
+  const used1 = new Set(), used2 = new Set(), usedV = new Set();
+  Object.keys(a).forEach(k => { const sh = k.split(':')[1]; (sh === '1' ? used1 : sh === '2' ? used2 : usedV).add(a[k]); });
+  let total = 0, v = 0, vt = 0;
+  const cell = (key, slotFn, empty) => {
+   const id = a[key]; const o = id ? byId[id] : null;
+   const warn = o && o.fn && o.fn !== slotFn;
+   return {p: o ? o.name : empty, has: !!o, cls: 'ob-drop' + (o ? ' full' : '') + (warn ? ' warn' : ''), warn,
+    drop: (e) => { if (e && e.preventDefault) e.preventDefault(); this.put(key, this.drag); this.drag = null; },
+    click: () => { if (s.picked) this.put(key, s.picked); },
+    clear: (e) => this.clear(key, e)};
+  };
+  const sections = SECTIONS.map(([name, slots]) => {
+   let f = 0;
+   const rows = slots.map(([nr, fn, type]) => {
+    total++;
+    const c1 = cell(nr + ':1', fn, 'przeciągnij osobę'), c2 = cell(nr + ':2', fn, 'przeciągnij osobę');
+    const cv = type ? cell(nr + ':v', null, 'przeciągnij ' + type) : {p: '—', has: false, cls: 'ob-drop', warn: false, drop: () => {}, click: () => {}, clear: () => {}};
+    if (type) { vt++; if (cv.has) v++; }
+    if (c1.has) f++;
+    if (c2.has) f++;
+    const warnText = [c1.warn ? 'Zmiana I: osoba ma inną funkcję (' + byId[a[nr + ':1']].fn + ')' : '', c2.warn ? 'Zmiana II: osoba ma inną funkcję (' + byId[a[nr + ':2']].fn + ')' : ''].filter(Boolean).join(' · ');
+    return {nr: String(nr), fn, type: type || '—', p1: c1.p, has1: c1.has, c1: c1.cls, drop1: c1.drop, click1: c1.click, clear1: c1.clear,
+     p2: c2.p, has2: c2.has, c2: c2.cls, drop2: c2.drop, click2: c2.click, clear2: c2.clear,
+     pv: cv.p, hasv: cv.has, cv: cv.cls, dropv: cv.drop, clickv: cv.click, clearv: cv.clear, warn: !!warnText, warnText};
+   });
+   return {name, count: f + ' z ' + slots.length * 2 + ' obsad', slots: rows};
+  });
+  const pick = (id) => () => this.setState({picked: s.picked === id ? null : id});
+  const start = (id) => (e) => { this.drag = id; if (e && e.dataTransfer) { e.dataTransfer.setData('text/plain', id); e.dataTransfer.effectAllowed = 'move'; } };
+  const list = s.tab === 'p' ? PEOPLE.map(p => ({id: p[0], name: p[1], unit: p[2], sub: p[3] + (p[4] ? ' · będzie' : ' · brak deklaracji'), used: used1.has(p[0]) && used2.has(p[0])}))
+                             : VEH.map(x => ({id: x[0], name: x[1], unit: x[2], sub: x[2], used: usedV.has(x[0])}));
+  const units = [];
+  list.forEach(x => { let g = units.find(u => u.unit === x.unit); if (!g) { g = {unit: x.unit, items: []}; units.push(g); } g.items.push({name: x.name, sub: x.sub, cls: 'ob-cand' + (x.used ? ' used' : '') + (s.picked === x.id ? ' full' : ''), start: start(x.id), pick: pick(x.id)}); });
+  if (s.tab === 'v') units.forEach(g => g.items.forEach(i => { i.sub = ''; }));
+  const filled1 = Object.keys(a).filter(k => k.endsWith(':1')).length, filled2 = Object.keys(a).filter(k => k.endsWith(':2')).length;
+  return {
+   k: {s1: filled1 + ' z ' + total, s2: filled2 + ' z ' + total, v: v + ' z ' + vt},
+   sections,
+   allow: (e) => { if (e && e.preventDefault) e.preventDefault(); },
+   ctabs: [['p','Osoby'],['v','Pojazdy']].map(([k, l]) => ({label: l, cls: 'cz-tab' + (s.tab === k ? ' on' : ''), pick: () => this.setState({tab: k, picked: null})})),
+   hint: s.tab === 'p' ? 'Przeciągnij osobę na zmianę I albo II. Najpierw osoby, które zadeklarowały obecność.' : 'Przeciągnij pojazd na stanowisko z typem pojazdu.',
+   groups: units
+  };
+ }
+}
+
 </script>
 </body>
 </html>

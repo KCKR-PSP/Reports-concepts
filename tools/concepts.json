@@ -162,9 +162,23 @@
           "nav": false
         },
         {
+          "source": "Ustawienia-grupa.dc.html",
+          "page": "ustawienia-grupa.html",
+          "title": "Ustawienia · grupa",
+          "controls": [],
+          "nav": false
+        },
+        {
           "source": "Ustawienia-sklad.dc.html",
           "page": "ustawienia-sklad.html",
           "title": "Ustawienia · skład",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Ustawienia-slownik.dc.html",
+          "page": "ustawienia-slownik.html",
+          "title": "Ustawienia · słownik",
           "controls": [],
           "nav": false
         },
