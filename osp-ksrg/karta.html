@@ -129,6 +129,8 @@ body.dark{background:#121518}
 .cbar select{min-height:32px;padding:0 8px;border:1px solid #535f65;border-radius:0;background:#1c2427;color:#ebeef0;font:inherit}
 .cbar a:focus-visible,.cbar select:focus-visible{outline:2px solid #ebeef0;outline-offset:2px}
 @media (max-width: 760px){.cbar{position:static}}
+body.framed #board{display:flex;justify-content:center;padding:32px 16px 64px;overflow-x:auto}
+body.framed #board > *{flex:none;box-shadow:0 1px 2px rgba(28,36,39,.12),0 8px 32px rgba(28,36,39,.10)}
 </style>
 </head>
 <body>
@@ -154,21 +156,21 @@ body.dark{background:#121518}
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 8px">
 <h1 style="margin: 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em">OSP Nowa Wieś</h1>
 <span class="chip">KSRG</span>
-<sc-if value="{{ ready }}" hint-placeholder-val="{{ true }}"><button type="button" class="req {{ minBtn.cls }}" onClick="{{ openMinima }}">{{ minBtn.label }}</button></sc-if>
+<template data-sc="if" value="{{ ready }}" hint-placeholder-val="{{ true }}"><button type="button" class="req {{ minBtn.cls }}" onClick="{{ openMinima }}">{{ minBtn.label }}</button></template>
 <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto">
 <div style="position: relative">
 <button type="button" class="outline sm" aria-haspopup="menu" aria-expanded="{{ expOpen }}" onClick="{{ toggleExp }}">
 <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round"><path d="M12 4v11M7 10l5 5 5-5"></path><path d="M5 20h14"></path></svg>Wyciąg
 </button>
-<sc-if value="{{ expOpen }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ expOpen }}" hint-placeholder-val="{{ false }}">
 <div role="menu" aria-label="Wyciąg z karty jednostki" class="pop">
 <button type="button" role="menuitem" class="menu" onClick="{{ expPick }}"><span style="font-weight: 600">PDF</span></button>
 <button type="button" role="menuitem" class="menu" onClick="{{ expPick }}"><span style="font-weight: 600">DOCX</span></button>
 </div>
-</sc-if>
+</template>
 </div>
 <button type="button" class="outline sm" aria-label="{{ reqAria }}" onClick="{{ openRequests }}">
-<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round"><path d="M6 3h9l4 4v14H6z"></path><path d="M15 3v4h4M9 12h6M9 16h6"></path></svg>Wnioski<sc-if value="{{ reqOpenCount }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="min-width: 18px; padding: 2px 5px; box-sizing: border-box; background: var(--fg); color: var(--bg); font-size: 11px; line-height: 14px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums">{{ reqOpenCount }}</span></sc-if>
+<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round"><path d="M6 3h9l4 4v14H6z"></path><path d="M15 3v4h4M9 12h6M9 16h6"></path></svg>Wnioski<template data-sc="if" value="{{ reqOpenCount }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true" style="min-width: 18px; padding: 2px 5px; box-sizing: border-box; background: var(--fg); color: var(--bg); font-size: 11px; line-height: 14px; font-weight: 700; text-align: center; font-variant-numeric: tabular-nums">{{ reqOpenCount }}</span></template>
 </button>
 <button type="button" class="outline sm" onClick="{{ openHistory }}">
 <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.5px; stroke-linecap: round; stroke-linejoin: round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5M12 7v5l3 2"></path></svg>Historia
@@ -184,9 +186,9 @@ body.dark{background:#121518}
 
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 24px; border-bottom: 1px solid var(--line)">
 <nav aria-label="Karty jednostki" style="display: flex; flex-wrap: wrap">
-<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="6">
+<template data-sc="for" list="{{ tabs }}" as="t" hint-placeholder-count="6">
 <button type="button" class="tab" aria-pressed="{{ t.on }}" onClick="{{ t.pick }}">{{ t.label }}</button>
-</sc-for>
+</template>
 </nav>
 <div role="group" aria-label="Widok danych" style="display: flex; gap: 0; padding-bottom: 6px">
 <button type="button" class="vw" aria-pressed="{{ viewCards }}" aria-label="Widok kart" title="Widok kart" onClick="{{ showCards }}"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.4px"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg></button>
@@ -195,27 +197,27 @@ body.dark{background:#121518}
 </div>
 </div>
 
-<sc-if value="{{ compactOn }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ compactOn }}" hint-placeholder-val="{{ false }}">
 <div class="cols">
-<sc-for list="{{ compactGroups }}" as="g" hint-placeholder-count="4">
+<template data-sc="for" list="{{ compactGroups }}" as="g" hint-placeholder-count="4">
 <section aria-label="{{ g.section }}">
 <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
 <h2 class="sec">{{ g.section }}</h2>
 </div>
-<sc-for list="{{ g.rows }}" as="i" hint-placeholder-count="5">
-<sc-if value="{{ i.editable }}" hint-placeholder-val="{{ true }}">
-<button type="button" class="row" onClick="{{ i.open }}"><span class="{{ i.cls }}" style="color: var(--fg); font-weight: 400">{{ i.label }}</span><span class="v {{ i.cls }}" style="font-size: 16px"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span></button>
-</sc-if>
-<sc-if value="{{ i.readonly }}" hint-placeholder-val="{{ false }}">
+<template data-sc="for" list="{{ g.rows }}" as="i" hint-placeholder-count="5">
+<template data-sc="if" value="{{ i.editable }}" hint-placeholder-val="{{ true }}">
+<button type="button" class="row" onClick="{{ i.open }}"><span class="{{ i.cls }}" style="color: var(--fg); font-weight: 400">{{ i.label }}</span><span class="v {{ i.cls }}" style="font-size: 16px"><template data-sc="if" value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template>{{ i.value }}</span></button>
+</template>
+<template data-sc="if" value="{{ i.readonly }}" hint-placeholder-val="{{ false }}">
 <div class="row" style="cursor: default; background: none"><span style="color: var(--fg)">{{ i.label }}</span><span class="v {{ i.cls }}" style="font-size: 16px">{{ i.value }}</span></div>
-</sc-if>
-</sc-for>
+</template>
+</template>
 </section>
-</sc-for>
+</template>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ gridOn }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ gridOn }}" hint-placeholder-val="{{ false }}">
 <section aria-label="Edycja tabelaryczna" style="display: flex; flex-direction: column; gap: 18px">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 32px">
 <div>
@@ -236,30 +238,30 @@ body.dark{background:#121518}
 <div role="columnheader" class="sr-num">Reports</div>
 <div role="columnheader">Status</div>
 </div>
-<sc-for list="{{ gridGroups }}" as="g" hint-placeholder-count="3">
+<template data-sc="for" list="{{ gridGroups }}" as="g" hint-placeholder-count="3">
 <div role="rowgroup">
 <div role="row" class="sgroup"><div role="rowheader"><span>{{ g.section }}</span></div></div>
-<sc-for list="{{ g.rows }}" as="r" hint-placeholder-count="4">
+<template data-sc="for" list="{{ g.rows }}" as="r" hint-placeholder-count="4">
 <div role="row" class="srow">
 <div role="rowheader">{{ r.label }}</div>
 <div role="cell" class="sr-num" style="color: var(--mut)">{{ r.swd }}</div>
 <div role="cell" class="sedit {{ r.dirty }}" style="padding-right: 24px">
-<sc-if value="{{ r.isNum }}" hint-placeholder-val="{{ false }}"><input type="number" min="0" step="1" class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"></sc-if>
-<sc-if value="{{ r.isText }}" hint-placeholder-val="{{ true }}"><input type="text" class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"></sc-if>
-<sc-if value="{{ r.isBool }}" hint-placeholder-val="{{ false }}"><select class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"><option value="">—</option><option value="Tak">Tak</option><option value="Nie">Nie</option></select></sc-if>
-<sc-if value="{{ r.isAlarm }}" hint-placeholder-val="{{ false }}"><select class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"><option value="">—</option><option value="Selektywne">Selektywne</option><option value="Inny">Inny</option><option value="Brak">Brak</option></select></sc-if>
+<template data-sc="if" value="{{ r.isNum }}" hint-placeholder-val="{{ false }}"><input type="number" min="0" step="1" class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"></template>
+<template data-sc="if" value="{{ r.isText }}" hint-placeholder-val="{{ true }}"><input type="text" class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"></template>
+<template data-sc="if" value="{{ r.isBool }}" hint-placeholder-val="{{ false }}"><select class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"><option value="">—</option><option value="Tak">Tak</option><option value="Nie">Nie</option></select></template>
+<template data-sc="if" value="{{ r.isAlarm }}" hint-placeholder-val="{{ false }}"><select class="cellin" value="{{ r.draft }}" onChange="{{ r.onCell }}" aria-label="{{ r.aria }}"><option value="">—</option><option value="Selektywne">Selektywne</option><option value="Inny">Inny</option><option value="Brak">Brak</option></select></template>
 </div>
-<div role="cell" class="sstat" style="color: {{ r.statusColor }}; font-weight: {{ r.statusWeight }}"><sc-if value="{{ r.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-hidden="true"></span></sc-if>{{ r.status }}</div>
+<div role="cell" class="sstat" style="color: {{ r.statusColor }}; font-weight: {{ r.statusWeight }}"><template data-sc="if" value="{{ r.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-hidden="true"></span></template>{{ r.status }}</div>
 </div>
-</sc-for>
+</template>
 </div>
-</sc-for>
+</template>
 </div>
 </div>
-<sc-if value="{{ noGridRows }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ noGridRows }}" hint-placeholder-val="{{ false }}">
 <p class="note">Brak pól.</p>
-</sc-if>
-<sc-if value="{{ gridDirty }}" hint-placeholder-val="{{ false }}">
+</template>
+<template data-sc="if" value="{{ gridDirty }}" hint-placeholder-val="{{ false }}">
 <div style="position: sticky; bottom: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px 16px; padding: 16px 0; background: var(--bg); border-top: 1px solid var(--fg)">
 <p style="margin: 0 8px 10px 0; font-weight: 600; font-variant-numeric: tabular-nums">{{ gridCount }}</p>
 <div style="flex: 1 1 280px; display: flex; flex-direction: column; gap: 6px">
@@ -269,30 +271,30 @@ body.dark{background:#121518}
 <button type="button" class="solid" disabled="{{ gridCantSave }}" onClick="{{ gridSave }}">Zapisz zmiany</button>
 <button type="button" class="outline" onClick="{{ gridDiscard }}">Odrzuć</button>
 </div>
-</sc-if>
+</template>
 </section>
-</sc-if>
+</template>
 
-<sc-if value="{{ loading }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ loading }}" hint-placeholder-val="{{ false }}">
 <p class="note">Wczytywanie…</p>
-</sc-if>
+</template>
 
-<sc-if value="{{ failed }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ failed }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 16px">
 <p style="margin: 0; font-size: 18px; font-weight: 600">Nie udało się wczytać karty jednostki</p>
 <button type="button" class="outline" onClick="{{ retry }}">Spróbuj ponownie</button>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ show.podstawowe }}" hint-placeholder-val="{{ true }}">
+<template data-sc="if" value="{{ show.podstawowe }}" hint-placeholder-val="{{ true }}">
 <div style="display: flex; flex-direction: column; gap: 40px">
 <section aria-label="Lokalizacja" class="loc" style="display: grid; grid-template-columns: minmax(0, 520px) minmax(0, 1fr); gap: 24px 48px; align-items: center; padding: 8px 0 24px; border-bottom: 1px solid var(--line)">
 <div style="display: flex; flex-direction: column; gap: 6px; min-width: 0">
 <div style="position: relative; height: 300px">
 <svg viewBox="1622 872 234 255" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Położenie jednostki w powiecie płońskim, gmina Baboszewo" style="position: absolute; inset: 0; width: 100%; height: 100%">
-<sc-for list="{{ county }}" as="g" hint-placeholder-count="12">
+<template data-sc="for" list="{{ county }}" as="g" hint-placeholder-count="12">
 <path d="{{ g.d }}" style="fill: var(--fg); fill-opacity: {{ g.op }}; stroke: var(--bg); stroke-width: 1px; vector-effect: non-scaling-stroke"></path>
-</sc-for>
+</template>
 <circle cx="1716" cy="962" r="9" style="fill: none; stroke: var(--fg); stroke-opacity: 0.35; stroke-width: 1px; vector-effect: non-scaling-stroke"></circle>
 <circle cx="1716" cy="962" r="3.6" style="fill: var(--fg); stroke: var(--bg); stroke-width: 2px; vector-effect: non-scaling-stroke"></circle>
 </svg>
@@ -306,76 +308,76 @@ body.dark{background:#121518}
 </div>
 <div style="display: flex; flex-direction: column; min-width: 0">
 <div class="hk">
-<sc-for list="{{ heroKpi }}" as="k" hint-placeholder-count="4">
+<template data-sc="for" list="{{ heroKpi }}" as="k" hint-placeholder-count="4">
 <div class="kpi" style="padding: 14px 0 18px">
 <div style="display: flex; align-items: center; gap: 10px">
-<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></template></svg>
 <p class="eyebrow">{{ k.label }}</p>
 </div>
 <p class="big" style="margin: 12px 0 0; font-size: 36px">{{ k.value }}</p>
 <p class="sub" style="margin-top: 8px">{{ k.sub }}</p>
 </div>
-</sc-for>
+</template>
 </div>
 </div>
 </section>
 <section aria-label="KSRG i strażnica" class="kpis4">
-<sc-for list="{{ ks }}" as="k" hint-placeholder-count="8">
+<template data-sc="for" list="{{ ks }}" as="k" hint-placeholder-count="8">
 <div class="kpi">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></template></svg>
 <p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
 <div style="display: flex; flex-wrap: nowrap; align-items: center; gap: 10px; margin-top: 10px; min-width: 0">
-<button type="button" class="vbtn big" style="font-size: 32px" onClick="{{ k.f.open }}"><sc-if value="{{ k.f.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v {{ k.f.cls }}">{{ k.f.value }}</span></button>
-<sc-if value="{{ k.hasCd }}" hint-placeholder-val="{{ false }}">
+<button type="button" class="vbtn big" style="font-size: 32px" onClick="{{ k.f.open }}"><template data-sc="if" value="{{ k.f.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template><span class="v {{ k.f.cls }}">{{ k.f.value }}</span></button>
+<template data-sc="if" value="{{ k.hasCd }}" hint-placeholder-val="{{ false }}">
 <button type="button" class="cd {{ k.cd.cls }}" aria-label="{{ k.cd.aria }}" title="{{ k.cd.aria }}" onClick="{{ k.cd.open }}"><span class="cdnum">{{ k.cd.days }}</span></button>
-</sc-if>
+</template>
 </div>
-<sc-if value="{{ k.hasSubField }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ k.hasSubField }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 10px">
-<button type="button" class="vbtn sub" onClick="{{ k.sf.open }}"><sc-if value="{{ k.sf.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ k.sfPrefix }}{{ k.sf.value }}</span></button>
-<sc-if value="{{ k.hasCd }}" hint-placeholder-val="{{ false }}"><button type="button" class="vbtn sub" onClick="{{ k.cd.open }}"><span class="v">· włączenie do {{ k.cd.date }}</span></button></sc-if>
+<button type="button" class="vbtn sub" onClick="{{ k.sf.open }}"><template data-sc="if" value="{{ k.sf.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template><span class="v">{{ k.sfPrefix }}{{ k.sf.value }}</span></button>
+<template data-sc="if" value="{{ k.hasCd }}" hint-placeholder-val="{{ false }}"><button type="button" class="vbtn sub" onClick="{{ k.cd.open }}"><span class="v">· włączenie do {{ k.cd.date }}</span></button></template>
 </div>
-</sc-if>
-<sc-if value="{{ k.hasSub }}" hint-placeholder-val="{{ false }}">
+</template>
+<template data-sc="if" value="{{ k.hasSub }}" hint-placeholder-val="{{ false }}">
 <p class="sub">{{ k.sub }}</p>
-</sc-if>
+</template>
 </div>
-</sc-for>
+</template>
 </section>
 <div>
-<sc-for list="{{ basic }}" as="g" hint-placeholder-count="1">
+<template data-sc="for" list="{{ basic }}" as="g" hint-placeholder-count="1">
 <section aria-label="{{ g.title }}">
 <h2 class="sec" style="margin-bottom: 10px">{{ g.title }}</h2>
 <div class="grid2">
-<sc-for list="{{ g.items }}" as="i" hint-placeholder-count="2">
+<template data-sc="for" list="{{ g.items }}" as="i" hint-placeholder-count="2">
 <div style="display: flex; align-items: stretch; min-width: 0">
-<button type="button" class="row" style="flex: 1 1 auto; width: auto; min-width: 0; margin-right: 0" onClick="{{ i.open }}"><span class="lab">{{ i.label }}</span><span class="v {{ i.cls }}"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span></button>
-<sc-if value="{{ i.hasLink }}" hint-placeholder-val="{{ false }}"><a href="{{ i.link }}" target="_blank" rel="noopener" aria-label="{{ i.linkLabel }}" title="{{ i.linkLabel }}" style="flex: none; display: inline-flex; align-items: center; justify-content: center; width: 44px; border-bottom: 1px solid var(--line); color: var(--mut)"><svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg></a></sc-if>
+<button type="button" class="row" style="flex: 1 1 auto; width: auto; min-width: 0; margin-right: 0" onClick="{{ i.open }}"><span class="lab">{{ i.label }}</span><span class="v {{ i.cls }}"><template data-sc="if" value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template>{{ i.value }}</span></button>
+<template data-sc="if" value="{{ i.hasLink }}" hint-placeholder-val="{{ false }}"><a href="{{ i.link }}" target="_blank" rel="noopener" aria-label="{{ i.linkLabel }}" title="{{ i.linkLabel }}" style="flex: none; display: inline-flex; align-items: center; justify-content: center; width: 44px; border-bottom: 1px solid var(--line); color: var(--mut)"><svg width="14" height="14" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg></a></template>
 </div>
-</sc-for>
+</template>
 </div>
 </section>
-</sc-for>
+</template>
 </div>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ show.strazacy }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ show.strazacy }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 48px">
 <section aria-labelledby="ff-h">
 <h2 id="ff-h" class="sec" style="margin-bottom: 14px">Liczba strażaków ratowników</h2>
 <div class="kpis4">
-<sc-for list="{{ ffk }}" as="k" hint-placeholder-count="7">
+<template data-sc="for" list="{{ ffk }}" as="k" hint-placeholder-count="7">
 <div class="kpi">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></template></svg>
 <p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
 <div style="margin-top: 10px">
-<button type="button" class="vbtn big" onClick="{{ k.f.open }}"><sc-if value="{{ k.f.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v {{ k.f.cls }}">{{ k.f.value }}</span></button>
-<sc-if value="{{ k.f.hasMin }}" hint-placeholder-val="{{ false }}"><p class="minv" style="margin: 8px 0 0">min. {{ k.f.min }}</p></sc-if>
+<button type="button" class="vbtn big" onClick="{{ k.f.open }}"><template data-sc="if" value="{{ k.f.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template><span class="v {{ k.f.cls }}">{{ k.f.value }}</span></button>
+<template data-sc="if" value="{{ k.f.hasMin }}" hint-placeholder-val="{{ false }}"><p class="minv" style="margin: 8px 0 0">min. {{ k.f.min }}</p></template>
 </div>
 <p class="sub">{{ k.sub }}</p>
 </div>
-</sc-for>
+</template>
 </div>
 </section>
 
@@ -386,9 +388,9 @@ body.dark{background:#121518}
 
 </div>
 <dl style="margin: 0">
-<sc-for list="{{ board }}" as="b" hint-placeholder-count="6">
+<template data-sc="for" list="{{ board }}" as="b" hint-placeholder-count="6">
 <div class="row" style="cursor: default; background: none"><dt class="lab">{{ b.role }}</dt><dd class="v" style="margin: 0">{{ b.name }}</dd></div>
-</sc-for>
+</template>
 </dl>
 </section>
 <section aria-labelledby="kp-h">
@@ -399,16 +401,16 @@ body.dark{background:#121518}
 <p style="margin: 16px 0 6px; font-size: 22px; line-height: 1.2; font-weight: 600">{{ cmd.name }}</p>
 <p class="note" style="margin-bottom: 6px">{{ cmd.address }}</p>
 <dl style="margin: 0">
-<sc-for list="{{ cmd.lead }}" as="b" hint-placeholder-count="2">
+<template data-sc="for" list="{{ cmd.lead }}" as="b" hint-placeholder-count="2">
 <div class="row" style="cursor: default; background: none"><dt class="lab">{{ b.role }}</dt><dd class="v" style="margin: 0">{{ b.name }}</dd></div>
-</sc-for>
+</template>
 </dl>
 <p class="eyebrow" style="margin-top: 22px">Nadrzędna JRG</p>
 <p style="margin: 8px 0 6px; font-size: 22px; line-height: 1.2; font-weight: 600">{{ cmd.jrg.name }}</p>
 <dl style="margin: 0">
-<sc-for list="{{ cmd.jrg.lead }}" as="b" hint-placeholder-count="2">
+<template data-sc="for" list="{{ cmd.jrg.lead }}" as="b" hint-placeholder-count="2">
 <div class="row" style="cursor: default; background: none"><dt class="lab">{{ b.role }}</dt><dd class="v" style="margin: 0">{{ b.name }}</dd></div>
-</sc-for>
+</template>
 </dl>
 </section>
 </div>
@@ -416,38 +418,38 @@ body.dark{background:#121518}
 <section aria-labelledby="duty-h">
 <h2 id="duty-h" class="sec" style="margin-bottom: 10px">Pełniący dyżur w strażnicy</h2>
 <div class="grid2">
-<sc-for list="{{ duty }}" as="i" hint-placeholder-count="2">
-<button type="button" class="row" onClick="{{ i.open }}"><span class="lab">{{ i.label }}</span><span class="v {{ i.cls }}" style="font-size: 18px"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span></button>
-</sc-for>
+<template data-sc="for" list="{{ duty }}" as="i" hint-placeholder-count="2">
+<button type="button" class="row" onClick="{{ i.open }}"><span class="lab">{{ i.label }}</span><span class="v {{ i.cls }}" style="font-size: 18px"><template data-sc="if" value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template>{{ i.value }}</span></button>
+</template>
 </div>
 </section>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ show.szkolenia }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ show.szkolenia }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 40px">
-<sc-for list="{{ training }}" as="g" hint-placeholder-count="2">
+<template data-sc="for" list="{{ training }}" as="g" hint-placeholder-count="2">
 <section aria-label="{{ g.title }}">
 <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
-<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ g.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ g.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></template></svg>
 <h2 class="sec" style="flex: 1">{{ g.title }}</h2>
 </div>
 <div class="tiles">
-<sc-for list="{{ g.items }}" as="i" hint-placeholder-count="5">
+<template data-sc="for" list="{{ g.items }}" as="i" hint-placeholder-count="5">
 <button type="button" class="tile" onClick="{{ i.open }}">
-<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ i.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ i.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></template></svg>
 <span class="eyebrow" style="font-size: 11px; line-height: 1.35">{{ i.label }}</span>
-<span class="v {{ i.cls }}" style="display: inline-flex; align-items: center; gap: 8px; font-size: 30px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span>
-<sc-if value="{{ i.hasMin }}" hint-placeholder-val="{{ false }}"><span class="minv">min. {{ i.min }}</span></sc-if>
+<span class="v {{ i.cls }}" style="display: inline-flex; align-items: center; gap: 8px; font-size: 30px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums"><template data-sc="if" value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template>{{ i.value }}</span>
+<template data-sc="if" value="{{ i.hasMin }}" hint-placeholder-val="{{ false }}"><span class="minv">min. {{ i.min }}</span></template>
 </button>
-</sc-for>
+</template>
 </div>
 </section>
-</sc-for>
+</template>
 
 <section aria-labelledby="drv-h" style="display: flex; flex-direction: column; gap: 28px">
 <h2 id="drv-h" class="sec">Kierowcy-konserwatorzy z zezwoleniem na pojazd uprzywilejowany</h2>
-<sc-for list="{{ drivers }}" as="r" hint-placeholder-count="2">
+<template data-sc="for" list="{{ drivers }}" as="r" hint-placeholder-count="2">
 <div>
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 24px; margin-bottom: 12px">
 <div style="min-width: 0">
@@ -456,92 +458,92 @@ body.dark{background:#121518}
 </div>
 </div>
 <div class="kpis">
-<sc-for list="{{ r.cards }}" as="k" hint-placeholder-count="3">
+<template data-sc="for" list="{{ r.cards }}" as="k" hint-placeholder-count="3">
 <div class="kpi">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></template></svg>
 <p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
 <div style="margin-top: 10px">
-<button type="button" class="vbtn big" onClick="{{ k.f.open }}"><sc-if value="{{ k.f.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v {{ k.f.cls }}">{{ k.f.value }}</span></button>
-<sc-if value="{{ k.f.hasMin }}" hint-placeholder-val="{{ false }}"><p class="minv" style="margin: 8px 0 0">min. {{ k.f.min }}</p></sc-if>
+<button type="button" class="vbtn big" onClick="{{ k.f.open }}"><template data-sc="if" value="{{ k.f.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template><span class="v {{ k.f.cls }}">{{ k.f.value }}</span></button>
+<template data-sc="if" value="{{ k.f.hasMin }}" hint-placeholder-val="{{ false }}"><p class="minv" style="margin: 8px 0 0">min. {{ k.f.min }}</p></template>
 </div>
 </div>
-</sc-for>
+</template>
 </div>
 </div>
-</sc-for>
+</template>
 </section>
 <section aria-label="{{ trFree.title }}">
 <h2 class="sec" style="padding-bottom: 10px; border-bottom: 1px solid var(--line)">{{ trFree.title }}</h2>
 <div class="grid2">
-<sc-for list="{{ trFree.items }}" as="i" hint-placeholder-count="2">
-<button type="button" class="ftxt" onClick="{{ i.open }}"><span class="eyebrow" style="font-size: 11px">{{ i.label }}</span><span class="{{ i.cls }}" style="display: inline-flex; gap: 8px; font-size: 15px; line-height: 1.5; white-space: pre-line"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports" style="margin-top: 8px"></span></sc-if>{{ i.value }}</span></button>
-</sc-for>
+<template data-sc="for" list="{{ trFree.items }}" as="i" hint-placeholder-count="2">
+<button type="button" class="ftxt" onClick="{{ i.open }}"><span class="eyebrow" style="font-size: 11px">{{ i.label }}</span><span class="{{ i.cls }}" style="display: inline-flex; gap: 8px; font-size: 15px; line-height: 1.5; white-space: pre-line"><template data-sc="if" value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports" style="margin-top: 8px"></span></template>{{ i.value }}</span></button>
+</template>
 </div>
 </section>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ show.sprzet }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ show.sprzet }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 48px">
 <section aria-labelledby="veh-h">
 <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
-<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ truckIcon }}" as="p" hint-placeholder-count="3"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ truckIcon }}" as="p" hint-placeholder-count="3"><path d="{{ p }}"></path></template></svg>
 <h2 id="veh-h" class="sec" style="flex: 1">Pojazdy</h2>
 <p class="note" style="font-variant-numeric: tabular-nums">{{ vehicleCount }}</p>
 </div>
-<sc-if value="{{ hasVehicles }}" hint-placeholder-val="{{ true }}">
+<template data-sc="if" value="{{ hasVehicles }}" hint-placeholder-val="{{ true }}">
 <ul class="kpis" style="margin: 0; padding: 0; list-style: none">
-<sc-for list="{{ vehicles }}" as="v" hint-placeholder-count="3">
+<template data-sc="for" list="{{ vehicles }}" as="v" hint-placeholder-count="3">
 <li class="kpi" style="border-top: 0; padding: 20px 0 8px">
-<button type="button" class="vbtn" onClick="{{ v.type.open }}" style="font-size: 28px; line-height: 1.1; font-weight: 600; min-height: 44px"><sc-if value="{{ v.type.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ v.type.value }}</span></button>
+<button type="button" class="vbtn" onClick="{{ v.type.open }}" style="font-size: 28px; line-height: 1.1; font-weight: 600; min-height: 44px"><template data-sc="if" value="{{ v.type.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template><span class="v">{{ v.type.value }}</span></button>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 0 10px; font-size: 14px; color: var(--mut)">
-<button type="button" class="vbtn" onClick="{{ v.model.open }}" style="min-height: 32px"><sc-if value="{{ v.model.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ v.model.value }}</span></button>
+<button type="button" class="vbtn" onClick="{{ v.model.open }}" style="min-height: 32px"><template data-sc="if" value="{{ v.model.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template><span class="v">{{ v.model.value }}</span></button>
 <span aria-hidden="true">·</span>
-<button type="button" class="vbtn" onClick="{{ v.year.open }}" style="min-height: 32px; font-variant-numeric: tabular-nums"><sc-if value="{{ v.year.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ v.year.value }}</span></button>
+<button type="button" class="vbtn" onClick="{{ v.year.open }}" style="min-height: 32px; font-variant-numeric: tabular-nums"><template data-sc="if" value="{{ v.year.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template><span class="v">{{ v.year.value }}</span></button>
 <span aria-hidden="true">·</span>
-<button type="button" class="vbtn" onClick="{{ v.heavy.open }}" style="min-height: 32px"><sc-if value="{{ v.heavy.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if><span class="v">{{ v.heavyText }}</span></button>
+<button type="button" class="vbtn" onClick="{{ v.heavy.open }}" style="min-height: 32px"><template data-sc="if" value="{{ v.heavy.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template><span class="v">{{ v.heavyText }}</span></button>
 </div>
 </li>
-</sc-for>
+</template>
 </ul>
-</sc-if>
-<sc-if value="{{ noVehicles }}" hint-placeholder-val="{{ false }}">
+</template>
+<template data-sc="if" value="{{ noVehicles }}" hint-placeholder-val="{{ false }}">
 <p class="note" style="margin-top: 14px">Brak pojazdów.</p>
-</sc-if>
+</template>
 </section>
 
 <div style="display: flex; flex-direction: column; gap: 40px">
-<sc-for list="{{ equipment }}" as="g" hint-placeholder-count="8">
+<template data-sc="for" list="{{ equipment }}" as="g" hint-placeholder-count="8">
 <section aria-label="{{ g.title }}">
 <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
-<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ g.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ g.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></template></svg>
 <h2 class="sec" style="flex: 1">{{ g.title }}</h2>
 <p class="note" style="font-variant-numeric: tabular-nums">{{ g.total }}</p>
 </div>
 <div class="tiles">
-<sc-for list="{{ g.items }}" as="i" hint-placeholder-count="3">
+<template data-sc="for" list="{{ g.items }}" as="i" hint-placeholder-count="3">
 <button type="button" class="tile" onClick="{{ i.open }}">
 <span class="eyebrow" style="font-size: 11px; line-height: 1.35">{{ i.label }}</span>
-<span class="v {{ i.cls }}" style="display: inline-flex; align-items: center; gap: 8px; font-size: 30px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ i.value }}</span>
-<sc-if value="{{ i.hasMin }}" hint-placeholder-val="{{ false }}"><span class="minv">min. {{ i.min }}</span></sc-if>
+<span class="v {{ i.cls }}" style="display: inline-flex; align-items: center; gap: 8px; font-size: 30px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums"><template data-sc="if" value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template>{{ i.value }}</span>
+<template data-sc="if" value="{{ i.hasMin }}" hint-placeholder-val="{{ false }}"><span class="minv">min. {{ i.min }}</span></template>
 </button>
-</sc-for>
+</template>
 </div>
 </section>
-</sc-for>
+</template>
 </div>
 <section aria-label="{{ eqFree.title }}">
 <h2 class="sec" style="padding-bottom: 10px; border-bottom: 1px solid var(--line)">{{ eqFree.title }}</h2>
 <div class="grid2">
-<sc-for list="{{ eqFree.items }}" as="i" hint-placeholder-count="2">
-<button type="button" class="ftxt" onClick="{{ i.open }}"><span class="eyebrow" style="font-size: 11px">{{ i.label }}</span><span class="{{ i.cls }}" style="display: inline-flex; gap: 8px; font-size: 15px; line-height: 1.5; white-space: pre-line"><sc-if value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports" style="margin-top: 8px"></span></sc-if>{{ i.value }}</span></button>
-</sc-for>
+<template data-sc="for" list="{{ eqFree.items }}" as="i" hint-placeholder-count="2">
+<button type="button" class="ftxt" onClick="{{ i.open }}"><span class="eyebrow" style="font-size: 11px">{{ i.label }}</span><span class="{{ i.cls }}" style="display: inline-flex; gap: 8px; font-size: 15px; line-height: 1.5; white-space: pre-line"><template data-sc="if" value="{{ i.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports" style="margin-top: 8px"></span></template>{{ i.value }}</span></button>
+</template>
 </div>
 </section>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ show.wyjazdy }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ show.wyjazdy }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 40px">
 <section aria-labelledby="per-h" style="display: flex; flex-direction: column; gap: 14px; padding-bottom: 24px; border-bottom: 1px solid var(--line)">
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px">
@@ -551,21 +553,21 @@ body.dark{background:#121518}
 </div>
 <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px">
 <div role="group" aria-label="Szybki wybór okresu" style="display: flex; flex-wrap: wrap; gap: 0 20px">
-<sc-for list="{{ rg.presets }}" as="p" hint-placeholder-count="4">
+<template data-sc="for" list="{{ rg.presets }}" as="p" hint-placeholder-count="4">
 <button type="button" class="yr" aria-pressed="{{ p.on }}" onClick="{{ p.pick }}">{{ p.label }}</button>
-</sc-for>
+</template>
 </div>
 <button type="button" class="icon" aria-label="Wybierz okres w kalendarzu" aria-expanded="{{ rg.calOpen }}" onClick="{{ rg.toggleCal }}">
 <svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v10h-11zM2.5 6.5h11M5.5 1.5v3M10.5 1.5v3" style="fill: none; stroke: currentColor; stroke-width: 1.3px"></path></svg>
 </button>
 </div>
 </div>
-<sc-if value="{{ rg.calOpen }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ rg.calOpen }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: flex-end; gap: 12px 16px">
 <div style="display: flex; flex-direction: column; gap: 6px"><label for="rg-f" class="eyebrow">Od</label><input id="rg-f" type="date" class="inp" min="{{ rg.minIso }}" max="{{ rg.maxIso }}" value="{{ rg.fromIso }}" onChange="{{ rg.onFromDate }}"></div>
 <div style="display: flex; flex-direction: column; gap: 6px"><label for="rg-t" class="eyebrow">Do</label><input id="rg-t" type="date" class="inp" min="{{ rg.minIso }}" max="{{ rg.maxIso }}" value="{{ rg.toIso }}" onChange="{{ rg.onToDate }}"></div>
 </div>
-</sc-if>
+</template>
 <div style="display: flex; flex-direction: column; gap: 14px">
 <div style="padding: 0 7px">
 <svg viewBox="0 0 1000 56" preserveAspectRatio="none" role="img" aria-label="{{ rg.aria }}" style="display: block; width: 100%; height: 56px">
@@ -580,48 +582,48 @@ body.dark{background:#121518}
 <input class="rng" type="range" min="{{ rg.min }}" max="{{ rg.last }}" step="1" value="{{ rg.to }}" onChange="{{ rg.onTo }}" aria-label="Koniec okresu">
 </div>
 <div aria-hidden="true" style="position: relative; height: 22px; margin: -8px 7px 4px; font-size: 11px; font-weight: 700; font-variant-numeric: tabular-nums">
-<sc-for list="{{ rg.tags }}" as="t" hint-placeholder-count="2">
+<template data-sc="for" list="{{ rg.tags }}" as="t" hint-placeholder-count="2">
 <span style="position: absolute; top: 0; left: {{ t.left }}; transform: translateX({{ t.shift }}); padding: 3px 7px; background: var(--fg); color: var(--bg); line-height: 16px; white-space: nowrap">{{ t.label }}</span>
-</sc-for>
+</template>
 </div>
 <div aria-hidden="true" style="position: relative; height: 16px; margin: 0 7px; font-size: 11px; color: var(--mut)">
-<sc-for list="{{ rg.ticks }}" as="t" hint-placeholder-count="12">
+<template data-sc="for" list="{{ rg.ticks }}" as="t" hint-placeholder-count="12">
 <span style="position: absolute; top: 0; left: {{ t.left }}; padding-left: 4px; border-left: 1px solid var(--line); line-height: 16px; font-weight: {{ t.weight }}">{{ t.label }}</span>
-</sc-for>
+</template>
 </div>
 </div>
 </section>
-<sc-for list="{{ dsp.rows }}" as="r" hint-placeholder-count="3">
+<template data-sc="for" list="{{ dsp.rows }}" as="r" hint-placeholder-count="3">
 <section aria-label="{{ r.title }}">
 <h2 class="sec" style="margin-bottom: 14px">{{ r.title }}</h2>
 <div class="kpis4">
-<sc-for list="{{ r.cards }}" as="k" hint-placeholder-count="4">
+<template data-sc="for" list="{{ r.cards }}" as="k" hint-placeholder-count="4">
 <div class="kpi">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></template></svg>
 <p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
 <p class="big {{ k.cls }}" style="margin: 10px 0 0">{{ k.value }}</p>
 <p class="sub">{{ k.sub }}</p>
 </div>
-</sc-for>
+</template>
 </div>
 </section>
-</sc-for>
+</template>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ show.igo }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ show.igo }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 48px">
 <section aria-labelledby="igo-last-h">
 <h2 id="igo-last-h" class="sec" style="margin-bottom: 14px">Ocena ostatniej inspekcji</h2>
 <div class="kpis4">
-<sc-for list="{{ igo.kpi }}" as="k" hint-placeholder-count="4">
+<template data-sc="for" list="{{ igo.kpi }}" as="k" hint-placeholder-count="4">
 <div class="kpi">
-<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><sc-for list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></sc-for></svg>
+<svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" style="fill: none; stroke: currentColor; stroke-width: 1.25px; stroke-linecap: round; stroke-linejoin: round"><template data-sc="for" list="{{ k.icon }}" as="p" hint-placeholder-count="2"><path d="{{ p }}"></path></template></svg>
 <p class="eyebrow" style="margin-top: 14px">{{ k.label }}</p>
 <p class="big" style="margin: 10px 0 0"><span class="v {{ k.cls }}">{{ k.value }}</span></p>
 <p class="sub">{{ k.sub }}</p>
 </div>
-</sc-for>
+</template>
 </div>
 </section>
 
@@ -638,56 +640,56 @@ body.dark{background:#121518}
 <div role="columnheader" class="cell">Punkty</div>
 <div role="columnheader" style="padding: 10px 12px">Ocena</div>
 </div>
-<sc-for list="{{ igo.rows }}" as="r" hint-placeholder-count="3">
+<template data-sc="for" list="{{ igo.rows }}" as="r" hint-placeholder-count="3">
 <div role="row" class="trow" style="display: grid; grid-template-columns: 130px minmax(0, 1fr) 110px 200px; align-items: center; min-height: 48px">
 <div role="cell" style="padding: 0 12px 0 0; font-variant-numeric: tabular-nums">{{ r.at }}</div>
 <div role="cell" style="padding: 0 12px">{{ r.team }}</div>
 <div role="cell" class="cell" style="font-weight: 600">{{ r.points }}</div>
 <div role="cell" style="padding: 0 12px"><span class="v {{ r.cls }}" style="font-weight: 600">{{ r.grade }}</span></div>
 </div>
-</sc-for>
+</template>
 </div>
 </div>
 </section>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ show.specjalizacje }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ show.specjalizacje }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 48px">
-<sc-for list="{{ specGroups }}" as="g" hint-placeholder-count="2">
+<template data-sc="for" list="{{ specGroups }}" as="g" hint-placeholder-count="2">
 <section aria-label="{{ g.title }}">
 <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line)">
 <h2 class="sec">{{ g.title }}</h2>
 <p class="note" style="font-variant-numeric: tabular-nums">{{ g.count }}</p>
 </div>
 <div class="grid2">
-<sc-for list="{{ g.items }}" as="s" hint-placeholder-count="6">
+<template data-sc="for" list="{{ g.items }}" as="s" hint-placeholder-count="6">
 <div style="position: relative; min-width: 0">
 <button type="button" class="row" onClick="{{ s.open }}" style="justify-content: flex-start; align-items: flex-start; gap: 14px; padding: 16px {{ s.padR }} 16px 8px">
 <span aria-hidden="true" style="flex: none; width: 12px; height: 12px; margin-top: 5px; box-sizing: border-box; border: 1.5px solid {{ s.mark }}; background: {{ s.fill }}"></span>
 <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px">
 <span class="{{ s.cls }}" style="font-size: 16px; line-height: 1.35; font-weight: 500">{{ s.label }}</span>
-<sc-if value="{{ s.hasNote }}" hint-placeholder-val="{{ false }}"><span class="note" style="display: inline-flex; align-items: center; gap: 8px"><sc-if value="{{ s.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>{{ s.state }}</span></sc-if>
+<template data-sc="if" value="{{ s.hasNote }}" hint-placeholder-val="{{ false }}"><span class="note" style="display: inline-flex; align-items: center; gap: 8px"><template data-sc="if" value="{{ s.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template>{{ s.state }}</span></template>
 </span>
 </button>
-<sc-if value="{{ s.hasSub }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ s.hasSub }}" hint-placeholder-val="{{ false }}">
 <button type="button" onClick="{{ s.sub.open }}" style="position: absolute; top: 0; right: 0; bottom: 1px; display: inline-flex; align-items: center; gap: 10px; padding: 0 8px; background: none; border: 0; cursor: pointer">
 <span aria-hidden="true" style="flex: none; width: 10px; height: 10px; box-sizing: border-box; border: 1.5px solid {{ s.sub.mark }}; background: {{ s.sub.fill }}"></span>
 <span class="{{ s.sub.cls }}" style="font-size: 14px">Specjalistyczne</span>
-<sc-if value="{{ s.sub.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></sc-if>
+<template data-sc="if" value="{{ s.sub.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-label="nadpisane w Reports"></span></template>
 </button>
-</sc-if>
+</template>
 </div>
-</sc-for>
+</template>
 </div>
 </section>
-</sc-for>
+</template>
 </div>
-</sc-if>
+</template>
 
 </div>
 
-<sc-if value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ panelOpen }}" hint-placeholder-val="{{ false }}">
 <button type="button" aria-label="Zamknij panel" onClick="{{ close }}" style="position: fixed; inset: 0; z-index: 40; border: 0; padding: 0; background: rgba(0, 0, 0, 0.18); cursor: default"></button>
 <aside aria-label="{{ panelTitle }}" style="position: fixed; top: 0; right: 0; bottom: 0; z-index: 50; width: min(460px, 100%); box-sizing: border-box; overflow-y: auto; background: var(--bg); border-left: 1px solid var(--fg); box-shadow: -18px 0 48px rgba(0, 0, 0, 0.12); padding: 28px; display: flex; flex-direction: column; gap: 24px">
 <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px">
@@ -698,34 +700,34 @@ body.dark{background:#121518}
 <button type="button" class="icon" aria-label="Zamknij panel" onClick="{{ close }}"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" style="fill: none; stroke: currentColor; stroke-width: 1.4px"></path></svg></button>
 </div>
 
-<sc-if value="{{ isEdit }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ isEdit }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 24px">
 <dl style="margin: 0">
-<div style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 14px"><dt style="color: var(--mut)">Źródło</dt><dd style="margin: 0; font-weight: 600; display: inline-flex; align-items: center; gap: 8px"><sc-if value="{{ ed.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-hidden="true"></span></sc-if>{{ ed.source }}</dd></div>
+<div style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 14px"><dt style="color: var(--mut)">Źródło</dt><dd style="margin: 0; font-weight: 600; display: inline-flex; align-items: center; gap: 8px"><template data-sc="if" value="{{ ed.over }}" hint-placeholder-val="{{ false }}"><span class="mk" aria-hidden="true"></span></template>{{ ed.source }}</dd></div>
 <div style="display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 14px"><dt style="color: var(--mut)">Wartość w SWD-PSP</dt><dd style="margin: 0; font-weight: 600; font-variant-numeric: tabular-nums">{{ ed.swd }}</dd></div>
 </dl>
 
 <div style="display: flex; flex-direction: column; gap: 8px">
-<sc-if value="{{ ed.isNum }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ ed.isNum }}" hint-placeholder-val="{{ false }}">
 <label for="ed-v" class="eyebrow">Wartość w Reports</label>
 <input id="ed-v" type="number" min="0" step="1" class="inp" value="{{ draft }}" onChange="{{ onDraft }}">
-</sc-if>
-<sc-if value="{{ ed.isText }}" hint-placeholder-val="{{ true }}">
+</template>
+<template data-sc="if" value="{{ ed.isText }}" hint-placeholder-val="{{ true }}">
 <label for="ed-t" class="eyebrow">Wartość w Reports</label>
 <input id="ed-t" type="text" class="inp" value="{{ draft }}" onChange="{{ onDraft }}">
-</sc-if>
-<sc-if value="{{ ed.isLong }}" hint-placeholder-val="{{ false }}">
+</template>
+<template data-sc="if" value="{{ ed.isLong }}" hint-placeholder-val="{{ false }}">
 <label for="ed-l" class="eyebrow">Wartość w Reports</label>
 <textarea id="ed-l" rows="6" class="inp" style="resize: vertical" value="{{ draft }}" onChange="{{ onDraft }}"></textarea>
-</sc-if>
-<sc-if value="{{ ed.isBool }}" hint-placeholder-val="{{ false }}">
+</template>
+<template data-sc="if" value="{{ ed.isBool }}" hint-placeholder-val="{{ false }}">
 <p id="ed-b" class="eyebrow">Wartość w Reports</p>
 <div role="group" aria-labelledby="ed-b" style="display: flex; gap: 8px">
-<sc-for list="{{ ed.options }}" as="o" hint-placeholder-count="2">
+<template data-sc="for" list="{{ ed.options }}" as="o" hint-placeholder-count="2">
 <button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button>
-</sc-for>
+</template>
 </div>
-</sc-if>
+</template>
 </div>
 
 <div style="display: flex; flex-direction: column; gap: 8px">
@@ -738,9 +740,9 @@ body.dark{background:#121518}
 <button type="button" class="solid" disabled="{{ cantSave }}" onClick="{{ save }}">Zapisz</button>
 <button type="button" class="outline" onClick="{{ close }}">Anuluj</button>
 </div>
-<sc-if value="{{ ed.over }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ ed.over }}" hint-placeholder-val="{{ false }}">
 <button type="button" class="lnk" onClick="{{ restore }}">Przywróć wartość z SWD-PSP</button>
-</sc-if>
+</template>
 </div>
 
 <section aria-labelledby="fh-h" style="display: flex; flex-direction: column">
@@ -749,7 +751,7 @@ body.dark{background:#121518}
 <button type="button" class="lnk" onClick="{{ openHistory }}">Cała historia</button>
 </div>
 <ol style="margin: 8px 0 0; padding: 0; list-style: none">
-<sc-for list="{{ ed.history }}" as="h" hint-placeholder-count="1">
+<template data-sc="for" list="{{ ed.history }}" as="h" hint-placeholder-count="1">
 <li style="position: relative; padding-left: 28px">
 <span aria-hidden="true" style="position: absolute; left: 5px; top: {{ h.lineTop }}; bottom: {{ h.lineBottom }}; width: 1px; background: var(--line)"></span>
 <span aria-hidden="true" style="position: absolute; left: 0; top: 17px; width: 11px; height: 11px; box-sizing: border-box; border: 1.5px solid var(--fg); background: {{ h.dot }}"></span>
@@ -757,30 +759,30 @@ body.dark{background:#121518}
 <span class="note" style="font-variant-numeric: tabular-nums">{{ h.at }}</span>
 <span class="v" style="font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums">{{ h.change }}</span>
 </button>
-<sc-if value="{{ h.on }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ h.on }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 4px; padding: 0 0 12px">
 <span class="note" style="color: var(--fg)">{{ h.by }}</span>
 <span class="note">{{ h.reason }}</span>
 </div>
-</sc-if>
+</template>
 </li>
-</sc-for>
+</template>
 </ol>
-<sc-if value="{{ ed.noHistory }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ ed.noHistory }}" hint-placeholder-val="{{ false }}">
 <p class="note" style="padding: 12px 0">Brak zmian.</p>
-</sc-if>
+</template>
 </section>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ isHistory }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ isHistory }}" hint-placeholder-val="{{ false }}">
 <dl style="margin: 0 0 8px">
-<sc-for list="{{ histFacts }}" as="x" hint-placeholder-count="2">
+<template data-sc="for" list="{{ histFacts }}" as="x" hint-placeholder-count="2">
 <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 13px"><dt style="color: var(--mut)">{{ x.label }}</dt><dd style="margin: 0; font-weight: 600; text-align: right; font-variant-numeric: tabular-nums">{{ x.value }}</dd></div>
-</sc-for>
+</template>
 </dl>
 <ol style="margin: 0; padding: 0; list-style: none">
-<sc-for list="{{ allHistory }}" as="h" hint-placeholder-count="3">
+<template data-sc="for" list="{{ allHistory }}" as="h" hint-placeholder-count="3">
 <li style="position: relative; padding-left: 28px">
 <span aria-hidden="true" style="position: absolute; left: 5px; top: {{ h.lineTop }}; bottom: {{ h.lineBottom }}; width: 1px; background: var(--line)"></span>
 <span aria-hidden="true" style="position: absolute; left: 0; top: 17px; width: 11px; height: 11px; box-sizing: border-box; border: 1.5px solid var(--fg); background: {{ h.dot }}"></span>
@@ -788,33 +790,33 @@ body.dark{background:#121518}
 <span class="note" style="font-variant-numeric: tabular-nums">{{ h.at }}</span>
 <span class="v" style="font-size: 14px; font-weight: 600">{{ h.field }}</span>
 </button>
-<sc-if value="{{ h.on }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ h.on }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 0 0 12px; font-size: 14px">
 <span style="font-variant-numeric: tabular-nums">{{ h.change }}</span>
 <span class="note" style="color: var(--fg)">{{ h.by }}</span>
 <span class="note">{{ h.reason }}</span>
 <button type="button" class="lnk" onClick="{{ h.open }}">Przejdź do pola</button>
 </div>
-</sc-if>
+</template>
 </li>
-</sc-for>
+</template>
 </ol>
-<sc-if value="{{ noHistory }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ noHistory }}" hint-placeholder-val="{{ false }}">
 <p class="note">Brak zmian.</p>
-</sc-if>
-</sc-if>
+</template>
+</template>
 
-<sc-if value="{{ isIgo }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ isIgo }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 22px">
 <label style="display: flex; flex-direction: column; gap: 8px"><span class="eyebrow">Data inspekcji</span><input type="date" class="inp" value="{{ igoForm.date }}" onChange="{{ igoForm.onDate }}"></label>
 <div style="display: flex; flex-direction: column; gap: 8px"><p id="igo-team" class="eyebrow">Zespół inspekcyjny</p>
 <div role="group" aria-labelledby="igo-team" style="display: flex; flex-wrap: wrap; gap: 8px">
-<sc-for list="{{ igoForm.teams }}" as="o" hint-placeholder-count="3"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for>
+<template data-sc="for" list="{{ igoForm.teams }}" as="o" hint-placeholder-count="3"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></template>
 </div></div>
 <label style="display: flex; flex-direction: column; gap: 8px"><span class="eyebrow">Liczba punktów (0–100)</span><input type="number" min="0" max="100" step="1" class="inp" value="{{ igoForm.points }}" onChange="{{ igoForm.onPoints }}"></label>
 <div style="display: flex; flex-direction: column; gap: 8px"><p id="igo-grade" class="eyebrow">Ocena</p>
 <div role="group" aria-labelledby="igo-grade" style="display: flex; flex-wrap: wrap; gap: 8px">
-<sc-for list="{{ igoForm.grades }}" as="o" hint-placeholder-count="6"><button type="button" class="seg" style="min-width: 48px" aria-pressed="{{ o.on }}" title="{{ o.title }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for>
+<template data-sc="for" list="{{ igoForm.grades }}" as="o" hint-placeholder-count="6"><button type="button" class="seg" style="min-width: 48px" aria-pressed="{{ o.on }}" title="{{ o.title }}" onClick="{{ o.pick }}">{{ o.label }}</button></template>
 </div>
 <p class="note">{{ igoForm.gradeName }}</p></div>
 <label style="display: flex; flex-direction: column; gap: 8px"><span class="eyebrow">Uwagi</span><textarea rows="3" class="inp" style="resize: vertical" value="{{ igoForm.notes }}" onChange="{{ igoForm.onNotes }}"></textarea></label>
@@ -823,20 +825,20 @@ body.dark{background:#121518}
 <button type="button" class="outline" onClick="{{ close }}">Anuluj</button>
 </div>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ isMinima }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ isMinima }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column">
-<sc-for list="{{ minima }}" as="m" hint-placeholder-count="12">
+<template data-sc="for" list="{{ minima }}" as="m" hint-placeholder-count="12">
 <button type="button" class="row" onClick="{{ m.open }}" style="align-items: center">
 <span style="display: flex; align-items: center; gap: 10px; min-width: 0"><span aria-hidden="true" style="flex: none; width: 10px; height: 10px; box-sizing: border-box; border: 1.5px solid var(--fg); background: {{ m.dot }}"></span><span style="color: var(--fg); font-weight: {{ m.weight }}">{{ m.label }}</span></span>
 <span class="v" style="font-weight: {{ m.weight }}">{{ m.value }}<span class="minv" style="margin-left: 8px">min. {{ m.min }}</span></span>
 </button>
-</sc-for>
+</template>
 </div>
-</sc-if>
+</template>
 
-<sc-if value="{{ isRequests }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ isRequests }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; gap: 20px">
 <div style="display: flex; flex-wrap: wrap; gap: 8px">
 <a class="solid sm" href="wnioski.html" style="text-decoration: none">Otwórz wnioski</a>
@@ -844,7 +846,7 @@ body.dark{background:#121518}
 <a class="outline sm" href="wnioski.html" style="text-decoration: none">Wyłączenie</a>
 </div>
 <ol style="margin: 0; padding: 0; list-style: none">
-<sc-for list="{{ requests }}" as="w" hint-placeholder-count="3">
+<template data-sc="for" list="{{ requests }}" as="w" hint-placeholder-count="3">
 <li style="position: relative; padding-left: 28px">
 <span aria-hidden="true" style="position: absolute; left: 5px; top: {{ w.lineTop }}; bottom: {{ w.lineBottom }}; width: 1px; background: var(--line)"></span>
 <span aria-hidden="true" style="position: absolute; left: 0; top: 17px; width: 11px; height: 11px; box-sizing: border-box; border: 1.5px solid var(--fg); background: {{ w.dot }}"></span>
@@ -852,20 +854,20 @@ body.dark{background:#121518}
 <span class="note" style="font-variant-numeric: tabular-nums">{{ w.at }} · <span style="color: var(--fg); font-weight: {{ w.statusWeight }}">{{ w.status }}</span></span>
 <span class="v" style="font-size: 14px; font-weight: 600">{{ w.title }}</span>
 </button>
-<sc-if value="{{ w.on }}" hint-placeholder-val="{{ false }}">
+<template data-sc="if" value="{{ w.on }}" hint-placeholder-val="{{ false }}">
 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 0 0 12px; font-size: 14px">
 <span>{{ w.detail }}</span>
 <span class="note" style="color: var(--fg)">{{ w.by }}</span>
 <span class="note">{{ w.step }}</span>
 </div>
-</sc-if>
+</template>
 </li>
-</sc-for>
+</template>
 </ol>
 </div>
-</sc-if>
+</template>
 </aside>
-</sc-if>
+</template>
 </div>
 </template>
 <script src="../assets/dc-runtime.js"></script>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>IGO — Baza pytań i test wiedzy</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Roboto+Condensed:wght@400;700&amp;display=swap">
+<style>
+body{margin:0;background:#ebeef0}
+a{color:#1c2427}
+.eb{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#535f65}
+.tab{display:inline-block;margin:0 32px -1px 0;padding:12px 0;border-bottom:2px solid transparent;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#535f65;text-decoration:none}
+.tab[aria-current="page"]{color:#1c2427;border-bottom-color:#1c2427}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;background:#1c2427;color:#ebeef0;font:inherit;font-size:14px;font-weight:600;border:0;cursor:pointer}
+.ghost{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #1c2427;color:#1c2427;font:inherit;font-size:14px;font-weight:500;background:none;cursor:pointer}
+.h2{margin:0;font-size:18px;font-weight:600}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#535f65}
+.fld input,.fld select{min-height:44px;border:1px solid #b4bec3;background:#ebeef0;padding:0 10px;font:inherit;font-size:14px;color:#1c2427;border-radius:0}
+.tb{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.tb th{font-size:12px;font-weight:500;color:#535f65;text-align:left;padding:8px;border-bottom:1px solid #d3dadd}
+.tb td{padding:10px 8px;border-bottom:1px solid #d3dadd;vertical-align:top}
+.doc{font-family:'Roboto Condensed',Arial Narrow,sans-serif;font-size:11.5px;line-height:1.35;color:#000;background:#fff}
+</style>
+</helmet>
+<div style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #1c2427; background: #ebeef0; min-height: 100%;">
+<main style="max-width: 1360px; margin: 0 auto; padding: 48px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+<header>
+
+<h1 style="margin: 6px 0 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em;">Inspekcje gotowości operacyjnej</h1>
+</header>
+<nav aria-label="Widok modułu" style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #d3dadd; margin-top: -8px;">
+<a class="tab" href="Main.dc.html">Pulpit</a>
+<a class="tab" href="Zestawienie.dc.html">Zestawienie</a>
+<a class="tab" href="Plan.dc.html">Plan</a>
+<a class="tab" href="Dokumenty.dc.html">Dokumenty</a>
+<a class="tab" aria-current="page" href="Test.dc.html">Baza pytań</a>
+</nav>
+
+<div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+<section style="flex: 999 1 600px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+<div>
+<h2 class="h2">Baza pytań KG PSP</h2>
+</div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;"><button type="button" class="ghost">Dodaj pytanie własne</button><button type="button" class="btn">Importuj nową wersję</button></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px;">
+<label class="fld">Podmiot<select><option>JRG</option><option>SK</option><option>OSP</option></select></label>
+<label class="fld">Grupa<select><option>Wszystkie</option><option>Dowódcy</option><option>Ratownicy</option><option>Ratownicy-kierowcy, operatorzy</option><option>Dyżurni SK</option></select></label>
+<label class="fld">Zakres (§15)<select><option>Wszystkie</option><option>Sprzęt i jego obsługa</option><option>Taktyka i bezpieczeństwo</option><option>Łączność i korespondencja</option></select></label>
+<label class="fld" style="flex: 1 1 200px;">Szukaj<input type="search" placeholder="Treść pytania"></label>
+</div>
+<table class="tb">
+<thead><tr><th scope="col">Pytanie</th><th scope="col">Grupa</th><th scope="col">Zakres</th><th scope="col">Źródło</th></tr></thead>
+<tbody>
+<tr><td>Minimalne ciśnienie w butli aparatu powietrznego przed wejściem do strefy zagrożenia wynosi…</td><td>ratownicy</td><td>sprzęt</td><td>KG</td></tr>
+<tr><td>Kto podejmuje decyzję o wprowadzeniu odcinków bojowych?</td><td>dowódcy</td><td>taktyka</td><td>KG</td></tr>
+<tr><td>Sygnał „wycofać się” przekazywany drogą radiową brzmi…</td><td>ratownicy</td><td>łączność</td><td>KG</td></tr>
+<tr><td>Dopuszczalna masa całkowita pojazdu przy prawie jazdy kat. C…</td><td>ratownicy-kierowcy</td><td>sprzęt</td><td>KG</td></tr>
+<tr><td>Jak oznaczono kanał współdziałania KSRG w powiecie puławskim?</td><td>ratownicy</td><td>łączność</td><td>KW Lublin</td></tr>
+</tbody>
+</table>
+<p style="margin: 0; font-size: 13px; color: #535f65;">Treść pytań przykładowa — do zastąpienia plikiem KG.</p>
+</section>
+
+<section style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px; border-top: 2px solid #1c2427; padding-top: 16px;">
+<p class="eb">Generator · JRG 2 Puławy, zm. II</p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
+<label class="fld">Dowódcy<input type="number" value="2"></label>
+<label class="fld">Ratownicy<input type="number" value="7"></label>
+<label class="fld">Kierowcy<input type="number" value="4"></label>
+</div>
+<p style="margin: 0; font-size: 14px;">15 pytań na test · osobne zestawy dla grup · pytania spoza bazy: 2 z 15 (13%, limit 20%)</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;"><button type="button" class="btn">Drukuj 13 testów i klucz</button><button type="button" class="ghost">Uruchom test na urządzeniu</button></div>
+<div class="doc" style="border: 1px solid #d3dadd; padding: 24px 28px; display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; justify-content: space-between; border-bottom: 1px solid #000; padding-bottom: 6px;"><strong style="font-size: 13px;">TEST WIEDZY · IGO JRG</strong><span>Zestaw R-03 · ratownicy</span></div>
+<p style="margin: 0;">Stopień, imię i nazwisko: ………………………………… Data: 06.11.2026</p>
+<p style="margin: 0;"><strong>1.</strong> Minimalne ciśnienie w butli aparatu powietrznego przed wejściem do strefy zagrożenia wynosi:<br>☐ a) 150 bar ☐ b) 200 bar ☐ c) 270 bar ☐ d) 300 bar</p>
+<p style="margin: 0;"><strong>2.</strong> Sygnał „wycofać się” przekazywany drogą radiową brzmi:<br>☐ a) … ☐ b) … ☐ c) … ☐ d) …</p>
+<p style="margin: 0; color: #535f65;">… pytania 3–15</p>
+<p style="margin: 0; border-top: 1px solid #000; padding-top: 6px;">Test rozwiązuje się samodzielnie, bez dokumentacji. Brak odpowiedzi lub więcej niż jedna odpowiedź = 0 pkt.</p>
+</div>
+</section>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1100}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

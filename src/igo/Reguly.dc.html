@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>IGO — Reguły oceny</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#ebeef0}
+.eb{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#535f65}
+.col{display:flex;flex-direction:column;gap:14px;min-width:0}
+.col h2{margin:0;font-size:20px;font-weight:600}
+.tb{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.tb td{padding:8px 0;border-top:1px solid #d3dadd;vertical-align:top}
+.tb td.p{text-align:right;white-space:nowrap;padding-left:8px;font-weight:600}
+.tb td.m{color:#535f65;font-size:12px;padding-top:0;border-top:0}
+.k{margin:0;font-size:13px;line-height:1.5}
+.k b{font-weight:600}
+.warn{color:#b3261e}
+</style>
+</helmet>
+<div style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #1c2427; background: #ebeef0; min-height: 100%;">
+<main style="max-width: 1360px; margin: 0 auto; padding: 48px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+<header>
+
+<h1 style="margin: 6px 0 0; font-size: 30px; font-weight: 600;">Reguły, które kreator stosuje sam</h1>
+</header>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px 40px; padding: 24px; background: #1c2427; color: #ebeef0;">
+<div><p class="eb" style="color: #b4bec3;">Próg SK</p><p class="k" style="margin-top: 6px;">„Dopuszczający” od <b>62 pkt</b>, jak metodyka (arkusz KG: 61).</p></div>
+<div><p class="eb" style="color: #b4bec3;">Korekta przewodniczącego</p><p class="k" style="margin-top: 6px;">Od <b>−10 do +10 pkt</b>, zawsze z pisemnym uzasadnieniem (arkusz KG: 0 do +10).</p></div>
+<div><p class="eb" style="color: #b4bec3;">Ponad maksimum</p><p class="k" style="margin-top: 6px;">Pokazujemy <b>rzeczywistą sumę</b>, ocena 6.</p></div>
+<div><p class="eb" style="color: #b4bec3;">BK · BKZ</p><p class="k" style="margin-top: 6px;"><b>BK</b> kończy sprawdzanie, ocena 1. <b>BKZ</b> zeruje dział.</p></div>
+</section>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 40px;">
+
+<div class="col">
+<p class="eb">Załącznik 4 · protokół zał. 7</p>
+<h2>Stanowisko kierowania</h2>
+<table class="tb"><tbody>
+<tr><td>I. Obsada osobowa</td><td class="p">0–7</td></tr><tr><td class="m" colspan="2">7 elementów po 1 pkt; legitymacja opisowo; stan psychofizyczny → BK</td></tr>
+<tr><td>II. Test wiedzy</td><td class="p">0–10</td></tr><tr><td class="m" colspan="2">10 pytań, średnia dyżurnych, zaokrąglenie z tabeli</td></tr>
+<tr><td>III. Obszary chronione i potencjał</td><td class="p">0–22</td></tr><tr><td class="m" colspan="2">podpunkty a–e po 1 pkt (5+5+5), odwody 3×2, grupy specjalistyczne 1; wariant KW lub KP/KM</td></tr>
+<tr><td>IV. Dokumentacja w SK</td><td class="p">0–28</td></tr><tr><td class="m" colspan="2">9 pozycji; „5 wybranych” = losowanie lub wybór zespołu</td></tr>
+<tr><td>V. Wyposażenie i aplikacje</td><td class="p">0–19</td></tr><tr><td class="m" colspan="2">sprawność + obsługa; brak rejestracji na jednym kanale → 0</td></tr>
+<tr><td>VI. Dokumentacja w SWD PSP</td><td class="p">0–5</td></tr>
+<tr><td>VII. Ćwiczenie aplikacyjne</td><td class="p">0–32</td></tr><tr><td class="m" colspan="2">8 elementów ze skalą; realne zdarzenie może zastąpić ćwiczenie</td></tr>
+<tr><td style="font-weight: 600;">Razem</td><td class="p">123</td></tr>
+</tbody></table>
+<p class="k">6 ≥ 119 · 5 ≥ 111 · 4 ≥ 99 · 3 ≥ 80 · 2 ≥ 62 · 1 ≤ 61</p>
+</div>
+
+<div class="col">
+<p class="eb">Załącznik 5 · protokół zał. 8</p>
+<h2>JRG PSP i szkoły</h2>
+<table class="tb"><tbody>
+<tr><td>I. Alarmowanie</td><td class="p">0–10</td></tr><tr><td class="m" colspan="2">czas do wyjazdu 2. zastępu: ≤70 s → 10 … ≤190 → 1, ≤300 → 0, &gt;300 → BK; −1 za każdy z 6 warunków</td></tr>
+<tr><td>II. Gotowość ratowników</td><td class="p">0–8</td></tr><tr><td class="m" colspan="2">ŚOI 2/0 (≥2 braki), dokumenty 2/0, sprzęt 4/0; brak dowódców lub kierowców → BKZ, brak żadnego → BK; kierowca bez zezwolenia → BKZ</td></tr>
+<tr><td>III. Pojazdy i sprzęt</td><td class="p">0–15</td></tr><tr><td class="m" colspan="2">15 − (3, 3, 3, 2, 3, 1), każda raz; brak UDT w SH → BKZ</td></tr>
+<tr><td>IV. Dokumentacja jednostki</td><td class="p">0–2</td></tr><tr><td class="m warn" colspan="2">bez uwag 2, ≥2 nieprawidłowości 0; jedna — do decyzji</td></tr>
+<tr><td>V. Test wiedzy</td><td class="p">0–15</td></tr><tr><td class="m" colspan="2">15 pytań, 3 grupy, średnia, x,50 w dół</td></tr>
+<tr><td>VI. Ćwiczenie</td><td class="p">0–50</td></tr><tr><td class="m" colspan="2">50 − Σ błędów × waga (26 elementów); poz. 1 i 14 → BKZ = 0</td></tr>
+<tr><td style="font-weight: 600;">Razem</td><td class="p">100</td></tr>
+</tbody></table>
+<p class="k">6 &gt; 98 · 5 &gt; 93 · 4 &gt; 80 · 3 &gt; 65 · 2 &gt; 50 · 1 ≤ 50</p>
+</div>
+
+<div class="col">
+<p class="eb">Załącznik 6 · protokół zał. 9</p>
+<h2>OSP w KSRG</h2>
+<table class="tb"><tbody>
+<tr><td>I. Alarmowanie</td><td class="p">0–10</td></tr><tr><td class="m" colspan="2">od ogłoszenia alarmu do wyjazdu 1. zastępu z ≥4 strażakami: ≤5 min → 10 … ≤15 → 0, &gt;15 → BK; −1 za każdy z 7 warunków</td></tr>
+<tr><td>II. Gotowość strażaków</td><td class="p">0–20</td></tr><tr><td class="m" colspan="2">&lt;4 strażaków, brak dowódcy lub kierowcy → BK; wyposażenie 12 × 1 pkt; wyszkolenie 8 pkt: brak KDR, zezwolenia lub szkolenia podstawowego → BK; BHP, badania, ubezpieczenie → BKZ; kierowca-konserwator, 2 × KPP → 0 za element</td></tr>
+<tr><td>III. Pojazdy, sprzęt, łączność</td><td class="p">0–20</td></tr><tr><td class="m" colspan="2">17 pozycji: 3/2/1 pkt; jedyny pojazd bez badań lub OC → BK</td></tr>
+<tr><td>IV. Test wiedzy</td><td class="p">0–10</td></tr>
+<tr><td>V. Ćwiczenie</td><td class="p">0–40</td></tr><tr><td class="m" colspan="2">18 elementów; priorytet i zagrożenie życia → BKZ</td></tr>
+<tr><td>VI. Stan strażnicy</td><td class="p">opis</td></tr>
+<tr><td style="font-weight: 600;">Razem</td><td class="p">100</td></tr>
+</tbody></table>
+<p class="k">Progi jak JRG.</p>
+<p class="k warn">Do decyzji: ubranie specjalne lekkie — protokół „opcjonalnie”, metodyka liczy 1 pkt.</p>
+</div>
+
+<div class="col">
+<p class="eb">Tabela 6 załącznika 1</p>
+<h2>Pododdział COO</h2>
+<table class="tb"><tbody>
+<tr><td>Praktyczna umiejętność rozwinięcia sił</td></tr>
+<tr><td>Zgłoszenie gotowości do SK KW i forma kolumny</td></tr>
+<tr><td>Stan osobowy zgodny z kartą danych pododdziału</td></tr>
+<tr><td>Wykaz obsad osobowych pojazdów</td></tr>
+<tr><td>Samowystarczalność 36 h</td></tr>
+<tr><td>Indywidualne wyposażenie strażaków</td></tr>
+<tr><td>Dokumenty ratowników i kierowców</td></tr>
+<tr><td>Karty alarmowania i ukompletowania</td></tr>
+<tr><td>Wykaz danych radiowych</td></tr>
+<tr><td>Atlasy, nawigacja satelitarna</td></tr>
+<tr><td>Druki „Informacji z działań”</td></tr>
+<tr><td>Samochody i sprzęt zgodne z dokumentacją</td></tr>
+<tr><td>Wyrywkowe sprawdzenie sprzętu na samochodach</td></tr>
+<tr><td>Dowody rejestracyjne, karty pojazdów, OC</td></tr>
+<tr><td>Wyrywkowe sprawdzenie paliwa i środków gaśniczych</td></tr>
+</tbody></table>
+<p class="k">Każda kategoria: spełnia / nieprawidłowość + uwagi. Bez oceny końcowej. Dane z modułu COO (skład, pojazdy).</p>
+</div>
+</div>
+
+<section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px 40px; border-top: 1px solid #d3dadd; padding-top: 28px;">
+<div><p class="eb">Zaokrąglenie testu</p><p class="k" style="margin-top: 6px;">Średnia arytmetyczna wyników osób. 0,00–0,50 → 0; 0,51–1,50 → 1 … aż do maksimum.</p></div>
+<div><p class="eb">Pytania</p><p class="k" style="margin-top: 6px;">Z bazy KG PSP; co najwyżej 20% spoza bazy (§15). Odpowiedź pusta lub kilka zaznaczonych → 0.</p></div>
+<div><p class="eb">Terminy</p><p class="k" style="margin-top: 6px;">Protokół do zarządzającego 4 dni robocze. Wystąpienie poinspekcyjne 14 dni. Odmowa podpisu: powody w 14 dni. Ocena 1 → ponowna do 3 miesięcy, JRG i SK na tej samej zmianie.</p></div>
+<div><p class="eb">Wersja metodyki</p><p class="k" style="margin-top: 6px;">Każda inspekcja zapamiętuje wersję zarządzenia. Nowelizacja nie zmienia ocen wstecz.</p></div>
+</section>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

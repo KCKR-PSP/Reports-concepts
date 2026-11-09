@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>IGO — test na urządzeniu</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+.ans{display:flex;gap:14px;align-items:flex-start;width:100%;min-height:56px;padding:14px 16px;border:1px solid #b4bec3;background:none;font:inherit;font-size:16px;color:#1c2427;text-align:left;cursor:pointer;margin-bottom:-1px;box-sizing:border-box}
+.ans[aria-pressed="true"]{background:#1c2427;color:#ebeef0;border-color:#1c2427}
+.ans b{width:18px;flex:none}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 28px 20px 24px; background: #ebeef0; color: #1c2427; font-family: 'Instrument Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;">
+<p style="margin: 0; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #535f65;">Test wiedzy · K7Q-4M2</p>
+<p style="margin: 0; font-size: 14px; font-variant-numeric: tabular-nums;">24:12</p>
+</div>
+<div>
+<p style="margin: 0; font-size: 14px; color: #535f65;">sekc. Igor Len · ratownicy</p>
+<div style="display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); gap: 3px; margin-top: 12px;">
+<sc-for list="{{ dots }}" as="d" hint-placeholder-count="15"><span style="{{ d.style }}"></span></sc-for>
+</div>
+</div>
+<div>
+<p style="margin: 0; font-size: 13px; color: #535f65;">Pytanie 3 z 15</p>
+<h1 style="margin: 8px 0 0; font-size: 22px; line-height: 1.3; font-weight: 600;">Sygnał „wycofać się” przekazywany drogą radiową brzmi:</h1>
+</div>
+<div role="group" aria-label="Odpowiedzi">
+<sc-for list="{{ answers }}" as="a" hint-placeholder-count="4"><button type="button" class="ans" aria-pressed="{{ a.on }}" onClick="{{ a.pick }}"><b>{{ a.k }}</b><span>{{ a.t }}</span></button></sc-for>
+</div>
+<p style="margin: 0; font-size: 13px; color: #535f65;">Jedna odpowiedź. Odpowiedź można zmienić do wysłania testu.</p>
+<div style="margin-top: auto; display: flex; gap: 10px;">
+<button type="button" style="flex: 1; min-height: 52px; border: 1px solid #1c2427; background: none; font: inherit; font-size: 15px; cursor: pointer; color: #1c2427;">Poprzednie</button>
+<button type="button" style="flex: 1; min-height: 52px; border: 0; background: #1c2427; color: #ebeef0; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;">Następne</button>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { pick: 1 }; }
+  renderVals() {
+    const T = ['wariant odpowiedzi A', 'wariant odpowiedzi B', 'wariant odpowiedzi C', 'wariant odpowiedzi D'];
+    const answers = T.map((t, i) => ({ k: 'abcd'[i], t, on: this.state.pick === i, pick: () => this.setState({ pick: i }) }));
+    const dots = Array.from({ length: 15 }, (_, i) => ({ style: 'height: 4px; background: ' + (i < 2 ? '#1c2427' : i === 2 ? '#6b777d' : '#d3dadd') + ';' }));
+    return { answers, dots };
+  }
+}
+</script>
+</body>
+</html>
