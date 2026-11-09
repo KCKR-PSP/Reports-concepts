@@ -99,18 +99,18 @@ body.dark{background:#121518}
 .ob-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px;align-items:start}
 .sch{position:relative;padding:20px 0 0}
 .sch-top{display:flex;justify-content:center}
-.sch-top .sch-card{width:300px}
+.sch-top .sch-card{width:320px}
 .sch-stem{width:1px;height:40px;background:#1c2427;margin:0 auto}
-.sch-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;border-top:1px solid #1c2427;padding-top:0}
+.sch-cols{display:flex;flex-direction:column;gap:36px}
 .sch-col{display:flex;flex-direction:column;gap:16px}
-.sch-col::before{content:'';width:1px;height:28px;margin-bottom:-16px;background:#1c2427;margin:0 auto}
-.sch-head{display:flex;justify-content:space-between;align-items:baseline;background:#1c2427;color:#ebeef0;padding:14px 16px;font-size:13px;font-weight:600}
-.sch-head span{font-weight:400;color:#b4bec3;font-size:12px}
-.sch-card{background:rgb(255 255 255/.72);border:1px solid #d3dadd;padding:14px 12px;display:flex;flex-direction:column;gap:10px}
-.sch-ttl{display:flex;gap:8px;font-size:13px;font-weight:600;line-height:17px}
+.sch-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.sch-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #1c2427;padding:0 0 12px;font-size:15px;font-weight:600}
+.sch-head span{font-weight:400;color:#535f65;font-size:13px}
+.sch-card{background:rgb(255 255 255/.72);border:1px solid #d3dadd;padding:16px;display:flex;flex-direction:column;gap:10px}
+.sch-ttl{display:flex;gap:8px;font-size:14px;font-weight:600;line-height:17px}
 .sch-nr{color:#535f65;font-weight:400;font-variant-numeric:tabular-nums}
-.sch-ini{width:26px;height:26px;flex:none;background:#1c2427;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
-.sch-who{display:flex;flex-direction:column;line-height:15px;min-width:0}.sch-who b{font-weight:600;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sch-who small{font-size:11px;color:#535f65}
+.sch-ini{width:30px;height:30px;flex:none;background:#1c2427;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.sch-who{display:flex;flex-direction:column;line-height:15px;min-width:0}.sch-who b{font-weight:600;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sch-who small{font-size:11px;color:#535f65}
 .sch-veh{font-size:11px;font-weight:700;letter-spacing:.04em;border:1px solid #1c2427;padding:1px 5px}
 .sch-warn{font-size:11.5px;line-height:15px;color:#b3261e}
 .ob-cand-ini{width:30px;height:30px;flex:none;background:#d3dadd;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
@@ -157,12 +157,12 @@ body.dark{background:#121518}
 <sc-if value="{{s.warn}}"><div class="sch-warn">{{s.warnText}}</div></sc-if>
 </div></sc-for></div>
 <div class="sch-stem"></div>
-<div class="sch-cols"><sc-for list="{{cols}}" as="col" hint-placeholder-count="4"><div class="sch-col"><div class="sch-head">{{col.name}}<span>{{col.count}}</span></div><sc-for list="{{col.slots}}" as="s" hint-placeholder-count="4"><div class="sch-card">
+<div class="sch-cols"><sc-for list="{{cols}}" as="col" hint-placeholder-count="4"><div class="sch-col"><div class="sch-head">{{col.name}}<span>{{col.count}}</span></div><div class="sch-slots"><sc-for list="{{col.slots}}" as="s" hint-placeholder-count="4"><div class="sch-card">
 <div class="sch-ttl"><span class="sch-nr">{{s.nr}}</span><span>{{s.fn}}</span></div>
 <div class="{{s.cp}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropp}}" onClick="{{s.clickp}}"><sc-if value="{{s.emptyp}}"><span class="ob-plus">+</span><span class="e1">wolne</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasp}}"><span class="sch-ini">{{s.ini}}</span><span class="sch-who"><b>{{s.pname}}</b><small>{{s.punit}}</small></span><span class="ob-x" onClick="{{s.clearp}}">×</span></sc-if></div>
 <sc-if value="{{s.hasType}}"><div class="{{s.cv}}" data-kind="v" data-type="{{s.type}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><sc-if value="{{s.emptyv}}"><span class="ob-plus">+</span><span class="e1">{{s.type}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasv}}"><span class="sch-veh">{{s.type}}</span><span>{{s.vname}}</span><span class="ob-x" onClick="{{s.clearv}}">×</span></sc-if></div></sc-if>
 <sc-if value="{{s.warn}}"><div class="sch-warn">{{s.warnText}}</div></sc-if>
-</div></sc-for></div></sc-for></div>
+</div></sc-for></div></div></sc-for></div>
 </div>
 </div>
 <aside style="display:flex;flex-direction:column;gap:22px;background:rgb(255 255 255/.6);padding:24px 22px 28px">
