@@ -46,7 +46,8 @@
     const tag = node.localName;
     // <sc-for>/<sc-if>, or <template data-sc="for|if"> (the build's form, safe inside tables).
     const kind = tag === 'sc-for' || tag === 'sc-if' ? tag.slice(3) : tag === 'template' ? node.getAttribute('data-sc') : null;
-    const kids = tag === 'template' ? node.content.childNodes : node.childNodes;
+    // A <template> inside <svg> is an SVG element without .content: its children are ordinary child nodes.
+    const kids = tag === 'template' && node.content ? node.content.childNodes : node.childNodes;
     if (kind === 'for') {
       const list = evaluate(whole(node.getAttribute('list')), scope) || [];
       const as = node.getAttribute('as');
