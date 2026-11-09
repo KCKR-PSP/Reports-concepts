@@ -29,174 +29,358 @@
     {
       "id": "grupy-miedzynarodowe",
       "title": "Grupy międzynarodowe",
-      "description": "Zasób Grupy międzynarodowe w obecnym UI Reports: wybór zasobu, strona zasobu, pulpit, sprzęt z ewidencji SWD, psy, dyżury z obsadą stanowisk i kontrolą gotowości, wyjazdy z konfiguracją składu i dokumentami, ustawienia, skład modułu i słowniki w panelu administracyjnym, powiadomienia, wyszukiwarka, lista użytkowników, profil osoby i ustawienia konta.",
+      "description": "Zasób Grupy międzynarodowe w obecnym UI Reports, do przeklikania z poziomu KG, KW, KP albo członka modułu: pulpit z kalendarzem dysponowania, dyżury z obsadą przeciąganą na schemat, kreator wyjazdu, sprzęt, psy, osoby i ustawienia w panelu administracyjnym.",
       "boards": [
         {
-          "source": "Zasob.dc.html",
+          "source": "Start.dc.html",
           "page": "index.html",
-          "title": "Zasób",
+          "title": "Start · z jakiego poziomu patrzysz",
           "controls": []
         },
         {
-          "source": "Pulpit.dc.html",
-          "page": "pulpit.html",
-          "title": "Pulpit",
-          "controls": []
-        },
-        {
-          "source": "Sprzet.dc.html",
-          "page": "sprzet.html",
-          "title": "Sprzęt",
-          "controls": []
-        },
-        {
-          "source": "Psy.dc.html",
-          "page": "psy.html",
-          "title": "Psy",
-          "controls": []
-        },
-        {
-          "source": "Dyzury.dc.html",
-          "page": "dyzury.html",
-          "title": "Dyżury",
-          "controls": []
-        },
-        {
-          "source": "Wyjazdy.dc.html",
-          "page": "wyjazdy.html",
-          "title": "Wyjazdy",
-          "controls": []
-        },
-        {
-          "source": "Uzytkownicy.dc.html",
-          "page": "uzytkownicy.html",
-          "title": "Użytkownicy",
-          "controls": []
-        },
-        {
-          "source": "Profil.dc.html",
-          "page": "profil.html",
-          "title": "Profil osoby",
-          "controls": []
-        },
-        {
-          "source": "Konto.dc.html",
-          "page": "konto.html",
-          "title": "Ustawienia konta",
-          "controls": []
-        },
-        {
-          "source": "Admin-zasob.dc.html",
-          "page": "admin-zasob.html",
-          "title": "Panel administracyjny",
+          "source": "Zasob.dc.html",
+          "page": "zasob.html",
+          "title": "KG · Zasób · Grupy międzynarodowe",
           "controls": []
         },
         {
           "source": "Launcher.dc.html",
           "page": "launcher.html",
-          "title": "Wybór zasobu",
-          "controls": [],
-          "nav": false
+          "title": "KG · Wybór zasobu",
+          "controls": []
+        },
+        {
+          "source": "Pulpit.dc.html",
+          "page": "pulpit.html",
+          "title": "KG · Pulpit",
+          "controls": []
         },
         {
           "source": "Powiadomienia.dc.html",
           "page": "powiadomienia.html",
-          "title": "Powiadomienia",
-          "controls": [],
-          "nav": false
+          "title": "KG · Powiadomienia",
+          "controls": []
         },
         {
           "source": "Szukaj.dc.html",
           "page": "szukaj.html",
-          "title": "Szukaj",
-          "controls": [],
-          "nav": false
+          "title": "KG · Szukaj",
+          "controls": []
         },
         {
-          "source": "Sprzet-pozycja.dc.html",
-          "page": "sprzet-pozycja.html",
-          "title": "Sprzęt · pozycja",
-          "controls": [],
-          "nav": false
-        },
-        {
-          "source": "Sprzet-minimum.dc.html",
-          "page": "sprzet-minimum.html",
-          "title": "Sprzęt · minimum",
-          "controls": [],
-          "nav": false
+          "source": "Dyzury.dc.html",
+          "page": "dyzury.html",
+          "title": "KG · Dyżury",
+          "controls": []
         },
         {
           "source": "Dyzury-komorka.dc.html",
           "page": "dyzury-komorka.html",
-          "title": "Dyżury · komórka",
-          "controls": [],
-          "nav": false
+          "title": "KG · Dyżury · komórka",
+          "controls": []
         },
         {
           "source": "Dyzury-obsada.dc.html",
           "page": "dyzury-obsada.html",
-          "title": "Dyżury · obsada",
-          "controls": [],
-          "nav": false
+          "title": "KG · Dyżury · obsada",
+          "controls": []
         },
         {
           "source": "Dyzury-kontrola.dc.html",
           "page": "dyzury-kontrola.html",
-          "title": "Dyżury · kontrola",
-          "controls": [],
-          "nav": false
+          "title": "KG · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "Wyjazdy.dc.html",
+          "page": "wyjazdy.html",
+          "title": "KG · Wyjazdy",
+          "controls": []
         },
         {
           "source": "Wyjazdy-szczegoly.dc.html",
           "page": "wyjazdy-szczegoly.html",
-          "title": "Wyjazdy · szczegóły",
-          "controls": [],
-          "nav": false
+          "title": "KG · Wyjazdy · szczegóły",
+          "controls": []
         },
         {
           "source": "Wyjazd-krok1.dc.html",
           "page": "wyjazd-krok1.html",
-          "title": "Wyjazd · krok 1 Dane",
-          "controls": [],
-          "nav": false
+          "title": "KG · Wyjazd · krok 1 Dane",
+          "controls": []
         },
         {
           "source": "Wyjazdy-konfiguracja.dc.html",
           "page": "wyjazdy-konfiguracja.html",
-          "title": "Wyjazd · krok 2 Skład",
-          "controls": [],
-          "nav": false
+          "title": "KG · Wyjazd · krok 2 Skład",
+          "controls": []
         },
         {
           "source": "Wyjazd-krok3.dc.html",
           "page": "wyjazd-krok3.html",
-          "title": "Wyjazd · krok 3 Kontrola",
-          "controls": [],
-          "nav": false
+          "title": "KG · Wyjazd · krok 3 Kontrola",
+          "controls": []
         },
         {
           "source": "Wyjazd-krok4.dc.html",
           "page": "wyjazd-krok4.html",
-          "title": "Wyjazd · krok 4 Dokumenty",
-          "controls": [],
-          "nav": false
+          "title": "KG · Wyjazd · krok 4 Dokumenty",
+          "controls": []
+        },
+        {
+          "source": "Sprzet.dc.html",
+          "page": "sprzet.html",
+          "title": "KG · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "Sprzet-pozycja.dc.html",
+          "page": "sprzet-pozycja.html",
+          "title": "KG · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "Sprzet-minimum.dc.html",
+          "page": "sprzet-minimum.html",
+          "title": "KG · Sprzęt · minimum",
+          "controls": []
+        },
+        {
+          "source": "Psy.dc.html",
+          "page": "psy.html",
+          "title": "KG · Psy",
+          "controls": []
+        },
+        {
+          "source": "Uzytkownicy.dc.html",
+          "page": "uzytkownicy.html",
+          "title": "KG · Użytkownicy · Grupy międzynarodowe",
+          "controls": []
+        },
+        {
+          "source": "Profil.dc.html",
+          "page": "profil.html",
+          "title": "KG · Profil osoby",
+          "controls": []
         },
         {
           "source": "Profil-dane.dc.html",
           "page": "profil-dane.html",
-          "title": "Profil · dane osoby",
-          "controls": [],
-          "nav": false
+          "title": "KG · Profil · dane osoby",
+          "controls": []
         },
         {
-          "source": "Konto-edycja.dc.html",
-          "page": "konto-edycja.html",
-          "title": "Ustawienia konta · edycja",
-          "controls": [],
-          "nav": false
+          "source": "Admin-zasob.dc.html",
+          "page": "admin-zasob.html",
+          "title": "KG · Panel administracyjny · Grupy międzynarodowe",
+          "controls": []
+        },
+        {
+          "source": "kw-Zasob.dc.html",
+          "page": "kw-zasob.html",
+          "title": "KW · Zasób · Grupy międzynarodowe",
+          "controls": []
+        },
+        {
+          "source": "kw-Launcher.dc.html",
+          "page": "kw-launcher.html",
+          "title": "KW · Wybór zasobu",
+          "controls": []
+        },
+        {
+          "source": "kw-Pulpit.dc.html",
+          "page": "kw-pulpit.html",
+          "title": "KW · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kw-Powiadomienia.dc.html",
+          "page": "kw-powiadomienia.html",
+          "title": "KW · Powiadomienia",
+          "controls": []
+        },
+        {
+          "source": "kw-Dyzury.dc.html",
+          "page": "kw-dyzury.html",
+          "title": "KW · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kw-Dyzury-komorka.dc.html",
+          "page": "kw-dyzury-komorka.html",
+          "title": "KW · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kw-Dyzury-obsada.dc.html",
+          "page": "kw-dyzury-obsada.html",
+          "title": "KW · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kw-Dyzury-kontrola.dc.html",
+          "page": "kw-dyzury-kontrola.html",
+          "title": "KW · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "kw-Wyjazdy.dc.html",
+          "page": "kw-wyjazdy.html",
+          "title": "KW · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kw-Wyjazdy-szczegoly.dc.html",
+          "page": "kw-wyjazdy-szczegoly.html",
+          "title": "KW · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kw-Sprzet.dc.html",
+          "page": "kw-sprzet.html",
+          "title": "KW · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kw-Sprzet-pozycja.dc.html",
+          "page": "kw-sprzet-pozycja.html",
+          "title": "KW · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "kw-Psy.dc.html",
+          "page": "kw-psy.html",
+          "title": "KW · Psy",
+          "controls": []
+        },
+        {
+          "source": "kw-Uzytkownicy.dc.html",
+          "page": "kw-uzytkownicy.html",
+          "title": "KW · Użytkownicy · Grupy międzynarodowe",
+          "controls": []
+        },
+        {
+          "source": "kw-Profil.dc.html",
+          "page": "kw-profil.html",
+          "title": "KW · Profil osoby",
+          "controls": []
+        },
+        {
+          "source": "kw-Profil-dane.dc.html",
+          "page": "kw-profil-dane.html",
+          "title": "KW · Profil · dane osoby",
+          "controls": []
+        },
+        {
+          "source": "kp-Zasob.dc.html",
+          "page": "kp-zasob.html",
+          "title": "KP · Zasób · Grupy międzynarodowe",
+          "controls": []
+        },
+        {
+          "source": "kp-Launcher.dc.html",
+          "page": "kp-launcher.html",
+          "title": "KP · Wybór zasobu",
+          "controls": []
+        },
+        {
+          "source": "kp-Pulpit.dc.html",
+          "page": "kp-pulpit.html",
+          "title": "KP · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kp-Powiadomienia.dc.html",
+          "page": "kp-powiadomienia.html",
+          "title": "KP · Powiadomienia",
+          "controls": []
+        },
+        {
+          "source": "kp-Dyzury.dc.html",
+          "page": "kp-dyzury.html",
+          "title": "KP · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kp-Dyzury-komorka.dc.html",
+          "page": "kp-dyzury-komorka.html",
+          "title": "KP · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kp-Dyzury-obsada.dc.html",
+          "page": "kp-dyzury-obsada.html",
+          "title": "KP · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kp-Wyjazdy.dc.html",
+          "page": "kp-wyjazdy.html",
+          "title": "KP · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kp-Wyjazdy-szczegoly.dc.html",
+          "page": "kp-wyjazdy-szczegoly.html",
+          "title": "KP · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kp-Sprzet.dc.html",
+          "page": "kp-sprzet.html",
+          "title": "KP · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kp-Sprzet-pozycja.dc.html",
+          "page": "kp-sprzet-pozycja.html",
+          "title": "KP · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "kp-Psy.dc.html",
+          "page": "kp-psy.html",
+          "title": "KP · Psy",
+          "controls": []
+        },
+        {
+          "source": "kp-Profil.dc.html",
+          "page": "kp-profil.html",
+          "title": "KP · Profil osoby",
+          "controls": []
+        },
+        {
+          "source": "kp-Profil-dane.dc.html",
+          "page": "kp-profil-dane.html",
+          "title": "KP · Profil · dane osoby",
+          "controls": []
+        },
+        {
+          "source": "os-Powiadomienia.dc.html",
+          "page": "os-powiadomienia.html",
+          "title": "Członek · Powiadomienia",
+          "controls": []
+        },
+        {
+          "source": "os-Profil.dc.html",
+          "page": "os-profil.html",
+          "title": "Członek · Mój profil",
+          "controls": []
+        },
+        {
+          "source": "os-Konto.dc.html",
+          "page": "os-konto.html",
+          "title": "Członek · Ustawienia konta",
+          "controls": []
+        },
+        {
+          "source": "os-Konto-edycja.dc.html",
+          "page": "os-konto-edycja.html",
+          "title": "Członek · Ustawienia konta · edycja",
+          "controls": []
         }
-      ]
+      ],
+      "nav": false
     }
   ]
 }

@@ -58,7 +58,7 @@ def page(concept: dict, board: dict, parts: dict, links: dict) -> str:
         + '</select></label>'
         for k, v in parts['props'].items() if k in board.get('controls', ['theme', 'rola']))
     current = ' aria-current="page"'
-    tabs = ''.join(
+    tabs = '' if concept.get('nav') is False else ''.join(
         f'<a href="{b["page"]}"{current if b is board else ""}>{html.escape(b["title"])}</a>' for b in concept['boards'] if b.get('nav', True) or b is board)
     return f"""<!doctype html>
 <html lang="pl">
@@ -104,7 +104,7 @@ def page(concept: dict, board: dict, parts: dict, links: dict) -> str:
 def index(concepts: list) -> str:
     items = ''.join(
         f'<li><h2>{html.escape(c["title"])}</h2><p>{html.escape(c["description"])}</p><p class="links">'
-        + ''.join(f'<a href="{c["id"]}/{b["page"]}">{html.escape(b["title"])} →</a>' for b in c['boards'] if b.get('nav', True))
+        + (f'<a href="{c["id"]}/{c["boards"][0]["page"]}">Otwórz →</a>' if c.get('nav') is False else ''.join(f'<a href="{c["id"]}/{b["page"]}">{html.escape(b["title"])} →</a>' for b in c['boards'] if b.get('nav', True)))
         + '</p></li>' for c in concepts)
     return f"""<!doctype html>
 <html lang="pl">

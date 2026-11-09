@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Wyjazdy · szczegóły · Koncepcje Reports</title>
+<title>KG · Wyjazdy · szczegóły · Koncepcje Reports</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;500;600;700&amp;display=swap">
@@ -82,22 +82,21 @@ body.dark{background:#121518}
 <a href="../index.html">← Koncepcje Reports</a>
 <span class="ttl">Grupy międzynarodowe</span>
 <span class="tag">Koncepcja · dane przykładowe</span>
-<nav aria-label="Plansze"><a href="index.html">Zasób</a><a href="pulpit.html">Pulpit</a><a href="sprzet.html">Sprzęt</a><a href="psy.html">Psy</a><a href="dyzury.html">Dyżury</a><a href="wyjazdy.html">Wyjazdy</a><a href="uzytkownicy.html">Użytkownicy</a><a href="profil.html">Profil osoby</a><a href="konto.html">Ustawienia konta</a><a href="admin-zasob.html">Panel administracyjny</a><a href="wyjazdy-szczegoly.html" aria-current="page">Wyjazdy · szczegóły</a></nav>
+<nav aria-label="Plansze"></nav>
 <span class="sp"></span>
 
 </div>
 <div id="board"></div>
 <template id="board-template">
-<div class="app"><div class="shade" aria-hidden="true"></div><div class="mist" aria-hidden="true"></div><nav class="pill" aria-label="Nawigacja główna">
+<div class="role-strip" style="position:relative;z-index:8;display:flex;gap:24px;align-items:center;padding:0 24px;background:#1c2427;font-family:Instrument Sans,ui-sans-serif,system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="color:#8b979c">Widok</span><a href="wyjazdy-szczegoly.html" style="padding:10px 0;border-bottom:2px solid #ebeef0;color:#fff">KG PSP</a><a href="kw-wyjazdy-szczegoly.html" style="padding:10px 0;color:#b4bec3">KW PSP Poznań</a><a href="kp-wyjazdy-szczegoly.html" style="padding:10px 0;color:#b4bec3">KP PSP Chodzież</a><a href="os-profil.html" style="padding:10px 0;color:#b4bec3">Członek modułu</a></div><div class="app"><div class="shade" aria-hidden="true"></div><div class="mist" aria-hidden="true"></div><nav class="pill" aria-label="Nawigacja główna">
 <a class="pi" href="launcher.html" aria-label="Reports. Otwórz wybór zasobów." style="font-size:20px;font-weight:800">R</a>
 <a class="pi" href="powiadomienia.html" style="position:relative" aria-label="Powiadomienia"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></a>
 <a class="pi" href="szukaj.html" aria-label="Szukaj (⌘K)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></a>
-<a class="pi" href="uzytkownicy.html" aria-label="Użytkownicy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></a>
-<a class="pi" href="admin-zasob.html" aria-label="Panel administracyjny"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></a>
-<a class="pi" href="konto.html" aria-label="Konto"><span style="width:32px;height:32px;border-radius:8px;background:#d3dadd;color:#1c2427;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">KG</span></a>
+<a class="pi" href="uzytkownicy.html" aria-label="Użytkownicy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></a><a class="pi" href="admin-zasob.html" aria-label="Panel administracyjny"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></a>
+<a class="pi" href="profil.html" aria-label="Konto"><span style="width:32px;height:32px;border-radius:8px;background:#d3dadd;color:#1c2427;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">AB</span></a>
 </nav><div class="main"><div class="wrap">
 <header style="display:flex;flex-direction:column;gap:32px">
-<h1 style="margin:0;font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.01em">Grupy międzynarodowe</h1>
+<div><h1 style="margin:0;font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.01em">Grupy międzynarodowe</h1><p style="margin:8px 0 0;font-size:14px;color:#535f65">KG PSP · wszystkie jednostki</p></div>
 <nav class="optabs"><a class="optab" href="pulpit.html">Pulpit</a><a class="optab" href="sprzet.html">Sprzęt</a><a class="optab" href="psy.html">Psy</a><a class="optab" href="dyzury.html">Dyżury</a><a class="optab on" href="wyjazdy.html">Wyjazdy</a></nav>
 </header>
 <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid #d3dadd;margin-top:-24px"><nav style="display:flex;flex-wrap:wrap"><a class="cz-tab" href="wyjazdy.html">GFFF</a><a class="cz-tab on" href="wyjazdy.html">GFFFV</a><a class="cz-tab" href="wyjazdy.html">USAR</a><a class="cz-tab" href="wyjazdy.html">DSIM</a><a class="cz-tab" href="wyjazdy.html">HCP</a></nav><div style="display:flex;gap:8px;padding-bottom:8px"><span style="display:flex;gap:8px"><a class="pillb" href="wyjazd-krok1.html">Nowy ze składu dyżuru</a><a class="pillb" href="wyjazd-krok1.html">Nowy wyjazd</a></span></div></div>

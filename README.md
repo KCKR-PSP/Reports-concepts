@@ -12,7 +12,7 @@ z SWD-PSP.
 | Koncepcja | Strony |
 |---|---|
 | Karta jednostki OSP KSRG | `osp-ksrg/karta.html` (karta jednostki), `osp-ksrg/wnioski.html` (kreator i obieg wniosku KSRG) |
-| Grupy międzynarodowe | `grupy-miedzynarodowe/index.html` (strona zasobu) i 25 kolejnych widoków połączone linkami jak w aplikacji: wybór zasobu, pulpit, sprzęt, psy, dyżury z obsadą przeciąganą według tabeli gotowości, wyjazdy z kreatorem w czterech krokach, ustawienia modułu w panelu administracyjnym, powiadomienia, wyszukiwarka, użytkownicy, profil, ustawienia konta |
+| Grupy międzynarodowe | `grupy-miedzynarodowe/index.html`: wybór poziomu (KG PSP, KW PSP Poznań, KP PSP Chodzież, członek modułu), dalej ekrany klikalne jak w aplikacji; poziom można zmienić paskiem „Widok” na górze ekranu |
 
 Na górze każdej strony jest pasek koncepcji z przełącznikami:
 - motyw (jasny, ciemny);
