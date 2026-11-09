@@ -8,17 +8,21 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
 <style>
 body{margin:0}
-*:not(.pill):not(.pi){border-radius:0 !important}
 a{color:inherit;text-decoration:none}
 .app{position:relative;min-height:100vh;color:#1c2427;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;background:linear-gradient(160deg,hsl(200 11% 92%),hsl(202 10% 81%));overflow:hidden}
-.mist{position:absolute;inset:0;pointer-events:none;background:radial-gradient(78% 66% at 14% 12%,#fff,transparent 72%),radial-gradient(62% 52% at 62% 48%,rgb(255 255 255/.8),transparent 70%),radial-gradient(58% 58% at 28% 92%,#fff,transparent 70%),radial-gradient(48% 55% at 92% 8%,hsl(202 12% 62%/.55),transparent 72%)}
-.pill{position:absolute;z-index:2;left:16px;top:120px;display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:9999px;background:rgb(255 255 255/.32);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgb(255 255 255/.75);box-shadow:inset 0 1px 0 rgb(255 255 255/.5),0 18px 40px -22px hsl(200 35% 12%/.45)}
+.shade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(48% 55% at 92% 8%,hsl(202 12% 62%/.9),transparent 72%),radial-gradient(65% 55% at 74% 100%,hsl(202 12% 62%/.9),transparent 72%),radial-gradient(40% 45% at 4% 62%,hsl(202 12% 68%/.75),transparent 72%)}
+.mist{position:absolute;inset:0;pointer-events:none;background:radial-gradient(78% 66% at 14% 12%,#fff,transparent 72%),radial-gradient(58% 58% at 28% 92%,#fff,transparent 70%),radial-gradient(62% 52% at 62% 48%,rgb(255 255 255/.8),transparent 70%),radial-gradient(46% 42% at 96% 70%,rgb(255 255 255/.8),transparent 70%)}
+.ms{font-family:'Material Symbols Outlined';font-weight:200;font-size:36px;line-height:1;font-variation-settings:'wght' 200,'opsz' 40}
+.glass-dlg{background:hsl(0 0% 100%/.2);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);box-shadow:inset 0 1px 0 hsl(0 0% 100%/.6),0 32px 80px -28px hsl(200 35% 12%/.48);border:1px solid hsl(0 0% 100%/.6)}
+.blurscrim{position:absolute;inset:0;z-index:5;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pill{position:absolute;z-index:2;left:16px;top:450px;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:9999px;background:rgb(255 255 255/.32);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgb(255 255 255/.75);box-shadow:inset 0 1px 0 rgb(255 255 255/.5),0 18px 40px -22px hsl(200 35% 12%/.45)}
 .pi{width:44px;height:44px;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:hsl(200 12% 24%);font:700 15px 'Instrument Sans',sans-serif}
 .pi:hover{background:hsl(200 12% 94%)}
 .pi-on{background:#1c2427;color:#fff}
-.main{position:relative;z-index:1;padding-left:108px}
+.main{position:relative;z-index:1;padding-left:94px}
 .wrap{max-width:1360px;margin:0 auto;padding:48px clamp(16px,4vw,40px) 72px;box-sizing:border-box;display:flex;flex-direction:column;gap:40px}
 .optabs{display:flex;gap:28px}
 .optab{font-size:15px;font-weight:500;text-transform:uppercase;padding-bottom:8px;border-bottom:2px solid transparent}
@@ -78,22 +82,23 @@ body.dark{background:#121518}
 <a href="../index.html">← Koncepcje Reports</a>
 <span class="ttl">Grupy międzynarodowe</span>
 <span class="tag">Koncepcja · dane przykładowe</span>
-<nav aria-label="Plansze"><a href="pulpit.html">Pulpit</a><a href="sprzet.html" aria-current="page">Sprzęt</a><a href="dyzury.html">Dyżury</a><a href="wyjazdy.html">Wyjazdy</a><a href="ustawienia.html">Ustawienia</a><a href="profil.html">Profil osoby</a><a href="konto.html">Ustawienia konta</a></nav>
+<nav aria-label="Plansze"><a href="index.html">Zasób</a><a href="pulpit.html">Pulpit</a><a href="sprzet.html" aria-current="page">Sprzęt</a><a href="psy.html">Psy</a><a href="dyzury.html">Dyżury</a><a href="wyjazdy.html">Wyjazdy</a><a href="ustawienia.html">Ustawienia</a><a href="uzytkownicy.html">Użytkownicy</a><a href="profil.html">Profil osoby</a><a href="konto.html">Ustawienia konta</a></nav>
 <span class="sp"></span>
 
 </div>
 <div id="board"></div>
 <template id="board-template">
-<div class="app"><div class="mist" aria-hidden="true"></div><nav class="pill" aria-label="Menu">
-<a class="pi" href="pulpit.html" style="font-size:19px">R</a>
-<a class="pi" href="pulpit.html" style="position:relative" aria-label="Powiadomienia"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></a>
-<span class="pi" aria-label="Szukaj"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span>
-<span class="pi" aria-label="Użytkownicy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
-<a class="pi" href="konto.html" style="font-size:12px;background:#1c2427;color:#fff">KG</a>
+<div class="app"><div class="shade" aria-hidden="true"></div><div class="mist" aria-hidden="true"></div><nav class="pill" aria-label="Nawigacja główna">
+<a class="pi" href="launcher.html" aria-label="Reports. Otwórz wybór zasobów." style="font-size:20px;font-weight:800">R</a>
+<a class="pi" href="powiadomienia.html" style="position:relative" aria-label="Powiadomienia"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></a>
+<a class="pi" href="szukaj.html" aria-label="Szukaj (⌘K)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></a>
+<a class="pi" href="uzytkownicy.html" aria-label="Użytkownicy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></a>
+<span class="pi" aria-label="Panel administracyjny"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+<a class="pi" href="konto.html" aria-label="Konto"><span style="width:32px;height:32px;border-radius:8px;background:#d3dadd;color:#1c2427;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">KG</span></a>
 </nav><div class="main"><div class="wrap">
 <header style="display:flex;flex-direction:column;gap:28px">
 <h1 style="margin:0;font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.01em">Grupy międzynarodowe</h1>
-<nav class="optabs"><a class="optab" href="pulpit.html">Pulpit</a><a class="optab on" href="sprzet.html">Sprzęt</a><span class="optab">Psy</span><a class="optab" href="dyzury.html">Dyżury</a><a class="optab" href="wyjazdy.html">Wyjazdy</a><a class="optab" href="ustawienia.html">Ustawienia</a></nav>
+<nav class="optabs"><a class="optab" href="pulpit.html">Pulpit</a><a class="optab on" href="sprzet.html">Sprzęt</a><a class="optab" href="psy.html">Psy</a><a class="optab" href="dyzury.html">Dyżury</a><a class="optab" href="wyjazdy.html">Wyjazdy</a><a class="optab" href="ustawienia.html">Ustawienia</a></nav>
 </header>
 <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;border-bottom:1px solid #d3dadd;margin-top:-12px"><nav style="display:flex;flex-wrap:wrap"><a class="cz-tab" href="sprzet.html">GFFF</a><a class="cz-tab on" href="sprzet.html">GFFFV</a><a class="cz-tab" href="sprzet.html">USAR</a><a class="cz-tab" href="sprzet.html">DSIM</a><a class="cz-tab" href="sprzet.html">HCP</a></nav><div style="display:flex;gap:8px;padding-bottom:8px"><span class="pillb">Dodaj sprzęt</span></div></div>
 <div class="guide"><span><p class="eyebrow">Następny krok · 1 z 2</p><span style="font-size:17px;font-weight:500">Brakuje 2 pozycji do minimum modułu</span></span><a class="pillp" href="sprzet-minimum.html">Pokaż braki</a></div>
