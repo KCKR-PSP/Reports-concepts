@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Profil · dane</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+*:not(.pill):not(.pi){border-radius:0 !important}
+a{color:inherit;text-decoration:none}
+.app{position:relative;min-height:100vh;color:#1c2427;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;background:linear-gradient(160deg,hsl(200 11% 92%),hsl(202 10% 81%));overflow:hidden}
+.mist{position:absolute;inset:0;pointer-events:none;background:radial-gradient(78% 66% at 14% 12%,#fff,transparent 72%),radial-gradient(62% 52% at 62% 48%,rgb(255 255 255/.8),transparent 70%),radial-gradient(58% 58% at 28% 92%,#fff,transparent 70%),radial-gradient(48% 55% at 92% 8%,hsl(202 12% 62%/.55),transparent 72%)}
+.pill{position:absolute;z-index:2;left:16px;top:120px;display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:9999px;background:rgb(255 255 255/.32);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgb(255 255 255/.75);box-shadow:inset 0 1px 0 rgb(255 255 255/.5),0 18px 40px -22px hsl(200 35% 12%/.45)}
+.pi{width:44px;height:44px;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:hsl(200 12% 24%);font:700 15px 'Instrument Sans',sans-serif}
+.pi:hover{background:hsl(200 12% 94%)}
+.pi-on{background:#1c2427;color:#fff}
+.main{position:relative;z-index:1;padding-left:108px}
+.wrap{max-width:1360px;margin:0 auto;padding:48px clamp(16px,4vw,40px) 72px;box-sizing:border-box;display:flex;flex-direction:column;gap:40px}
+.optabs{display:flex;gap:28px}
+.optab{font-size:15px;font-weight:500;text-transform:uppercase;padding-bottom:8px;border-bottom:2px solid transparent}
+.optab:hover{border-bottom-color:rgb(28 36 39/.3)}
+.on,.on:hover{border-bottom-color:#1c2427}
+.pillb{display:inline-flex;align-items:center;gap:8px;min-height:40px;box-sizing:border-box;padding:9px 14px;border:1px solid #d3dadd;background:none;font:500 13px 'Instrument Sans',sans-serif;color:#1c2427;white-space:nowrap}
+.pillb:hover{border-color:#1c2427}
+.pillp{display:inline-flex;align-items:center;justify-content:center;min-height:40px;box-sizing:border-box;padding:9px 16px;border:1px solid #1c2427;background:#1c2427;color:#ebeef0;font:500 13px 'Instrument Sans',sans-serif;white-space:nowrap}
+.ghost{font-size:13px}
+.ghost:hover{text-decoration:underline}
+.inp{height:36px;border:1px solid #d3dadd;background:#fff;padding:0 10px;font:14px 'Instrument Sans',sans-serif;display:flex;align-items:center;box-sizing:border-box;color:#6b777c}
+.gt{display:grid;font-size:14px}.gh{color:#6b777c;font-size:13px;padding:0 20px 10px 0}.gc{border-top:1px solid rgb(28 36 39/.12);padding:14px 20px 14px 0}
+.sub{font-size:12.5px;color:#6b777c;margin-top:2px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b3261e;margin-left:7px;vertical-align:2px}
+.sel{background:rgb(255 255 255/.7)}.gc.sel{box-shadow:-12px 0 0 rgb(255 255 255/.7)}
+.h2{margin:0;font-size:16px;font-weight:500}
+.lbl{font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6b777c}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto 72px;gap:16px;padding:16px 0;border-top:1px solid rgb(28 36 39/.12);font-size:14px;align-items:center}
+.band{background:#1c2427;color:#ebeef0;padding:28px 32px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.band p{margin:0}.kl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#b4bec3}.kv{font-size:48px;font-weight:600;line-height:1;margin-top:10px;font-variant-numeric:tabular-nums}.ks{font-size:13px;color:#b4bec3;margin-top:10px}
+.lst{display:grid;grid-template-columns:110px minmax(0,1fr) auto;gap:20px;padding:16px 0;border-top:1px solid rgb(28 36 39/.12);font-size:14px;align-items:baseline}
+.guide{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:0 0 24px;border-bottom:1px solid rgb(28 36 39/.12)}
+.eyebrow{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#535f65}
+.scrim{position:absolute;inset:0;z-index:3;background:rgba(10,14,16,.18)}
+.drawer{position:absolute;z-index:4;top:0;right:0;bottom:0;width:520px;box-sizing:border-box;background:#ebeef0;border-left:1px solid #d3dadd;box-shadow:-24px 0 48px rgba(0,0,0,.12);padding:40px 32px 48px;display:flex;flex-direction:column;gap:28px;font-size:14px;line-height:20px}
+.cz-h3{margin:0 0 10px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.cz-nav{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #d3dadd;flex:none}
+.cz-nav:hover,.cz-outline:hover{border-color:#1c2427}
+.cz-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid #d3dadd;padding:9px 14px;min-height:40px;box-sizing:border-box;font-size:13px;font-weight:500;background:transparent}
+.cz-dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #d3dadd;border-bottom:1px solid #d3dadd;margin:0}.cz-dl>div{padding:14px 16px 14px 0}.cz-dl>div+div{padding-left:16px;border-left:1px solid #d3dadd}
+.cz-dl dt{font-size:12px;color:#535f65}.cz-dl dd{margin:4px 0 0;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums}
+.cz-tab{display:inline-block;border-bottom:2px solid transparent;margin:0 28px -1px 0;padding:10px 0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#535f65}.cz-tab.on{color:#1c2427;border-bottom-color:#1c2427}
+.srow{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:16px;align-items:center;padding:14px 0;border-top:1px solid #d3dadd;font-size:14px}
+.dr{display:grid;grid-template-columns:130px minmax(0,1fr);gap:8px 14px;font-size:14px;align-items:baseline}.dr>span:nth-child(odd){color:#535f65}
+</style>
+</helmet>
+<div class="app"><div class="mist" aria-hidden="true"></div><nav class="pill" aria-label="Menu">
+<a class="pi" href="Pulpit.dc.html" style="font-size:19px">R</a>
+<a class="pi" href="Pulpit.dc.html" style="position:relative" aria-label="Powiadomienia"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></a>
+<span class="pi" aria-label="Szukaj"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span>
+<span class="pi" aria-label="Użytkownicy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+<a class="pi" href="Konto.dc.html" style="font-size:12px;background:#1c2427;color:#fff">KG</a>
+</nav><div class="main"><section style="background:hsl(200 16% 13%);color:#fff;height:620px;display:grid;grid-template-columns:1.1fr .9fr">
+<div style="padding:40px 56px;display:flex;flex-direction:column;justify-content:space-between">
+<span></span>
+<div style="display:flex;flex-direction:column;gap:16px"><p style="margin:0;font-size:30px;font-weight:300;color:rgb(255 255 255/.85)">Operator SDŁ · KP PSP Chodzież</p>
+<p style="margin:0;font-size:84px;line-height:.95;font-weight:600;letter-spacing:-.03em"><span style="font-weight:300;opacity:.7">asp.</span> [osoba 06] <span style="display:inline-block;width:18px;height:18px;border-radius:50%;background:#10b981;box-shadow:0 0 0 5px rgb(16 185 129/.25);vertical-align:14px"></span></p>
+<p style="margin:0;font-size:14px;color:rgb(255 255 255/.7)">Jednostka: KP PSP Chodzież. Obszar: wielkopolskie, chodzieski. Zakres: powiat — chodzieski.</p></div>
+<div style="display:flex;gap:22px;font-size:13px;color:rgb(255 255 255/.8)"><span><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#10b981;margin-right:6px"></span>Konto aktywne</span><span>Kontakt</span></div>
+</div>
+<div style="position:relative;background:linear-gradient(200deg,#55636a,#8e9ba1);display:flex;align-items:center;justify-content:flex-end;padding-right:56px"><div style="position:absolute;inset:0;background:hsl(200 16% 13%/.4)"></div><nav style="position:absolute;top:32px;right:56px;display:flex;gap:24px;font-size:14px"><span>Email</span><span>Telefon</span></nav><div style="position:relative;width:340px;height:400px;background:#b8c2c6;box-shadow:0 25px 50px -12px rgb(0 0 0/.5)"></div></div>
+</section><div style="background:rgb(255 255 255/.6)"><div style="padding:0 56px 64px"><section style="display:grid;grid-template-columns:12rem minmax(0,1fr);gap:24px;padding:32px 0;border-top:1px solid rgb(28 36 39/.12)"><h2 style="margin:0;font-size:18px;font-weight:500">Kontakt i organizacja</h2><div><div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px"><div><div class="lbl">Email</div><div style="font-size:16px;margin-top:3px;">[adres]@psp.gov.pl</div></div><div><div class="lbl">Telefon</div><div style="font-size:16px;margin-top:3px;">[telefon]</div></div><div><div class="lbl">Stanowisko</div><div style="font-size:16px;margin-top:3px;">Operator SDŁ</div></div><div><div class="lbl">Jednostka</div><div style="font-size:16px;margin-top:3px;">KP PSP Chodzież</div></div></div></div></section><section style="display:grid;grid-template-columns:12rem minmax(0,1fr);gap:24px;padding:32px 0;border-top:1px solid rgb(28 36 39/.12)"><h2 style="margin:0;font-size:18px;font-weight:500">Zakres terytorialny</h2><div><div style="font-size:20px;font-weight:300">chodzieski</div></div></section><section style="display:grid;grid-template-columns:12rem minmax(0,1fr);gap:24px;padding:32px 0;border-top:1px solid rgb(28 36 39/.12)"><h2 style="margin:0;font-size:18px;font-weight:500">Dostęp</h2><div><div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px"><div><div class="lbl">Funkcje</div><div style="font-size:16px;margin-top:3px;">Użytkownik</div></div><div><div class="lbl">Zasoby</div><div style="font-size:16px;margin-top:3px;">Grupy międzynarodowe</div></div></div></div></section><section style="padding:32px 0;border-top:1px solid rgb(28 36 39/.12);display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0;font-size:16px;font-weight:500">Grupy międzynarodowe</h2><span class="pillb">Edytuj</span></div>
+<div style="font-size:15px">GFFFV · Operator SDŁ, kierowca ratownik · obecność w listopadzie</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 40px"><div><div class="lbl">Paszport ważny do</div><div style="font-size:16px;margin-top:3px;color:#b3261e">2027-01-30</div></div><div><div class="lbl">Test WCT</div><div style="font-size:16px;margin-top:3px;">ważny do 2027-05-10</div></div><div><div class="lbl">Telefon awaryjny</div><div style="font-size:16px;margin-top:3px;">[telefon]</div></div><div><div class="lbl">Braki</div><div style="font-size:16px;margin-top:3px;color:#b3261e">2</div></div></div>
+<a href="Profil-dane.dc.html" style="font-size:14px;text-decoration:underline;align-self:flex-start">Wszystkie dane osoby</a>
+</section><section style="display:grid;grid-template-columns:12rem minmax(0,1fr);gap:24px;padding:32px 0;border-top:1px solid rgb(28 36 39/.12)"><h2 style="margin:0;font-size:18px;font-weight:500">Notatki</h2><div><span style="color:#6b777c">Brak notatek w profilu.</span></div></section></div></div></div><div class="scrim"></div><aside class="drawer"><div style="display:flex;justify-content:space-between;gap:16px"><div><p class="eyebrow">Dane osoby</p><h2 style="margin:6px 0 0;font-size:24px;font-weight:600">[osoba 06]</h2><p style="margin:8px 0 0;font-size:14px;color:#535f65">Grupy międzynarodowe · GFFFV</p></div><a class="cz-nav" href="Profil.dc.html" aria-label="Zamknij"><svg width="14" height="14" viewBox="0 0 14 14"><path d="M1 1l12 12M13 1L1 13" style="fill:none;stroke:#1c2427;stroke-width:1.5px"></path></svg></a></div><dl class="cz-dl"><div><dt>Braki</dt><dd style="color:#b3261e">2</dd></div><div><dt>Ostatnia zmiana</dt><dd style="font-size:14px;font-weight:500">KP PSP Chodzież</dd></div></dl><section><h3 class="cz-h3">Do uzupełnienia</h3><div class="srow" style="grid-template-columns:minmax(0,1fr) auto"><span><span style="font-weight:500">Paszport krócej niż 6 mies. przed dyżurem</span><span class="dot"></span><span style="display:block;font-size:12.5px;color:#535f65">marzec 2027</span></span><span></span></div><div class="srow" style="grid-template-columns:minmax(0,1fr) auto"><span><span style="font-weight:500">Brak adresu do listy wyjazdowej</span><span class="dot"></span></span><span></span></div></section><section><h3 class="cz-h3">Dokumenty podróży</h3><div class="dr"><span>Paszport</span><span style="color:#b3261e">[nr] · do 2027-01-30</span><span>Organ wydający</span><span style="">[organ] · [data]</span><span>Nr legitymacji</span><span style="">[nr]</span></div></section><section><h3 class="cz-h3">Dane do list</h3><div class="dr"><span>Urodzenie</span><span style="">[data] · [miejsce]</span><span>Imię ojca, płeć</span><span style="">[imię] · [płeć]</span><span>Adres</span><span style="color:#b3261e">brak</span><span>Charakter służby</span><span style="">[charakter]</span></div></section><section><h3 class="cz-h3">Kwalifikacje i zdrowie</h3><div class="dr"><span>Języki</span><span style="">angielski B2</span><span>Prawo jazdy</span><span style="">B, C+E</span><span>Uprawnienia</span><span style="">Kurs KPP do 2026-12-01</span><span>Orzeczenie</span><span style="">ważne do 2027-03-01</span></div></section></aside></div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic { renderVals() { return {}; } }
+</script>
+</body>
+</html>

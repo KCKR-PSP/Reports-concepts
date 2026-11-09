@@ -12,6 +12,7 @@ z SWD-PSP.
 | Koncepcja | Strony |
 |---|---|
 | Karta jednostki OSP KSRG | `osp-ksrg/karta.html` (karta jednostki), `osp-ksrg/wnioski.html` (kreator i obieg wniosku KSRG) |
+| Grupy międzynarodowe | `grupy-miedzynarodowe/pulpit.html` i kolejne ekrany: sprzęt, dyżury z obsadą, wyjazdy z konfiguracją składu, ustawienia, profil osoby, ustawienia konta. Ekrany łączą się linkami jak w aplikacji |
 
 Na górze każdej strony jest pasek koncepcji z przełącznikami:
 - motyw (jasny, ciemny);

@@ -25,6 +25,125 @@
           ]
         }
       ]
+    },
+    {
+      "id": "grupy-miedzynarodowe",
+      "title": "Grupy międzynarodowe",
+      "description": "Moduł działań międzynarodowych (GFFF, GFFFV, USAR, DSIM, HCP) w obecnym UI Reports: pulpit, sprzęt z ewidencji SWD, dyżury z obsadą stanowisk i kontrolą gotowości, wyjazdy z konfiguracją składu i dokumentami, ustawienia ze składem modułu oraz dane osoby w profilu i ustawieniach konta.",
+      "boards": [
+        {
+          "source": "Pulpit.dc.html",
+          "page": "pulpit.html",
+          "title": "Pulpit",
+          "controls": []
+        },
+        {
+          "source": "Sprzet.dc.html",
+          "page": "sprzet.html",
+          "title": "Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "Sprzet-pozycja.dc.html",
+          "page": "sprzet-pozycja.html",
+          "title": "Sprzęt · pozycja",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Sprzet-minimum.dc.html",
+          "page": "sprzet-minimum.html",
+          "title": "Sprzęt · minimum",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Dyzury.dc.html",
+          "page": "dyzury.html",
+          "title": "Dyżury",
+          "controls": []
+        },
+        {
+          "source": "Dyzury-komorka.dc.html",
+          "page": "dyzury-komorka.html",
+          "title": "Dyżury · komórka",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Dyzury-obsada.dc.html",
+          "page": "dyzury-obsada.html",
+          "title": "Dyżury · obsada",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Dyzury-kontrola.dc.html",
+          "page": "dyzury-kontrola.html",
+          "title": "Dyżury · kontrola",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Wyjazdy.dc.html",
+          "page": "wyjazdy.html",
+          "title": "Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "Wyjazdy-szczegoly.dc.html",
+          "page": "wyjazdy-szczegoly.html",
+          "title": "Wyjazdy · szczegóły",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Wyjazdy-konfiguracja.dc.html",
+          "page": "wyjazdy-konfiguracja.html",
+          "title": "Wyjazd · konfiguracja",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Ustawienia.dc.html",
+          "page": "ustawienia.html",
+          "title": "Ustawienia",
+          "controls": []
+        },
+        {
+          "source": "Ustawienia-sklad.dc.html",
+          "page": "ustawienia-sklad.html",
+          "title": "Ustawienia · skład",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Profil.dc.html",
+          "page": "profil.html",
+          "title": "Profil osoby",
+          "controls": []
+        },
+        {
+          "source": "Profil-dane.dc.html",
+          "page": "profil-dane.html",
+          "title": "Profil · dane osoby",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Konto.dc.html",
+          "page": "konto.html",
+          "title": "Ustawienia konta",
+          "controls": []
+        },
+        {
+          "source": "Konto-edycja.dc.html",
+          "page": "konto-edycja.html",
+          "title": "Ustawienia konta · edycja",
+          "controls": [],
+          "nav": false
+        }
+      ]
     }
   ]
 }
