@@ -69,10 +69,25 @@ a{color:inherit;text-decoration:none}
 <span class="pi" aria-label="Panel administracyjny"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
 <a class="pi" href="Konto.dc.html" aria-label="Konto"><span style="width:32px;height:32px;border-radius:8px;background:#d3dadd;color:#1c2427;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">KG</span></a>
 </nav><div class="main"><style>
-.ob-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}
-.ob-sec{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 10px;border-bottom:1px solid #1c2427}
-.ob-row{display:grid;grid-template-columns:40px minmax(0,1.3fr) 70px minmax(0,1fr) minmax(0,1fr) minmax(0,.9fr);gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgb(28 36 39/.1);font-size:14px}
-.ob-drop{position:relative;min-height:44px;box-sizing:border-box;border:1px dashed #b4bec3;display:flex;align-items:center;gap:8px;padding:0 12px;font-size:13px;color:#8a959a;cursor:pointer;transition:background .12s,border-color .12s,opacity .12s,box-shadow .12s}
+.ob-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:28px;align-items:start}
+.sch{position:relative;padding:8px 0 0}
+.sch-top{display:flex;justify-content:center}
+.sch-top .sch-card{width:280px}
+.sch-stem{width:1px;height:28px;background:#1c2427;margin:0 auto}
+.sch-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;border-top:1px solid #1c2427;padding-top:0}
+.sch-col{display:flex;flex-direction:column;gap:10px}
+.sch-col::before{content:'';width:1px;height:20px;background:#1c2427;margin:0 auto}
+.sch-head{display:flex;justify-content:space-between;align-items:baseline;background:#1c2427;color:#ebeef0;padding:10px 12px;font-size:13px;font-weight:600}
+.sch-head span{font-weight:400;color:#b4bec3;font-size:12px}
+.sch-card{background:rgb(255 255 255/.72);border:1px solid #d3dadd;padding:10px;display:flex;flex-direction:column;gap:6px}
+.sch-ttl{display:flex;gap:8px;font-size:13px;font-weight:600;line-height:17px}
+.sch-nr{color:#535f65;font-weight:400;font-variant-numeric:tabular-nums}
+.sch-ini{width:28px;height:28px;flex:none;background:#1c2427;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.sch-who{display:flex;flex-direction:column;line-height:15px;min-width:0}.sch-who b{font-weight:600;font-size:13px}.sch-who small{font-size:11px;color:#535f65}
+.sch-veh{font-size:11px;font-weight:700;letter-spacing:.04em;border:1px solid #1c2427;padding:1px 5px}
+.sch-warn{font-size:11.5px;line-height:15px;color:#b3261e}
+.ob-cand-ini{width:30px;height:30px;flex:none;background:#d3dadd;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600}
+.ob-drop{position:relative;min-height:40px;box-sizing:border-box;border:1px dashed #b4bec3;display:flex;align-items:center;gap:8px;padding:0 8px;font-size:13px;color:#8a959a;cursor:pointer;transition:background .12s,border-color .12s,opacity .12s,box-shadow .12s}
 .ob-drop:hover{border-color:#535f65}
 .ob-drop.full{border:1px solid #d3dadd;background:#fff;color:#1c2427}
 .ob-drop.warn{border-color:#b3261e;box-shadow:inset 3px 0 0 #b3261e}
@@ -93,6 +108,7 @@ a{color:inherit;text-decoration:none}
 .ob-cand.used{opacity:.35}
 .ob-cand.picked{border:2px solid #1c2427;box-shadow:0 8px 20px -10px rgb(28 36 39/.5)}
 .ob-cand.lifted{opacity:.4;transform:scale(.98)}
+
 </style>
 <div class="wrap">
 <header style="display:flex;flex-direction:column;gap:28px">
@@ -100,38 +116,40 @@ a{color:inherit;text-decoration:none}
 <nav class="optabs"><a class="optab" href="Pulpit.dc.html">Pulpit</a><a class="optab" href="Sprzet.dc.html">Sprzęt</a><a class="optab" href="Psy.dc.html">Psy</a><a class="optab on" href="Dyzury.dc.html">Dyżury</a><a class="optab" href="Wyjazdy.dc.html">Wyjazdy</a><a class="optab" href="Ustawienia.dc.html">Ustawienia</a></nav>
 </header>
 <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:-8px">
-<div><a href="Dyzury-komorka.dc.html" style="font-size:13px;font-weight:500">← Dyżur KW PSP Poznań · listopad 2026</a><h2 style="margin:10px 0 0;font-size:24px;font-weight:600">Tabela gotowości GFFFV</h2></div>
-<div style="display:flex;gap:28px;font-size:14px"><span>Zmiana I <b>{{k.s1}}</b></span><span>Zmiana II <b>{{k.s2}}</b></span><span>Pojazdy <b>{{k.v}}</b></span></div>
+<div><a href="Dyzury-komorka.dc.html" style="font-size:13px;font-weight:500">← Dyżur KW PSP Poznań · listopad 2026</a><h2 style="margin:10px 0 0;font-size:24px;font-weight:600">Obsada GFFFV</h2></div>
+<div style="display:flex;gap:8px"><a class="pillp" href="Dyzury-komorka.dc.html">Zapisz obsadę</a><a class="pillb" href="Dyzury-komorka.dc.html">Anuluj</a></div>
 </div>
 <div class="{{rootCls}}">
-<div>
-<div class="ob-row" style="font-size:12px;color:#6b777c;border-bottom:0;padding-bottom:0"><span>Nr</span><span>Funkcja</span><span>Typ</span><span>Zmiana I</span><span>Zmiana II</span><span>Pojazd</span></div>
-<sc-for list="{{sections}}" as="sec" hint-placeholder-count="4">
-<div class="ob-sec"><b style="font-weight:600;font-size:15px">{{sec.name}}</b><span style="font-size:13px;color:#535f65">{{sec.count}}</span></div>
-<sc-for list="{{sec.slots}}" as="s" hint-placeholder-count="4">
-<div class="ob-row">
-<span style="color:#535f65">{{s.nr}}</span><span>{{s.fn}}</span><span style="color:#535f65">{{s.type}}</span>
-<div class="{{s.c1}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.drop1}}" onClick="{{s.click1}}"><sc-if value="{{s.empty1}}"><span class="ob-plus">+</span><span class="e1">{{s.p1}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.has1}}"><span>{{s.p1}}</span><span class="ob-x" onClick="{{s.clear1}}">×</span></sc-if></div>
-<div class="{{s.c2}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.drop2}}" onClick="{{s.click2}}"><sc-if value="{{s.empty2}}"><span class="ob-plus">+</span><span class="e1">{{s.p2}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.has2}}"><span>{{s.p2}}</span><span class="ob-x" onClick="{{s.clear2}}">×</span></sc-if></div>
-<div class="{{s.cv}}" data-kind="v" data-type="{{s.type}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><sc-if value="{{s.emptyv}}"><span class="ob-plus">+</span><span class="e1">{{s.pv}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasv}}"><span>{{s.pv}}</span><span class="ob-x" onClick="{{s.clearv}}">×</span></sc-if></div>
+<div style="display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid #d3dadd"><div style="display:flex"><sc-for list="{{shifts}}" as="t" hint-placeholder-count="2"><span class="{{t.cls}}" onClick="{{t.pick}}" style="cursor:pointer">{{t.label}} <span style="font-weight:400;letter-spacing:0">{{t.count}}</span></span></sc-for></div><span style="font-size:13px;color:#535f65;padding-bottom:10px">Pojazdy {{veh}}</span></div>
+<div class="sch">
+<div class="sch-top"><sc-for list="{{top}}" as="s" hint-placeholder-count="1"><div class="sch-card">
+<div class="sch-ttl"><span class="sch-nr">{{s.nr}}</span><span>{{s.fn}}</span></div>
+<div class="{{s.cp}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropp}}" onClick="{{s.clickp}}"><sc-if value="{{s.emptyp}}"><span class="ob-plus">+</span><span class="e1">wolne</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasp}}"><span class="sch-ini">{{s.ini}}</span><span class="sch-who"><b>{{s.pname}}</b><small>{{s.punit}}</small></span><span class="ob-x" onClick="{{s.clearp}}">×</span></sc-if></div>
+<sc-if value="{{s.hasType}}"><div class="{{s.cv}}" data-kind="v" data-type="{{s.type}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><sc-if value="{{s.emptyv}}"><span class="ob-plus">+</span><span class="e1">{{s.type}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasv}}"><span class="sch-veh">{{s.type}}</span><span>{{s.vname}}</span><span class="ob-x" onClick="{{s.clearv}}">×</span></sc-if></div></sc-if>
+<sc-if value="{{s.warn}}"><div class="sch-warn">{{s.warnText}}</div></sc-if>
+</div></sc-for></div>
+<div class="sch-stem"></div>
+<div class="sch-cols"><sc-for list="{{cols}}" as="col" hint-placeholder-count="4"><div class="sch-col"><div class="sch-head">{{col.name}}<span>{{col.count}}</span></div><sc-for list="{{col.slots}}" as="s" hint-placeholder-count="4"><div class="sch-card">
+<div class="sch-ttl"><span class="sch-nr">{{s.nr}}</span><span>{{s.fn}}</span></div>
+<div class="{{s.cp}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropp}}" onClick="{{s.clickp}}"><sc-if value="{{s.emptyp}}"><span class="ob-plus">+</span><span class="e1">wolne</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasp}}"><span class="sch-ini">{{s.ini}}</span><span class="sch-who"><b>{{s.pname}}</b><small>{{s.punit}}</small></span><span class="ob-x" onClick="{{s.clearp}}">×</span></sc-if></div>
+<sc-if value="{{s.hasType}}"><div class="{{s.cv}}" data-kind="v" data-type="{{s.type}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><sc-if value="{{s.emptyv}}"><span class="ob-plus">+</span><span class="e1">{{s.type}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasv}}"><span class="sch-veh">{{s.type}}</span><span>{{s.vname}}</span><span class="ob-x" onClick="{{s.clearv}}">×</span></sc-if></div></sc-if>
+<sc-if value="{{s.warn}}"><div class="sch-warn">{{s.warnText}}</div></sc-if>
+</div></sc-for></div></sc-for></div>
 </div>
-<sc-if value="{{s.warn}}"><div style="padding:0 0 8px 50px;font-size:12px;color:#b3261e">{{s.warnText}}</div></sc-if>
-</sc-for>
-</sc-for>
-<div style="display:flex;gap:8px;padding-top:24px"><a class="pillp" href="Dyzury-komorka.dc.html">Zapisz obsadę</a><a class="pillb" href="Dyzury-komorka.dc.html">Anuluj</a></div>
 </div>
-<aside style="position:sticky;top:24px;display:flex;flex-direction:column;gap:14px;background:rgb(255 255 255/.6);padding:18px 18px 20px">
+<aside style="display:flex;flex-direction:column;gap:14px;background:rgb(255 255 255/.6);padding:18px 18px 20px">
 <div style="display:flex;border-bottom:1px solid #d3dadd"><sc-for list="{{ctabs}}" as="t" hint-placeholder-count="2"><span class="{{t.cls}}" onClick="{{t.pick}}" style="cursor:pointer">{{t.label}}</span></sc-for></div>
+<span class="inp" style="height:34px">Szukaj osoby lub pojazdu</span>
 <span style="font-size:13px;color:#535f65">{{hint}}</span>
 <sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
 <div style="display:flex;flex-direction:column;gap:6px"><span class="lbl">{{g.unit}}</span>
-<sc-for list="{{g.items}}" as="p" hint-placeholder-count="3"><div class="{{p.cls}}" draggable="true" onDragStart="{{p.start}}" onDragEnd="{{p.end}}" onClick="{{p.pick}}"><b style="font-weight:600">{{p.name}}</b><span style="color:#535f65">{{p.sub}}</span></div></sc-for>
+<sc-for list="{{g.items}}" as="p" hint-placeholder-count="3"><div class="{{p.cls}}" draggable="true" onDragStart="{{p.start}}" onDragEnd="{{p.end}}" onClick="{{p.pick}}" style="flex-direction:row;align-items:center;gap:10px"><span class="ob-cand-ini">{{p.ini}}</span><span style="display:flex;flex-direction:column;gap:1px;min-width:0"><b style="font-weight:600">{{p.name}}</b><span style="color:#535f65">{{p.sub}}</span></span></div></sc-for>
 </div>
 </sc-for>
 </aside>
 </div>
-</div>
-</div></div>
+</div></div></div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1500}}'>
 const SECTIONS = [
@@ -141,16 +159,16 @@ const SECTIONS = [
  ['Pluton B', [[61,'Ratownik kierowca','GCBA'],[62,'Dowódca zastępu',''],[63,'Dowódca plutonu, kierowca','GCBA'],[64,'Ratownik','']]]
 ];
 const PEOPLE = [
- ['p1','bryg. [osoba 01]','KW PSP Poznań','Dowódca grupy',true],['p2','st. kpt. [osoba 02]','KW PSP Poznań','Zastępca dowódcy grupy',true],
- ['p3','kpt. [osoba 03]','KM PSP Poznań','Oficer łącznikowy',true],['p4','mł. kpt. [osoba 04]','KM PSP Poznań','Info/media manager',false],
- ['p10','mł. kpt. [osoba 10]','KM PSP Poznań','Dowódca zespołu logistycznego',true],['p5','asp. [osoba 05]','KM PSP Poznań','Operator SDŁ, kierowca',true],
- ['p6','asp. [osoba 06]','KP PSP Chodzież','Operator SDŁ, kierowca',true],['p7','st. ogn. [osoba 07]','KP PSP Chodzież','Kierowca ratownik',true],
- ['p8','ogn. [osoba 08]','KP PSP Chodzież','Ratownik',false],['p9','mł. ogn. [osoba 09]','KP PSP Chodzież','Ratownik kierowca',true],
- ['p11','st. sekc. [osoba 11]','KP PSP Czarnków','Kierowca ratownik',true],['p12','asp. [osoba 12]','KM PSP Piła','Dowódca plutonu',true],
- ['p13','mł. asp. [osoba 13]','KM PSP Piła','Ratownik kierowca',true],['p14','st. str. [osoba 14]','KM PSP Leszno','Ratownik',false],
- ['p15','kpt. [osoba 15]','KM PSP Konin','Dowódca plutonu',true]
+ ['p1','bryg. Tomasz Wierzbicki','KW PSP Poznań','Dowódca grupy',true],['p2','st. kpt. Anna Lisowska','KW PSP Poznań','Zastępca dowódcy grupy',true],
+ ['p3','kpt. Paweł Grochowski','KM PSP Poznań','Oficer łącznikowy',true],['p4','mł. kpt. Karolina Mazurek','KM PSP Poznań','Info/media manager',false],
+ ['p10','mł. kpt. Ewa Chmielewska','KM PSP Poznań','Dowódca zespołu logistycznego',true],['p5','asp. Michał Sobczyk','KM PSP Poznań','Operator SDŁ, kierowca',true],
+ ['p6','asp. Krzysztof Nowacki','KP PSP Chodzież','Operator SDŁ, kierowca',true],['p7','st. ogn. Łukasz Pawlak','KP PSP Chodzież','Kierowca ratownik',true],
+ ['p8','ogn. Adam Kurek','KP PSP Chodzież','Ratownik',false],['p9','mł. ogn. Bartosz Sikorski','KP PSP Chodzież','Ratownik kierowca',true],
+ ['p11','st. sekc. Rafał Duda','KP PSP Czarnków','Kierowca ratownik',true],['p12','asp. Piotr Wróblewski','KM PSP Piła','Dowódca plutonu',true],
+ ['p13','mł. asp. Jakub Malinowski','KM PSP Piła','Ratownik kierowca',true],['p14','st. str. Damian Kaczmarczyk','KM PSP Leszno','Ratownik',false],
+ ['p15','kpt. Grzegorz Szulc','KM PSP Konin','Dowódca plutonu',true]
 ];
-const VEH = [['v1','SLOp · [nr op.]','KW PSP Poznań','SLOp'],['v2','SLOp · [nr op.]','KM PSP Poznań','SLOp'],['v3','SDŁ · [nr op.]','KP PSP Chodzież','SDŁ'],['v4','SLKw · [nr op.]','KM PSP Poznań','SLKw'],['v5','SCKn · [nr op.]','KP PSP Czarnków','SCKn'],['v6','SCKw · [nr op.]','KP PSP Chodzież','SCKw'],['v7','GCBA · [nr op.]','KM PSP Piła','GCBA'],['v8','GCBA · [nr op.]','KM PSP Konin','GCBA'],['v9','GCBA · [nr op.]','KM PSP Leszno','GCBA']];
+const VEH = [['v1','SLOp · 301[P]21','KW PSP Poznań','SLOp'],['v2','SLOp · 301[P]44','KM PSP Poznań','SLOp'],['v3','SDŁ · 381[P]12','KP PSP Chodzież','SDŁ'],['v4','SLKw · 301[P]63','KM PSP Poznań','SLKw'],['v5','SCKn · 371[P]18','KP PSP Czarnków','SCKn'],['v6','SCKw · 391[P]27','KP PSP Chodzież','SCKw'],['v7','GCBA · 301[P]71','KM PSP Piła','GCBA'],['v8','GCBA · 351[P]35','KM PSP Konin','GCBA'],['v9','GCBA · 361[P]52','KM PSP Leszno','GCBA']];
 const byId = {};
 PEOPLE.forEach(p => { byId[p[0]] = {name: p[1], unit: p[2], fn: p[3], decl: p[4]}; });
 VEH.forEach(v => { byId[v[0]] = {name: v[1], unit: v[2], type: v[3]}; });
@@ -160,7 +178,7 @@ function mark(root, id) {
  if (!root) return;
  root.classList.add('dragging');
  root.querySelectorAll('.ob-drop').forEach((z) => {
-  const ok = z.dataset.kind === kindOf(id) && (z.dataset.kind === 'p' || z.dataset.type !== '—');
+  const ok = z.dataset.kind === kindOf(id);
   z.classList.toggle('target', ok);
   z.classList.toggle('blocked', !ok);
   z.classList.toggle('match', ok && fits(id, z.dataset));
@@ -172,11 +190,12 @@ function unmark(root) {
  root.querySelectorAll('.ob-drop').forEach((z) => z.classList.remove('target', 'blocked', 'match', 'over'));
  root.querySelectorAll('.ob-cand.lifted').forEach((c) => c.classList.remove('lifted'));
 }
+const ini = (name) => name.replace(/^[^ ]+\.? /, '').replace(/\[|\]/g, '').split(' ').filter(Boolean).map(w => w[0]).join('').slice(-2).toUpperCase();
 class Component extends DCLogic {
  constructor(props) {
   super(props);
   this.drag = null;
-  this.state = {tab: 'p', picked: null, a: {'1:1':'p1','1:2':'p2','2:1':'p2','3:1':'p3','5:1':'p6','5:2':'p5','10:1':'p10','11:1':'p11','12:1':'p7','31:1':'p12','32:1':'p13','33:1':'p8','61:1':'p9','1:v':'v1','3:v':'v2','5:v':'v3','10:v':'v4','11:v':'v5','12:v':'v6','31:v':'v7'}};
+  this.state = {tab: 'p', shift: '1', picked: null, a: {'1:1':'p1','1:2':'p2','2:1':'p2','3:1':'p3','5:1':'p6','5:2':'p5','10:1':'p10','11:1':'p11','12:1':'p7','31:1':'p12','32:1':'p13','33:1':'p8','61:1':'p9','1:v':'v1','3:v':'v2','5:v':'v3','10:v':'v4','11:v':'v5','12:v':'v6','31:v':'v7'}};
  }
  put(key, id) {
   if (!id) return;
@@ -189,44 +208,36 @@ class Component extends DCLogic {
  }
  clear(key, e) { if (e && e.stopPropagation) e.stopPropagation(); const a = Object.assign({}, this.state.a); delete a[key]; this.setState({a}); }
  renderVals() {
-  const s = this.state, a = s.a, picked = s.picked;
-  const used1 = new Set(), used2 = new Set(), usedV = new Set();
-  Object.keys(a).forEach(k => { const sh = k.split(':')[1]; (sh === '1' ? used1 : sh === '2' ? used2 : usedV).add(a[k]); });
-  let total = 0, v = 0, vt = 0;
+  const s = this.state, a = s.a, picked = s.picked, sh = s.shift;
   const zoneCls = (o, kind, z, warn) => {
    let c = 'ob-drop' + (o ? ' full' : '') + (warn ? ' warn' : '');
-   if (picked) {
-    const ok = kindOf(picked) === kind && (kind === 'p' || z.type !== '—');
-    c += ok ? ' target' + (fits(picked, z) ? ' match' : '') : ' blocked';
-   }
+   if (picked) { const ok = kindOf(picked) === kind; c += ok ? ' target' + (fits(picked, z) ? ' match' : '') : ' blocked'; }
    return c;
   };
-  const cell = (key, kind, z, empty) => {
-   const id = a[key]; const o = id ? byId[id] : null;
-   const warn = !!(o && kind === 'p' && o.fn !== z.fn);
-   return {p: o ? o.name : empty, has: !!o, empty: !o, cls: zoneCls(o, kind, z, warn), warn,
-    drop: (e) => { if (e && e.preventDefault) e.preventDefault(); const id2 = this.drag; this.drag = null; unmark(e && e.currentTarget && e.currentTarget.closest('.ob-grid')); this.put(key, id2); },
-    click: () => { if (picked) this.put(key, picked); },
-    clear: (e) => this.clear(key, e)};
-  };
-  const sections = SECTIONS.map(([name, slots]) => {
-   let f = 0;
-   const rows = slots.map(([nr, fn, type]) => {
-    total++;
-    const z = {fn, type: type || '—'};
-    const c1 = cell(nr + ':1', 'p', z, 'wolne'), c2 = cell(nr + ':2', 'p', z, 'wolne');
-    const cv = type ? cell(nr + ':v', 'v', z, type) : {p: 'bez pojazdu', has: false, empty: true, cls: zoneCls(null, 'v', z, false) + ' none', warn: false, drop: (e) => { unmark(e && e.currentTarget && e.currentTarget.closest('.ob-grid')); this.drag = null; }, click: () => {}, clear: () => {}};
-    if (type) { vt++; if (cv.has) v++; }
-    if (c1.has) f++;
-    if (c2.has) f++;
-    const warnText = [c1.warn ? 'Zmiana I: inna funkcja osoby (' + byId[a[nr + ':1']].fn + ')' : '', c2.warn ? 'Zmiana II: inna funkcja osoby (' + byId[a[nr + ':2']].fn + ')' : ''].filter(Boolean).join(' · ');
-    return {nr: String(nr), fn, type: type || '—',
-     p1: c1.p, has1: c1.has, empty1: c1.empty, c1: c1.cls, drop1: c1.drop, click1: c1.click, clear1: c1.clear,
-     p2: c2.p, has2: c2.has, empty2: c2.empty, c2: c2.cls, drop2: c2.drop, click2: c2.click, clear2: c2.clear,
-     pv: cv.p, hasv: cv.has, emptyv: cv.empty, cv: cv.cls, dropv: cv.drop, clickv: cv.click, clearv: cv.clear, warn: !!warnText, warnText};
-   });
-   return {name, count: f + ' z ' + slots.length * 2 + ' obsad', slots: rows};
+  const handlers = (key) => ({
+   drop: (e) => { if (e && e.preventDefault) e.preventDefault(); const id = this.drag; this.drag = null; unmark(e && e.currentTarget && e.currentTarget.closest('.ob-grid')); this.put(key, id); },
+   click: () => { if (picked) this.put(key, picked); },
+   clear: (e) => this.clear(key, e)
   });
+  const slot = ([nr, fn, type]) => {
+   const z = {fn, type: type || '—'};
+   const pk = nr + ':' + sh, vk = nr + ':v';
+   const po = a[pk] ? byId[a[pk]] : null, vo = a[vk] ? byId[a[vk]] : null;
+   const warn = !!(po && po.fn !== fn);
+   const hp = handlers(pk), hv = handlers(vk);
+   return {nr: String(nr), fn, type: type || '', hasType: !!type,
+    cp: zoneCls(po, 'p', z, warn), emptyp: !po, hasp: !!po, ini: po ? ini(po.name) : '', pname: po ? po.name : '', punit: po ? po.unit : '', dropp: hp.drop, clickp: hp.click, clearp: hp.clear,
+    cv: zoneCls(vo, 'v', z, false), emptyv: !vo, hasv: !!vo, vname: vo ? vo.name.split(' · ')[1] + ' · ' + vo.unit : '', dropv: hv.drop, clickv: hv.click, clearv: hv.clear,
+    warn, warnText: warn ? 'Inna funkcja osoby: ' + po.fn : ''};
+  };
+  const all = SECTIONS.reduce((x, sec) => x.concat(sec[1]), []);
+  const filled = (shift) => all.filter((x) => a[x[0] + ':' + shift]).length;
+  const typed = all.filter(x => x[2]);
+  const cols = SECTIONS.map(([name, slots], i) => {
+   const list = i === 0 ? slots.filter(x => x[0] !== 1) : slots;
+   return {name, count: slots.filter((x) => a[x[0] + ':' + sh]).length + ' z ' + slots.length, slots: list.map(slot)};
+  });
+  const usedHere = new Set(Object.keys(a).filter(k => k.endsWith(':' + sh) || k.endsWith(':v')).map(k => a[k]));
   const pick = (id) => () => this.setState({picked: picked === id ? null : id});
   const start = (id) => (e) => {
    this.drag = id;
@@ -235,20 +246,21 @@ class Component extends DCLogic {
    if (el) { el.classList.add('lifted'); mark(el.closest('.ob-grid'), id); }
   };
   const end = (e) => { this.drag = null; unmark(e && e.currentTarget && e.currentTarget.closest('.ob-grid')); };
-  const list = s.tab === 'p' ? PEOPLE.map(p => ({id: p[0], name: p[1], unit: p[2], sub: p[3] + (p[4] ? ' · będzie' : ' · brak deklaracji'), used: used1.has(p[0]) && used2.has(p[0])}))
-                             : VEH.map(x => ({id: x[0], name: x[1], unit: x[2], sub: '', used: usedV.has(x[0])}));
+  const list = s.tab === 'p' ? PEOPLE.map(p => ({id: p[0], name: p[1], unit: p[2], sub: p[3] + (p[4] ? ' · będzie' : ' · brak deklaracji'), ini: ini(p[1])}))
+                             : VEH.map(x => ({id: x[0], name: x[1], unit: x[2], sub: x[2], ini: x[3]}));
   const units = [];
-  list.forEach(x => { let g = units.find(u => u.unit === x.unit); if (!g) { g = {unit: x.unit, items: []}; units.push(g); } g.items.push({name: x.name, sub: x.sub, cls: 'ob-cand' + (x.used ? ' used' : '') + (picked === x.id ? ' picked' : ''), start: start(x.id), end, pick: pick(x.id)}); });
-  const filled1 = Object.keys(a).filter(k => k.endsWith(':1')).length, filled2 = Object.keys(a).filter(k => k.endsWith(':2')).length;
+  list.forEach(x => { let g = units.find(u => u.unit === x.unit); if (!g) { g = {unit: x.unit, items: []}; units.push(g); } g.items.push({name: x.name, sub: x.sub, ini: x.ini, cls: 'ob-cand' + (usedHere.has(x.id) ? ' used' : '') + (picked === x.id ? ' picked' : ''), start: start(x.id), end, pick: pick(x.id)}); });
   return {
    rootCls: 'ob-grid' + (picked ? ' dragging' : ''),
-   k: {s1: filled1 + ' z ' + total, s2: filled2 + ' z ' + total, v: v + ' z ' + vt},
-   sections,
+   shifts: [['1', 'Zmiana I'], ['2', 'Zmiana II']].map(([k, l]) => ({label: l, count: filled(k) + ' z ' + all.length, cls: 'cz-tab' + (sh === k ? ' on' : ''), pick: () => this.setState({shift: k, picked: null})})),
+   veh: typed.filter((x) => a[x[0] + ':v']).length + ' z ' + typed.length,
+   top: [slot(SECTIONS[0][1][0])],
+   cols,
    allow: (e) => { if (e && e.preventDefault) e.preventDefault(); if (e && e.dataTransfer) e.dataTransfer.dropEffect = 'move'; },
    enter: (e) => { const z = e && e.currentTarget; if (z && z.classList.contains('target')) z.classList.add('over'); },
    leave: (e) => { const z = e && e.currentTarget; if (z && (!e.relatedTarget || !z.contains(e.relatedTarget))) z.classList.remove('over'); },
-   ctabs: [['p','Osoby'],['v','Pojazdy']].map(([k, l]) => ({label: l, cls: 'cz-tab' + (s.tab === k ? ' on' : ''), pick: () => this.setState({tab: k, picked: null})})),
-   hint: picked ? 'Wybrano: ' + byId[picked].name + '. Kliknij wyróżnione pole albo przeciągnij.' : (s.tab === 'p' ? 'Przeciągnij osobę albo kliknij ją i wskaż pole. Pola z tą samą funkcją są wyróżnione.' : 'Przeciągnij pojazd albo kliknij go i wskaż pole z tym samym typem.'),
+   ctabs: [['p', 'Osoby'], ['v', 'Pojazdy']].map(([k, l]) => ({label: l, cls: 'cz-tab' + (s.tab === k ? ' on' : ''), pick: () => this.setState({tab: k, picked: null})})),
+   hint: picked ? 'Wybrano: ' + byId[picked].name + '. Kliknij wyróżnione miejsce na schemacie.' : (s.tab === 'p' ? 'Przeciągnij osobę na stanowisko na schemacie. Stanowiska z tą samą funkcją się wyróżnią.' : 'Przeciągnij pojazd na stanowisko z tym samym typem.'),
    groups: units
   };
  }
