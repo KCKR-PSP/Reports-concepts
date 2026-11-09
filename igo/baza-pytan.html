@@ -18,10 +18,22 @@ a{color:#1c2427}
 .h2{margin:0;font-size:18px;font-weight:600}
 .fld{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#535f65}
 .fld input,.fld select{min-height:44px;border:1px solid #b4bec3;background:#ebeef0;padding:0 10px;font:inherit;font-size:14px;color:#1c2427;border-radius:0}
-.tb{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
-.tb th{font-size:12px;font-weight:500;color:#535f65;text-align:left;padding:8px;border-bottom:1px solid #d3dadd}
-.tb td{padding:10px 8px;border-bottom:1px solid #d3dadd;vertical-align:top}
+.seg{min-height:40px;padding:0 14px;border:1px solid #b4bec3;background:none;font:inherit;font-size:13px;color:#1c2427;cursor:pointer;margin:0 -1px -1px 0}
+.seg[aria-pressed="true"]{background:#1c2427;border-color:#1c2427;color:#ebeef0}
+.q{padding:16px 0;border-bottom:1px solid #d3dadd;display:flex;gap:16px}
+.q .n{flex:none;width:52px;font-size:13px;color:#535f65;font-variant-numeric:tabular-nums}
+.q p{margin:0}
+.q ol{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;font-size:14px}
+.q li{display:flex;gap:8px}
+.q li b{flex:none;width:16px;font-weight:500;color:#535f65}
+.q li.ok{font-weight:600}
+.q li.ok b{color:#1c2427;font-weight:600}
+.q img{display:block;max-width:100%;max-height:200px;margin-top:10px;border:1px solid #d3dadd}
+.chk{display:flex;gap:8px;align-items:flex-start;font-size:13px;line-height:1.3;cursor:pointer}
+.chk input{margin:2px 0 0;accent-color:#1c2427}
 .doc{font-family:'Roboto Condensed',Arial Narrow,sans-serif;font-size:11.5px;line-height:1.35;color:#000;background:#fff}
+.doc p{margin:0}
+.doc img{display:block;max-width:60%;max-height:120px;margin:4px 0}
 </style>
 
 <style>
@@ -58,7 +70,6 @@ body.framed #board > *{flex:none;box-shadow:0 1px 2px rgba(28,36,39,.12),0 8px 3
 <div style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #1c2427; background: #ebeef0; min-height: 100%;">
 <main style="max-width: 1360px; margin: 0 auto; padding: 48px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
 <header>
-
 <h1 style="margin: 6px 0 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em;">Inspekcje gotowości operacyjnej</h1>
 </header>
 <nav aria-label="Widok modułu" style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #d3dadd; margin-top: -8px;">
@@ -74,56 +85,121 @@ body.framed #board > *{flex:none;box-shadow:0 1px 2px rgba(28,36,39,.12),0 8px 3
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
 <div>
 <h2 class="h2">Baza pytań KG PSP</h2>
+<p style="margin: 6px 0 0; font-size: 14px; color: #535f65;">{{ source }}</p>
 </div>
 <div style="display: flex; gap: 12px; flex-wrap: wrap;"><button type="button" class="ghost">Dodaj pytanie własne</button><button type="button" class="btn">Importuj nową wersję</button></div>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 16px;">
-<label class="fld">Podmiot<select><option>JRG</option><option>SK</option><option>OSP</option></select></label>
-<label class="fld">Grupa<select><option>Wszystkie</option><option>Dowódcy</option><option>Ratownicy</option><option>Ratownicy-kierowcy, operatorzy</option><option>Dyżurni SK</option></select></label>
-<label class="fld">Zakres (§15)<select><option>Wszystkie</option><option>Sprzęt i jego obsługa</option><option>Taktyka i bezpieczeństwo</option><option>Łączność i korespondencja</option></select></label>
-<label class="fld" style="flex: 1 1 200px;">Szukaj<input type="search" placeholder="Treść pytania"></label>
+<label class="fld" style="flex: 1 1 320px;">Dział<select onChange="{{ pickSection }}"><template data-sc="for" list="{{ sectionOptions }}" as="o"><option value="{{ o.value }}" selected="{{ o.on }}">{{ o.label }}</option></template></select></label>
+<label class="fld" style="flex: 1 1 240px;">Szukaj<input type="search" placeholder="Treść pytania lub odpowiedzi" value="{{ query }}" onChange="{{ search }}"></label>
 </div>
-<table class="tb">
-<thead><tr><th scope="col">Pytanie</th><th scope="col">Grupa</th><th scope="col">Zakres</th><th scope="col">Źródło</th></tr></thead>
-<tbody>
-<tr><td>Minimalne ciśnienie w butli aparatu powietrznego przed wejściem do strefy zagrożenia wynosi…</td><td>ratownicy</td><td>sprzęt</td><td>KG</td></tr>
-<tr><td>Kto podejmuje decyzję o wprowadzeniu odcinków bojowych?</td><td>dowódcy</td><td>taktyka</td><td>KG</td></tr>
-<tr><td>Sygnał „wycofać się” przekazywany drogą radiową brzmi…</td><td>ratownicy</td><td>łączność</td><td>KG</td></tr>
-<tr><td>Dopuszczalna masa całkowita pojazdu przy prawie jazdy kat. C…</td><td>ratownicy-kierowcy</td><td>sprzęt</td><td>KG</td></tr>
-<tr><td>Jak oznaczono kanał współdziałania KSRG w powiecie puławskim?</td><td>ratownicy</td><td>łączność</td><td>KW Lublin</td></tr>
-</tbody>
-</table>
-<p style="margin: 0; font-size: 13px; color: #535f65;">Treść pytań przykładowa — do zastąpienia plikiem KG.</p>
+<p style="margin: 0; font-size: 14px;"><strong>{{ foundLabel }}</strong><span style="color: #535f65;"> · poprawne odpowiedzi pogrubione, jak w zestawie KG</span></p>
+<div style="border-top: 1px solid #1c2427;">
+<template data-sc="for" list="{{ rows }}" as="r" hint-placeholder-count="5">
+<article class="q">
+<span class="n">{{ r.n }}</span>
+<div style="min-width: 0;">
+<p class="eb" style="font-size: 11px;">{{ r.section }}</p>
+<p style="margin-top: 4px; font-size: 15px; line-height: 1.4;">{{ r.q }}</p>
+<template data-sc="for" list="{{ r.imgs }}" as="src"><img src="{{ src }}" alt="Ilustracja do pytania {{ r.n }}" loading="lazy"></template>
+<ol><template data-sc="for" list="{{ r.answers }}" as="a"><li class="{{ a.cls }}"><b>{{ a.k }})</b><span>{{ a.t }}</span></li></template></ol>
+</div>
+</article>
+</template>
+<template data-sc="if" value="{{ empty }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; padding: 24px 0; font-size: 14px; color: #535f65;">Brak pytań dla tego wyszukiwania.</p></template>
+</div>
+<template data-sc="if" value="{{ more }}" hint-placeholder-val="{{ true }}"><button type="button" class="ghost" style="align-self: flex-start;" onClick="{{ showMore }}">{{ moreLabel }}</button></template>
 </section>
 
 <section style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px; border-top: 2px solid #1c2427; padding-top: 16px;">
 <p class="eb">Generator · JRG 2 Puławy, zm. II</p>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;">
-<label class="fld">Dowódcy<input type="number" value="2"></label>
-<label class="fld">Ratownicy<input type="number" value="7"></label>
-<label class="fld">Kierowcy<input type="number" value="4"></label>
+<div style="display: flex; flex-wrap: wrap;"><template data-sc="for" list="{{ groups }}" as="g"><button type="button" class="seg" aria-pressed="{{ g.on }}" onClick="{{ g.pick }}">{{ g.label }}</button></template></div>
+<fieldset style="margin: 0; padding: 0; border: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px;">
+<legend class="eb" style="margin-bottom: 10px; font-size: 11px;">Działy w teście grupy</legend>
+<template data-sc="for" list="{{ genSections }}" as="d"><label class="chk"><input type="checkbox" checked="{{ d.on }}" onChange="{{ d.toggle }}"><span>{{ d.label }}</span></label></template>
+</fieldset>
+<p style="margin: 0; font-size: 14px;">{{ genInfo }}</p>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;"><button type="button" class="btn" onClick="{{ reroll }}">Losuj nowy zestaw</button><button type="button" class="ghost" aria-pressed="{{ showKey }}" onClick="{{ toggleKey }}">{{ keyLabel }}</button><a class="ghost" href="test-telefon.html" style="text-decoration: none;">Test na urządzeniu</a></div>
+<div class="doc" style="border: 1px solid #d3dadd; padding: 24px 28px; display: flex; flex-direction: column; gap: 9px;">
+<div style="display: flex; justify-content: space-between; border-bottom: 1px solid #000; padding-bottom: 6px;"><strong style="font-size: 13px;">TEST WIEDZY · IGO JRG</strong><span>{{ setLabel }}</span></div>
+<p>Stopień, imię i nazwisko: ………………………………… Data: 6 listopada 2026 r.</p>
+<template data-sc="for" list="{{ testRows }}" as="t" hint-placeholder-count="15">
+<div>
+<p><strong>{{ t.i }}.</strong> {{ t.q }}</p>
+<template data-sc="for" list="{{ t.imgs }}" as="src"><img src="{{ src }}" alt="Ilustracja do pytania {{ t.i }}"></template>
+<p style="padding-left: 14px;"><template data-sc="for" list="{{ t.answers }}" as="a"><span style="{{ a.style }}">☐ {{ a.k }}) {{ a.t }}&nbsp;&nbsp; </span></template></p>
 </div>
-<p style="margin: 0; font-size: 14px;">15 pytań na test · osobne zestawy dla grup · pytania spoza bazy: 2 z 15 (13%, limit 20%)</p>
-<div style="display: flex; gap: 12px; flex-wrap: wrap;"><button type="button" class="btn">Drukuj 13 testów i klucz</button><button type="button" class="ghost">Uruchom test na urządzeniu</button></div>
-<div class="doc" style="border: 1px solid #d3dadd; padding: 24px 28px; display: flex; flex-direction: column; gap: 10px;">
-<div style="display: flex; justify-content: space-between; border-bottom: 1px solid #000; padding-bottom: 6px;"><strong style="font-size: 13px;">TEST WIEDZY · IGO JRG</strong><span>Zestaw R-03 · ratownicy</span></div>
-<p style="margin: 0;">Stopień, imię i nazwisko: ………………………………… Data: 06.11.2026</p>
-<p style="margin: 0;"><strong>1.</strong> Minimalne ciśnienie w butli aparatu powietrznego przed wejściem do strefy zagrożenia wynosi:<br>☐ a) 150 bar ☐ b) 200 bar ☐ c) 270 bar ☐ d) 300 bar</p>
-<p style="margin: 0;"><strong>2.</strong> Sygnał „wycofać się” przekazywany drogą radiową brzmi:<br>☐ a) … ☐ b) … ☐ c) … ☐ d) …</p>
-<p style="margin: 0; color: #535f65;">… pytania 3–15</p>
-<p style="margin: 0; border-top: 1px solid #000; padding-top: 6px;">Test rozwiązuje się samodzielnie, bez dokumentacji. Brak odpowiedzi lub więcej niż jedna odpowiedź = 0 pkt.</p>
+</template>
+<template data-sc="if" value="{{ showKey }}" hint-placeholder-val="{{ false }}"><p style="border-top: 1px solid #000; padding-top: 6px;"><strong>Klucz:</strong> {{ keyLine }}</p></template>
+<p style="border-top: 1px solid #000; padding-top: 6px;">Test rozwiązuje się samodzielnie, bez dokumentacji. Brak odpowiedzi lub więcej niż jedna odpowiedź = 0 pkt.</p>
 </div>
 </section>
 </div>
 </main>
 </div>
 </template>
+<script src="../assets/igo-pytania.js"></script>
 <script src="../assets/dc-runtime.js"></script>
 <script>
 
+// Na stronie koncepcji pełna baza KG jest w window.IGO_PYTANIA; na kanwie plansza używa próbki (po 2 pytania z działu).
+const IGO_SAMPLE = {"dzialy":[["I","Bezpieczeństwo pożarowe obiektów i budynków"],["II","Środki gaśnicze neutralizatory i sorbenty"],["III","Wyposażenie techniczne i sprzęt"],["IV","Prawa i obowiązki operatora pojazdu / sprzętu pożarniczego"],["V","Taktyka działań gaśniczych"],["VI","Taktyka działań ratowniczych - dla jednostek podstawowych – ratownictwo techniczne i chemiczne"],["VII","Taktyka działań ratowniczych - dla specjalistycznych grup ratowniczych – ratownictwo techniczne i chemiczne"],["VIII","Taktyka działań ratowniczych - dla jednostek podstawowych - działania poszukiwawczo-ratownicze"],["IX","Taktyka działań ratowniczych - dla specjalistycznych grup ratowniczych - działania poszukiwawczo-ratownicze"],["X","Taktyka działań ratowniczych - dla jednostek podstawowych – ratownictwo wodne"],["XI","Taktyka działań ratowniczych - dla specjalistycznych grup ratowniczych – ratownictwo wodno-nurkowe"],["XII","Ratownictwo medyczne"],["XIII","Taktyka działań ratowniczych - dla jednostek podstawowych – ratownictwo wysokościowe"],["XIV","Taktyka działań ratowniczych - dla specjalistycznych grup ratowniczych – ratownictwo wysokościowe"],["XV","Łączność"],["XVI","Praca stanowisk kierowania"]],"pytania":[["1",0,"Minimalny czas działania awaryjnego oświetlenia ewakuacyjnego wynosi:",["1 godzina","2 godziny","4 godziny"],0],["2",0,"Kurek główny umożliwiający odcięcie dopływu gazu do budynku powinien być zainstalowany:",["na zewnątrz budynku","w kuchni i przedpokoju","w odległości mniejszej niż 3 m od urządzenia gazowego, licząc po długości przewodu"],0],["69",1,"W gaśnicy śniegowej piktogram grupy pożarowej oznaczony wielką literą „C” informuje użytkownika o zastosowaniu urządzenia do gaszenia pożarów:",["cieczy palnych","ciał stałych pochodzenia organicznego","gazów palnych"],2],["70",1,"Pożary ciał stałych topliwych zaliczamy do grupy pożarów:",["A","B","C"],1],["106",2,"Sprzęt pożarniczy to:",["sprzęt służący do dostarczania środków gaśniczych na miejsce pożaru","sprzęt służący do prowadzenia akcji ratowania ludzi i mienia","przenośny lub przewoźny specjalny sprzęt służący do gaszenia pożarów, prowadzenia akcji ratowniczej oraz specjalny sprzęt ochrony stosowany przez straże pożarne podczas akcji"],2],["107",2,"Pole pracy to:",["powierzchnia, na której sprawiony lub ustawiony sprzęt do pracy obsługiwany przez operatora realizuje zadania","wykres możliwości obciążania drabiny wysięgnika hydraulicznego czy podestu w zależności od wysuwu i wysięgu","charakterystyczny dla żurawia ratowniczego zasięg wysuwu ramienia"],1],["277",3,"Po przybyciu na miejsce zdarzenia kierowca pojazdu pożarniczego:",["powinien wyłączyć silnik pojazdu","wedle uznania, może wyłączyć silnik lub nie","powinien mieć włączone w pojeździe niebieskie światła błyskowe"],2],["278",3,"W przypadku prowadzenia akcji ratowniczej w obrębie drogi publicznej pojazdy ratownicze powinny mieć:",["włączone tylko pełne oświetlenie zewnętrzne","włączone pełne oświetlenie zewnętrzne i światła ostrzegawcze","włączone tylko światła ostrzegawcze"],1],["299",4,"Definicją pożaru jest:",["Wystąpienie procesu spalania powodujące zagrożenie dla otoczenia","Niekontrolowany proces palenia w miejscu do tego nie przeznaczonym","Każde zjawisko palenia budzące niepokój społeczeństwa, powodujące wezwanie jednostek ochrony przeciwpożarowej"],1],["300",4,"Spalanie cieczy palnych gazów i ciał stałych, które w wyniku ogrzewania wytwarzają palną fazę lotną określamy jako:",["żarzenie","spalanie bezpłomieniowe","spalanie płomieniowe"],2],["553",5,"Który rodzaj zdarzenia nie zalicza się do miejscowych zagrożeń?",["katastrofa drogowa","pożar","katastrofa chemiczna"],1],["554",5,"Ratownictwo chemiczne to min:",["eliminacja skutków działania człowieka lub natury powodujących skażenie środowiska naturalnego","zatrzymanie emisji do otoczenia materiałów stwarzających zagrożenie dla życia zdrowia ludzi i zwierząt mienia i środowiska naturalnego","przeprowadzenie ewakuacji oraz udzielenie pierwszej pomocy poszkodowanym w wypadku z udziałem niebezpiecznego medium"],1],["754",6,"Jakie przepisy normują transport drogowy towarów niebezpiecznych?",["OND","TGE","ADR"],2],["755",6,"Zaznacz prawidłowy skrót przepisów regulujących przewóz towarów niebezpiecznych drogą kolejową:",["ADR","RID","ICAO"],1],["821",7,"Obciążenie, którego wartość jest niezmienna podczas oddziaływania na konstrukcję obiektu budowlanego to obciążenie:",["dynamiczne","spoczynkowe","statyczne"],2],["822",7,"Dotarcie do poszkodowanych zagruzowanych w rumowisku jest możliwe poprzez:",["czołganie się przez wolne przestrzenie","wykonanie tunelu ratowniczego","wykonanie podkopu"],0],["943",8,"Priorytetem grup poszukiwawczo-ratowniczych jest:",["ratowanie mienia po katastrofie budowlanej","poszukiwanie osób zasypanych lub unieruchomionych i zaginionych","zabezpieczenie konstrukcji obiektu"],1],["944",8,"Psy ratownicze „gruzowiskowe” są szkolone do poszukiwania w:",["lasach i na otwartej przestrzeni","wodzie","obiektach budowlanych"],2],["968",9,"Zjawisko „cofki”, polegające na wypychaniu wody w górę rzeki wskutek wiatru lub spiętrzenia wody, jest charakterystyczne dla powodzi:",["zatorowych i sztormowych","roztopowych","opadowych, nawalnych"],0],["969",9,"Zjawisko „cofki” polega na:",["zalewaniu terenu po przerwaniu wałów przeciwpowodziowych","cofaniu się wody w górę biegu rzeki wskutek spiętrzenia wód w jej ujściu lub zbiorniku, do którego uchodzi","cofaniu się wody z terenów zalanych z powrotem do koryta rzeki"],1],["1015",10,"Podczas prowadzenia działań nurkowych w przestrzeniach zamkniętych oraz na akwenach, na których występuje kra lodowa, w celu zapewnienia bezpieczeństwa nurków wymaga się dodatkowych przedsięwzięć w zakresie zastosowania co najmniej:",["sprzętu do autoasekuracji, oświetlenia i łączności, dwóch niezależnych źródeł mieszaniny oddechowej","dwóch niezależnych źródeł mieszaniny oddechowej i co najmniej dwóch źródeł światła","oświetlenia i łączności, dwóch niezależnych źródeł mieszaniny oddechowej"],0],["1016",10,"Sygnał przekazywany liną asekuracyjną „Natychmiast rozpocznij wynurzenie – niebezpieczeństwo”, sygnalizujemy poprzez:",["3 szarpnięcia liną","2 szarpnięcia liną","wielokrotne szarpnięcia liną"],2],["1061",11,"Przyczyną wstrząsu hipowolemicznego jest:",["nagły spadek poziomu cukru we krwi","nagłe podniesienie poziomu cukru we krwi","chwilowa utrata przytomności","spadek objętości krwi krążącej","wszystkie odpowiedzi są fałszywe"],3],["1062",11,"Drgawki mogą występować przy:",["urazie mózgowo-czaszkowym","zatruciu niedotlenieniu","wysokiej temperaturze ciała szczególnie u dzieci","odwodnieniu udarze cieplnym","wszystkie odpowiedzi są prawdziwe"],4],["1140",12,"Kto organizuje Ratownictwo Wysokościowe w zakresie podstawowym w KSRG:",["komendant wojewódzki PSP","terytorialnie Specjalistyczna Grupa Ratownictwa Wysokościowego","właściwy terytorialnie komendant powiatowy lub miejski PSP"],2],["1141",12,"Ratownictwo Wysokościowe w zakresie podstawowym realizują:",["jednostki ratowniczo - gaśnicze PSP, gdzie utworzona jest SGRW","wszystkie jednostki ratowniczo - gaśnicze PSP","wszystkie jednostki ratowniczo - gaśnicze PSP + OSP"],1],["1292",13,"Technika asekuracji górnej polega na:",["asekuracji przyrządem zaciskowym od góry","wpięciu odpowiedniego przyrządu w linę poręczową, podczas poruszania się po konstrukcji lub wspinaczki","asekuracji ratownika liną prowadzoną do niego od góry"],2],["1293",13,"Podstawowym parametrem różniącym przyrządy do asekuracji dynamicznej jest:",["siła hamowania","cena","waga"],1],["1352",14,"Korespondencji radiowej nie przekażemy:",["radiotelefonem noszonym","terminalem statusów","radiotelefonem bazowym"],1],["1353",14,"Poprawny sposób nawiązania łączności w sieciach radiowych PSP to użycie zwrotu:",["WARSZAWA 998 ZGŁOŚ SIĘ DLA DF 303-21 ODBIÓR","WARSZAWA 998 TU DF 303-21 ODBIÓR","WARSZAWA 998 ZGŁOŚ SIĘ - TU DF 303-21 ODBIÓR"],1],["1430",15,"Kto prowadzi ewidencję zdarzeń z prowadzonych działań ratowniczych",["podmioty ksrg","pierwsza przybyła na miejsce zdarzeń jednostka psp","pierwsza przybyła na miejsce zdarzeń jednostka ksrg"],0],["1431",15,"Dokumentacja działań ratowniczych nie obejmuje:",["karty zdarzenia","zestawienia dobowego zdarzeń","informacji ze zdarzenia","planu ratowniczego"],3]]};
+const IGO_IMG = '../assets/igo-pytania/';
+const IGO_GROUPS = [
+  ['dow', 'Dowódcy', 'D', ['I', 'II', 'III', 'V', 'VI', 'VIII', 'X', 'XII', 'XIII', 'XV']],
+  ['rat', 'Ratownicy', 'R', ['II', 'III', 'V', 'VI', 'VIII', 'X', 'XII', 'XIII', 'XV']],
+  ['kier', 'Ratownicy-kierowcy', 'K', ['III', 'IV', 'V', 'VI', 'XII', 'XV']],
+  ['sk', 'Dyżurni SK', 'SK', ['I', 'XII', 'XV', 'XVI']]
+];
+function igoRandom(seed) {
+  return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
 class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const sel = {};
+    IGO_GROUPS.forEach((g) => { sel[g[0]] = g[3].slice(); });
+    this.state = { section: 'all', query: '', limit: 30, group: 'rat', sel, seed: 7, showKey: false };
+  }
   renderVals() {
-    return {};
+    const s = this.state;
+    const bank = window.IGO_PYTANIA || IGO_SAMPLE;
+    const D = bank.dzialy;
+    const norm = (t) => t.toLowerCase();
+    const q = norm(s.query.trim());
+    const all = bank.pytania;
+    const found = all.filter((p) => (s.section === 'all' || D[p[1]][0] === s.section) && (!q || norm(p[2]).includes(q) || p[3].some((a) => norm(a).includes(q))));
+    const answersOf = (p) => p[3].map((t, i) => ({ k: 'abcde'[i], t, cls: i === p[4] ? 'ok' : '' }));
+    const imgsOf = (p) => (p[5] || []).map((f) => IGO_IMG + f);
+    const rows = found.slice(0, s.limit).map((p) => ({ n: p[0] + '.', section: D[p[1]][0] + '. ' + D[p[1]][1], q: p[2], answers: answersOf(p), imgs: imgsOf(p) }));
+    const sectionOptions = [{ value: 'all', label: 'Wszystkie działy (' + all.length + ')', on: s.section === 'all' }].concat(D.map((d, i) => ({ value: d[0], label: d[0] + '. ' + d[1] + ' (' + all.filter((p) => p[1] === i).length + ')', on: s.section === d[0] })));
+    const pl = (n) => (n === 1 ? 'pytanie' : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 'pytania' : 'pytań');
+    // Generator: 15 pytań losowanych z zaznaczonych działów (ziarno zmienia przycisk „Losuj”).
+    const g = IGO_GROUPS.find((x) => x[0] === s.group);
+    const chosen = s.sel[s.group];
+    const pool = all.filter((p) => chosen.includes(D[p[1]][0]));
+    const rnd = igoRandom(s.seed * 31 + IGO_GROUPS.indexOf(g));
+    const deck = pool.slice();
+    for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); const t = deck[i]; deck[i] = deck[j]; deck[j] = t; }
+    const test = deck.slice(0, 15);
+    const testRows = test.map((p, i) => ({ i: i + 1, q: p[2], imgs: imgsOf(p), answers: p[3].map((t, k) => ({ k: 'abcde'[k], t, style: s.showKey && k === p[4] ? 'font-weight: 700;' : '' })) }));
+    return {
+      source: (window.IGO_PYTANIA ? bank.zrodlo : 'Próbka zestawu KG (po 2 pytania z działu); pełna baza jest na stronie koncepcji.') + ' · ' + all.length + ' ' + pl(all.length) + ' w ' + D.length + ' działach',
+      sectionOptions, query: s.query, rows,
+      pickSection: (e) => this.setState({ section: e.target.value, limit: 30 }),
+      search: (e) => this.setState({ query: e.target.value, limit: 30 }),
+      foundLabel: found.length + ' ' + pl(found.length), empty: found.length === 0,
+      more: found.length > s.limit, moreLabel: 'Pokaż kolejne ' + Math.min(30, found.length - s.limit) + ' z ' + (found.length - s.limit),
+      showMore: () => this.setState({ limit: s.limit + 30 }),
+      groups: IGO_GROUPS.map((x) => ({ label: x[1], on: x[0] === s.group, pick: () => this.setState({ group: x[0] }) })),
+      genSections: D.map((d) => ({ label: d[0] + '. ' + d[1], on: chosen.includes(d[0]), toggle: () => { const sel = Object.assign({}, s.sel); sel[s.group] = chosen.includes(d[0]) ? chosen.filter((x) => x !== d[0]) : chosen.concat([d[0]]); this.setState({ sel }); } })),
+      genInfo: pool.length < 15 ? 'Za mało pytań w zaznaczonych działach (' + pool.length + '). Zaznacz więcej działów.' : '15 pytań losowanych z ' + pool.length + ' pytań zaznaczonych działów · osobny zestaw dla każdej grupy',
+      reroll: () => this.setState({ seed: s.seed + 1 }),
+      showKey: s.showKey, keyLabel: s.showKey ? 'Ukryj klucz' : 'Pokaż klucz',
+      toggleKey: () => this.setState({ showKey: !s.showKey }),
+      setLabel: 'Zestaw ' + g[2] + '-' + String(s.seed).padStart(2, '0') + ' · ' + g[1],
+      testRows, keyLine: test.map((p, i) => (i + 1) + '-' + 'abcde'[p[4]]).join(', ')
+    };
   }
 }
 

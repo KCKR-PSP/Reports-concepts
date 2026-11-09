@@ -9,9 +9,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
 <style>
 body{margin:0}
-.ans{display:flex;gap:14px;align-items:flex-start;width:100%;min-height:56px;padding:14px 16px;border:1px solid #b4bec3;background:none;font:inherit;font-size:16px;color:#1c2427;text-align:left;cursor:pointer;margin-bottom:-1px;box-sizing:border-box}
+.ans{display:flex;gap:14px;align-items:flex-start;width:100%;min-height:56px;padding:14px 16px;border:1px solid #b4bec3;background:none;font:inherit;font-size:16px;line-height:1.35;color:#1c2427;text-align:left;cursor:pointer;margin-bottom:-1px;box-sizing:border-box}
 .ans[aria-pressed="true"]{background:#1c2427;color:#ebeef0;border-color:#1c2427}
 .ans b{width:18px;flex:none}
+.nav{flex:1;min-height:52px;font:inherit;font-size:15px;cursor:pointer}
+.nav:disabled{opacity:.35;cursor:default}
 </style>
 
 <style>
@@ -48,38 +50,94 @@ body.framed #board > *{flex:none;box-shadow:0 1px 2px rgba(28,36,39,.12),0 8px 3
 <div style="width: 390px; height: 844px; box-sizing: border-box; padding: 28px 20px 24px; background: #ebeef0; color: #1c2427; font-family: 'Instrument Sans', system-ui, sans-serif; display: flex; flex-direction: column; gap: 20px;">
 <div style="display: flex; justify-content: space-between; align-items: baseline;">
 <p style="margin: 0; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #535f65;">Test wiedzy · K7Q-4M2</p>
-<p style="margin: 0; font-size: 14px; font-variant-numeric: tabular-nums;">24:12</p>
+<p id="igo-countdown" style="margin: 0; font-size: 14px; font-variant-numeric: tabular-nums;">{{ clock }}</p>
 </div>
 <div>
 <p style="margin: 0; font-size: 14px; color: #535f65;">sekc. Igor Len · ratownicy</p>
 <div style="display: grid; grid-template-columns: repeat(15, minmax(0, 1fr)); gap: 3px; margin-top: 12px;">
-<template data-sc="for" list="{{ dots }}" as="d" hint-placeholder-count="15"><span style="{{ d.style }}"></span></template>
+<template data-sc="for" list="{{ dots }}" as="d" hint-placeholder-count="15"><button type="button" aria-label="{{ d.label }}" onClick="{{ d.go }}" style="{{ d.style }}"></button></template>
 </div>
 </div>
+<template data-sc="if" value="{{ running }}" hint-placeholder-val="{{ true }}">
+<div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 16px;">
 <div>
-<p style="margin: 0; font-size: 13px; color: #535f65;">Pytanie 3 z 15</p>
-<h1 style="margin: 8px 0 0; font-size: 22px; line-height: 1.3; font-weight: 600;">Sygnał „wycofać się” przekazywany drogą radiową brzmi:</h1>
+<p style="margin: 0; font-size: 13px; color: #535f65;">{{ counter }}</p>
+<h1 style="margin: 8px 0 0; font-size: 20px; line-height: 1.3; font-weight: 600;">{{ question }}</h1>
+<template data-sc="for" list="{{ imgs }}" as="src"><img src="{{ src }}" alt="Ilustracja do pytania" style="display: block; max-width: 100%; max-height: 180px; margin-top: 12px; border: 1px solid #d3dadd;"></template>
 </div>
 <div role="group" aria-label="Odpowiedzi">
-<template data-sc="for" list="{{ answers }}" as="a" hint-placeholder-count="4"><button type="button" class="ans" aria-pressed="{{ a.on }}" onClick="{{ a.pick }}"><b>{{ a.k }}</b><span>{{ a.t }}</span></button></template>
+<template data-sc="for" list="{{ answers }}" as="a" hint-placeholder-count="3"><button type="button" class="ans" aria-pressed="{{ a.on }}" onClick="{{ a.pick }}"><b>{{ a.k }}</b><span>{{ a.t }}</span></button></template>
 </div>
 <p style="margin: 0; font-size: 13px; color: #535f65;">Jedna odpowiedź. Odpowiedź można zmienić do wysłania testu.</p>
-<div style="margin-top: auto; display: flex; gap: 10px;">
-<button type="button" style="flex: 1; min-height: 52px; border: 1px solid #1c2427; background: none; font: inherit; font-size: 15px; cursor: pointer; color: #1c2427;">Poprzednie</button>
-<button type="button" style="flex: 1; min-height: 52px; border: 0; background: #1c2427; color: #ebeef0; font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;">Następne</button>
 </div>
+<div style="display: flex; gap: 10px;">
+<button type="button" class="nav" style="border: 1px solid #1c2427; background: none; color: #1c2427;" disabled="{{ first }}" onClick="{{ prev }}">Poprzednie</button>
+<button type="button" class="nav" style="border: 0; background: #1c2427; color: #ebeef0; font-weight: 600;" onClick="{{ next }}">{{ nextLabel }}</button>
 </div>
 </template>
+<template data-sc="if" value="{{ finished }}" hint-placeholder-val="{{ false }}">
+<div style="flex: 1; display: flex; flex-direction: column; gap: 12px; justify-content: center;">
+<p style="margin: 0; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: #535f65;">Test wysłany</p>
+<p style="margin: 0; font-size: 28px; line-height: 1.2; font-weight: 600;">Odpowiedzi: {{ answered }} z 15</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #535f65;">Wynik zobaczy zespół inspekcyjny w kreatorze, w dziale V. Test wiedzy. Oddaj urządzenie przewodniczącemu zespołu.</p>
+<p style="margin: 0; font-size: 13px; color: #535f65;">Podgląd dla zespołu: {{ score }} pkt na 15.</p>
+</div>
+<button type="button" class="nav" style="flex: none; border: 1px solid #1c2427; background: none; color: #1c2427;" onClick="{{ restart }}">Nowe losowanie (koncepcja)</button>
+</template>
+</div>
+</template>
+<script src="../assets/igo-pytania.js"></script>
 <script src="../assets/dc-runtime.js"></script>
 <script>
 
+// Pytania losowane z bazy KG (window.IGO_PYTANIA na stronie koncepcji, próbka na kanwie) z działów grupy „ratownicy”.
+const IGO_SAMPLE = {"dzialy":[["I","Bezpieczeństwo pożarowe obiektów i budynków"],["II","Środki gaśnicze neutralizatory i sorbenty"],["III","Wyposażenie techniczne i sprzęt"],["IV","Prawa i obowiązki operatora pojazdu / sprzętu pożarniczego"],["V","Taktyka działań gaśniczych"],["VI","Taktyka działań ratowniczych - dla jednostek podstawowych – ratownictwo techniczne i chemiczne"],["VII","Taktyka działań ratowniczych - dla specjalistycznych grup ratowniczych – ratownictwo techniczne i chemiczne"],["VIII","Taktyka działań ratowniczych - dla jednostek podstawowych - działania poszukiwawczo-ratownicze"],["IX","Taktyka działań ratowniczych - dla specjalistycznych grup ratowniczych - działania poszukiwawczo-ratownicze"],["X","Taktyka działań ratowniczych - dla jednostek podstawowych – ratownictwo wodne"],["XI","Taktyka działań ratowniczych - dla specjalistycznych grup ratowniczych – ratownictwo wodno-nurkowe"],["XII","Ratownictwo medyczne"],["XIII","Taktyka działań ratowniczych - dla jednostek podstawowych – ratownictwo wysokościowe"],["XIV","Taktyka działań ratowniczych - dla specjalistycznych grup ratowniczych – ratownictwo wysokościowe"],["XV","Łączność"],["XVI","Praca stanowisk kierowania"]],"pytania":[["1",0,"Minimalny czas działania awaryjnego oświetlenia ewakuacyjnego wynosi:",["1 godzina","2 godziny","4 godziny"],0],["2",0,"Kurek główny umożliwiający odcięcie dopływu gazu do budynku powinien być zainstalowany:",["na zewnątrz budynku","w kuchni i przedpokoju","w odległości mniejszej niż 3 m od urządzenia gazowego, licząc po długości przewodu"],0],["69",1,"W gaśnicy śniegowej piktogram grupy pożarowej oznaczony wielką literą „C” informuje użytkownika o zastosowaniu urządzenia do gaszenia pożarów:",["cieczy palnych","ciał stałych pochodzenia organicznego","gazów palnych"],2],["70",1,"Pożary ciał stałych topliwych zaliczamy do grupy pożarów:",["A","B","C"],1],["106",2,"Sprzęt pożarniczy to:",["sprzęt służący do dostarczania środków gaśniczych na miejsce pożaru","sprzęt służący do prowadzenia akcji ratowania ludzi i mienia","przenośny lub przewoźny specjalny sprzęt służący do gaszenia pożarów, prowadzenia akcji ratowniczej oraz specjalny sprzęt ochrony stosowany przez straże pożarne podczas akcji"],2],["107",2,"Pole pracy to:",["powierzchnia, na której sprawiony lub ustawiony sprzęt do pracy obsługiwany przez operatora realizuje zadania","wykres możliwości obciążania drabiny wysięgnika hydraulicznego czy podestu w zależności od wysuwu i wysięgu","charakterystyczny dla żurawia ratowniczego zasięg wysuwu ramienia"],1],["277",3,"Po przybyciu na miejsce zdarzenia kierowca pojazdu pożarniczego:",["powinien wyłączyć silnik pojazdu","wedle uznania, może wyłączyć silnik lub nie","powinien mieć włączone w pojeździe niebieskie światła błyskowe"],2],["278",3,"W przypadku prowadzenia akcji ratowniczej w obrębie drogi publicznej pojazdy ratownicze powinny mieć:",["włączone tylko pełne oświetlenie zewnętrzne","włączone pełne oświetlenie zewnętrzne i światła ostrzegawcze","włączone tylko światła ostrzegawcze"],1],["299",4,"Definicją pożaru jest:",["Wystąpienie procesu spalania powodujące zagrożenie dla otoczenia","Niekontrolowany proces palenia w miejscu do tego nie przeznaczonym","Każde zjawisko palenia budzące niepokój społeczeństwa, powodujące wezwanie jednostek ochrony przeciwpożarowej"],1],["300",4,"Spalanie cieczy palnych gazów i ciał stałych, które w wyniku ogrzewania wytwarzają palną fazę lotną określamy jako:",["żarzenie","spalanie bezpłomieniowe","spalanie płomieniowe"],2],["553",5,"Który rodzaj zdarzenia nie zalicza się do miejscowych zagrożeń?",["katastrofa drogowa","pożar","katastrofa chemiczna"],1],["554",5,"Ratownictwo chemiczne to min:",["eliminacja skutków działania człowieka lub natury powodujących skażenie środowiska naturalnego","zatrzymanie emisji do otoczenia materiałów stwarzających zagrożenie dla życia zdrowia ludzi i zwierząt mienia i środowiska naturalnego","przeprowadzenie ewakuacji oraz udzielenie pierwszej pomocy poszkodowanym w wypadku z udziałem niebezpiecznego medium"],1],["754",6,"Jakie przepisy normują transport drogowy towarów niebezpiecznych?",["OND","TGE","ADR"],2],["755",6,"Zaznacz prawidłowy skrót przepisów regulujących przewóz towarów niebezpiecznych drogą kolejową:",["ADR","RID","ICAO"],1],["821",7,"Obciążenie, którego wartość jest niezmienna podczas oddziaływania na konstrukcję obiektu budowlanego to obciążenie:",["dynamiczne","spoczynkowe","statyczne"],2],["822",7,"Dotarcie do poszkodowanych zagruzowanych w rumowisku jest możliwe poprzez:",["czołganie się przez wolne przestrzenie","wykonanie tunelu ratowniczego","wykonanie podkopu"],0],["943",8,"Priorytetem grup poszukiwawczo-ratowniczych jest:",["ratowanie mienia po katastrofie budowlanej","poszukiwanie osób zasypanych lub unieruchomionych i zaginionych","zabezpieczenie konstrukcji obiektu"],1],["944",8,"Psy ratownicze „gruzowiskowe” są szkolone do poszukiwania w:",["lasach i na otwartej przestrzeni","wodzie","obiektach budowlanych"],2],["968",9,"Zjawisko „cofki”, polegające na wypychaniu wody w górę rzeki wskutek wiatru lub spiętrzenia wody, jest charakterystyczne dla powodzi:",["zatorowych i sztormowych","roztopowych","opadowych, nawalnych"],0],["969",9,"Zjawisko „cofki” polega na:",["zalewaniu terenu po przerwaniu wałów przeciwpowodziowych","cofaniu się wody w górę biegu rzeki wskutek spiętrzenia wód w jej ujściu lub zbiorniku, do którego uchodzi","cofaniu się wody z terenów zalanych z powrotem do koryta rzeki"],1],["1015",10,"Podczas prowadzenia działań nurkowych w przestrzeniach zamkniętych oraz na akwenach, na których występuje kra lodowa, w celu zapewnienia bezpieczeństwa nurków wymaga się dodatkowych przedsięwzięć w zakresie zastosowania co najmniej:",["sprzętu do autoasekuracji, oświetlenia i łączności, dwóch niezależnych źródeł mieszaniny oddechowej","dwóch niezależnych źródeł mieszaniny oddechowej i co najmniej dwóch źródeł światła","oświetlenia i łączności, dwóch niezależnych źródeł mieszaniny oddechowej"],0],["1016",10,"Sygnał przekazywany liną asekuracyjną „Natychmiast rozpocznij wynurzenie – niebezpieczeństwo”, sygnalizujemy poprzez:",["3 szarpnięcia liną","2 szarpnięcia liną","wielokrotne szarpnięcia liną"],2],["1061",11,"Przyczyną wstrząsu hipowolemicznego jest:",["nagły spadek poziomu cukru we krwi","nagłe podniesienie poziomu cukru we krwi","chwilowa utrata przytomności","spadek objętości krwi krążącej","wszystkie odpowiedzi są fałszywe"],3],["1062",11,"Drgawki mogą występować przy:",["urazie mózgowo-czaszkowym","zatruciu niedotlenieniu","wysokiej temperaturze ciała szczególnie u dzieci","odwodnieniu udarze cieplnym","wszystkie odpowiedzi są prawdziwe"],4],["1140",12,"Kto organizuje Ratownictwo Wysokościowe w zakresie podstawowym w KSRG:",["komendant wojewódzki PSP","terytorialnie Specjalistyczna Grupa Ratownictwa Wysokościowego","właściwy terytorialnie komendant powiatowy lub miejski PSP"],2],["1141",12,"Ratownictwo Wysokościowe w zakresie podstawowym realizują:",["jednostki ratowniczo - gaśnicze PSP, gdzie utworzona jest SGRW","wszystkie jednostki ratowniczo - gaśnicze PSP","wszystkie jednostki ratowniczo - gaśnicze PSP + OSP"],1],["1292",13,"Technika asekuracji górnej polega na:",["asekuracji przyrządem zaciskowym od góry","wpięciu odpowiedniego przyrządu w linę poręczową, podczas poruszania się po konstrukcji lub wspinaczki","asekuracji ratownika liną prowadzoną do niego od góry"],2],["1293",13,"Podstawowym parametrem różniącym przyrządy do asekuracji dynamicznej jest:",["siła hamowania","cena","waga"],1],["1352",14,"Korespondencji radiowej nie przekażemy:",["radiotelefonem noszonym","terminalem statusów","radiotelefonem bazowym"],1],["1353",14,"Poprawny sposób nawiązania łączności w sieciach radiowych PSP to użycie zwrotu:",["WARSZAWA 998 ZGŁOŚ SIĘ DLA DF 303-21 ODBIÓR","WARSZAWA 998 TU DF 303-21 ODBIÓR","WARSZAWA 998 ZGŁOŚ SIĘ - TU DF 303-21 ODBIÓR"],1],["1430",15,"Kto prowadzi ewidencję zdarzeń z prowadzonych działań ratowniczych",["podmioty ksrg","pierwsza przybyła na miejsce zdarzeń jednostka psp","pierwsza przybyła na miejsce zdarzeń jednostka ksrg"],0],["1431",15,"Dokumentacja działań ratowniczych nie obejmuje:",["karty zdarzenia","zestawienia dobowego zdarzeń","informacji ze zdarzenia","planu ratowniczego"],3]]};
+const IGO_IMG = '../assets/igo-pytania/';
+const IGO_RAT = ['II', 'III', 'V', 'VI', 'VIII', 'X', 'XII', 'XIII', 'XV'];
+function igoRandom(seed) {
+  return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+}
 class Component extends DCLogic {
-  constructor(props) { super(props); this.state = { pick: 1 }; }
+  constructor(props) { super(props); this.state = { seed: 3, i: 0, picks: Array(15).fill(-1), done: false }; }
+  componentDidMount() {
+    // Odliczanie bez przerysowania planszy (żeby nie gubić kliknięć): aktualizuje tylko licznik.
+    const end = Date.now() + 30 * 60 * 1000;
+    setInterval(() => {
+      const el = document.getElementById('igo-countdown');
+      if (!el) return;
+      this.left = Math.max(0, Math.round((end - Date.now()) / 1000));
+      el.textContent = this.clock();
+    }, 1000);
+  }
+  clock() {
+    const left = this.left === undefined ? 1800 : this.left;
+    return String(Math.floor(left / 60)).padStart(2, '0') + ':' + String(left % 60).padStart(2, '0');
+  }
   renderVals() {
-    const T = ['wariant odpowiedzi A', 'wariant odpowiedzi B', 'wariant odpowiedzi C', 'wariant odpowiedzi D'];
-    const answers = T.map((t, i) => ({ k: 'abcd'[i], t, on: this.state.pick === i, pick: () => this.setState({ pick: i }) }));
-    const dots = Array.from({ length: 15 }, (_, i) => ({ style: 'height: 4px; background: ' + (i < 2 ? '#1c2427' : i === 2 ? '#6b777d' : '#d3dadd') + ';' }));
-    return { answers, dots };
+    const s = this.state;
+    const bank = window.IGO_PYTANIA || IGO_SAMPLE;
+    const pool = bank.pytania.filter((p) => IGO_RAT.includes(bank.dzialy[p[1]][0]));
+    const rnd = igoRandom(s.seed);
+    const deck = pool.slice();
+    for (let k = deck.length - 1; k > 0; k--) { const j = Math.floor(rnd() * (k + 1)); const t = deck[k]; deck[k] = deck[j]; deck[j] = t; }
+    const test = deck.slice(0, 15);
+    const p = test[s.i];
+    const setPick = (v) => { const picks = s.picks.slice(); picks[s.i] = v; this.setState({ picks }); };
+    const last = s.i === test.length - 1;
+    const answered = s.picks.filter((v) => v >= 0).length;
+    return {
+      clock: this.clock(), running: !s.done, finished: s.done,
+      dots: test.map((_, k) => ({ label: 'Pytanie ' + (k + 1), go: () => this.setState({ i: k }), style: 'height: 8px; padding: 0; border: 0; cursor: pointer; background: ' + (k === s.i ? '#6b777d' : s.picks[k] >= 0 ? '#1c2427' : '#d3dadd') + ';' })),
+      counter: 'Pytanie ' + (s.i + 1) + ' z ' + test.length + ' · odpowiedzi ' + answered,
+      question: p[2], imgs: (p[5] || []).map((f) => IGO_IMG + f),
+      answers: p[3].map((t, k) => ({ k: 'abcde'[k], t, on: s.picks[s.i] === k, pick: () => setPick(k) })),
+      first: s.i === 0,
+      prev: () => this.setState({ i: Math.max(0, s.i - 1) }),
+      nextLabel: last ? 'Wyślij test' : 'Następne',
+      next: () => (last ? this.setState({ done: true }) : this.setState({ i: s.i + 1 })),
+      answered, score: test.filter((q, k) => s.picks[k] === q[4]).length,
+      restart: () => this.setState({ seed: s.seed + 1, i: 0, picks: Array(15).fill(-1), done: false })
+    };
   }
 }
 

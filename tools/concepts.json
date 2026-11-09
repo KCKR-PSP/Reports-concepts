@@ -49,13 +49,15 @@
           "source": "Test.dc.html",
           "page": "baza-pytan.html",
           "title": "Baza pytań",
-          "controls": []
+          "controls": [],
+          "scripts": ["../assets/igo-pytania.js"]
         },
         {
           "source": "TestTelefon.dc.html",
           "page": "test-telefon.html",
           "title": "Test na telefonie",
           "controls": [],
+          "scripts": ["../assets/igo-pytania.js"],
           "framed": true
         },
         {

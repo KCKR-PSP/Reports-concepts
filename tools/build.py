@@ -67,6 +67,8 @@ def page(concept: dict, board: dict, parts: dict, links: dict) -> str:
         + '</select></label>'
         for k, v in parts['props'].items() if k in board.get('controls', ['theme', 'rola']))
     current = ' aria-current="page"'
+    # Data files a board reads from window (e.g. the IGO question bank); on the canvas the board uses its own sample.
+    extra = ''.join(f'<script src="{html.escape(src)}"></script>\n' for src in board.get('scripts', []))
     tabs = '' if concept.get('nav') is False else ''.join(
         f'<a href="{b["page"]}"{current if b is board else ""}>{html.escape(b["title"])}</a>' for b in concept['boards'] if b.get('nav', True) or b is board)
     return f"""<!doctype html>
@@ -90,7 +92,7 @@ def page(concept: dict, board: dict, parts: dict, links: dict) -> str:
 </div>
 <div id="board"></div>
 <template id="board-template">{template}</template>
-<script src="../assets/dc-runtime.js"></script>
+{extra}<script src="../assets/dc-runtime.js"></script>
 <script>
 {script}
 (function () {{
