@@ -29,7 +29,7 @@
     {
       "id": "grupy-miedzynarodowe",
       "title": "Grupy międzynarodowe",
-      "description": "Zasób Grupy międzynarodowe w obecnym UI Reports: wybór zasobu, strona zasobu, pulpit, sprzęt z ewidencji SWD, psy, dyżury z obsadą stanowisk i kontrolą gotowości, wyjazdy z konfiguracją składu i dokumentami, ustawienia ze składem modułu, powiadomienia, wyszukiwarka, lista użytkowników, profil osoby i ustawienia konta.",
+      "description": "Zasób Grupy międzynarodowe w obecnym UI Reports: wybór zasobu, strona zasobu, pulpit, sprzęt z ewidencji SWD, psy, dyżury z obsadą stanowisk i kontrolą gotowości, wyjazdy z konfiguracją składu i dokumentami, ustawienia, skład modułu i słowniki w panelu administracyjnym, powiadomienia, wyszukiwarka, lista użytkowników, profil osoby i ustawienia konta.",
       "boards": [
         {
           "source": "Zasob.dc.html",
@@ -68,12 +68,6 @@
           "controls": []
         },
         {
-          "source": "Ustawienia.dc.html",
-          "page": "ustawienia.html",
-          "title": "Ustawienia",
-          "controls": []
-        },
-        {
           "source": "Uzytkownicy.dc.html",
           "page": "uzytkownicy.html",
           "title": "Użytkownicy",
@@ -89,6 +83,12 @@
           "source": "Konto.dc.html",
           "page": "konto.html",
           "title": "Ustawienia konta",
+          "controls": []
+        },
+        {
+          "source": "Admin-zasob.dc.html",
+          "page": "admin-zasob.html",
+          "title": "Panel administracyjny",
           "controls": []
         },
         {
@@ -179,27 +179,6 @@
           "source": "Wyjazd-krok4.dc.html",
           "page": "wyjazd-krok4.html",
           "title": "Wyjazd · krok 4 Dokumenty",
-          "controls": [],
-          "nav": false
-        },
-        {
-          "source": "Ustawienia-grupa.dc.html",
-          "page": "ustawienia-grupa.html",
-          "title": "Ustawienia · grupa",
-          "controls": [],
-          "nav": false
-        },
-        {
-          "source": "Ustawienia-sklad.dc.html",
-          "page": "ustawienia-sklad.html",
-          "title": "Ustawienia · skład",
-          "controls": [],
-          "nav": false
-        },
-        {
-          "source": "Ustawienia-slownik.dc.html",
-          "page": "ustawienia-slownik.html",
-          "title": "Ustawienia · słownik",
           "controls": [],
           "nav": false
         },
