@@ -155,9 +155,30 @@
           "nav": false
         },
         {
+          "source": "Wyjazd-krok1.dc.html",
+          "page": "wyjazd-krok1.html",
+          "title": "Wyjazd · krok 1 Dane",
+          "controls": [],
+          "nav": false
+        },
+        {
           "source": "Wyjazdy-konfiguracja.dc.html",
           "page": "wyjazdy-konfiguracja.html",
-          "title": "Wyjazd · konfiguracja",
+          "title": "Wyjazd · krok 2 Skład",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Wyjazd-krok3.dc.html",
+          "page": "wyjazd-krok3.html",
+          "title": "Wyjazd · krok 3 Kontrola",
+          "controls": [],
+          "nav": false
+        },
+        {
+          "source": "Wyjazd-krok4.dc.html",
+          "page": "wyjazd-krok4.html",
+          "title": "Wyjazd · krok 4 Dokumenty",
           "controls": [],
           "nav": false
         },
