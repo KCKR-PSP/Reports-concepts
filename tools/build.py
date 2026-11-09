@@ -112,7 +112,7 @@ def index(concepts: list) -> str:
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Koncepcje Reports</title>
+<title>Lista elementów do wprowadzenia · Reports</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
@@ -133,7 +133,7 @@ a:focus-visible{{outline:2px solid var(--fg);outline-offset:2px}}
 </head>
 <body>
 <main>
-<header><p class="eyebrow">Państwowa Straż Pożarna · Reports</p><h1>Koncepcje do przeklikania</h1></header>
+<header><p class="eyebrow">Państwowa Straż Pożarna · Reports</p><h1>Lista elementów do wprowadzenia</h1></header>
 <ul>{items}</ul>
 <p class="eyebrow">Wszystkie dane na planszach są przykładowe.</p>
 </main>
