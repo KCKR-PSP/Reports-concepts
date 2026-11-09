@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>KG · HCP · Wyjazd · krok 3 Kontrola · Koncepcje Reports</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@300;400;500;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block">
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+.app{position:relative;min-height:100vh;color:#1c2427;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;background:linear-gradient(160deg,hsl(200 11% 92%),hsl(202 10% 81%));overflow:hidden}
+.shade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(48% 55% at 92% 8%,hsl(202 12% 62%/.9),transparent 72%),radial-gradient(65% 55% at 74% 100%,hsl(202 12% 62%/.9),transparent 72%),radial-gradient(40% 45% at 4% 62%,hsl(202 12% 68%/.75),transparent 72%)}
+.mist{position:absolute;inset:0;pointer-events:none;background:radial-gradient(78% 66% at 14% 12%,#fff,transparent 72%),radial-gradient(58% 58% at 28% 92%,#fff,transparent 70%),radial-gradient(62% 52% at 62% 48%,rgb(255 255 255/.8),transparent 70%),radial-gradient(46% 42% at 96% 70%,rgb(255 255 255/.8),transparent 70%)}
+.ms{font-family:'Material Symbols Outlined';font-weight:200;font-size:36px;line-height:1;font-variation-settings:'wght' 200,'opsz' 40}
+.glass-dlg{background:hsl(0 0% 100%/.2);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);box-shadow:inset 0 1px 0 hsl(0 0% 100%/.6),0 32px 80px -28px hsl(200 35% 12%/.48);border:1px solid hsl(0 0% 100%/.6)}
+.blurscrim{position:absolute;inset:0;z-index:5;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pill{position:absolute;z-index:2;left:16px;top:450px;transform:translateY(-50%);display:flex;flex-direction:column;gap:4px;padding:8px;border-radius:9999px;background:rgb(255 255 255/.32);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgb(255 255 255/.75);box-shadow:inset 0 1px 0 rgb(255 255 255/.5),0 18px 40px -22px hsl(200 35% 12%/.45)}
+.pi{width:44px;height:44px;border-radius:9999px;display:flex;align-items:center;justify-content:center;color:hsl(200 12% 24%);font:700 15px 'Instrument Sans',sans-serif}
+.pi:hover{background:hsl(200 12% 94%)}
+.pi-on{background:#1c2427;color:#fff}
+.main{position:relative;z-index:1;padding-left:94px}
+.wrap{max-width:1360px;margin:0 auto;padding:64px clamp(16px,4vw,56px) 96px;box-sizing:border-box;display:flex;flex-direction:column;gap:56px}
+.optabs{display:flex;gap:32px}
+.optab{font-size:15px;font-weight:500;text-transform:uppercase;padding-bottom:8px;border-bottom:2px solid transparent}
+.optab:hover{border-bottom-color:rgb(28 36 39/.3)}
+.on,.on:hover{border-bottom-color:#1c2427}
+.pillb{display:inline-flex;align-items:center;gap:8px;min-height:40px;box-sizing:border-box;padding:9px 14px;border:1px solid #d3dadd;background:#fff;font:500 13px 'Instrument Sans',sans-serif;color:#1c2427;white-space:nowrap}
+.pillb:hover{border-color:#1c2427}
+.pillp{display:inline-flex;align-items:center;justify-content:center;min-height:40px;box-sizing:border-box;padding:9px 16px;border:1px solid #1c2427;background:#1c2427;color:#ebeef0;font:500 13px 'Instrument Sans',sans-serif;white-space:nowrap}
+.ghost{font-size:13px}
+.ghost:hover{text-decoration:underline}
+.inp{height:36px;border:1px solid #d3dadd;background:#fff;padding:0 10px;font:14px 'Instrument Sans',sans-serif;display:flex;align-items:center;box-sizing:border-box;color:#6b777c}
+.gt{display:grid;font-size:14px}.gh{color:#6b777c;font-size:13px;padding:0 24px 14px 0}.gc{border-top:1px solid rgb(28 36 39/.12);padding:20px 24px 20px 0}
+.sub{font-size:12.5px;color:#6b777c;margin-top:2px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b3261e;margin-left:7px;vertical-align:2px}
+.sel{background:rgb(255 255 255/.7)}.gc.sel{box-shadow:-12px 0 0 rgb(255 255 255/.7)}
+.h2{margin:0;font-size:16px;font-weight:500}
+.lbl{font-size:12px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:#6b777c}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto 80px;gap:24px;padding:22px 0;border-top:1px solid rgb(28 36 39/.12);font-size:14px;align-items:center}
+.band{position:relative;overflow:hidden;background:#1c2427;color:#ebeef0;padding:40px 44px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.band>*:not(.motif):not(.motif-trace){position:relative}.motif{position:absolute;inset:0;pointer-events:none;-webkit-mask-image:linear-gradient(90deg,transparent 15%,#000 70%);mask-image:linear-gradient(90deg,transparent 15%,#000 70%)}
+.motif.meridian{background:repeating-radial-gradient(ellipse 120% 100% at 75% 230%,transparent 0 39px,rgb(235 238 240/.14) 39px 40px),repeating-conic-gradient(from -60deg at 75% 230%,rgb(235 238 240/.14) 0 .12deg,transparent .12deg 5deg)}
+.motif.usar{background:repeating-linear-gradient(60deg,transparent 0 47px,rgb(235 238 240/.12) 47px 48px),repeating-linear-gradient(-60deg,transparent 0 47px,rgb(235 238 240/.12) 47px 48px),repeating-linear-gradient(0deg,transparent 0 41px,rgb(235 238 240/.08) 41px 42px)}
+.motif-trace{position:absolute;right:0;bottom:0;width:58%;height:100%;fill:none;stroke:rgb(235 238 240/.38);stroke-width:1.5}
+.band p{margin:0}.kl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#b4bec3}.kv{font-size:48px;font-weight:600;line-height:1;margin-top:10px;font-variant-numeric:tabular-nums}.ks{font-size:13px;color:#b4bec3;margin-top:10px}
+.lst{display:grid;grid-template-columns:120px minmax(0,1fr) auto;gap:24px;padding:22px 0;border-top:1px solid rgb(28 36 39/.12);font-size:14px;align-items:baseline}
+.guide{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:4px 0 32px;border-bottom:1px solid rgb(28 36 39/.12)}
+.eyebrow{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#535f65}
+.scrim{position:absolute;inset:0;z-index:3;background:rgba(10,14,16,.18)}
+.drawer{position:absolute;z-index:4;top:0;right:0;bottom:0;width:560px;box-sizing:border-box;background:#ebeef0;border-left:1px solid #d3dadd;box-shadow:-24px 0 48px rgba(0,0,0,.12);padding:48px 40px 56px;display:flex;flex-direction:column;gap:36px;font-size:14px;line-height:20px}
+.cz-h3{margin:0 0 16px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.cz-nav{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border:1px solid #d3dadd;flex:none}
+.cz-nav:hover,.cz-outline:hover{border-color:#1c2427}
+.cz-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid #d3dadd;padding:9px 14px;min-height:40px;box-sizing:border-box;font-size:13px;font-weight:500;background:#fff}
+.cz-dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid #d3dadd;border-bottom:1px solid #d3dadd;margin:0}.cz-dl>div{padding:18px 20px 18px 0}.cz-dl>div+div{padding-left:20px;border-left:1px solid #d3dadd}
+.cz-dl dt{font-size:12px;color:#535f65}.cz-dl dd{margin:4px 0 0;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums}
+.cz-tab{display:inline-block;border-bottom:2px solid transparent;margin:0 28px -1px 0;padding:10px 0;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#535f65}.cz-tab.on{color:#1c2427;border-bottom-color:#1c2427}
+.srow{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:20px;align-items:center;padding:18px 0;border-top:1px solid #d3dadd;font-size:14px}
+.dr{display:grid;grid-template-columns:140px minmax(0,1fr);gap:12px 18px;font-size:14px;align-items:baseline}.dr>span:nth-child(odd){color:#535f65}
+</style>
+
+<style>
+html,body{margin:0;background:#ebeef0}
+body.dark{background:#121518}
+.cbar{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding:8px clamp(16px, 4vw, 40px);
+  background:#1c2427;color:#ebeef0;font:500 13px/1.3 'Instrument Sans',ui-sans-serif,system-ui,sans-serif}
+.cbar a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:36px}
+.cbar a:hover{text-decoration:underline}
+.cbar .ttl{font-weight:700}
+.cbar .tag{padding:3px 8px;border:1px solid #535f65;color:#a9b3b8;font-size:12px}
+.cbar .sp{flex:1}
+.cbar nav{display:flex;flex-wrap:wrap;gap:4px 16px}
+.cbar nav a[aria-current="page"]{font-weight:700;text-decoration:underline}
+.cbar label{display:inline-flex;align-items:center;gap:8px;color:#a9b3b8}
+.cbar select{min-height:32px;padding:0 8px;border:1px solid #535f65;border-radius:0;background:#1c2427;color:#ebeef0;font:inherit}
+.cbar a:focus-visible,.cbar select:focus-visible{outline:2px solid #ebeef0;outline-offset:2px}
+@media (max-width: 760px){.cbar{position:static}}
+</style>
+</head>
+<body>
+<div class="cbar">
+<a href="../index.html">← Koncepcje Reports</a>
+<span class="ttl">Działania międzynarodowe</span>
+<span class="tag">Koncepcja · dane przykładowe</span>
+<nav aria-label="Plansze"></nav>
+<span class="sp"></span>
+
+</div>
+<div id="board"></div>
+<template id="board-template">
+<div class="role-strip" style="position:relative;z-index:8;display:flex;gap:24px;align-items:center;padding:0 24px;background:#1c2427;font-family:Instrument Sans,ui-sans-serif,system-ui,sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase"><span style="color:#8b979c">Widok</span><a href="hcp-wyjazd-krok3.html" style="padding:10px 0;border-bottom:2px solid #ebeef0;color:#fff">KG PSP</a><a href="kw-hcp-pulpit.html" style="padding:10px 0;color:#b4bec3">KW PSP Poznań</a><a href="kp-hcp-pulpit.html" style="padding:10px 0;color:#b4bec3">KP PSP Chodzież</a><a href="os-profil.html" style="padding:10px 0;color:#b4bec3">Członek modułu</a></div><div class="app"><div class="shade" aria-hidden="true"></div><div class="mist" aria-hidden="true"></div><nav class="pill" aria-label="Nawigacja główna">
+<a class="pi" href="launcher.html" aria-label="Reports. Otwórz wybór zasobów." style="font-size:20px;font-weight:800">R</a>
+<a class="pi" href="powiadomienia.html" style="position:relative" aria-label="Powiadomienia"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg></a>
+<a class="pi" href="szukaj.html" aria-label="Szukaj (⌘K)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></a>
+<a class="pi" href="uzytkownicy.html" aria-label="Użytkownicy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></a><a class="pi" href="admin-zasob.html" aria-label="Panel administracyjny"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path><path d="m9 12 2 2 4-4"></path></svg></a>
+<a class="pi" href="profil.html" aria-label="Konto"><span style="width:32px;height:32px;border-radius:8px;background:#d3dadd;color:#1c2427;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600">AB</span></a>
+</nav><div class="main"><div class="wrap" style="max-width:1200px;">
+<header style="display:flex;flex-direction:column;gap:20px">
+<a href="hcp-wyjazdy.html" style="font-size:13px;font-weight:500">← Wyjazdy HCP</a>
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px"><div><p class="eyebrow">Konfiguracja wyjazdu</p><h1 style="margin:6px 0 0;font-size:34px;line-height:1.15;font-weight:600;letter-spacing:-.01em">Pożary lasów · Grecja</h1></div><span style="font-size:14px;color:#535f65">Krok 3 z 4</span></div>
+</header>
+<nav aria-label="Kroki kreatora" style="display:flex;align-items:center;border-bottom:1px solid #d3dadd"><a href="hcp-wyjazd-krok1.html" style="display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:3px solid transparent;"><span style="width:32px;height:32px;border:1px solid #d3dadd;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;background:#1c2427;color:#ebeef0;border-color:#1c2427">✓</span><span style="font-size:15px;font-weight:500">Dane</span></a><span style="flex:1;height:1px;background:#d3dadd;margin:0 24px;align-self:center"></span><a href="hcp-wyjazdy-konfiguracja.html" style="display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:3px solid transparent;"><span style="width:32px;height:32px;border:1px solid #d3dadd;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;background:#1c2427;color:#ebeef0;border-color:#1c2427">✓</span><span style="font-size:15px;font-weight:500">Skład</span></a><span style="flex:1;height:1px;background:#d3dadd;margin:0 24px;align-self:center"></span><a href="hcp-wyjazd-krok3.html" style="display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:3px solid #1c2427;"><span style="width:32px;height:32px;border:1px solid #d3dadd;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;background:#1c2427;color:#ebeef0;border-color:#1c2427">3</span><span style="font-size:15px;font-weight:600">Kontrola</span></a><span style="flex:1;height:1px;background:#d3dadd;margin:0 24px;align-self:center"></span><a href="hcp-wyjazd-krok4.html" style="display:flex;align-items:center;gap:14px;padding:18px 0;border-bottom:3px solid transparent;color:#535f65"><span style="width:32px;height:32px;border:1px solid #d3dadd;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;background:#fff;color:#535f65">4</span><span style="font-size:15px;font-weight:500">Dokumenty</span></a></nav>
+<div class="band"><div><p class="kl">Osoby</p><p class="kv">18</p></div><div><p class="kl">Sprzęt</p><p class="kv">7</p><p class="ks">796 kg</p></div><div><p class="kl">Błędy</p><p class="kv" style="color:#ff9e94">2</p><p class="ks">blokują start</p></div><div><p class="kl">Ostrzeżenia</p><p class="kv">2</p></div></div>
+<section><h2 class="cz-h3">Do poprawy</h2>
+<div class="lst" style="grid-template-columns:120px minmax(0,1fr) auto"><span style="font-weight:600;color:#b3261e">Błąd</span><span><b style="font-weight:600">Osoba bez paszportu w składzie</b><br><span style="color:#535f65">ogn. Adam Kurek · Ratownik</span></span><a class="pillb" href="hcp-wyjazdy-konfiguracja.html">Zmień w składzie</a></div>
+<div class="lst" style="grid-template-columns:120px minmax(0,1fr) auto"><span style="font-weight:600;color:#b3261e">Błąd</span><span><b style="font-weight:600">SLKw przeciążony</b><br><span style="color:#535f65">1 310 z 1 200 kg · zdejmij 110 kg albo dodaj pojazd</span></span><a class="pillb" href="hcp-wyjazdy-konfiguracja.html">Zmień w składzie</a></div>
+<div class="lst" style="grid-template-columns:120px minmax(0,1fr) auto"><span style="font-weight:600;">Ostrzeżenie</span><span><b style="font-weight:600">2 paszporty ważne krócej niż 6 miesięcy</b><br><span style="color:#535f65">kpt. Paweł Grochowski, asp. Krzysztof Nowacki</span></span><a class="pillb" href="uzytkownicy.html">Pokaż osoby</a></div>
+<div class="lst" style="grid-template-columns:120px minmax(0,1fr) auto;border-bottom:1px solid rgb(28 36 39/.12)"><span style="font-weight:600">Ostrzeżenie</span><span><b style="font-weight:600">Minimum sprzętu: maszt oświetleniowy 1 z 2</b><br><span style="color:#535f65">brakuje jednej sztuki w składzie</span></span><a class="pillb" href="hcp-sprzet-minimum.html">Pokaż minimum</a></div>
+</section>
+<div style="display:flex;align-items:center;gap:12px;padding-top:28px;border-top:1px solid rgb(28 36 39/.12)"><a class="pillb" href="hcp-wyjazdy-konfiguracja.html">← Wstecz</a><span style="flex:1"></span><span class="pillb">Zapisz szkic</span><a class="pillp" href="hcp-wyjazd-krok4.html">Dalej: dokumenty →</a></div>
+</div></div></div>
+</template>
+<script src="../assets/dc-runtime.js"></script>
+<script>
+
+class Component extends DCLogic { renderVals() { return {}; } }
+
+(function () {
+  const props = {};
+  const applyTheme = () => document.body.classList.toggle('dark', props.theme === 'ciemny');
+  const board = mountBoard(document.getElementById('board'), document.getElementById('board-template'), Component, props);
+  applyTheme();
+  document.querySelectorAll('.cbar select[data-prop]').forEach((select) => select.addEventListener('change', () => {
+    props[select.dataset.prop] = select.value;
+    board.setProps({ [select.dataset.prop]: select.value });
+    applyTheme();
+  }));
+})();
+</script>
+</body>
+</html>

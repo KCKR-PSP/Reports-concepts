@@ -27,9 +27,9 @@
       ]
     },
     {
-      "id": "grupy-miedzynarodowe",
-      "title": "Grupy międzynarodowe",
-      "description": "Zasób Grupy międzynarodowe w obecnym UI Reports, do przeklikania z poziomu KG, KW, KP albo członka modułu: pulpit z kalendarzem dysponowania, dyżury z obsadą przeciąganą na schemat, kreator wyjazdu, sprzęt, psy, osoby i ustawienia w panelu administracyjnym.",
+      "id": "dzialania-miedzynarodowe",
+      "title": "Działania międzynarodowe",
+      "description": "Zasób Działania międzynarodowe w obecnym UI Reports, do przeklikania z poziomu KG, KW, KP albo członka modułu. Moduły GFFF, GFFFV, USAR, DSIM i HCP z pulpitem i kalendarzem dysponowania, sprzętem, psami (USAR), dyżurami z obsadą przeciąganą na schemat i konfiguracją wyjazdu; dokumenty wyjazdu do pobrania.",
       "boards": [
         {
           "source": "Start.dc.html",
@@ -40,7 +40,7 @@
         {
           "source": "Zasob.dc.html",
           "page": "zasob.html",
-          "title": "KG · Zasób · Grupy międzynarodowe",
+          "title": "KG · Zasób · Działania międzynarodowe",
           "controls": []
         },
         {
@@ -52,7 +52,7 @@
         {
           "source": "Pulpit.dc.html",
           "page": "pulpit.html",
-          "title": "KG · Pulpit",
+          "title": "KG · GFFFV · Pulpit",
           "controls": []
         },
         {
@@ -70,7 +70,7 @@
         {
           "source": "Dyzury.dc.html",
           "page": "dyzury.html",
-          "title": "KG · Dyżury",
+          "title": "KG · GFFFV · Dyżury",
           "controls": []
         },
         {
@@ -94,7 +94,7 @@
         {
           "source": "Wyjazdy.dc.html",
           "page": "wyjazdy.html",
-          "title": "KG · Wyjazdy",
+          "title": "KG · GFFFV · Wyjazdy",
           "controls": []
         },
         {
@@ -130,7 +130,7 @@
         {
           "source": "Sprzet.dc.html",
           "page": "sprzet.html",
-          "title": "KG · Sprzęt",
+          "title": "KG · GFFFV · Sprzęt",
           "controls": []
         },
         {
@@ -146,15 +146,9 @@
           "controls": []
         },
         {
-          "source": "Psy.dc.html",
-          "page": "psy.html",
-          "title": "KG · Psy",
-          "controls": []
-        },
-        {
           "source": "Uzytkownicy.dc.html",
           "page": "uzytkownicy.html",
-          "title": "KG · Użytkownicy · Grupy międzynarodowe",
+          "title": "KG · Użytkownicy · Działania międzynarodowe",
           "controls": []
         },
         {
@@ -172,13 +166,355 @@
         {
           "source": "Admin-zasob.dc.html",
           "page": "admin-zasob.html",
-          "title": "KG · Panel administracyjny · Grupy międzynarodowe",
+          "title": "KG · Panel administracyjny · Działania międzynarodowe",
+          "controls": []
+        },
+        {
+          "source": "gfff-Pulpit.dc.html",
+          "page": "gfff-pulpit.html",
+          "title": "KG · GFFF · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "gfff-Dyzury.dc.html",
+          "page": "gfff-dyzury.html",
+          "title": "KG · GFFF · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "gfff-Dyzury-komorka.dc.html",
+          "page": "gfff-dyzury-komorka.html",
+          "title": "KG · GFFF · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "gfff-Dyzury-obsada.dc.html",
+          "page": "gfff-dyzury-obsada.html",
+          "title": "KG · GFFF · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "gfff-Dyzury-kontrola.dc.html",
+          "page": "gfff-dyzury-kontrola.html",
+          "title": "KG · GFFF · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "gfff-Wyjazdy.dc.html",
+          "page": "gfff-wyjazdy.html",
+          "title": "KG · GFFF · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "gfff-Wyjazdy-szczegoly.dc.html",
+          "page": "gfff-wyjazdy-szczegoly.html",
+          "title": "KG · GFFF · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "gfff-Wyjazd-krok1.dc.html",
+          "page": "gfff-wyjazd-krok1.html",
+          "title": "KG · GFFF · Wyjazd · krok 1 Dane",
+          "controls": []
+        },
+        {
+          "source": "gfff-Wyjazdy-konfiguracja.dc.html",
+          "page": "gfff-wyjazdy-konfiguracja.html",
+          "title": "KG · GFFF · Wyjazd · krok 2 Skład",
+          "controls": []
+        },
+        {
+          "source": "gfff-Wyjazd-krok3.dc.html",
+          "page": "gfff-wyjazd-krok3.html",
+          "title": "KG · GFFF · Wyjazd · krok 3 Kontrola",
+          "controls": []
+        },
+        {
+          "source": "gfff-Wyjazd-krok4.dc.html",
+          "page": "gfff-wyjazd-krok4.html",
+          "title": "KG · GFFF · Wyjazd · krok 4 Dokumenty",
+          "controls": []
+        },
+        {
+          "source": "gfff-Sprzet.dc.html",
+          "page": "gfff-sprzet.html",
+          "title": "KG · GFFF · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "gfff-Sprzet-pozycja.dc.html",
+          "page": "gfff-sprzet-pozycja.html",
+          "title": "KG · GFFF · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "gfff-Sprzet-minimum.dc.html",
+          "page": "gfff-sprzet-minimum.html",
+          "title": "KG · GFFF · Sprzęt · minimum",
+          "controls": []
+        },
+        {
+          "source": "usar-Pulpit.dc.html",
+          "page": "usar-pulpit.html",
+          "title": "KG · USAR · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "usar-Dyzury.dc.html",
+          "page": "usar-dyzury.html",
+          "title": "KG · USAR · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "usar-Dyzury-komorka.dc.html",
+          "page": "usar-dyzury-komorka.html",
+          "title": "KG · USAR · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "usar-Dyzury-obsada.dc.html",
+          "page": "usar-dyzury-obsada.html",
+          "title": "KG · USAR · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "usar-Dyzury-kontrola.dc.html",
+          "page": "usar-dyzury-kontrola.html",
+          "title": "KG · USAR · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "usar-Wyjazdy.dc.html",
+          "page": "usar-wyjazdy.html",
+          "title": "KG · USAR · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "usar-Wyjazdy-szczegoly.dc.html",
+          "page": "usar-wyjazdy-szczegoly.html",
+          "title": "KG · USAR · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "usar-Wyjazd-krok1.dc.html",
+          "page": "usar-wyjazd-krok1.html",
+          "title": "KG · USAR · Wyjazd · krok 1 Dane",
+          "controls": []
+        },
+        {
+          "source": "usar-Wyjazdy-konfiguracja.dc.html",
+          "page": "usar-wyjazdy-konfiguracja.html",
+          "title": "KG · USAR · Wyjazd · krok 2 Skład",
+          "controls": []
+        },
+        {
+          "source": "usar-Wyjazd-krok3.dc.html",
+          "page": "usar-wyjazd-krok3.html",
+          "title": "KG · USAR · Wyjazd · krok 3 Kontrola",
+          "controls": []
+        },
+        {
+          "source": "usar-Wyjazd-krok4.dc.html",
+          "page": "usar-wyjazd-krok4.html",
+          "title": "KG · USAR · Wyjazd · krok 4 Dokumenty",
+          "controls": []
+        },
+        {
+          "source": "usar-Sprzet.dc.html",
+          "page": "usar-sprzet.html",
+          "title": "KG · USAR · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "usar-Sprzet-pozycja.dc.html",
+          "page": "usar-sprzet-pozycja.html",
+          "title": "KG · USAR · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "usar-Sprzet-minimum.dc.html",
+          "page": "usar-sprzet-minimum.html",
+          "title": "KG · USAR · Sprzęt · minimum",
+          "controls": []
+        },
+        {
+          "source": "usar-Psy.dc.html",
+          "page": "usar-psy.html",
+          "title": "KG · USAR · Psy",
+          "controls": []
+        },
+        {
+          "source": "dsim-Pulpit.dc.html",
+          "page": "dsim-pulpit.html",
+          "title": "KG · DSIM · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "dsim-Dyzury.dc.html",
+          "page": "dsim-dyzury.html",
+          "title": "KG · DSIM · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "dsim-Dyzury-komorka.dc.html",
+          "page": "dsim-dyzury-komorka.html",
+          "title": "KG · DSIM · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "dsim-Dyzury-obsada.dc.html",
+          "page": "dsim-dyzury-obsada.html",
+          "title": "KG · DSIM · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "dsim-Dyzury-kontrola.dc.html",
+          "page": "dsim-dyzury-kontrola.html",
+          "title": "KG · DSIM · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "dsim-Wyjazdy.dc.html",
+          "page": "dsim-wyjazdy.html",
+          "title": "KG · DSIM · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "dsim-Wyjazdy-szczegoly.dc.html",
+          "page": "dsim-wyjazdy-szczegoly.html",
+          "title": "KG · DSIM · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "dsim-Wyjazd-krok1.dc.html",
+          "page": "dsim-wyjazd-krok1.html",
+          "title": "KG · DSIM · Wyjazd · krok 1 Dane",
+          "controls": []
+        },
+        {
+          "source": "dsim-Wyjazdy-konfiguracja.dc.html",
+          "page": "dsim-wyjazdy-konfiguracja.html",
+          "title": "KG · DSIM · Wyjazd · krok 2 Skład",
+          "controls": []
+        },
+        {
+          "source": "dsim-Wyjazd-krok3.dc.html",
+          "page": "dsim-wyjazd-krok3.html",
+          "title": "KG · DSIM · Wyjazd · krok 3 Kontrola",
+          "controls": []
+        },
+        {
+          "source": "dsim-Wyjazd-krok4.dc.html",
+          "page": "dsim-wyjazd-krok4.html",
+          "title": "KG · DSIM · Wyjazd · krok 4 Dokumenty",
+          "controls": []
+        },
+        {
+          "source": "dsim-Sprzet.dc.html",
+          "page": "dsim-sprzet.html",
+          "title": "KG · DSIM · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "dsim-Sprzet-pozycja.dc.html",
+          "page": "dsim-sprzet-pozycja.html",
+          "title": "KG · DSIM · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "dsim-Sprzet-minimum.dc.html",
+          "page": "dsim-sprzet-minimum.html",
+          "title": "KG · DSIM · Sprzęt · minimum",
+          "controls": []
+        },
+        {
+          "source": "hcp-Pulpit.dc.html",
+          "page": "hcp-pulpit.html",
+          "title": "KG · HCP · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "hcp-Dyzury.dc.html",
+          "page": "hcp-dyzury.html",
+          "title": "KG · HCP · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "hcp-Dyzury-komorka.dc.html",
+          "page": "hcp-dyzury-komorka.html",
+          "title": "KG · HCP · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "hcp-Dyzury-obsada.dc.html",
+          "page": "hcp-dyzury-obsada.html",
+          "title": "KG · HCP · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "hcp-Dyzury-kontrola.dc.html",
+          "page": "hcp-dyzury-kontrola.html",
+          "title": "KG · HCP · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "hcp-Wyjazdy.dc.html",
+          "page": "hcp-wyjazdy.html",
+          "title": "KG · HCP · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "hcp-Wyjazdy-szczegoly.dc.html",
+          "page": "hcp-wyjazdy-szczegoly.html",
+          "title": "KG · HCP · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "hcp-Wyjazd-krok1.dc.html",
+          "page": "hcp-wyjazd-krok1.html",
+          "title": "KG · HCP · Wyjazd · krok 1 Dane",
+          "controls": []
+        },
+        {
+          "source": "hcp-Wyjazdy-konfiguracja.dc.html",
+          "page": "hcp-wyjazdy-konfiguracja.html",
+          "title": "KG · HCP · Wyjazd · krok 2 Skład",
+          "controls": []
+        },
+        {
+          "source": "hcp-Wyjazd-krok3.dc.html",
+          "page": "hcp-wyjazd-krok3.html",
+          "title": "KG · HCP · Wyjazd · krok 3 Kontrola",
+          "controls": []
+        },
+        {
+          "source": "hcp-Wyjazd-krok4.dc.html",
+          "page": "hcp-wyjazd-krok4.html",
+          "title": "KG · HCP · Wyjazd · krok 4 Dokumenty",
+          "controls": []
+        },
+        {
+          "source": "hcp-Sprzet.dc.html",
+          "page": "hcp-sprzet.html",
+          "title": "KG · HCP · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "hcp-Sprzet-pozycja.dc.html",
+          "page": "hcp-sprzet-pozycja.html",
+          "title": "KG · HCP · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "hcp-Sprzet-minimum.dc.html",
+          "page": "hcp-sprzet-minimum.html",
+          "title": "KG · HCP · Sprzęt · minimum",
           "controls": []
         },
         {
           "source": "kw-Zasob.dc.html",
           "page": "kw-zasob.html",
-          "title": "KW · Zasób · Grupy międzynarodowe",
+          "title": "KW · Zasób · Działania międzynarodowe",
           "controls": []
         },
         {
@@ -190,7 +526,7 @@
         {
           "source": "kw-Pulpit.dc.html",
           "page": "kw-pulpit.html",
-          "title": "KW · Pulpit",
+          "title": "KW · GFFFV · Pulpit",
           "controls": []
         },
         {
@@ -202,7 +538,7 @@
         {
           "source": "kw-Dyzury.dc.html",
           "page": "kw-dyzury.html",
-          "title": "KW · Dyżury",
+          "title": "KW · GFFFV · Dyżury",
           "controls": []
         },
         {
@@ -226,7 +562,7 @@
         {
           "source": "kw-Wyjazdy.dc.html",
           "page": "kw-wyjazdy.html",
-          "title": "KW · Wyjazdy",
+          "title": "KW · GFFFV · Wyjazdy",
           "controls": []
         },
         {
@@ -238,7 +574,7 @@
         {
           "source": "kw-Sprzet.dc.html",
           "page": "kw-sprzet.html",
-          "title": "KW · Sprzęt",
+          "title": "KW · GFFFV · Sprzęt",
           "controls": []
         },
         {
@@ -248,15 +584,9 @@
           "controls": []
         },
         {
-          "source": "kw-Psy.dc.html",
-          "page": "kw-psy.html",
-          "title": "KW · Psy",
-          "controls": []
-        },
-        {
           "source": "kw-Uzytkownicy.dc.html",
           "page": "kw-uzytkownicy.html",
-          "title": "KW · Użytkownicy · Grupy międzynarodowe",
+          "title": "KW · Użytkownicy · Działania międzynarodowe",
           "controls": []
         },
         {
@@ -272,9 +602,231 @@
           "controls": []
         },
         {
+          "source": "kw-gfff-Pulpit.dc.html",
+          "page": "kw-gfff-pulpit.html",
+          "title": "KW · GFFF · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kw-gfff-Dyzury.dc.html",
+          "page": "kw-gfff-dyzury.html",
+          "title": "KW · GFFF · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kw-gfff-Dyzury-komorka.dc.html",
+          "page": "kw-gfff-dyzury-komorka.html",
+          "title": "KW · GFFF · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kw-gfff-Dyzury-obsada.dc.html",
+          "page": "kw-gfff-dyzury-obsada.html",
+          "title": "KW · GFFF · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kw-gfff-Dyzury-kontrola.dc.html",
+          "page": "kw-gfff-dyzury-kontrola.html",
+          "title": "KW · GFFF · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "kw-gfff-Wyjazdy.dc.html",
+          "page": "kw-gfff-wyjazdy.html",
+          "title": "KW · GFFF · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kw-gfff-Wyjazdy-szczegoly.dc.html",
+          "page": "kw-gfff-wyjazdy-szczegoly.html",
+          "title": "KW · GFFF · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kw-gfff-Sprzet.dc.html",
+          "page": "kw-gfff-sprzet.html",
+          "title": "KW · GFFF · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kw-gfff-Sprzet-pozycja.dc.html",
+          "page": "kw-gfff-sprzet-pozycja.html",
+          "title": "KW · GFFF · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Pulpit.dc.html",
+          "page": "kw-usar-pulpit.html",
+          "title": "KW · USAR · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Dyzury.dc.html",
+          "page": "kw-usar-dyzury.html",
+          "title": "KW · USAR · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Dyzury-komorka.dc.html",
+          "page": "kw-usar-dyzury-komorka.html",
+          "title": "KW · USAR · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Dyzury-obsada.dc.html",
+          "page": "kw-usar-dyzury-obsada.html",
+          "title": "KW · USAR · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Dyzury-kontrola.dc.html",
+          "page": "kw-usar-dyzury-kontrola.html",
+          "title": "KW · USAR · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Wyjazdy.dc.html",
+          "page": "kw-usar-wyjazdy.html",
+          "title": "KW · USAR · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Wyjazdy-szczegoly.dc.html",
+          "page": "kw-usar-wyjazdy-szczegoly.html",
+          "title": "KW · USAR · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Sprzet.dc.html",
+          "page": "kw-usar-sprzet.html",
+          "title": "KW · USAR · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Sprzet-pozycja.dc.html",
+          "page": "kw-usar-sprzet-pozycja.html",
+          "title": "KW · USAR · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "kw-usar-Psy.dc.html",
+          "page": "kw-usar-psy.html",
+          "title": "KW · USAR · Psy",
+          "controls": []
+        },
+        {
+          "source": "kw-dsim-Pulpit.dc.html",
+          "page": "kw-dsim-pulpit.html",
+          "title": "KW · DSIM · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kw-dsim-Dyzury.dc.html",
+          "page": "kw-dsim-dyzury.html",
+          "title": "KW · DSIM · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kw-dsim-Dyzury-komorka.dc.html",
+          "page": "kw-dsim-dyzury-komorka.html",
+          "title": "KW · DSIM · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kw-dsim-Dyzury-obsada.dc.html",
+          "page": "kw-dsim-dyzury-obsada.html",
+          "title": "KW · DSIM · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kw-dsim-Dyzury-kontrola.dc.html",
+          "page": "kw-dsim-dyzury-kontrola.html",
+          "title": "KW · DSIM · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "kw-dsim-Wyjazdy.dc.html",
+          "page": "kw-dsim-wyjazdy.html",
+          "title": "KW · DSIM · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kw-dsim-Wyjazdy-szczegoly.dc.html",
+          "page": "kw-dsim-wyjazdy-szczegoly.html",
+          "title": "KW · DSIM · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kw-dsim-Sprzet.dc.html",
+          "page": "kw-dsim-sprzet.html",
+          "title": "KW · DSIM · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kw-dsim-Sprzet-pozycja.dc.html",
+          "page": "kw-dsim-sprzet-pozycja.html",
+          "title": "KW · DSIM · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "kw-hcp-Pulpit.dc.html",
+          "page": "kw-hcp-pulpit.html",
+          "title": "KW · HCP · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kw-hcp-Dyzury.dc.html",
+          "page": "kw-hcp-dyzury.html",
+          "title": "KW · HCP · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kw-hcp-Dyzury-komorka.dc.html",
+          "page": "kw-hcp-dyzury-komorka.html",
+          "title": "KW · HCP · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kw-hcp-Dyzury-obsada.dc.html",
+          "page": "kw-hcp-dyzury-obsada.html",
+          "title": "KW · HCP · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kw-hcp-Dyzury-kontrola.dc.html",
+          "page": "kw-hcp-dyzury-kontrola.html",
+          "title": "KW · HCP · Dyżury · kontrola",
+          "controls": []
+        },
+        {
+          "source": "kw-hcp-Wyjazdy.dc.html",
+          "page": "kw-hcp-wyjazdy.html",
+          "title": "KW · HCP · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kw-hcp-Wyjazdy-szczegoly.dc.html",
+          "page": "kw-hcp-wyjazdy-szczegoly.html",
+          "title": "KW · HCP · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kw-hcp-Sprzet.dc.html",
+          "page": "kw-hcp-sprzet.html",
+          "title": "KW · HCP · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kw-hcp-Sprzet-pozycja.dc.html",
+          "page": "kw-hcp-sprzet-pozycja.html",
+          "title": "KW · HCP · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
           "source": "kp-Zasob.dc.html",
           "page": "kp-zasob.html",
-          "title": "KP · Zasób · Grupy międzynarodowe",
+          "title": "KP · Zasób · Działania międzynarodowe",
           "controls": []
         },
         {
@@ -286,7 +838,7 @@
         {
           "source": "kp-Pulpit.dc.html",
           "page": "kp-pulpit.html",
-          "title": "KP · Pulpit",
+          "title": "KP · GFFFV · Pulpit",
           "controls": []
         },
         {
@@ -298,7 +850,7 @@
         {
           "source": "kp-Dyzury.dc.html",
           "page": "kp-dyzury.html",
-          "title": "KP · Dyżury",
+          "title": "KP · GFFFV · Dyżury",
           "controls": []
         },
         {
@@ -316,7 +868,7 @@
         {
           "source": "kp-Wyjazdy.dc.html",
           "page": "kp-wyjazdy.html",
-          "title": "KP · Wyjazdy",
+          "title": "KP · GFFFV · Wyjazdy",
           "controls": []
         },
         {
@@ -328,19 +880,13 @@
         {
           "source": "kp-Sprzet.dc.html",
           "page": "kp-sprzet.html",
-          "title": "KP · Sprzęt",
+          "title": "KP · GFFFV · Sprzęt",
           "controls": []
         },
         {
           "source": "kp-Sprzet-pozycja.dc.html",
           "page": "kp-sprzet-pozycja.html",
           "title": "KP · Sprzęt · pozycja",
-          "controls": []
-        },
-        {
-          "source": "kp-Psy.dc.html",
-          "page": "kp-psy.html",
-          "title": "KP · Psy",
           "controls": []
         },
         {
@@ -353,6 +899,204 @@
           "source": "kp-Profil-dane.dc.html",
           "page": "kp-profil-dane.html",
           "title": "KP · Profil · dane osoby",
+          "controls": []
+        },
+        {
+          "source": "kp-gfff-Pulpit.dc.html",
+          "page": "kp-gfff-pulpit.html",
+          "title": "KP · GFFF · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kp-gfff-Dyzury.dc.html",
+          "page": "kp-gfff-dyzury.html",
+          "title": "KP · GFFF · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kp-gfff-Dyzury-komorka.dc.html",
+          "page": "kp-gfff-dyzury-komorka.html",
+          "title": "KP · GFFF · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kp-gfff-Dyzury-obsada.dc.html",
+          "page": "kp-gfff-dyzury-obsada.html",
+          "title": "KP · GFFF · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kp-gfff-Wyjazdy.dc.html",
+          "page": "kp-gfff-wyjazdy.html",
+          "title": "KP · GFFF · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kp-gfff-Wyjazdy-szczegoly.dc.html",
+          "page": "kp-gfff-wyjazdy-szczegoly.html",
+          "title": "KP · GFFF · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kp-gfff-Sprzet.dc.html",
+          "page": "kp-gfff-sprzet.html",
+          "title": "KP · GFFF · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kp-gfff-Sprzet-pozycja.dc.html",
+          "page": "kp-gfff-sprzet-pozycja.html",
+          "title": "KP · GFFF · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "kp-usar-Pulpit.dc.html",
+          "page": "kp-usar-pulpit.html",
+          "title": "KP · USAR · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kp-usar-Dyzury.dc.html",
+          "page": "kp-usar-dyzury.html",
+          "title": "KP · USAR · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kp-usar-Dyzury-komorka.dc.html",
+          "page": "kp-usar-dyzury-komorka.html",
+          "title": "KP · USAR · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kp-usar-Dyzury-obsada.dc.html",
+          "page": "kp-usar-dyzury-obsada.html",
+          "title": "KP · USAR · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kp-usar-Wyjazdy.dc.html",
+          "page": "kp-usar-wyjazdy.html",
+          "title": "KP · USAR · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kp-usar-Wyjazdy-szczegoly.dc.html",
+          "page": "kp-usar-wyjazdy-szczegoly.html",
+          "title": "KP · USAR · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kp-usar-Sprzet.dc.html",
+          "page": "kp-usar-sprzet.html",
+          "title": "KP · USAR · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kp-usar-Sprzet-pozycja.dc.html",
+          "page": "kp-usar-sprzet-pozycja.html",
+          "title": "KP · USAR · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "kp-usar-Psy.dc.html",
+          "page": "kp-usar-psy.html",
+          "title": "KP · USAR · Psy",
+          "controls": []
+        },
+        {
+          "source": "kp-dsim-Pulpit.dc.html",
+          "page": "kp-dsim-pulpit.html",
+          "title": "KP · DSIM · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kp-dsim-Dyzury.dc.html",
+          "page": "kp-dsim-dyzury.html",
+          "title": "KP · DSIM · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kp-dsim-Dyzury-komorka.dc.html",
+          "page": "kp-dsim-dyzury-komorka.html",
+          "title": "KP · DSIM · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kp-dsim-Dyzury-obsada.dc.html",
+          "page": "kp-dsim-dyzury-obsada.html",
+          "title": "KP · DSIM · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kp-dsim-Wyjazdy.dc.html",
+          "page": "kp-dsim-wyjazdy.html",
+          "title": "KP · DSIM · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kp-dsim-Wyjazdy-szczegoly.dc.html",
+          "page": "kp-dsim-wyjazdy-szczegoly.html",
+          "title": "KP · DSIM · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kp-dsim-Sprzet.dc.html",
+          "page": "kp-dsim-sprzet.html",
+          "title": "KP · DSIM · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kp-dsim-Sprzet-pozycja.dc.html",
+          "page": "kp-dsim-sprzet-pozycja.html",
+          "title": "KP · DSIM · Sprzęt · pozycja",
+          "controls": []
+        },
+        {
+          "source": "kp-hcp-Pulpit.dc.html",
+          "page": "kp-hcp-pulpit.html",
+          "title": "KP · HCP · Pulpit",
+          "controls": []
+        },
+        {
+          "source": "kp-hcp-Dyzury.dc.html",
+          "page": "kp-hcp-dyzury.html",
+          "title": "KP · HCP · Dyżury",
+          "controls": []
+        },
+        {
+          "source": "kp-hcp-Dyzury-komorka.dc.html",
+          "page": "kp-hcp-dyzury-komorka.html",
+          "title": "KP · HCP · Dyżury · komórka",
+          "controls": []
+        },
+        {
+          "source": "kp-hcp-Dyzury-obsada.dc.html",
+          "page": "kp-hcp-dyzury-obsada.html",
+          "title": "KP · HCP · Dyżury · obsada",
+          "controls": []
+        },
+        {
+          "source": "kp-hcp-Wyjazdy.dc.html",
+          "page": "kp-hcp-wyjazdy.html",
+          "title": "KP · HCP · Wyjazdy",
+          "controls": []
+        },
+        {
+          "source": "kp-hcp-Wyjazdy-szczegoly.dc.html",
+          "page": "kp-hcp-wyjazdy-szczegoly.html",
+          "title": "KP · HCP · Wyjazdy · szczegóły",
+          "controls": []
+        },
+        {
+          "source": "kp-hcp-Sprzet.dc.html",
+          "page": "kp-hcp-sprzet.html",
+          "title": "KP · HCP · Sprzęt",
+          "controls": []
+        },
+        {
+          "source": "kp-hcp-Sprzet-pozycja.dc.html",
+          "page": "kp-hcp-sprzet-pozycja.html",
+          "title": "KP · HCP · Sprzęt · pozycja",
           "controls": []
         },
         {
