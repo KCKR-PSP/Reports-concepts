@@ -99,13 +99,27 @@ body.dark{background:#121518}
 .ob-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start}
 .ob-sec{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 10px;border-bottom:1px solid #1c2427}
 .ob-row{display:grid;grid-template-columns:40px minmax(0,1.3fr) 70px minmax(0,1fr) minmax(0,1fr) minmax(0,.9fr);gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid rgb(28 36 39/.1);font-size:14px}
-.ob-drop{min-height:40px;box-sizing:border-box;border:1px dashed #b4bec3;display:flex;align-items:center;gap:8px;padding:0 10px;font-size:13px;color:#8a959a}
-.ob-drop.full{border:1px solid #1c2427;background:#fff;color:#1c2427}
-.ob-drop.warn{border-color:#b3261e}
+.ob-drop{position:relative;min-height:44px;box-sizing:border-box;border:1px dashed #b4bec3;display:flex;align-items:center;gap:8px;padding:0 12px;font-size:13px;color:#8a959a;cursor:pointer;transition:background .12s,border-color .12s,opacity .12s,box-shadow .12s}
+.ob-drop:hover{border-color:#535f65}
+.ob-drop.full{border:1px solid #d3dadd;background:#fff;color:#1c2427}
+.ob-drop.warn{border-color:#b3261e;box-shadow:inset 3px 0 0 #b3261e}
+.ob-drop .e2,.ob-drop .e3{display:none}
+.ob-drop.target:not(.full){border-color:#1c2427;background:rgb(255 255 255/.6);color:#1c2427}
+.ob-drop.target:not(.full) .e1{display:none}
+.ob-drop.target:not(.full):not(.match) .e2{display:inline}
+.ob-drop.match{border:2px solid #1c2427;background:#fff;color:#1c2427;box-shadow:0 0 0 4px rgb(28 36 39/.08)}
+.ob-drop.match:not(.full) .e3{display:inline;font-weight:600}
+.ob-drop.target.full{border-color:#535f65}
+.ob-drop.blocked{opacity:.25}
+.ob-drop.over{background:#1c2427 !important;border-color:#1c2427 !important;color:#fff !important}
+.ob-drop.over .ob-plus{border-color:#fff}
+.ob-plus{display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border:1px solid currentColor;font-size:13px;line-height:1}
 .ob-x{margin-left:auto;cursor:pointer;color:#535f65;font-size:16px;line-height:1}
-.ob-cand{display:flex;flex-direction:column;gap:2px;padding:10px 12px;background:#fff;border:1px solid #d3dadd;cursor:grab;font-size:13px}
-.ob-cand:hover{border-color:#1c2427}
+.ob-cand{display:flex;flex-direction:column;gap:2px;padding:10px 12px;background:#fff;border:1px solid #d3dadd;cursor:grab;font-size:13px;transition:opacity .12s,border-color .12s,transform .12s}
+.ob-cand:hover{border-color:#1c2427;transform:translateX(-2px)}
 .ob-cand.used{opacity:.35}
+.ob-cand.picked{border:2px solid #1c2427;box-shadow:0 8px 20px -10px rgb(28 36 39/.5)}
+.ob-cand.lifted{opacity:.4;transform:scale(.98)}
 </style>
 <div class="wrap">
 <header style="display:flex;flex-direction:column;gap:28px">
@@ -116,7 +130,7 @@ body.dark{background:#121518}
 <div><a href="dyzury-komorka.html" style="font-size:13px;font-weight:500">← Dyżur KW PSP Poznań · listopad 2026</a><h2 style="margin:10px 0 0;font-size:24px;font-weight:600">Tabela gotowości GFFFV</h2></div>
 <div style="display:flex;gap:28px;font-size:14px"><span>Zmiana I <b>{{k.s1}}</b></span><span>Zmiana II <b>{{k.s2}}</b></span><span>Pojazdy <b>{{k.v}}</b></span></div>
 </div>
-<div class="ob-grid">
+<div class="{{rootCls}}">
 <div>
 <div class="ob-row" style="font-size:12px;color:#6b777c;border-bottom:0;padding-bottom:0"><span>Nr</span><span>Funkcja</span><span>Typ</span><span>Zmiana I</span><span>Zmiana II</span><span>Pojazd</span></div>
 <sc-for list="{{sections}}" as="sec" hint-placeholder-count="4">
@@ -124,9 +138,9 @@ body.dark{background:#121518}
 <sc-for list="{{sec.slots}}" as="s" hint-placeholder-count="4">
 <div class="ob-row">
 <span style="color:#535f65">{{s.nr}}</span><span>{{s.fn}}</span><span style="color:#535f65">{{s.type}}</span>
-<div class="{{s.c1}}" onDragOver="{{allow}}" onDrop="{{s.drop1}}" onClick="{{s.click1}}"><span>{{s.p1}}</span><sc-if value="{{s.has1}}"><span class="ob-x" onClick="{{s.clear1}}">×</span></sc-if></div>
-<div class="{{s.c2}}" onDragOver="{{allow}}" onDrop="{{s.drop2}}" onClick="{{s.click2}}"><span>{{s.p2}}</span><sc-if value="{{s.has2}}"><span class="ob-x" onClick="{{s.clear2}}">×</span></sc-if></div>
-<div class="{{s.cv}}" onDragOver="{{allow}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><span>{{s.pv}}</span><sc-if value="{{s.hasv}}"><span class="ob-x" onClick="{{s.clearv}}">×</span></sc-if></div>
+<div class="{{s.c1}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.drop1}}" onClick="{{s.click1}}"><sc-if value="{{s.empty1}}"><span class="ob-plus">+</span><span class="e1">{{s.p1}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.has1}}"><span>{{s.p1}}</span><span class="ob-x" onClick="{{s.clear1}}">×</span></sc-if></div>
+<div class="{{s.c2}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.drop2}}" onClick="{{s.click2}}"><sc-if value="{{s.empty2}}"><span class="ob-plus">+</span><span class="e1">{{s.p2}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.has2}}"><span>{{s.p2}}</span><span class="ob-x" onClick="{{s.clear2}}">×</span></sc-if></div>
+<div class="{{s.cv}}" data-kind="v" data-type="{{s.type}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><sc-if value="{{s.emptyv}}"><span class="ob-plus">+</span><span class="e1">{{s.pv}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasv}}"><span>{{s.pv}}</span><span class="ob-x" onClick="{{s.clearv}}">×</span></sc-if></div>
 </div>
 <sc-if value="{{s.warn}}"><div style="padding:0 0 8px 50px;font-size:12px;color:#b3261e">{{s.warnText}}</div></sc-if>
 </sc-for>
@@ -138,7 +152,7 @@ body.dark{background:#121518}
 <span style="font-size:13px;color:#535f65">{{hint}}</span>
 <sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
 <div style="display:flex;flex-direction:column;gap:6px"><span class="lbl">{{g.unit}}</span>
-<sc-for list="{{g.items}}" as="p" hint-placeholder-count="3"><div class="{{p.cls}}" draggable="true" onDragStart="{{p.start}}" onClick="{{p.pick}}"><b style="font-weight:600">{{p.name}}</b><span style="color:#535f65">{{p.sub}}</span></div></sc-for>
+<sc-for list="{{g.items}}" as="p" hint-placeholder-count="3"><div class="{{p.cls}}" draggable="true" onDragStart="{{p.start}}" onDragEnd="{{p.end}}" onClick="{{p.pick}}"><b style="font-weight:600">{{p.name}}</b><span style="color:#535f65">{{p.sub}}</span></div></sc-for>
 </div>
 </sc-for>
 </aside>
@@ -169,6 +183,24 @@ const VEH = [['v1','SLOp · [nr op.]','KW PSP Poznań','SLOp'],['v2','SLOp · [n
 const byId = {};
 PEOPLE.forEach(p => { byId[p[0]] = {name: p[1], unit: p[2], fn: p[3], decl: p[4]}; });
 VEH.forEach(v => { byId[v[0]] = {name: v[1], unit: v[2], type: v[3]}; });
+const kindOf = (id) => id.startsWith('v') ? 'v' : 'p';
+const fits = (id, z) => kindOf(id) === 'v' ? byId[id].type === z.type : byId[id].fn === z.fn;
+function mark(root, id) {
+ if (!root) return;
+ root.classList.add('dragging');
+ root.querySelectorAll('.ob-drop').forEach((z) => {
+  const ok = z.dataset.kind === kindOf(id) && (z.dataset.kind === 'p' || z.dataset.type !== '—');
+  z.classList.toggle('target', ok);
+  z.classList.toggle('blocked', !ok);
+  z.classList.toggle('match', ok && fits(id, z.dataset));
+ });
+}
+function unmark(root) {
+ if (!root) return;
+ root.classList.remove('dragging');
+ root.querySelectorAll('.ob-drop').forEach((z) => z.classList.remove('target', 'blocked', 'match', 'over'));
+ root.querySelectorAll('.ob-cand.lifted').forEach((c) => c.classList.remove('lifted'));
+}
 class Component extends DCLogic {
  constructor(props) {
   super(props);
@@ -177,8 +209,7 @@ class Component extends DCLogic {
  }
  put(key, id) {
   if (!id) return;
-  const isVeh = id.startsWith('v');
-  if (isVeh !== key.endsWith(':v')) return;
+  if ((kindOf(id) === 'v') !== key.endsWith(':v')) return;
   const a = Object.assign({}, this.state.a);
   const shift = key.split(':')[1];
   Object.keys(a).forEach(k => { if (a[k] === id && k.split(':')[1] === shift) delete a[k]; });
@@ -187,48 +218,66 @@ class Component extends DCLogic {
  }
  clear(key, e) { if (e && e.stopPropagation) e.stopPropagation(); const a = Object.assign({}, this.state.a); delete a[key]; this.setState({a}); }
  renderVals() {
-  const s = this.state, a = s.a;
+  const s = this.state, a = s.a, picked = s.picked;
   const used1 = new Set(), used2 = new Set(), usedV = new Set();
   Object.keys(a).forEach(k => { const sh = k.split(':')[1]; (sh === '1' ? used1 : sh === '2' ? used2 : usedV).add(a[k]); });
   let total = 0, v = 0, vt = 0;
-  const cell = (key, slotFn, empty) => {
+  const zoneCls = (o, kind, z, warn) => {
+   let c = 'ob-drop' + (o ? ' full' : '') + (warn ? ' warn' : '');
+   if (picked) {
+    const ok = kindOf(picked) === kind && (kind === 'p' || z.type !== '—');
+    c += ok ? ' target' + (fits(picked, z) ? ' match' : '') : ' blocked';
+   }
+   return c;
+  };
+  const cell = (key, kind, z, empty) => {
    const id = a[key]; const o = id ? byId[id] : null;
-   const warn = o && o.fn && o.fn !== slotFn;
-   return {p: o ? o.name : empty, has: !!o, cls: 'ob-drop' + (o ? ' full' : '') + (warn ? ' warn' : ''), warn,
-    drop: (e) => { if (e && e.preventDefault) e.preventDefault(); this.put(key, this.drag); this.drag = null; },
-    click: () => { if (s.picked) this.put(key, s.picked); },
+   const warn = !!(o && kind === 'p' && o.fn !== z.fn);
+   return {p: o ? o.name : empty, has: !!o, empty: !o, cls: zoneCls(o, kind, z, warn), warn,
+    drop: (e) => { if (e && e.preventDefault) e.preventDefault(); const id2 = this.drag; this.drag = null; unmark(e && e.currentTarget && e.currentTarget.closest('.ob-grid')); this.put(key, id2); },
+    click: () => { if (picked) this.put(key, picked); },
     clear: (e) => this.clear(key, e)};
   };
   const sections = SECTIONS.map(([name, slots]) => {
    let f = 0;
    const rows = slots.map(([nr, fn, type]) => {
     total++;
-    const c1 = cell(nr + ':1', fn, 'przeciągnij osobę'), c2 = cell(nr + ':2', fn, 'przeciągnij osobę');
-    const cv = type ? cell(nr + ':v', null, 'przeciągnij ' + type) : {p: '—', has: false, cls: 'ob-drop', warn: false, drop: () => {}, click: () => {}, clear: () => {}};
+    const z = {fn, type: type || '—'};
+    const c1 = cell(nr + ':1', 'p', z, 'wolne'), c2 = cell(nr + ':2', 'p', z, 'wolne');
+    const cv = type ? cell(nr + ':v', 'v', z, type) : {p: 'bez pojazdu', has: false, empty: true, cls: zoneCls(null, 'v', z, false) + ' none', warn: false, drop: (e) => { unmark(e && e.currentTarget && e.currentTarget.closest('.ob-grid')); this.drag = null; }, click: () => {}, clear: () => {}};
     if (type) { vt++; if (cv.has) v++; }
     if (c1.has) f++;
     if (c2.has) f++;
-    const warnText = [c1.warn ? 'Zmiana I: osoba ma inną funkcję (' + byId[a[nr + ':1']].fn + ')' : '', c2.warn ? 'Zmiana II: osoba ma inną funkcję (' + byId[a[nr + ':2']].fn + ')' : ''].filter(Boolean).join(' · ');
-    return {nr: String(nr), fn, type: type || '—', p1: c1.p, has1: c1.has, c1: c1.cls, drop1: c1.drop, click1: c1.click, clear1: c1.clear,
-     p2: c2.p, has2: c2.has, c2: c2.cls, drop2: c2.drop, click2: c2.click, clear2: c2.clear,
-     pv: cv.p, hasv: cv.has, cv: cv.cls, dropv: cv.drop, clickv: cv.click, clearv: cv.clear, warn: !!warnText, warnText};
+    const warnText = [c1.warn ? 'Zmiana I: inna funkcja osoby (' + byId[a[nr + ':1']].fn + ')' : '', c2.warn ? 'Zmiana II: inna funkcja osoby (' + byId[a[nr + ':2']].fn + ')' : ''].filter(Boolean).join(' · ');
+    return {nr: String(nr), fn, type: type || '—',
+     p1: c1.p, has1: c1.has, empty1: c1.empty, c1: c1.cls, drop1: c1.drop, click1: c1.click, clear1: c1.clear,
+     p2: c2.p, has2: c2.has, empty2: c2.empty, c2: c2.cls, drop2: c2.drop, click2: c2.click, clear2: c2.clear,
+     pv: cv.p, hasv: cv.has, emptyv: cv.empty, cv: cv.cls, dropv: cv.drop, clickv: cv.click, clearv: cv.clear, warn: !!warnText, warnText};
    });
    return {name, count: f + ' z ' + slots.length * 2 + ' obsad', slots: rows};
   });
-  const pick = (id) => () => this.setState({picked: s.picked === id ? null : id});
-  const start = (id) => (e) => { this.drag = id; if (e && e.dataTransfer) { e.dataTransfer.setData('text/plain', id); e.dataTransfer.effectAllowed = 'move'; } };
+  const pick = (id) => () => this.setState({picked: picked === id ? null : id});
+  const start = (id) => (e) => {
+   this.drag = id;
+   if (e && e.dataTransfer) { e.dataTransfer.setData('text/plain', id); e.dataTransfer.effectAllowed = 'move'; }
+   const el = e && e.currentTarget;
+   if (el) { el.classList.add('lifted'); mark(el.closest('.ob-grid'), id); }
+  };
+  const end = (e) => { this.drag = null; unmark(e && e.currentTarget && e.currentTarget.closest('.ob-grid')); };
   const list = s.tab === 'p' ? PEOPLE.map(p => ({id: p[0], name: p[1], unit: p[2], sub: p[3] + (p[4] ? ' · będzie' : ' · brak deklaracji'), used: used1.has(p[0]) && used2.has(p[0])}))
-                             : VEH.map(x => ({id: x[0], name: x[1], unit: x[2], sub: x[2], used: usedV.has(x[0])}));
+                             : VEH.map(x => ({id: x[0], name: x[1], unit: x[2], sub: '', used: usedV.has(x[0])}));
   const units = [];
-  list.forEach(x => { let g = units.find(u => u.unit === x.unit); if (!g) { g = {unit: x.unit, items: []}; units.push(g); } g.items.push({name: x.name, sub: x.sub, cls: 'ob-cand' + (x.used ? ' used' : '') + (s.picked === x.id ? ' full' : ''), start: start(x.id), pick: pick(x.id)}); });
-  if (s.tab === 'v') units.forEach(g => g.items.forEach(i => { i.sub = ''; }));
+  list.forEach(x => { let g = units.find(u => u.unit === x.unit); if (!g) { g = {unit: x.unit, items: []}; units.push(g); } g.items.push({name: x.name, sub: x.sub, cls: 'ob-cand' + (x.used ? ' used' : '') + (picked === x.id ? ' picked' : ''), start: start(x.id), end, pick: pick(x.id)}); });
   const filled1 = Object.keys(a).filter(k => k.endsWith(':1')).length, filled2 = Object.keys(a).filter(k => k.endsWith(':2')).length;
   return {
+   rootCls: 'ob-grid' + (picked ? ' dragging' : ''),
    k: {s1: filled1 + ' z ' + total, s2: filled2 + ' z ' + total, v: v + ' z ' + vt},
    sections,
-   allow: (e) => { if (e && e.preventDefault) e.preventDefault(); },
+   allow: (e) => { if (e && e.preventDefault) e.preventDefault(); if (e && e.dataTransfer) e.dataTransfer.dropEffect = 'move'; },
+   enter: (e) => { const z = e && e.currentTarget; if (z && z.classList.contains('target')) z.classList.add('over'); },
+   leave: (e) => { const z = e && e.currentTarget; if (z && (!e.relatedTarget || !z.contains(e.relatedTarget))) z.classList.remove('over'); },
    ctabs: [['p','Osoby'],['v','Pojazdy']].map(([k, l]) => ({label: l, cls: 'cz-tab' + (s.tab === k ? ' on' : ''), pick: () => this.setState({tab: k, picked: null})})),
-   hint: s.tab === 'p' ? 'Przeciągnij osobę na zmianę I albo II. Najpierw osoby, które zadeklarowały obecność.' : 'Przeciągnij pojazd na stanowisko z typem pojazdu.',
+   hint: picked ? 'Wybrano: ' + byId[picked].name + '. Kliknij wyróżnione pole albo przeciągnij.' : (s.tab === 'p' ? 'Przeciągnij osobę albo kliknij ją i wskaż pole. Pola z tą samą funkcją są wyróżnione.' : 'Przeciągnij pojazd albo kliknij go i wskaż pole z tym samym typem.'),
    groups: units
   };
  }
