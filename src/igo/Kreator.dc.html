@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>IGO — Kreator inspekcji JRG</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#ebeef0}
+a{color:#1c2427}a:hover{color:#535f65}
+.eb{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#535f65}
+.h2{margin:0;font-size:22px;font-weight:600}
+.h3{margin:0;font-size:15px;font-weight:600}
+.mut{color:#535f65}
+.src{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#535f65;border:1px solid #b4bec3;padding:1px 5px;margin-left:6px;vertical-align:middle;font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;background:#1c2427;color:#ebeef0;font:inherit;font-size:14px;font-weight:600;text-decoration:none;border:0;cursor:pointer}
+.btn:hover{color:#ebeef0;opacity:.85}
+.btn:disabled{opacity:.35;cursor:default}
+.ghost{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border:1px solid #1c2427;color:#1c2427;font:inherit;font-size:14px;font-weight:500;background:none;cursor:pointer;text-decoration:none}
+.ghost:disabled{opacity:.35;cursor:default}
+.seg{min-height:44px;padding:8px 14px;border:1px solid #b4bec3;background:none;font:inherit;font-size:14px;color:#1c2427;cursor:pointer;text-align:left;margin:0 -1px -1px 0}
+.seg[aria-pressed="true"]{background:#1c2427;color:#ebeef0;border-color:#1c2427}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#535f65}
+.fld input,.fld select,.fld textarea{min-height:44px;border:1px solid #b4bec3;background:#ebeef0;padding:0 10px;font:inherit;font-size:14px;color:#1c2427;border-radius:0;box-sizing:border-box}
+.fld textarea{padding:10px;min-height:88px}
+.ck{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid #d3dadd;font-size:14px;cursor:pointer}
+.ck input{width:20px;height:20px;margin:0;accent-color:#1c2427;flex:none}
+.ck .pen{margin-left:auto;font-variant-numeric:tabular-nums;color:#535f65;white-space:nowrap}
+.tb{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.tb th{font-size:12px;font-weight:500;color:#535f65;text-align:left;padding:8px;border-bottom:1px solid #d3dadd}
+.tb td{padding:10px 8px;border-bottom:1px solid #d3dadd}
+.tb input{width:64px;min-height:36px;border:1px solid #b4bec3;background:#ebeef0;text-align:center;font:inherit;border-radius:0}
+.trail{display:flex;align-items:center;gap:16px;padding:4px 0 18px;border-bottom:1px solid #d3dadd;white-space:nowrap;overflow:hidden}
+.trail button{background:none;border:0;padding:8px 0;font:inherit;cursor:pointer;color:#1c2427;font-size:16px}
+.trail .prev{color:#535f65;font-size:15px}
+.trail .prev:hover{color:#1c2427}
+.trail .act{display:inline-flex;align-items:baseline;gap:10px;font-size:24px;font-weight:600;letter-spacing:-.01em}
+.trail .act .no{font-size:13px;font-weight:600;color:#535f65;font-variant-numeric:tabular-nums}
+.trail .sep{color:#9aa5ab;font-size:20px}
+.trail .next{display:flex;align-items:center;gap:16px;flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 30%,transparent 100%);mask-image:linear-gradient(90deg,#000 0%,#000 30%,transparent 100%)}
+.cnt{display:inline-flex;align-items:center}
+.cnt button{width:36px;height:36px;border:1px solid #b4bec3;background:none;font:inherit;font-size:16px;cursor:pointer;color:#1c2427}
+.cnt span{width:36px;text-align:center;font-variant-numeric:tabular-nums}
+.res{margin:0;padding:12px 16px;background:#e1e6e9;font-size:14px;font-variant-numeric:tabular-nums}
+.warn{color:#b3261e}
+</style>
+</helmet>
+<div style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #1c2427; background: #ebeef0; min-height: 100%;">
+<main style="max-width: 1360px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 28px;">
+
+<header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px; border-bottom: 1px solid #d3dadd; padding-bottom: 20px;">
+<div>
+<p class="eb"><a href="Zestawienie.dc.html" style="color: #535f65;">Inspekcje gotowości operacyjnej</a> · inspekcja JRG</p>
+<h1 style="margin: 6px 0 0; font-size: 30px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em;">JRG 2 Puławy, zmiana II</h1>
+
+</div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+<button type="button" class="ghost" onClick="{{ pause }}">{{ pauseLabel }}</button>
+<button type="button" class="ghost" onClick="{{ askDelete }}">Usuń szkic</button>
+<a class="ghost" href="Zestawienie.dc.html">Zamknij kreator</a>
+</div>
+</header>
+<sc-if value="{{ delAsk }}" hint-placeholder-val="{{ false }}">
+<div role="alertdialog" aria-label="Usunięcie szkicu" style="display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; padding: 16px 20px; border: 2px solid #b3261e; background: #ffffff;">
+<p style="margin: 0; flex: 1 1 360px; font-size: 14px;"><strong>Usunąć szkic inspekcji JRG 2 Puławy, zmiana II?</strong> Znikną wpisane dane, wyniki i wygenerowane dokumenty szkicu, także u pozostałych członków zespołu. Tego nie da się cofnąć.</p>
+<button type="button" class="btn" style="background: #b3261e;" onClick="{{ doDelete }}">Usuń szkic</button>
+<button type="button" class="ghost" onClick="{{ cancelDelete }}">Anuluj</button>
+</div>
+</sc-if>
+<sc-if value="{{ deleted }}" hint-placeholder-val="{{ false }}">
+<p class="res" style="display: flex; gap: 16px; align-items: center;">Szkic usunięty. <a href="Dokumenty.dc.html">Wróć do moich szkiców</a></p>
+</sc-if>
+<sc-if value="{{ paused }}" hint-placeholder-val="{{ false }}">
+<p class="res" style="background: #1c2427; color: #ebeef0;">Inspekcja przerwana — zespół zadysponowany z JRG do zdarzenia (§16). Czas przerwy liczy się osobno, kontynuacja po powrocie sił.</p>
+</sc-if>
+
+<nav aria-label="Kroki inspekcji" class="trail">
+<sc-if value="{{ hasPrev }}" hint-placeholder-val="{{ true }}"><button type="button" class="prev" onClick="{{ prevStep.pick }}">‹ {{ prevStep.label }}</button><span class="sep" aria-hidden="true">›</span></sc-if>
+<span class="act" aria-current="step"><span class="no">{{ stepNo }}/11</span>{{ curStep }}</span>
+<sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}">
+<span class="sep" aria-hidden="true">›</span>
+<span class="next"><sc-for list="{{ nextSteps }}" as="n" hint-placeholder-count="5"><button type="button" onClick="{{ n.pick }}" style="{{ n.style }}">{{ n.label }}</button><span class="sep" aria-hidden="true" style="{{ n.style }}">›</span></sc-for></span>
+</sc-if>
+</nav>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px 40px; align-items: flex-start;">
+
+
+<section aria-labelledby="step-title" style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
+<div>
+<h2 id="step-title" class="h2">{{ stepTitle }}</h2>
+</div>
+
+<sc-if value="{{ s0 }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<div>
+<p class="h3" style="margin-bottom: 10px;">Rodzaj podmiotu</p>
+<div style="display: flex; flex-wrap: wrap;">
+<sc-for list="{{ segKind }}" as="o"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for>
+</div>
+
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px 20px;">
+<label class="fld">Podmiot <input type="text" value="JRG 2 KP PSP w Puławach, ul. Partyzantów 3"></label>
+<label class="fld">Zmiana służbowa <select><option>II (harmonogram SWD na 06.11.2026)</option><option>I</option><option>III</option></select></label>
+<label class="fld">Data<input type="text" value="06.11.2026"></label>
+<label class="fld">Godzina rozpoczęcia<input type="text" value="08:12"></label>
+</div>
+<div>
+<p class="h3" style="margin-bottom: 4px;">Zespół inspekcyjny</p>
+
+<table class="tb">
+<thead><tr><th scope="col">Funkcja</th><th scope="col">Stopień, imię i nazwisko</th><th scope="col">Komórka</th></tr></thead>
+<tbody>
+<tr><td>Przewodniczący</td><td>mł. bryg. Adam Lis</td><td class="mut">WKSR KW PSP Lublin</td></tr>
+<tr><td>Członek</td><td>st. kpt. Ewa Sowa</td><td class="mut">WKSR KW PSP Lublin</td></tr>
+<tr><td>Członek</td><td>kpt. Jan Kruk</td><td class="mut">Wydział Logistyki</td></tr>
+</tbody>
+</table>
+<button type="button" class="ghost" style="margin-top: 12px;">Dodaj członka lub eksperta</button>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<sc-for list="{{ present }}" as="w" hint-placeholder-count="1">
+<div style="display: flex; gap: 10px; align-items: flex-end;">
+<label class="fld" style="flex: 1;">W obecności<input type="text" value="{{ w.v }}" onChange="{{ w.set }}"></label>
+<sc-if value="{{ w.canRemove }}" hint-placeholder-val="{{ false }}"><button type="button" class="ghost" aria-label="Usuń osobę" onClick="{{ w.remove }}" style="min-width: 44px; padding: 0 12px;">−</button></sc-if>
+</div>
+</sc-for>
+<button type="button" class="ghost" onClick="{{ addPresent }}" style="align-self: flex-start;">+ Dodaj kolejną osobę</button>
+</div>
+<label class="ck"><input type="checkbox" checked="{{ chk.exercise }}" onChange="{{ tg.exercise }}"><span>Sprawdzono w SWD PSP, że siły JRG nie biorą udziału w zaplanowanych ćwiczeniach (zał. 3 pkt 1.7)</span></label>
+</div>
+</sc-if>
+
+<sc-if value="{{ s1 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<label class="ck"><input type="checkbox" checked="{{ chk.notified }}" onChange="{{ tg.notified }}"><span>Powiadomiono stanowisko kierowania o rozpoczęciu inspekcji (§10) <span class="mut">· SK KW PSP Lublin, 08:10</span></span></label>
+<label class="ck"><input type="checkbox" checked="{{ chk.alarm }}" onChange="{{ tg.alarm }}"><span>Alarm dla JRG przekazany przez właściwe stanowisko kierowania (SK KP PSP Puławy)</span></label>
+<label class="ck" style="border-bottom: 1px solid #d3dadd;"><input type="checkbox" checked="{{ refusal }}" onChange="{{ tg.refusal }}"><span>Odmowa poddania się inspekcji lub rażące naruszenie zasad pełnienia służby <span class="mut">· ocena niedostateczna (§18 ust. 8)</span></span></label>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<button type="button" class="ghost" onClick="{{ pause }}">Przerwij — wyjazd do zdarzenia (§16)</button>
+<button type="button" class="ghost">Odstąp od inspekcji (§9)</button>
+</div>
+<p style="margin: 0; font-size: 13px; color: #535f65;">Odstąpienie wymaga powodu (naruszenie dyscypliny lub BHP, ćwiczenia z udziałem innych podmiotów, inne nadzwyczajne zdarzenie) i zapisuje powiadomienie SK zarządzającego oraz SK właściwego terytorialnie.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; padding: 24px; background: #1c2427; color: #ebeef0;">
+<div>
+<p class="eb" style="color: #b4bec3;">Od „Przyjąłem” na SK</p>
+<p id="igo-clock" style="margin: 6px 0 0; font-size: 56px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums;">{{ clock }}</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-left: auto;">
+<button type="button" class="btn" style="background: #ebeef0; color: #1c2427;" onClick="{{ swStart }}" disabled="{{ swRunning }}">Start</button>
+<button type="button" class="btn" style="background: #ebeef0; color: #1c2427;" onClick="{{ swLap1 }}" disabled="{{ swNoRun }}">Wyjazd 1. zastępu</button>
+<button type="button" class="btn" style="background: #ebeef0; color: #1c2427;" onClick="{{ swLap2 }}" disabled="{{ swNoRun }}">Wyjazd 2. zastępu</button>
+<button type="button" class="ghost" style="border-color: #ebeef0; color: #ebeef0;" onClick="{{ swReset }}">Zeruj</button>
+</div>
+</div>
+<table class="tb">
+<thead><tr><th scope="col">Zastęp wg książki podziału bojowego <span class="src">SWD</span></th><th scope="col">Czas wyjazdu [s]</th></tr></thead>
+<tbody>
+<tr><td>1. GBA 2,5/16 · 341[L]21</td><td><input type="number" aria-label="Czas 1. zastępu w sekundach" value="{{ t1 }}" onChange="{{ setT1 }}"></td></tr>
+<tr><td>2. GCBA 5/32 · 341[L]22</td><td><input type="number" aria-label="Czas 2. zastępu w sekundach" value="{{ t2 }}" onChange="{{ setT2 }}"></td></tr>
+</tbody>
+</table>
+<label class="ck"><input type="checkbox" checked="{{ chk.oneOnly }}" onChange="{{ tg.oneOnly }}"><span>Uzasadniony wyjazd tylko jednego zastępu — oceniany czas 1. zastępu</span></label>
+<div>
+<p class="h3">Warunki niespełnione <span class="mut" style="font-weight: 400;">· 1 pkt karny za każdy</span></p>
+<sc-for list="{{ conds }}" as="c" hint-placeholder-count="6">
+<label class="ck"><input type="checkbox" checked="{{ c.checked }}" onChange="{{ c.toggle }}"><span>{{ c.label }}</span><span class="pen">−1</span></label>
+</sc-for>
+</div>
+<p class="res {{ alarmCls }}">{{ alarmLine }}</p>
+<label class="fld">Uwagi i wnioski w zakresie alarmowania<textarea>Oświetlenie alarmowe sprawne. Droga dobiegu do garażu bez zabezpieczenia przeciwpoślizgowego na schodach.</textarea></label>
+</div>
+</sc-if>
+
+<sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<table class="tb">
+<thead><tr><th scope="col">Funkcja wg KPB <span class="src">SWD obsada</span></th><th scope="col">Stan faktyczny</th><th scope="col">Stan minimalny</th></tr></thead>
+<tbody>
+<tr><td>Dowódcy</td><td>2</td><td>2</td></tr>
+<tr><td>Operatorzy sprzętu lub ratownicy-kierowcy</td><td>4</td><td>4</td></tr>
+<tr><td>Ratownicy</td><td>6</td><td>5</td></tr>
+<tr><td>Dyspozytor punktu alarmowego</td><td>1</td><td>1</td></tr>
+</tbody>
+</table>
+<div><p class="h3" style="margin-bottom: 8px;">2.1 Stan zmiany służbowej</p><div style="display: flex; flex-wrap: wrap;"><sc-for list="{{ segShift }}" as="o"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div></div>
+<div><p class="h3" style="margin-bottom: 8px;">2.2 Stan psychofizyczny</p><div style="display: flex; flex-wrap: wrap;"><sc-for list="{{ segPsych }}" as="o"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div></div>
+<div><p class="h3" style="margin-bottom: 8px;">2.3.1 Środki ochrony indywidualnej, latarki ATEX, multitool, szelki, maski, sygnalizatory bezruchu</p><div style="display: flex; flex-wrap: wrap;"><sc-for list="{{ segPpe }}" as="o"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div></div>
+<div><p class="h3" style="margin-bottom: 8px;">2.3.2 Dokumenty ratowników-kierowców i operatorów</p><div style="display: flex; flex-wrap: wrap;"><sc-for list="{{ segDocs }}" as="o"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div></div>
+<div><p class="h3" style="margin-bottom: 8px;">2.4 Znajomość obsługi sprzętu</p><div style="display: flex; flex-wrap: wrap;"><sc-for list="{{ segEquip }}" as="o"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div></div>
+<div>
+<p class="h3" style="margin-bottom: 8px;">Ratownicy zmiany <span class="src">SWD obsada</span></p>
+<table class="tb">
+<thead><tr><th scope="col">Stopień, imię i nazwisko</th><th scope="col">Funkcja</th><th scope="col">Legitymacja</th><th scope="col">Uprawnienia</th></tr></thead>
+<tbody>
+<tr><td>mł. kpt. Rafał Bez</td><td>dowódca zmiany</td><td>tak</td><td>komplet</td></tr>
+<tr><td>st. asp. Karol Mak</td><td>dowódca zastępu</td><td>tak</td><td>komplet</td></tr>
+<tr><td>st. ogn. Leon Rak</td><td>ratownik-kierowca</td><td>tak</td><td>komplet · mObywatel</td></tr>
+<tr><td>sekc. Igor Len</td><td>ratownik</td><td class="warn">brak</td><td>—</td></tr>
+</tbody>
+</table>
+<p style="margin: 8px 0 0; font-size: 13px; color: #535f65;">i 9 kolejnych osób z obsady</p>
+</div>
+<p class="res {{ d2Cls }}">{{ d2Line }}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<table class="tb">
+<thead><tr><th scope="col">Pojazd <span class="src">SWD</span></th><th scope="col">Podział bojowy</th><th scope="col">Badanie techniczne</th></tr></thead>
+<tbody>
+<tr><td>GBA 2,5/16 · 341[L]21</td><td>w podziale</td><td>do 14.03.2027</td></tr>
+<tr><td>GCBA 5/32 · 341[L]22</td><td>w podziale</td><td>do 02.06.2027</td></tr>
+<tr><td>SH 30 · 341[L]25</td><td>w podziale</td><td>do 21.01.2027 · UDT do 30.04.2027</td></tr>
+<tr><td>SLRt · 341[L]91</td><td class="warn">wycofany od 12.09.2026</td><td>naprawa skrzyni biegów</td></tr>
+</tbody>
+</table>
+<div>
+<p class="h3">3.3 Stwierdzone nieprawidłowości <span class="mut" style="font-weight: 400;">· punkty liczone raz, niezależnie od liczby przypadków</span></p>
+<sc-for list="{{ veh }}" as="c" hint-placeholder-count="6">
+<label class="ck"><input type="checkbox" checked="{{ c.checked }}" onChange="{{ c.toggle }}"><span>{{ c.label }}</span><span class="pen">{{ c.pen }}</span></label>
+</sc-for>
+<label class="ck" style="border-bottom: 1px solid #d3dadd;"><input type="checkbox" checked="{{ chk.udtSh }}" onChange="{{ tg.udtSh }}"><span>Brak aktualnego dopuszczenia UDT w pojeździe SH</span><span class="pen">BKZ</span></label>
+</div>
+<p class="res {{ d3Cls }}">{{ d3Line }}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<p style="margin: 0; font-size: 14px;">Książka podziału bojowego, książka rozkazów dziennych, dziennik doskonalenia zawodowego, dokumentowanie przebiegu służby i zdarzeń, czytelność.</p>
+<div style="display: flex; flex-wrap: wrap;"><sc-for list="{{ segDoc4 }}" as="o"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+<p style="margin: 0; font-size: 13px;" class="warn">Do decyzji: zarządzenie nie określa punktów za jedną nieprawidłowość (w makiecie 1 pkt).</p>
+<label class="fld">Uwagi<textarea>Bez uwag.</textarea></label>
+</div>
+</sc-if>
+
+<sc-if value="{{ s6 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-wrap: wrap;"><sc-for list="{{ segTest }}" as="o"><button type="button" class="seg" aria-pressed="{{ o.on }}" onClick="{{ o.pick }}">{{ o.label }}</button></sc-for></div>
+<sc-if value="{{ testDevice }}" hint-placeholder-val="{{ false }}">
+<p class="res">Kod testu <strong style="letter-spacing: .1em;">K7Q-4M2</strong> · ważny 30 minut · 15 pytań z bazy KG, losowanych osobno dla dowódców, ratowników i ratowników-kierowców. <a href="TestTelefon.dc.html">Ekran ratownika</a></p>
+</sc-if>
+<sc-if value="{{ testGen }}" hint-placeholder-val="{{ true }}">
+<p class="res">Wygenerowano 13 testów po 15 pytań (2 pytania spoza bazy = 13%, limit 20%). <a href="Test.dc.html">Podgląd i druk</a></p>
+</sc-if>
+<table class="tb">
+<thead><tr><th scope="col">Ratownik</th><th scope="col">Grupa</th><th scope="col">Wynik 0–15</th></tr></thead>
+<tbody>
+<sc-for list="{{ tests }}" as="p" hint-placeholder-count="6">
+<tr><td>{{ p.name }}</td><td class="mut">{{ p.grp }}</td><td><input type="number" min="0" max="15" aria-label="Wynik {{ p.name }}" value="{{ p.score }}" onChange="{{ p.set }}"></td></tr>
+</sc-for>
+</tbody>
+</table>
+<p class="res">{{ d5Line }}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ s7 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<label class="fld">Treść założenia do ćwiczenia<textarea>Pożar budynku wielorodzinnego przy ul. Lubelskiej, zadymiona klatka schodowa, dwie osoby uwięzione na III piętrze, jedna poszkodowana nieprzytomna.</textarea></label>
+<sc-for list="{{ exGroups }}" as="g" hint-placeholder-count="5">
+<div>
+<p class="h3" style="margin-bottom: 4px;">{{ g.title }}</p>
+<sc-for list="{{ g.items }}" as="it" hint-placeholder-count="4">
+<div class="ck" style="cursor: default; align-items: center;">
+<span style="width: 24px; color: #535f65; font-variant-numeric: tabular-nums;">{{ it.n }}</span>
+<span style="flex: 1;">{{ it.t }}</span>
+<sc-if value="{{ it.isBkz }}" hint-placeholder-val="{{ false }}"><label style="display: flex; gap: 8px; align-items: center; cursor: pointer;"><input type="checkbox" checked="{{ it.checked }}" onChange="{{ it.toggle }}" style="width: 20px; height: 20px; accent-color: #1c2427;"><span class="pen" style="margin: 0;">BKZ</span></label></sc-if>
+<sc-if value="{{ it.isPts }}" hint-placeholder-val="{{ true }}"><span class="pen" style="margin: 0 12px 0 0;">{{ it.w }} pkt / błąd</span><span class="cnt"><button type="button" aria-label="Mniej błędów: {{ it.t }}" onClick="{{ it.dec }}">−</button><span>{{ it.c }}</span><button type="button" aria-label="Więcej błędów: {{ it.t }}" onClick="{{ it.inc }}">+</button></span></sc-if>
+</div>
+</sc-for>
+</div>
+</sc-for>
+<p class="res {{ d6Cls }}">{{ d6Line }}</p>
+</div>
+</sc-if>
+
+<sc-if value="{{ s8 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<label class="fld">Warunki pełnienia służby, zakwaterowanie, stan pomieszczeń garażowych i koszarowych, stan budynków<textarea>Nieszczelna brama boksu nr 3. Pomieszczenia koszarowe po remoncie, bez uwag.</textarea></label>
+</div>
+</sc-if>
+
+<sc-if value="{{ s9 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<table class="tb">
+<thead><tr><th scope="col">Dział</th><th scope="col">Zakres</th><th scope="col" style="text-align: right;">Punkty</th></tr></thead>
+<tbody>
+<sc-for list="{{ sum }}" as="r" hint-placeholder-count="6"><tr><td>{{ r.label }}</td><td class="mut">{{ r.range }}</td><td style="text-align: right;">{{ r.val }}</td></tr></sc-for>
+<tr><td style="font-weight: 600;">Razem</td><td class="mut">0–100</td><td style="text-align: right; font-weight: 600;">{{ rawTotal }}</td></tr>
+</tbody>
+</table>
+<div style="display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 16px 20px; align-items: start;">
+<label class="fld">Korekta (−10 do +10)<input type="number" min="-10" max="10" value="{{ korekta }}" onChange="{{ setKorekta }}"></label>
+<label class="fld">Pisemne uzasadnienie korekty<textarea value="{{ uzas }}" onChange="{{ setUzas }}" placeholder="Wymagane, gdy korekta jest inna niż 0"></textarea></label>
+</div>
+<sc-if value="{{ needUzas }}" hint-placeholder-val="{{ false }}"><p class="warn" style="margin: -8px 0 0; font-size: 13px;">Korekta wymaga pisemnego uzasadnienia w protokole.</p></sc-if>
+<label class="fld">Doraźne działania podjęte podczas inspekcji<textarea>Nie podejmowano.</textarea></label>
+<label class="fld">Uwagi i wnioski (propozycje zaleceń z terminami dla zarządzającego)<textarea>1. Uzupełnić zapisy w okresowej karcie pracy sprzętu silnikowego — do 30.11.2026.
+2. Zabezpieczyć przeciwpoślizgowo schody drogi dobiegu — do 31.12.2026.</textarea></label>
+<label class="fld">Uwagi kierownika podmiotu lub jego przedstawiciela<textarea placeholder="Wpisuje kierownik po zapoznaniu się z protokołem"></textarea></label>
+</div>
+</sc-if>
+
+<sc-if value="{{ s10 }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<a class="btn" href="Protokol1.dc.html">Protokół PDF</a>
+<a class="ghost" href="Protokol1.dc.html">Protokół DOCX</a>
+<a class="ghost" href="Wystapienie.dc.html">Projekt wystąpienia poinspekcyjnego</a>
+</div>
+<p style="margin: 0; font-size: 14px;">Wydrukuj dwa jednobrzmiące egzemplarze: jeden zostaje w JRG, drugi trafia do zarządzającego w ciągu 4 dni roboczych (do 12.11.2026).</p>
+<label class="ck"><input type="checkbox" checked="{{ chk.signed }}" onChange="{{ tg.signed }}"><span>Protokół podpisali kierownik podmiotu (lub przedstawiciel) i członkowie zespołu</span></label>
+<label class="ck" style="border-bottom: 1px solid #d3dadd;"><input type="checkbox" checked="{{ chk.refusedSign }}" onChange="{{ tg.refusedSign }}"><span>Kierownik odmówił podpisania protokołu <span class="mut">· powody do zarządzającego w ciągu 14 dni (§18 ust. 9)</span></span></label>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+<button type="button" class="ghost">Wgraj skan podpisanego protokołu</button>
+<button type="button" class="btn" disabled="{{ cannotClose }}">Zamknij inspekcję</button>
+</div>
+<sc-if value="{{ retake }}" hint-placeholder-val="{{ false }}"><p class="res warn">Ocena niedostateczna — kreator zaplanuje ponowną inspekcję tej samej zmiany do {{ retakeDate }} (§18 ust. 12).</p></sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ hasStepDocs }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; border: 1px solid #b4bec3; padding: 4px 16px 12px;">
+<p class="eb" style="padding: 12px 0 4px;">DOKUMENTY</p>
+<sc-for list="{{ stepDocs }}" as="d" hint-placeholder-count="2">
+<div style="display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; padding: 10px 0; border-top: 1px solid #d3dadd;">
+<div style="flex: 1 1 260px; min-width: 0;"><p style="margin: 0; font-size: 14px; font-weight: 600;">{{ d.title }}</p><p style="margin: 2px 0 0; font-size: 12px; color: #535f65;">{{ d.note }}</p></div>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; {{ d.stStyle }}">{{ d.st }}</span>
+<button type="button" class="ghost" style="min-height: 40px;" onClick="{{ d.gen }}">{{ d.btn }}</button>
+<a href="{{ d.link }}" style="font-size: 13px;">Podgląd</a>
+</div>
+</sc-for>
+</div>
+</sc-if>
+<div style="display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid #d3dadd; padding-top: 20px;">
+<button type="button" class="ghost" onClick="{{ prev }}" disabled="{{ isFirst }}">Wstecz</button>
+<button type="button" class="btn" onClick="{{ next }}" disabled="{{ isLast }}">{{ nextLabel }}</button>
+</div>
+</section>
+
+<aside aria-label="Ocena na bieżąco" style="flex: 1 1 280px; max-width: 340px; min-width: 260px; border-top: 2px solid #1c2427; padding-top: 16px; display: flex; flex-direction: column; gap: 16px;">
+<p class="eb">OCENA</p>
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<p style="margin: 0; font-size: 56px; line-height: 1; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums;">{{ finalShow }}<span style="font-size: 22px; font-weight: 500; color: #535f65; letter-spacing: 0;"> / 100</span></p>
+<div style="position: relative; height: 6px; background: #d3dadd;"><div style="{{ scoreBar }}"></div>
+<span style="position: absolute; left: 50%; top: -3px; width: 1px; height: 12px; background: #9aa5ab;"></span><span style="position: absolute; left: 65%; top: -3px; width: 1px; height: 12px; background: #9aa5ab;"></span><span style="position: absolute; left: 80%; top: -3px; width: 1px; height: 12px; background: #9aa5ab;"></span><span style="position: absolute; left: 93%; top: -3px; width: 1px; height: 12px; background: #9aa5ab;"></span><span style="position: absolute; left: 98%; top: -3px; width: 1px; height: 12px; background: #9aa5ab;"></span></div>
+<div style="display: flex; align-items: center; gap: 14px; padding: 12px 14px; {{ gradeBox }}">
+<span style="width: 44px; height: 44px; flex: none; display: inline-flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 700; {{ gradeSq }}">{{ gradeNo }}</span>
+<span style="display: flex; flex-direction: column; gap: 2px;"><span style="font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: .75;">Ocena</span><span style="font-size: 20px; font-weight: 600;">{{ gradeName }}</span></span>
+</div>
+</div>
+<table class="tb" style="font-size: 13px;">
+<tbody>
+<sc-for list="{{ sum }}" as="r" hint-placeholder-count="6"><tr><td>{{ r.short }}</td><td style="text-align: right; white-space: nowrap;"><strong>{{ r.val }}</strong><span style="color: #535f65;"> / {{ r.max }}</span></td></tr></sc-for>
+<tr><td>Korekta</td><td style="text-align: right; white-space: nowrap;"><strong>{{ korektaShow }}</strong><span style="color: #535f65;"> / ±10</span></td></tr>
+</tbody>
+</table>
+<sc-for list="{{ flags }}" as="f" hint-placeholder-count="0"><p class="warn" style="margin: 0; font-size: 13px; font-weight: 600;">{{ f }}</p></sc-for>
+<div style="margin-top: 20px; border-top: 2px solid #1c2427; padding-top: 18px; display: flex; flex-direction: column;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
+<p class="eb">DOKUMENTY INSPEKCJI</p>
+
+</div>
+<div style="height: 4px; background: #d3dadd; margin: 14px 0 8px;"><div style="{{ docsBar }}"></div></div>
+<sc-for list="{{ allDocs }}" as="d" hint-placeholder-count="9">
+<div style="display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 0; border-bottom: 1px solid #d3dadd;">
+<span style="{{ d.dot }}"></span>
+<span style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 14px; line-height: 1.3">{{ d.title }}</span>
+</span>
+</div>
+</sc-for>
+</div>
+
+</aside>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      step: 0, kind: 'JRG', paused: false, refusal: false, delAsk: false, deleted: false, present: ['bryg. Paweł Cis — Dowódca JRG'],
+      running: false, startAt: 0, t1: '62', t2: '86',
+      chk: { exercise: true, notified: true, alarm: true, oneOnly: false, udtSh: false, signed: false, refusedSign: false },
+      cond: [false, false, true, false, false, false],
+      shift: 'ok', psych: 'ok', ppe: 'full', docs: 'full', equip: 'all',
+      veh: [false, false, false, true, false, false],
+      doc4: 2, testMode: 'gen',
+      scores: [13, 12, 14, 11, 12, 15],
+      ex: {}, exBkz: {}, korekta: '0', uzas: '', docs: {}
+    };
+    this.state.ex = { 4: 1, 21: 1 };
+  }
+  componentDidMount() {
+    // Eksport: odświeżamy tylko tarczę stopera, bez przebudowy całej planszy (klik w „Wyjazd zastępu” nie ginie).
+    this.timer = setInterval(() => {
+      if (!this.state.running) return;
+      const el = document.getElementById('igo-clock');
+      if (!el) return;
+      const t = (Date.now() - this.state.startAt) / 1000; const m = Math.floor(t / 60);
+      el.textContent = String(m).padStart(2, '0') + ':' + (t - m * 60).toFixed(1).padStart(4, '0');
+    }, 100);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+  seg(key, opts) {
+    return opts.map((o) => ({ label: o[1], on: this.state[key] === o[0], pick: () => this.setState({ [key]: o[0] }) }));
+  }
+  renderVals() {
+    const s = this.state;
+    const STEPS = ['Przygotowanie', 'Rozpoczęcie', 'I. Alarmowanie', 'II. Gotowość ratowników', 'III. Pojazdy i sprzęt', 'IV. Dokumentacja jednostki', 'V. Test wiedzy', 'VI. Ćwiczenie', 'VII. Informacje dodatkowe', 'VIII. Ocena i wnioski', 'Dokumenty i podpisy'];
+    const TITLES = ['Przygotowanie inspekcji', 'Rozpoczęcie i alarmowanie przez SK', 'I. Alarmowanie', 'II. Gotowość ratowników', 'III. Gotowość pojazdów, sprzętu silnikowego i ratowniczego', 'IV. Dokumentacja jednostki', 'V. Test wiedzy', 'VI. Ćwiczenie praktyczne', 'VII. Informacje dodatkowe', 'VIII. Ogólna ocena inspekcji i IX. Uwagi i wnioski', 'Protokół, podpisy i zamknięcie'];
+    const toggle = (k) => () => this.setState({ chk: { ...s.chk, [k]: !s.chk[k] } });
+    const tg = {};
+    Object.keys(s.chk).forEach((k) => { tg[k] = toggle(k); });
+    tg.refusal = () => this.setState({ refusal: !s.refusal });
+
+    // I. Alarmowanie
+    const num = (v) => { const n = parseFloat(String(v).replace(',', '.')); return isFinite(n) && n >= 0 ? n : null; };
+    const a = num(s.t1), b = num(s.t2);
+    const tEval = s.chk.oneOnly ? a : (a !== null && b !== null ? Math.max(a, b) : null);
+    const table = [[70, 10], [80, 9], [90, 8], [100, 7], [115, 6], [130, 5], [145, 4], [160, 3], [175, 2], [190, 1], [300, 0]];
+    let tPts = null; let alarmBK = false;
+    if (tEval !== null) { const hit = table.find((r) => tEval <= r[0]); if (hit) tPts = hit[1]; else { tPts = 0; alarmBK = true; } }
+    const penalties = s.cond.filter(Boolean).length;
+    const d1 = tPts === null ? null : Math.max(0, tPts - penalties);
+    const COND = ['Całkowite otwarcie bramy garażowej', 'Założenie przez załogę ubrań specjalnych', 'Zajęcie miejsc oraz zapięcie pasów bezpieczeństwa', 'Zamknięcie przez załogę drzwi oraz skrytek', 'Włączenie świateł drogowych lub mijania', 'Włączenie sygnałów alarmowych świetlnych i akustycznych'];
+    const conds = COND.map((label, i) => ({ label, checked: s.cond[i], toggle: () => { const c = s.cond.slice(); c[i] = !c[i]; this.setState({ cond: c }); } }));
+    let alarmLine = 'Wpisz czasy wyjazdu albo użyj stopera.';
+    if (tEval !== null) alarmLine = alarmBK ? 'Czas oceniany ' + tEval + ' s > 300 s → 0 pkt i błąd krytyczny inspekcji (BK).' : 'Czas oceniany ' + tEval + ' s (' + (s.chk.oneOnly ? '1. zastęp' : '2. zastęp') + ') → ' + tPts + ' pkt − ' + penalties + ' karny = ' + d1 + ' pkt';
+
+    // II. Gotowość ratowników
+    const d2BK = s.shift === 'bk' || s.psych === 'bk';
+    const d2BKZ = s.shift === 'bkz' || s.docs === 'bkz';
+    const d2 = d2BK ? 0 : d2BKZ ? 0 : (s.ppe === 'full' ? 2 : 0) + (s.docs === 'full' ? 2 : 0) + (s.equip === 'all' ? 4 : 0);
+    const d2Line = d2BK ? 'Błąd krytyczny inspekcji (BK) — pozostałe elementy nie są sprawdzane.' : d2BKZ ? 'Błąd krytyczny zagadnienia (BKZ) → 0 pkt za cały dział.' : 'Wyposażenie ' + (s.ppe === 'full' ? 2 : 0) + ' + dokumenty ' + (s.docs === 'full' ? 2 : 0) + ' + obsługa sprzętu ' + (s.equip === 'all' ? 4 : 0) + ' = ' + d2 + ' pkt';
+
+    // III. Pojazdy
+    const VEH = [['Brak aktualnych badań technicznych pojazdów', 3], ['Przedłużające się wycofanie, niepełne środki gaśnicze, niezgodność z BSiŚ', 3], ['Brak aktualnych dopuszczeń UDT, atestów serwisów', 3], ['Brak właściwych zapisów w okresowej karcie pracy', 2], ['Brak kompletności i sprawności sprzętu, złe mocowanie', 3], ['Brak właściwego oznakowania operacyjnego', 1]];
+    const veh = VEH.map((v, i) => ({ label: v[0], pen: '−' + v[1], checked: s.veh[i], toggle: () => { const c = s.veh.slice(); c[i] = !c[i]; this.setState({ veh: c }); } }));
+    const vehPen = VEH.reduce((acc, v, i) => acc + (s.veh[i] ? v[1] : 0), 0);
+    const d3 = s.chk.udtSh ? 0 : Math.max(0, 15 - vehPen);
+    const d3Line = s.chk.udtSh ? 'BKZ (brak UDT w SH) → 0 pkt za dział.' : '15 − ' + vehPen + ' = ' + d3 + ' pkt';
+
+    // IV. Dokumentacja
+    const d4 = s.doc4;
+
+    // V. Test wiedzy
+    const PEOPLE = [['mł. kpt. Rafał Bez', 'dowódcy'], ['st. asp. Karol Mak', 'dowódcy'], ['st. ogn. Leon Rak', 'ratownicy-kierowcy'], ['ogn. Ada Bór', 'ratownicy-kierowcy'], ['sekc. Igor Len', 'ratownicy'], ['st. str. Ola Mech', 'ratownicy']];
+    const tests = PEOPLE.map((p, i) => ({ name: p[0], grp: p[1], score: s.scores[i], set: (e) => { const c = s.scores.slice(); c[i] = e.target.value; this.setState({ scores: c }); } }));
+    const vals = s.scores.map((v) => num(v)).filter((v) => v !== null).map((v) => Math.min(15, v));
+    const avg = vals.length ? Math.round((vals.reduce((x, y) => x + y, 0) / vals.length) * 100) / 100 : null;
+    const d5 = avg === null ? null : (avg <= 0.5 ? 0 : Math.min(15, Math.ceil(avg - 0.5)));
+    const d5Line = avg === null ? 'Brak wyników.' : vals.length + ' osób · suma ' + vals.reduce((x, y) => x + y, 0) + ' · średnia ' + avg.toFixed(2).replace('.', ',') + ' → ' + d5 + ' pkt (zaokrąglenie wg tabeli: x,50 w dół, x,51 w górę)';
+
+    // VI. Ćwiczenie
+    const EX = [
+      ['Określenie celu działań', [[1, 'błąd w określeniu priorytetu ratowniczego', 'BKZ'], [2, 'określanie celu głównego', 2], [3, 'określanie celu pośredniego', 2], [4, 'wykonanie rozpoznania', 2]]],
+      ['Przyjęty sposób osiągnięcia celu (zamiar taktyczny)', [[5, 'przyjęty wariant rozwinięcia', 2], [6, 'dobór technik ratowniczych', 2], [7, 'dobór sprzętu', 2], [8, 'niezgodność z możliwościami taktycznymi SiŚ JRG', 2]]],
+      ['Sposób realizacji zamiaru taktycznego (rozwinięcie sił)', [[9, 'sposób sprawiania sprzętu', 2], [10, 'obsługa sprzętu', 2], [11, 'organizacja i realizacja łączności', 2], [12, 'technika wykonywania czynności ratowniczych', 2], [13, 'przestrzeganie przepisów i zasad bezpieczeństwa', 4], [14, 'błędy krytyczne według wykazu (15 pozycji)', 'BKZ']]],
+      ['Reagowanie na zmiany rozwoju sytuacji', [[15, 'brak reakcji', 4], [16, 'reagowanie z opóźnieniem', 2], [17, 'nieprawidłowa reakcja', 2]]],
+      ['Sposób kierowania działaniami', [[18, 'jasność, jednoznaczność rozkazów', 2], [19, 'rozdział zadań', 3], [20, 'określenie sposobu realizacji zadań', 2], [21, 'kontrola realizacji zadań', 4], [22, 'organizacja terenu akcji', 1], [23, 'korzystanie z uprawnień KDR', 1], [24, 'wybór miejsca pracy KDR', 1], [25, 'współpraca z SK KP/KM PSP', 1], [26, 'sporządzenie wymaganej dokumentacji', 1]]]
+    ];
+    let exPen = 0; let exBKZ = false;
+    const exGroups = EX.map((g) => ({
+      title: g[0],
+      items: g[1].map((it) => {
+        const n = it[0]; const isBkz = it[2] === 'BKZ'; const c = s.ex[n] || 0;
+        if (isBkz && s.exBkz[n]) exBKZ = true;
+        if (!isBkz) exPen += c * it[2];
+        return {
+          n, t: it[1], w: it[2], isBkz, isPts: !isBkz, c, checked: !!s.exBkz[n],
+          toggle: () => this.setState({ exBkz: { ...s.exBkz, [n]: !s.exBkz[n] } }),
+          inc: () => this.setState({ ex: { ...s.ex, [n]: c + 1 } }),
+          dec: () => this.setState({ ex: { ...s.ex, [n]: Math.max(0, c - 1) } })
+        };
+      })
+    }));
+    const d6 = exBKZ ? 0 : Math.max(0, 50 - exPen);
+    const d6Line = exBKZ ? 'Błąd krytyczny zagadnienia → ćwiczenie 0 pkt.' : '50 − ' + exPen + ' pkt karnych = ' + d6 + ' pkt';
+
+    // Ocena
+    const BK = alarmBK || d2BK;
+    const show = (v) => (v === null ? '—' : String(v));
+    const sum = [
+      { label: 'I. Alarmowanie', short: 'I. Alarmowanie', range: '0–10', max: '10', val: show(d1) },
+      { label: 'II. Gotowość ratowników', short: 'II. Ratownicy', range: '0–8', max: '8', val: d2BK ? 'BK' : d2BKZ ? '0 (BKZ)' : show(d2) },
+      { label: 'III. Gotowość pojazdów, sprzętu silnikowego i ratowniczego', short: 'III. Pojazdy i sprzęt', range: '0–15', max: '15', val: s.chk.udtSh ? '0 (BKZ)' : show(d3) },
+      { label: 'IV. Dokumentacja jednostki', short: 'IV. Dokumentacja', range: '0–2', max: '2', val: show(d4) },
+      { label: 'V. Test wiedzy', short: 'V. Test wiedzy', range: '0–15', max: '15', val: show(d5) },
+      { label: 'VI. Ćwiczenie praktyczne', short: 'VI. Ćwiczenie', range: '0–50', max: '50', val: exBKZ ? '0 (BKZ)' : show(d6) }
+    ];
+    const raw = [d1, d2, d3, d4, d5, d6].reduce((x, y) => x + (y || 0), 0);
+    let kor = parseInt(s.korekta, 10); if (!isFinite(kor)) kor = 0; kor = Math.max(-10, Math.min(10, kor));
+    const total = raw + kor;
+    let grade = 1;
+    if (!BK && !s.refusal) grade = total > 98 ? 6 : total > 93 ? 5 : total > 80 ? 4 : total > 65 ? 3 : total > 50 ? 2 : 1;
+    const NAMES = { 6: 'celujący', 5: 'bardzo dobry', 4: 'dobry', 3: 'dostateczny', 2: 'dopuszczający', 1: 'niedostateczny' };
+    const flags = [];
+    if (alarmBK) flags.push('BK: czas wyjazdu powyżej 300 s');
+    if (s.shift === 'bk') flags.push('BK: brak dowódcy lub kierowcy');
+    if (s.psych === 'bk') flags.push('BK: stan psychofizyczny');
+    if (s.refusal) flags.push('Odmowa poddania się inspekcji');
+    if (s.shift === 'bkz') flags.push('BKZ w dziale II: stan zmiany');
+    if (s.docs === 'bkz') flags.push('BKZ w dziale II: zezwolenie kierowcy');
+    if (s.chk.udtSh) flags.push('BKZ w dziale III: UDT w SH');
+    if (exBKZ) flags.push('BKZ w ćwiczeniu');
+    if (total > 100) flags.push('Suma ponad 100 pkt po korekcie — ocena 6');
+
+    const vals6 = [null, null, d1, d2BK ? 'BK' : d2, s.chk.udtSh ? 0 : d3, d4, d5, d6, null, BK ? 'BK' : total, null];
+    const rail = STEPS.map((label, i) => ({
+      label, val: vals6[i] === null ? '' : String(vals6[i]),
+      cls: i === s.step ? 'cur' : (i < s.step ? 'done' : ''),
+      aria: i === s.step ? 'step' : 'false',
+      pick: () => this.setState({ step: i })
+    }));
+    const el = s.running ? (Date.now() - s.startAt) / 1000 : 0;
+    const mm = Math.floor(el / 60); const ss = el - mm * 60;
+    const clock = s.running ? String(mm).padStart(2, '0') + ':' + ss.toFixed(1).padStart(4, '0') : '00:00.0';
+    const lap = () => Math.round((Date.now() - s.startAt) / 1000);
+    const out = {
+      rail, stepNo: s.step + 1, stepTitle: TITLES[s.step],
+      segKind: this.seg('kind', [['SK', 'Stanowisko kierowania'], ['JRG', 'JRG PSP / szkoła'], ['OSP', 'OSP w KSRG'], ['COO', 'Pododdział COO']]),
+      kindNote: { SK: 'Działy I–VII, 123 pkt, ćwiczenie aplikacyjne. W makiecie klikalny jest kreator JRG.', JRG: 'Działy I–VI, 100 pkt. Czas liczony do wyjazdu 2. zastępu.', OSP: 'Działy I–V, 100 pkt. Czas w minutach do wyjazdu 1. zastępu z co najmniej 4 strażakami.', COO: 'Lista 15 kategorii z tabeli 6, bez oceny końcowej.' }[s.kind],
+      chk: s.chk, tg, refusal: s.refusal, paused: s.paused,
+      present: s.present.map((v, i) => ({ v, canRemove: s.present.length > 1, set: (e) => { const c = s.present.slice(); c[i] = e.target.value; this.setState({ present: c }); }, remove: () => this.setState({ present: s.present.filter((x, k) => k !== i) }) })),
+      addPresent: () => this.setState({ present: s.present.concat(['']) }),
+      delAsk: s.delAsk, deleted: s.deleted, askDelete: () => this.setState({ delAsk: true }), cancelDelete: () => this.setState({ delAsk: false }), doDelete: () => this.setState({ delAsk: false, deleted: true }),
+      pause: () => this.setState({ paused: !s.paused }), pauseLabel: s.paused ? 'Wznów inspekcję' : 'Przerwij ',
+      clock, swRunning: s.running, swNoRun: !s.running,
+      swStart: () => this.setState({ running: true, startAt: Date.now(), t1: '', t2: '' }),
+      swLap1: () => this.setState({ t1: String(lap()) }),
+      swLap2: () => this.setState({ t2: String(lap()), running: false }),
+      swReset: () => this.setState({ running: false, t1: '', t2: '' }),
+      t1: s.t1, t2: s.t2, setT1: (e) => this.setState({ t1: e.target.value }), setT2: (e) => this.setState({ t2: e.target.value }),
+      conds, alarmLine, alarmCls: alarmBK ? 'warn' : '',
+      segShift: this.seg('shift', [['ok', 'Zgodny ze stanem minimalnym'], ['bkz', 'Brak właściwej liczby dowódców lub kierowców · BKZ'], ['bk', 'Brak żadnego dowódcy lub kierowcy · BK']]),
+      segPsych: this.seg('psych', [['ok', 'Brak uwag'], ['bk', 'Stan wskazujący na spożycie alkoholu lub środków · BK']]),
+      segPpe: this.seg('ppe', [['full', 'Kompletne · 2 pkt'], ['miss', 'Co najmniej dwa braki lub uszkodzenia · 0 pkt']]),
+      segDocs: this.seg('docs', [['full', 'Komplet · 2 pkt'], ['miss', 'Stwierdzony brak · 0 pkt'], ['bkz', 'Kierowca bez ważnego zezwolenia · BKZ']]),
+      segEquip: this.seg('equip', [['all', 'Wszyscy ratownicy · 4 pkt'], ['not', 'Co najmniej jeden nie zna · 0 pkt']]),
+      d2Line, d2Cls: d2BK || d2BKZ ? 'warn' : '',
+      veh, d3Line, d3Cls: s.chk.udtSh ? 'warn' : '',
+      segDoc4: this.seg('doc4', [[2, 'Bez uwag · 2 pkt'], [1, 'Jedna nieprawidłowość · 1 pkt'], [0, 'Co najmniej dwie · 0 pkt']]),
+      segTest: this.seg('testMode', [['gen', 'Generator — test na papierze'], ['device', 'Test na urządzeniu']]),
+      testDevice: s.testMode === 'device', testGen: s.testMode === 'gen', tests, d5Line,
+      exGroups, d6Line, d6Cls: exBKZ ? 'warn' : '',
+      sum, rawTotal: BK ? 'BK' : String(raw),
+      korekta: s.korekta, setKorekta: (e) => this.setState({ korekta: e.target.value }),
+      uzas: s.uzas, setUzas: (e) => this.setState({ uzas: e.target.value }),
+      needUzas: kor !== 0 && !String(s.uzas).trim(),
+      korektaShow: (kor > 0 ? '+' : '') + kor,
+      finalShow: BK ? 'BK' : String(total),
+      gradeLabel: grade + ' ' + NAMES[grade], gradeCls: grade === 1 ? 'warn' : '', gradeNo: String(grade), gradeName: NAMES[grade],
+      gradeBox: grade === 1 ? 'background: #b3261e; color: #ffffff;' : 'background: #1c2427; color: #ebeef0;', gradeSq: grade === 1 ? 'background: #ffffff; color: #b3261e;' : 'background: #ebeef0; color: #1c2427;',
+      scoreBar: 'height: 6px; background: ' + (BK || grade === 1 ? '#b3261e' : '#1c2427') + '; width: ' + (BK ? 0 : Math.max(0, Math.min(100, total))) + '%;',
+      flags,
+      retake: grade === 1, retakeDate: '06.02.2027',
+      cannotClose: !(s.chk.signed || s.chk.refusedSign) || (kor !== 0 && !String(s.uzas).trim()),
+      prev: () => this.setState({ step: Math.max(0, s.step - 1) }),
+      next: () => this.setState({ step: Math.min(10, (BK && s.step >= 2 && s.step < 9) ? 9 : s.step + 1) }),
+      isFirst: s.step === 0, isLast: s.step === 10,
+      nextLabel: BK && s.step >= 2 && s.step < 9 ? 'Przejdź do oceny (BK)' : 'Dalej'
+    };
+    const DOCS = [
+      ['auth', 'Upoważnienie do przeprowadzenia IGO', '', 0, 'Upowaznienie.dc.html', true],
+      ['exercise', 'Założenie do ćwiczenia', '', 0, 'Dokumenty.dc.html', true],
+      ['start', 'Powiadomienie SK o rozpoczęciu', '§ 10 · notatka z godziną i osobą przyjmującą', 1, 'Dokumenty.dc.html', true],
+      ['stop', 'Powiadomienie o przerwaniu lub odstąpieniu', '§ 9 ust. 3, § 16 · tylko gdy inspekcję przerwano', 1, 'Dokumenty.dc.html', false],
+      ['tests', 'Testy wiedzy i klucz odpowiedzi', '§ 15 · zestawy dla dowódców, ratowników i kierowców', 6, 'Test.dc.html', true],
+      ['consent', 'Zgoda na rejestrację obrazu', '§ 18 ust. 1 · lista uczestników do podpisu, opcjonalnie', 7, 'Dokumenty.dc.html', false],
+      ['proposals', 'Propozycje wniosków i zaleceń', 'zał. 3 pkt 3.4 · z uwag i wniosków, z terminami', 9, 'Dokumenty.dc.html', true],
+      ['protocol', 'Protokół z inspekcji (2 egz.)', 'zał. 8 · PDF i DOCX z wyliczoną oceną', 10, 'Protokol1.dc.html', true],
+      ['speech', 'Projekt wystąpienia poinspekcyjnego', '§ 18 ust. 11 · dla zarządzającego, do 14 dni', 10, 'Wystapienie.dc.html', true],
+      ['refusal', 'Wezwanie: powody odmowy podpisu', '§ 18 ust. 9 · tylko przy odmowie, termin 14 dni', 10, 'Dokumenty.dc.html', false]
+    ];
+    const shown = (x) => x[5] || (x[0] === 'stop' && s.paused) || (x[0] === 'refusal' && s.chk.refusedSign) || (x[0] === 'consent');
+    const genDoc = (id) => () => this.setState({ docs: { ...s.docs, [id]: { at: id === 'auth' ? '04.11, 09:20' : '06.11, 12:41', no: id === 'auth' ? '41/2026' : '' } } });
+    const stepDocs = DOCS.filter((x) => x[3] === s.step && shown(x)).map((x) => {
+      const d = s.docs[x[0]];
+      return { title: x[1], note: x[2], link: x[4], gen: genDoc(x[0]), st: d ? 'wygenerowano ' + d.at + (d.no ? ' · nr ' + d.no : '') : '', stStyle: d ? '' : 'color: #535f65;', btn: d ? 'Generuj ponownie' : 'Generuj PDF' };
+    });
+    const allList = DOCS.filter(shown);
+    out.stepDocs = stepDocs; out.hasStepDocs = stepDocs.length > 0;
+    out.allDocs = allList.map((x) => { const d = s.docs[x[0]]; return { title: x[1], at: d ? d.at + (d.no ? ' · nr ' + d.no : '') : ['krok', x[3] + 1].join(' '), titleStyle: d ? 'font-weight: 600;' : 'color: #535f65;', dot: 'width: 16px; height: 16px; margin-top: 1px; box-sizing: border-box; border: 1.5px solid ' + (d ? '#1c2427' : '#9aa5ab') + '; background: ' + (d ? '#1c2427' : 'transparent') + ';' }; });
+    out.docsBar = 'height: 4px; background: #1c2427; width: ' + Math.round((allList.filter((x) => s.docs[x[0]]).length / Math.max(1, allList.length)) * 100) + '%;';
+    out.docsDone = allList.filter((x) => s.docs[x[0]]).length; out.docsAll = allList.length;
+    if (s.step === 0 && !s.docs.auth) { out.isLast = true; out.nextLabel = 'Najpierw wygeneruj upoważnienie'; }
+    const pick = (i) => () => this.setState({ step: i });
+    out.curStep = STEPS[s.step];
+    out.hasPrev = s.step > 0; out.prevStep = s.step > 0 ? { label: STEPS[s.step - 1], pick: pick(s.step - 1) } : { label: '', pick: pick(0) };
+    out.hasNext = s.step < 10;
+    out.nextSteps = STEPS.slice(s.step + 1).map((label, k) => ({ label, pick: pick(s.step + 1 + k), style: 'opacity: ' + Math.max(0.18, 1 - k * 0.22).toFixed(2) + '; color: ' + (k === 0 ? '#1c2427' : '#535f65') + ';' }));
+    for (let i = 0; i <= 10; i++) out['s' + i] = s.step === i;
+    return out;
+  }
+}
+</script>
+</body>
+</html>

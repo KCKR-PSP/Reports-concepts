@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Zestawienie · Koncepcje Reports</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#ebeef0}
+a{color:#1c2427}a:hover{color:#535f65}
+.eb{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#535f65}
+.tab{display:inline-block;margin:0 32px -1px 0;padding:12px 0;border-bottom:2px solid transparent;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#535f65;text-decoration:none}
+.tab[aria-current="page"]{color:#1c2427;border-bottom-color:#1c2427}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;background:#1c2427;color:#ebeef0;font-size:14px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn:hover{color:#ebeef0;opacity:.85}
+.ghost{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border:1px solid #1c2427;color:#1c2427;font-size:13px;font-weight:500;text-decoration:none;background:none;cursor:pointer;font-family:inherit}
+.fl{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#535f65}
+.fl select,.fl input{min-height:40px;border:1px solid #b4bec3;background:#ebeef0;padding:0 10px;font:inherit;font-size:14px;color:#1c2427;border-radius:0}
+.tb{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.tb th{font-size:12px;font-weight:500;color:#535f65;text-align:left;padding:8px 10px;border-bottom:1px solid #d3dadd;white-space:nowrap}
+.tb td{padding:12px 10px;border-bottom:1px solid #d3dadd;vertical-align:top}
+.tb tr.sel td{background:#e1e6e9}
+.row-btn{background:none;border:0;padding:0;font:inherit;color:#1c2427;text-align:left;cursor:pointer;font-weight:600}
+.row-btn:hover{text-decoration:underline}
+.st{font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:600}
+.h2{margin:0;font-size:18px;font-weight:600}
+dl{margin:0;display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 16px;font-size:14px}
+dt{color:#535f65}dd{margin:0}
+.hbtn{background:none;border:0;padding:4px 0;font:inherit;font-size:12px;font-weight:500;color:#535f65;cursor:pointer;display:inline-flex;gap:4px;align-items:center}
+.hbtn:hover{color:#1c2427}
+.fbtn{width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;background:none;border:0;color:#535f65;cursor:pointer;padding:0}
+.fbtn.on{color:#1c2427}
+.pop{position:absolute;top:100%;left:0;z-index:5;min-width:220px;background:#ebeef0;border:1px solid #1c2427;padding:8px 12px 10px;display:flex;flex-direction:column;text-align:left;font-weight:400;box-shadow:0 8px 24px rgba(28,36,39,.12)}
+.opt{display:flex;gap:10px;align-items:center;min-height:36px;font-size:14px;color:#1c2427;cursor:pointer}
+.opt input{width:18px;height:18px;margin:0;accent-color:#1c2427}
+.lnk{background:none;border:0;padding:4px 0;font:inherit;font-size:13px;color:#535f65;cursor:pointer;text-align:left;text-underline-offset:4px}
+.lnk:hover{color:#1c2427;text-decoration:underline}
+</style>
+
+<style>
+html,body{margin:0;background:#ebeef0}
+body.dark{background:#121518}
+.cbar{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding:8px clamp(16px, 4vw, 40px);
+  background:#1c2427;color:#ebeef0;font:500 13px/1.3 'Instrument Sans',ui-sans-serif,system-ui,sans-serif}
+.cbar a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:36px}
+.cbar a:hover{text-decoration:underline}
+.cbar .ttl{font-weight:700}
+.cbar .tag{padding:3px 8px;border:1px solid #535f65;color:#a9b3b8;font-size:12px}
+.cbar .sp{flex:1}
+.cbar nav{display:flex;flex-wrap:wrap;gap:4px 16px}
+.cbar nav a[aria-current="page"]{font-weight:700;text-decoration:underline}
+.cbar label{display:inline-flex;align-items:center;gap:8px;color:#a9b3b8}
+.cbar select{min-height:32px;padding:0 8px;border:1px solid #535f65;border-radius:0;background:#1c2427;color:#ebeef0;font:inherit}
+.cbar a:focus-visible,.cbar select:focus-visible{outline:2px solid #ebeef0;outline-offset:2px}
+@media (max-width: 760px){.cbar{position:static}}
+body.framed #board{display:flex;justify-content:center;padding:32px 16px 64px;overflow-x:auto}
+body.framed #board > *{flex:none;box-shadow:0 1px 2px rgba(28,36,39,.12),0 8px 32px rgba(28,36,39,.10)}
+</style>
+</head>
+<body>
+<div class="cbar">
+<a href="../index.html">← Koncepcje Reports</a>
+<span class="ttl">Inspekcje gotowości operacyjnej</span>
+<span class="tag">Koncepcja · dane przykładowe</span>
+<nav aria-label="Plansze"><a href="index.html">Pulpit</a><a href="zestawienie.html" aria-current="page">Zestawienie</a><a href="plan.html">Plan i sprawozdanie</a><a href="dokumenty.html">Szkice i dokumenty</a><a href="kreator.html">Kreator JRG</a><a href="reguly.html">Reguły oceny</a><a href="baza-pytan.html">Baza pytań</a><a href="test-telefon.html">Test na telefonie</a><a href="powiadomienia.html">Powiadomienia</a><a href="protokol.html">Protokół · str. 1</a><a href="protokol-ocena.html">Protokół · ocena</a><a href="upowaznienie.html">Upoważnienie</a><a href="wystapienie.html">Wystąpienie poinspekcyjne</a><a href="podmiot.html">Widok podmiotu</a></nav>
+<span class="sp"></span>
+
+</div>
+<div id="board"></div>
+<template id="board-template">
+<div style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #1c2427; background: #ebeef0; min-height: 100%;">
+<main style="max-width: 1360px; margin: 0 auto; padding: 48px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+<header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 32px;">
+<div>
+
+<h1 style="margin: 6px 0 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em;">Inspekcje gotowości operacyjnej</h1>
+<p style="margin: 8px 0 0; font-size: 14px; color: #535f65;">KW PSP w Lublinie · 2026</p>
+</div>
+<a class="btn" href="kreator.html"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 1v12M1 7h12" style="fill: none; stroke: currentColor; stroke-width: 1.6px;"></path></svg>Nowa inspekcja</a>
+</header>
+<nav aria-label="Widok modułu" style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #d3dadd; margin-top: -8px;">
+<a class="tab" href="index.html">Pulpit</a>
+<a class="tab" aria-current="page" href="zestawienie.html">Zestawienie</a>
+<a class="tab" href="plan.html">Plan</a>
+<a class="tab" href="dokumenty.html">Dokumenty</a>
+<a class="tab" href="baza-pytan.html">Baza pytań</a>
+</nav>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; justify-content: space-between;">
+<label style="flex: 0 1 360px; display: flex;"><span style="position: absolute; left: -9999px;">Szukaj</span><input type="search" placeholder="Szukaj: jednostka, przewodniczący, nr upoważnienia" style="width: 100%; min-height: 40px; border: 0; border-bottom: 1px solid #1c2427; background: none; padding: 0 2px; font: inherit; font-size: 14px; color: #1c2427; border-radius: 0;"></label>
+<div style="display: flex; gap: 16px; align-items: center; font-size: 13px; color: #535f65;"><template data-sc="if" value="{{ anyFilter }}" hint-placeholder-val="{{ false }}"><button type="button" class="lnk" onClick="{{ clearAll }}">Wyczyść filtry</button></template><button type="button" class="ghost">Eksport XLSX</button></div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; gap: 32px 40px; align-items: flex-start;">
+<div style="flex: 999 1 640px; min-width: 0; overflow-x: auto;">
+<table class="tb" style="min-width: 820px;">
+<thead><tr>
+<template data-sc="for" list="{{ cols }}" as="c" hint-placeholder-count="6">
+<th scope="col" aria-sort="{{ c.ariaSort }}" style="position: relative; {{ c.align }}">
+<span style="display: inline-flex; align-items: center; gap: 4px;">
+<button type="button" class="hbtn" onClick="{{ c.sort }}">{{ c.label }}<span style="width: 10px; display: inline-block; color: #1c2427;">{{ c.arrow }}</span></button>
+<template data-sc="if" value="{{ c.hasFilter }}" hint-placeholder-val="{{ false }}"><button type="button" class="fbtn {{ c.fcls }}" aria-label="Filtr kolumny {{ c.label }}" aria-expanded="{{ c.open }}" onClick="{{ c.toggle }}"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M1 2h10L7 6.5V10L5 11V6.5Z" style="fill: {{ c.ffill }}; stroke: currentColor; stroke-width: 1.2px; stroke-linejoin: round;"></path></svg></button></template>
+</span>
+<template data-sc="if" value="{{ c.open }}" hint-placeholder-val="{{ false }}">
+<div class="pop" role="group" aria-label="Filtr {{ c.label }}">
+<template data-sc="for" list="{{ c.opts }}" as="o"><label class="opt"><input type="checkbox" checked="{{ o.on }}" onChange="{{ o.toggle }}"><span>{{ o.label }}</span><span style="margin-left: auto; color: #535f65;">{{ o.n }}</span></label></template>
+<button type="button" class="lnk" onClick="{{ c.clear }}" style="margin-top: 6px;">Wszystkie</button>
+</div>
+</template>
+</th>
+</template>
+</tr></thead>
+<tbody>
+<template data-sc="for" list="{{ rows }}" as="r" hint-placeholder-count="9">
+<tr class="{{ r.cls }}">
+<td>{{ r.date }}</td>
+<td><button type="button" class="row-btn" onClick="{{ r.pick }}">{{ r.unit }}</button><div style="font-size: 12px; color: #535f65; margin-top: 2px;">{{ r.kind }}</div></td>
+<td>{{ r.shift }}</td>
+<td>{{ r.boss }}</td>
+<td>{{ r.chair }}</td>
+<td style="{{ r.gradeStyle }}">{{ r.grade }}</td>
+</tr>
+</template>
+<template data-sc="if" value="{{ empty }}" hint-placeholder-val="{{ false }}"><tr><td colspan="6" style="padding: 28px 10px; color: #535f65;">Brak inspekcji dla wybranych filtrów. <button type="button" class="lnk" onClick="{{ clearAll }}" style="color: #1c2427; text-decoration: underline;">Wyczyść filtry</button></td></tr></template>
+</tbody>
+</table>
+</div>
+
+<aside aria-labelledby="det-title" style="flex: 1 1 380px; min-width: 0; border-top: 2px solid #1c2427; padding-top: 20px; display: flex; flex-direction: column; gap: 20px;">
+<div>
+<p class="eb">{{ cur.kind }} · {{ cur.date }}</p>
+<h2 id="det-title" class="h2" style="margin-top: 6px; font-size: 22px;">{{ cur.unit }}, zm. {{ cur.shift }}</h2>
+</div>
+<div style="display: flex; gap: 32px; align-items: flex-end;">
+<div><p class="eb">Punkty</p><p style="margin: 6px 0 0; font-size: 40px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums;">{{ cur.pts }}</p></div>
+<div><p class="eb">Ocena</p><p style="margin: 6px 0 0; font-size: 22px; font-weight: 600; {{ cur.gradeStyle }}">{{ cur.gradeLong }}</p></div>
+</div>
+<template data-sc="if" value="{{ hasParts }}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<p class="eb">Punkty w działach</p>
+<template data-sc="for" list="{{ parts }}" as="p" hint-placeholder-count="6">
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 90px 56px; gap: 10px; align-items: center; font-size: 13px;">
+<span>{{ p.label }}</span>
+<span style="height: 6px; background: #d3dadd; display: block;"><span style="{{ p.bar }}"></span></span>
+<span style="text-align: right; font-variant-numeric: tabular-nums;"><strong>{{ p.val }}</strong><span style="color: #535f65;"> / {{ p.max }}</span></span>
+</div>
+</template>
+</div>
+</template>
+<template data-sc="for" list="{{ flags }}" as="g" hint-placeholder-count="0"><p style="margin: 0; padding: 10px 12px; background: #b3261e; color: #ffffff; font-size: 13px; font-weight: 600;">{{ g }}</p></template>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px;">
+<template data-sc="for" list="{{ facts }}" as="t" hint-placeholder-count="4"><div><p class="eb" style="font-size: 11px;">{{ t.k }}</p><p style="margin: 4px 0 0; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums;">{{ t.v }}</p><p style="margin: 2px 0 0; font-size: 12px; color: #535f65;">{{ t.s }}</p></div></template>
+</div>
+<dl>
+<dt>Upoważnienie</dt><dd>{{ cur.auth }}</dd>
+<dt>Zespół</dt><dd>{{ cur.chair }} (przewodniczący), {{ cur.team }}</dd>
+<dt>W obecności</dt><dd>{{ cur.present }}</dd>
+<dt>Godziny</dt><dd>{{ cur.hours }}</dd>
+<dt>Stan</dt><dd>{{ cur.state }}</dd>
+<dt>Następny termin</dt><dd>{{ cur.next }}</dd>
+</dl>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><p class="eb">Dokumenty</p><a href="dokumenty.html" style="font-size: 13px;">Wszystkie ({{ docCount }})</a></div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+<template data-sc="for" list="{{ docs }}" as="d" hint-placeholder-count="4">
+<a href="{{ d.link }}" class="doc" style="display: flex; gap: 12px; padding: 12px; background: #e1e6e9; text-decoration: none; color: #1c2427; min-height: 104px; box-sizing: border-box;">
+<span aria-hidden="true" style="{{ d.paper }}">
+<span style="display: block; height: 3px; background: #1c2427; margin-bottom: 5px;"></span>
+<span style="display: block; height: 2px; background: #c8ced1; margin-bottom: 4px;"></span>
+<span style="display: block; height: 2px; width: 80%; background: #c8ced1; margin-bottom: 4px;"></span>
+<span style="display: block; height: 2px; background: #c8ced1; margin-bottom: 4px;"></span>
+<span style="display: block; height: 2px; width: 60%; background: #c8ced1; margin-bottom: 4px;"></span>
+<span style="display: block; height: 2px; background: #c8ced1;"></span>
+<span style="{{ d.stamp }}"></span>
+</span>
+<span style="display: flex; flex-direction: column; gap: 4px; min-width: 0;">
+<span style="font-size: 14px; font-weight: 600; line-height: 1.25;">{{ d.title }}</span>
+<span style="font-size: 12px; color: #535f65;">{{ d.meta }}</span>
+<span style="margin-top: auto; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; {{ d.stStyle }}">{{ d.st }}</span>
+</span>
+</a>
+</template>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<a class="btn" href="kreator.html">Otwórz w kreatorze</a>
+<button type="button" class="ghost">Wgraj skan</button>
+</div>
+</aside>
+</div>
+</main>
+</div>
+</template>
+<script src="../assets/dc-runtime.js"></script>
+<script>
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { picked: 0, sortKey: 'date', dir: -1, open: null, f: {} };
+  }
+  renderVals() {
+    const data = [
+      { date: '06.11.2026', unit: 'JRG 2 Puławy', kind: 'JRG PSP', shift: 'II', boss: 'KW Lublin', chair: 'mł. bryg. Adam Lis', team: 'st. kpt. Ewa Sowa, kpt. Jan Kruk', pts: '87', grade: '4', gradeLong: '4 dobry', state: 'Do podpisu', auth: 'nr 41/2026 z 04.11.2026', hours: '08:12–13:40', next: 'protokół do zarządzającego — po terminie (07.11)', scan: 'brak' },
+      { date: '05.11.2026', unit: 'OSP Końskowola', kind: 'OSP w KSRG', shift: '—', boss: 'KP Puławy', chair: 'asp. sztab. Marek Dąb', team: 'mł. asp. Ola Wilk', pts: '61', grade: '2', gradeLong: '2 dopuszczający', state: 'Zamknięta', auth: 'nr 12/2026 z 02.11.2026', hours: '18:05–21:10', next: 'wystąpienie poinspekcyjne — po terminie (08.11)', scan: 'wgrany 06.11' },
+      { date: '04.11.2026', unit: 'JRG Kraśnik', kind: 'JRG PSP', shift: 'I', boss: 'KW Lublin', chair: 'mł. bryg. Adam Lis', team: 'st. kpt. Ewa Sowa', pts: '94', grade: '5', gradeLong: '5 bardzo dobry', state: 'Odmowa podpisu', auth: 'nr 40/2026 z 03.11.2026', hours: '07:55–12:30', next: 'powody odmowy od kierownika — do 15.11', scan: 'brak (odmowa)' },
+      { date: '03.11.2026', unit: 'SK KM PSP Chełm', kind: 'Stanowisko kierowania', shift: 'III', boss: 'KW Lublin', chair: 'bryg. Tomasz Buk', team: 'kpt. Anna Jodła', pts: '115', grade: '5', gradeLong: '5 bardzo dobry', state: 'Zamknięta', auth: 'nr 39/2026 z 31.10.2026', hours: '21:00–02:15', next: '—', scan: 'wgrany 04.11' },
+      { date: '03.09.2026', unit: 'JRG Biała Podlaska', kind: 'JRG PSP', shift: 'III', boss: 'KW Lublin', chair: 'bryg. Tomasz Buk', team: 'kpt. Jan Kruk', pts: 'BK', grade: '1', gradeLong: '1 niedostateczny (BK)', state: 'Zamknięta', auth: 'nr 31/2026 z 01.09.2026', hours: '09:10–09:30', next: 'ponowna inspekcja, ta sama zmiana — do 03.12', scan: 'wgrany 04.09' },
+      { date: '28.10.2026', unit: 'Pododdział COO Lublin', kind: 'Pododdział COO', shift: '—', boss: 'KW Lublin', chair: 'mł. bryg. Adam Lis', team: 'kpt. Jan Kruk', pts: '—', grade: '—', gradeLong: 'bez oceny · 2 nieprawidłowości', state: 'Zamknięta', auth: 'nr 37/2026 z 27.10.2026', hours: '06:00–11:00', next: '—', scan: 'wgrany 29.10' },
+      { date: '27.10.2026', unit: 'JRG 1 Lublin', kind: 'JRG PSP', shift: 'II', boss: 'KM Lublin', chair: 'asp. sztab. Piotr Głóg', team: 'mł. kpt. Iza Klon', pts: '—', grade: '—', gradeLong: 'przerwana (wyjazd do zdarzenia)', state: 'Przerwana', auth: 'nr 77/2026 z 26.10.2026', hours: '10:00–10:42, wznowienie po powrocie', next: 'wznowić inspekcję', scan: '—' },
+      { date: '22.10.2026', unit: 'SK KP PSP Puławy', kind: 'Stanowisko kierowania', shift: 'I', boss: 'KP Puławy', chair: 'asp. sztab. Marek Dąb', team: 'mł. asp. Ola Wilk', pts: '104', grade: '4', gradeLong: '4 dobry', state: 'Zamknięta', auth: 'nr 11/2026 z 21.10.2026', hours: '08:00–12:20', next: '—', scan: 'wgrany 23.10' },
+      { date: '09.11.2026', unit: 'OSP Nałęczów', kind: 'OSP w KSRG', shift: '—', boss: 'KP Puławy', chair: 'asp. sztab. Marek Dąb', team: 'mł. asp. Ola Wilk', pts: '…', grade: '…', gradeLong: 'w toku — dział III', state: 'W toku', auth: 'nr 13/2026 z 08.11.2026', hours: 'od 17:30', next: 'zakończyć inspekcję', scan: '—' }
+    ];
+    const warn = 'color: #b3261e;';
+    const st = this.state;
+    const dkey = (t) => t.split('.').reverse().join('');
+    const num = (v) => { const n = parseFloat(v); return isFinite(n) ? n : (v === 'BK' ? -1 : -2); };
+    const COLS = [
+      ['date', 'Data', null, (d) => dkey(d.date), ''], ['unit', 'Podmiot', 'kind', (d) => d.unit, ''], ['shift', 'Zm.', 'shift', (d) => d.shift, ''],
+      ['boss', 'Zarządzający', 'boss', (d) => d.boss, ''], ['chair', 'Przewodniczący', 'chair', (d) => d.chair, ''],
+      ['grade', 'Ocena', 'grade', (d) => num(d.grade), '']
+    ];
+    const f = st.f;
+    const pass = (d, except) => Object.keys(f).every((k) => k === except || !f[k] || !f[k].length || f[k].indexOf(d[k]) >= 0);
+    const shownData = data.map((d, i) => ({ d, i })).filter((x) => pass(x.d));
+    const col = COLS.find((c) => c[0] === st.sortKey);
+    shownData.sort((a, b) => { const x = col[3](a.d), y = col[3](b.d); return (x > y ? 1 : x < y ? -1 : 0) * st.dir; });
+    const cols = COLS.map((c) => {
+      const fk = c[2];
+      const vals = fk ? Array.from(new Set(data.map((d) => d[fk]))).sort() : [];
+      const sel = (fk && f[fk]) || [];
+      return {
+        label: c[1], align: c[4], hasFilter: !!fk, open: st.open === c[0],
+        arrow: st.sortKey === c[0] ? (st.dir > 0 ? '↑' : '↓') : '',
+        ariaSort: st.sortKey === c[0] ? (st.dir > 0 ? 'ascending' : 'descending') : 'none',
+        fcls: sel.length ? 'on' : '', ffill: sel.length ? 'currentColor' : 'none',
+        sort: () => this.setState({ sortKey: c[0], dir: st.sortKey === c[0] ? -st.dir : 1 }),
+        toggle: () => this.setState({ open: st.open === c[0] ? null : c[0] }),
+        clear: () => this.setState({ f: { ...f, [fk]: [] }, open: null }),
+        opts: vals.map((v) => ({ label: v, n: data.filter((d) => d[fk] === v && pass(d, fk)).length, on: sel.indexOf(v) >= 0, toggle: () => { const nx = sel.indexOf(v) >= 0 ? sel.filter((x) => x !== v) : sel.concat([v]); this.setState({ f: { ...f, [fk]: nx } }); } }))
+      };
+    });
+    const anyFilter = Object.keys(f).some((k) => f[k] && f[k].length);
+    const rows = shownData.map((x) => x.d).map((d, k) => ({
+      _i: shownData[k].i,
+      ...d,
+      cls: shownData[k].i === this.state.picked ? 'sel' : '',
+      gradeStyle: d.grade === '1' ? warn + ' font-weight: 600;' : '',
+      stateStyle: d.state === 'Odmowa podpisu' || d.next.indexOf('po terminie') >= 0 ? warn : '',
+      pick: () => this.setState({ picked: shownData[k].i, open: null })
+    }));
+    const allRows = data.map((d) => ({ ...d, gradeStyle: d.grade === '1' ? warn + ' font-weight: 600;' : '' }));
+    const DET = [
+      { present: 'bryg. Paweł Cis — Dowódca JRG', parts: [['I. Alarmowanie', 7, 10], ['II. Gotowość ratowników', 8, 8], ['III. Pojazdy i sprzęt', 13, 15], ['IV. Dokumentacja', 2, 2], ['V. Test wiedzy', 13, 15], ['VI. Ćwiczenie', 44, 50]], facts: [['Alarmowanie', '86 s', '2. zastęp · −1 pkt (pasy)'], ['Test wiedzy', 'śr. 12,83', '6 ratowników · 15 pytań'], ['Ćwiczenie', 'pożar budynku', 'wielorodzinnego · 2 błędy'], ['Zalecenia', '3', 'najbliższy termin 30.11']], flags: [] },
+      { present: 'dh Jan Wierzba — Naczelnik OSP', parts: [['I. Alarmowanie', 6, 10], ['II. Gotowość strażaków', 12, 20], ['III. Pojazdy, sprzęt, łączność', 13, 20], ['IV. Test wiedzy', 6, 10], ['V. Ćwiczenie', 24, 40]], facts: [['Alarmowanie', '6 min 40 s', '1. zastęp · 5 strażaków'], ['Test wiedzy', 'śr. 6,4', '5 strażaków · 10 pytań'], ['Ćwiczenie', 'pożar stodoły', '6 błędów'], ['Nieprawidłowości', '9', 'w tym sygnalizatory bezruchu']], flags: [] },
+      { present: 'bryg. Ewa Lipa — Dowódca JRG', parts: [['I. Alarmowanie', 9, 10], ['II. Gotowość ratowników', 8, 8], ['III. Pojazdy i sprzęt', 15, 15], ['IV. Dokumentacja', 2, 2], ['V. Test wiedzy', 14, 15], ['VI. Ćwiczenie', 46, 50]], facts: [['Alarmowanie', '74 s', '2. zastęp · bez karnych'], ['Test wiedzy', 'śr. 13,7', '7 ratowników'], ['Ćwiczenie', 'wypadek drogowy', '2 auta, 3 poszkodowanych'], ['Odmowa podpisu', 'tak', 'powody do 15.11']], flags: [] },
+      { present: 'mł. bryg. Olga Ryż — Kierownik SK', parts: [['I. Obsada osobowa', 7, 7], ['II. Test wiedzy', 9, 10], ['III. Obszary i potencjał', 20, 22], ['IV. Dokumentacja w SK', 27, 28], ['V. Wyposażenie i aplikacje', 18, 19], ['VI. Dokumentacja SWD', 5, 5], ['VII. Ćwiczenie aplikacyjne', 29, 32]], facts: [['Obsada', '3 / 3', 'zgodna z harmonogramem'], ['Test wiedzy', 'śr. 9,3', '3 dyżurnych'], ['Ćwiczenie', 'powódź', 'aplikacyjne · Bug'], ['Max', '123 pkt', 'próg 6 od 119']], flags: [] },
+      { present: 'kpt. Marek Grab — Dowódca zmiany', parts: [['I. Alarmowanie', 0, 10]], facts: [['Alarmowanie', '312 s', 'powyżej 300 s'], ['Pozostałe działy', 'nie oceniano', 'zakończono po BK'], ['Ponowna', 'do 03.12', 'ta sama zmiana III'], ['Doraźne działania', 'tak', 'zapewniono gotowość SiŚ']], flags: ['BK · czas wyjazdu 312 s > 300 s — ocena niedostateczna'] },
+      { present: 'st. kpt. Adam Jawor — Dowódca pododdziału', parts: [], facts: [['Kategorie', '15', 'lista kontrolna z tabeli 6'], ['Nieprawidłowości', '2', 'samowystarczalność 36 h, dane radiowe'], ['Stan osobowy', '28 / 28', 'zgodny z kartą danych'], ['Pojazdy', '7 / 7', 'zgodne z dokumentacją COO']], flags: [] },
+      { present: 'mł. kpt. Iza Klon — Dowódca zmiany', parts: [['I. Alarmowanie', 9, 10]], facts: [['Przerwanie', '10:42', 'wyjazd do pożaru hali (§16)'], ['Ocenione', 'dział I', 'pozostałe po powrocie sił'], ['Alarmowanie', '78 s', '2. zastęp'], ['Wznowienie', 'do ustalenia', 'ta sama zmiana II']], flags: [] },
+      { present: 'kpt. Rafał Owies — Kierownik SK', parts: [['I. Obsada osobowa', 6, 7], ['II. Test wiedzy', 8, 10], ['III. Obszary i potencjał', 19, 22], ['IV. Dokumentacja w SK', 25, 28], ['V. Wyposażenie i aplikacje', 17, 19], ['VI. Dokumentacja SWD', 4, 5], ['VII. Ćwiczenie aplikacyjne', 25, 32]], facts: [['Obsada', '2 / 2', '1 bez „dopuszczenia” UKF'], ['Test wiedzy', 'śr. 8,0', '2 dyżurnych'], ['Ćwiczenie', 'wyciek amoniaku', 'zakład w Puławach'], ['Max', '123 pkt', 'próg 4 od 99']], flags: [] },
+      { present: 'dh Ryszard Klon — Naczelnik OSP', parts: [['I. Alarmowanie', 8, 10], ['II. Gotowość strażaków', 16, 20]], facts: [['Alarmowanie', '5 min 50 s', '1. zastęp · 6 strażaków'], ['Etap', 'dział III', 'pojazdy i sprzęt'], ['Zespół', '2 osoby', 'KP PSP Puławy'], ['Szkic', 'widzi zespół', 'do zakończenia IGO']], flags: [] }
+    ];
+    const det = DET[this.state.picked];
+    const cur = { ...allRows[this.state.picked], present: det.present };
+    const parts = det.parts.map((x) => ({ label: x[0], val: x[1], max: x[2], bar: 'display: block; height: 6px; width: ' + Math.round((x[1] / x[2]) * 100) + '%; background: ' + (x[1] / x[2] < 0.5 ? '#b3261e' : '#1c2427') + ';' }));
+    const facts = det.facts.map((x) => ({ k: x[0], v: x[1], s: x[2] }));
+    const open = cur.state === 'W toku' || cur.state === 'Przerwana';
+    const late = cur.next.indexOf('wystąpienie') >= 0;
+    const paper = (dark) => 'position: relative; flex: none; width: 52px; height: 72px; box-sizing: border-box; padding: 7px 6px; background: #ffffff; box-shadow: 0 1px 0 #b4bec3, 0 0 0 1px #d3dadd;' + (dark ? '' : ' opacity: .55;');
+    const stamp = (on) => on ? 'position: absolute; right: 5px; bottom: 6px; width: 12px; height: 12px; border: 2px solid #1c2427; transform: rotate(-12deg);' : 'display: none;';
+    const ok = '';
+    const mut = 'color: #535f65;';
+    const docs = [
+      { title: 'Upoważnienie i karty', meta: cur.auth, link: 'upowaznienie.html', st: 'wystawione', stStyle: ok, paper: paper(true), stamp: stamp(true) },
+      { title: 'Protokół z inspekcji', meta: open ? 'powstaje w kreatorze' : 'PDF · DOCX · 3 strony', link: 'protokol.html', st: open ? 'w przygotowaniu' : cur.state === 'Odmowa podpisu' ? 'odmowa podpisu' : 'gotowy', stStyle: open ? mut : cur.state === 'Odmowa podpisu' ? warn : ok, paper: paper(!open), stamp: stamp(false) },
+      { title: 'Skan podpisanego protokołu', meta: cur.scan, link: 'protokol-ocena.html', st: cur.scan.indexOf('wgrany') === 0 ? 'podpisany' : 'do wgrania', stStyle: cur.scan.indexOf('wgrany') === 0 ? ok : mut, paper: paper(cur.scan.indexOf('wgrany') === 0), stamp: stamp(cur.scan.indexOf('wgrany') === 0) },
+      { title: 'Wystąpienie poinspekcyjne', meta: open ? 'po protokole' : 'termin 14 dni od protokołu', link: 'wystapienie.html', st: late ? 'po terminie' : open ? '—' : 'projekt', stStyle: late ? warn : mut, paper: paper(!open), stamp: stamp(false) }
+    ];
+    return { parts, hasParts: parts.length > 0, facts, flags: det.flags, rows, cur, docs, docCount: open ? 4 : 7, cols, empty: rows.length === 0, anyFilter, clearAll: () => this.setState({ f: {}, open: null }), countLine: rows.length + ' z ' + data.length + ' inspekcji' };
+  }
+}
+
+(function () {
+  const props = {};
+  const applyTheme = () => document.body.classList.toggle('dark', props.theme === 'ciemny');
+  const board = mountBoard(document.getElementById('board'), document.getElementById('board-template'), Component, props);
+  applyTheme();
+  document.querySelectorAll('.cbar select[data-prop]').forEach((select) => select.addEventListener('change', () => {
+    props[select.dataset.prop] = select.value;
+    board.setProps({ [select.dataset.prop]: select.value });
+    applyTheme();
+  }));
+})();
+</script>
+</body>
+</html>

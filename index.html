@@ -8,25 +8,40 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
-:root{--bg:#ebeef0;--fg:#1c2427;--mut:#535f65;--line:#d3dadd}
-@media (prefers-color-scheme: dark){:root{--bg:#121518;--fg:#e6ecee;--mut:#a9b3b8;--line:#363d43}}
+:root{--bg:#ebeef0;--fg:#1c2427;--mut:#535f65;--card:#ffffff;--card-0:rgba(255,255,255,0);--card-70:rgba(255,255,255,.7);--art:.35}
+@media (prefers-color-scheme: dark){:root{--bg:#121518;--fg:#e6ecee;--mut:#a9b3b8;--card:#1d2327;--card-0:rgba(29,35,39,0);--card-70:rgba(29,35,39,.7);--art:.14}}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.5 'Instrument Sans',ui-sans-serif,system-ui,sans-serif}
-main{max-width:960px;margin:0 auto;padding:56px 16px 80px;display:flex;flex-direction:column;gap:32px}
+main{max-width:1280px;margin:0 auto;padding:56px clamp(16px,4vw,40px) 80px;box-sizing:border-box;display:flex;flex-direction:column;gap:clamp(48px,5.6vw,72px)}
 .eyebrow{margin:0;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
-h1{margin:8px 0 0;font-size:36px;line-height:1.15;font-weight:600;letter-spacing:-.01em}
-ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--fg)}
-li{padding:24px 0;border-bottom:1px solid var(--line)}
-h2{margin:0;font-size:22px;font-weight:600}
-li p{margin:8px 0 0;color:var(--mut);max-width:70ch}
-.links{display:flex;flex-wrap:wrap;gap:8px 24px}
-a{color:var(--fg);font-weight:600;text-underline-offset:3px}
-a:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+h1{margin:8px 0 0;font-size:clamp(28px,3vw,40px);line-height:1.1;font-weight:600;letter-spacing:-.015em}
+section{display:flex;flex-direction:column;gap:16px}
+h2{margin:0;padding-bottom:12px;border-bottom:1px solid var(--fg);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (min-width:640px){.grid{grid-template-columns:repeat(auto-fill,minmax(max(220px,calc((100% - 37px)/4)),1fr));gap:12px}}
+.grid li{display:flex;min-width:0}
+.tile{position:relative;isolation:isolate;flex:1;display:flex;flex-direction:column;justify-content:space-between;gap:16px;aspect-ratio:1/1;box-sizing:border-box;padding:16px;background:var(--card);color:var(--fg);text-decoration:none;overflow:hidden;transition:background-color .2s,color .2s}
+@media (min-width:640px){.tile{aspect-ratio:5/4;gap:20px;padding:clamp(18px,1.7vw,24px)}}
+.tile img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:78% center;opacity:var(--art);transition:opacity .2s}
+.tile .veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,var(--card) 12%,var(--card-70) 38%,var(--card-0) 70%);transition:opacity .2s}
+.tile:hover,.tile:focus-visible{background:var(--fg);color:var(--card);outline:none}
+.tile:focus-visible{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--fg)}
+.tile:hover img,.tile:focus-visible img{opacity:.1}
+.tile:hover .veil,.tile:focus-visible .veil{opacity:0}
+.top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.info{display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.meta{font-size:12px;font-variant-numeric:tabular-nums;opacity:.75}
+.new{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 7px;background:var(--fg);color:var(--card)}
+.tile:hover .new,.tile:focus-visible .new{background:var(--card);color:var(--fg)}
+.arrow{flex:none;fill:none;stroke:currentColor;stroke-width:1.25px;transition:transform .2s}
+.tile:hover .arrow{transform:translate(5px,-5px)}
+.ttl{font-size:clamp(17px,calc(1.4vw + 6px),26px);line-height:1.15;letter-spacing:-.015em;font-weight:500;text-wrap:balance;overflow-wrap:anywhere}
+@media (prefers-reduced-motion:reduce){.tile,.tile img,.tile .veil,.arrow{transition:none}}
 </style>
 </head>
 <body>
 <main>
 <header><p class="eyebrow">Państwowa Straż Pożarna · Reports</p><h1>Lista elementów do wprowadzenia</h1></header>
-<ul><li><h2>Karta jednostki OSP KSRG</h2><p>Karta jednej OSP z danymi z SWD-PSP poprawianymi przez KP, wymaganiami minimalnymi, IGO i wyjazdowością oraz kreator wniosku o włączenie, ponowne włączenie albo wyłączenie z KSRG z obiegiem KP → KW → KG.</p><p class="links"><a href="osp-ksrg/karta.html">Karta jednostki →</a><a href="osp-ksrg/wnioski.html">Wnioski KSRG →</a></p></li><li><h2>Działania międzynarodowe</h2><p>Zasób Działania międzynarodowe w obecnym UI Reports, do przeklikania z poziomu KG, KW, KP albo członka modułu. Moduły GFFF, GFFFV, USAR, DSIM i HCP z pulpitem i kalendarzem dysponowania, sprzętem, psami (USAR), dyżurami z obsadą przeciąganą na schemat i konfiguracją wyjazdu; dokumenty wyjazdu do pobrania.</p><p class="links"><a href="dzialania-miedzynarodowe/index.html">Otwórz →</a></p></li></ul>
+<section aria-label="Planowanie operacyjne"><h2>Planowanie operacyjne</h2><ul class="grid"><li><a class="tile" href="igo/" title="IGO według zarządzenia nr 5 KG PSP (zm. nr 14): pulpit, zestawienie, plan i sprawozdanie, kreator inspekcji JRG liczący ocenę (stoper, BK/BKZ, test, ćwiczenie, korekta ±10), szkice widoczne tylko dla zespołu i e-dokumenty: upoważnienie, protokół, wystąpienie poinspekcyjne."><img src="assets/tiles/exercise_monitoring.jpg" alt="" loading="lazy" decoding="async"><span class="veil" aria-hidden="true"></span><span class="top"><span class="info"><span class="new">Nowe</span><span class="meta">14 plansz · 9 listopada 2026 r.</span></span><svg class="arrow" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1.5 16.5L16.5 1.5M5.5 1.5h11v11"/></svg></span><span class="ttl">Inspekcje gotowości operacyjnej</span></a></li><li><a class="tile" href="osp-ksrg/karta.html" title="Karta jednej OSP z danymi z SWD-PSP poprawianymi przez KP, wymaganiami minimalnymi, IGO i wyjazdowością oraz kreator wniosku o włączenie, ponowne włączenie albo wyłączenie z KSRG z obiegiem KP → KW → KG."><img src="assets/tiles/fire_units.jpg" alt="" loading="lazy" decoding="async"><span class="veil" aria-hidden="true"></span><span class="top"><span class="info"><span class="meta">2 plansze · 4 listopada 2026 r.</span></span><svg class="arrow" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1.5 16.5L16.5 1.5M5.5 1.5h11v11"/></svg></span><span class="ttl">Karta jednostki OSP KSRG</span></a></li></ul></section><section aria-label="Działania międzynarodowe"><h2>Działania międzynarodowe</h2><ul class="grid"><li><a class="tile" href="dzialania-miedzynarodowe/" title="Zasób Działania międzynarodowe w obecnym UI Reports, do przeklikania z poziomu KG, KW, KP albo członka modułu. Moduły GFFF, GFFFV, USAR, DSIM i HCP z pulpitem i kalendarzem dysponowania, sprzętem, psami (USAR), dyżurami z obsadą przeciąganą na schemat i konfiguracją wyjazdu; dokumenty wyjazdu do pobrania."><img src="assets/tiles/usar.jpg" alt="" loading="lazy" decoding="async"><span class="veil" aria-hidden="true"></span><span class="top"><span class="info"><span class="meta">182 plansze · 9 listopada 2026 r.</span></span><svg class="arrow" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M1.5 16.5L16.5 1.5M5.5 1.5h11v11"/></svg></span><span class="ttl">Działania międzynarodowe</span></a></li></ul></section>
 <p class="eyebrow">Wszystkie dane na planszach są przykładowe.</p>
 </main>
 </body>

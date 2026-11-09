@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>IGO — kreator inspekcji i szkice</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Roboto+Condensed:wght@400;700&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,200,0,0&amp;display=block">
+<style>
+body{margin:0;background:#ebeef0}
+a{color:#1c2427}a:hover{color:#535f65}
+.eb{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#535f65}
+.tab{display:inline-block;margin:0 32px -1px 0;padding:12px 0;border-bottom:2px solid transparent;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#535f65;text-decoration:none}
+.tab[aria-current="page"]{color:#1c2427;border-bottom-color:#1c2427}
+.ms{font-family:"Material Symbols Outlined";font-weight:200;font-style:normal;font-size:22px;line-height:1;letter-spacing:normal;text-transform:none;white-space:nowrap;-webkit-font-smoothing:antialiased;font-feature-settings:"liga"}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 20px;background:#1c2427;color:#ebeef0;font:inherit;font-size:14px;font-weight:600;border:0;cursor:pointer;text-decoration:none}
+.btn:hover{color:#ebeef0;opacity:.85}
+.btn:disabled{opacity:.35;cursor:default}
+.ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border:1px solid #1c2427;color:#1c2427;font:inherit;font-size:14px;font-weight:500;background:none;cursor:pointer;text-decoration:none}
+.ghost:disabled{opacity:.35;cursor:default}
+.draft{display:flex;flex-direction:column;gap:8px;min-width:240px;flex:1 1 240px;padding:16px;border:1px solid #b4bec3;background:none;font:inherit;color:#1c2427;text-align:left;cursor:pointer}
+.draft.cur{border:2px solid #1c2427;padding:15px;background:#e1e6e9}
+.draft.new{justify-content:center;align-items:center;color:#535f65;flex:0 1 200px;min-width:200px}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-bottom:1px solid #d3dadd}
+.steps button{display:flex;gap:12px;align-items:center;min-height:64px;padding:10px 12px 10px 0;border:0;border-bottom:3px solid transparent;margin-bottom:-1px;background:none;font:inherit;font-size:15px;color:#535f65;text-align:left;cursor:pointer}
+.steps button.cur{border-bottom-color:#1c2427;color:#1c2427;font-weight:600}
+.steps button.done{color:#1c2427}
+.steps .n{width:30px;height:30px;flex:none;display:inline-flex;align-items:center;justify-content:center;border:1.5px solid currentColor;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.steps button.cur .n{background:#1c2427;color:#ebeef0;border-color:#1c2427}
+.steps button.done .n{background:#1c2427;color:#ebeef0;border-color:#1c2427}
+.sub{display:flex;gap:16px;align-items:center;width:100%;min-height:64px;padding:12px 16px;border:0;border-top:1px solid #d3dadd;background:none;font:inherit;color:#1c2427;text-align:left;cursor:pointer}
+.sub:hover{background:#e1e6e9}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#535f65}
+.fld input,.fld textarea{min-height:44px;border:1px solid #b4bec3;background:#ebeef0;padding:0 10px;font:inherit;font-size:14px;color:#1c2427;border-radius:0;box-sizing:border-box;width:100%}
+.fld textarea{padding:10px;min-height:96px}
+.ck{display:flex;gap:12px;align-items:center;padding:12px 0;border-top:1px solid #d3dadd;font-size:14px;cursor:pointer}
+.ck input{width:20px;height:20px;margin:0;accent-color:#1c2427}
+.tag{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;padding:2px 6px;border:1px solid #1c2427;white-space:nowrap}
+.tb{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.tb th{font-size:12px;font-weight:500;color:#535f65;text-align:left;padding:8px;border-bottom:1px solid #d3dadd}
+.tb td{padding:10px 8px;border-bottom:1px solid #d3dadd;vertical-align:top}
+.pg{font-family:'Roboto Condensed','Arial Narrow',sans-serif;color:#111;background:#fff}
+.pg p{margin:0}
+.pg .row{display:grid;grid-template-columns:22% minmax(0,1fr);gap:12px;border-top:1px solid #c8c8c8;padding:6px 0;font-size:12.5px}
+.pg .row b{font-size:11px}
+</style>
+</helmet>
+<div style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #1c2427; background: #ebeef0; min-height: 100%;">
+<main style="max-width: 1360px; margin: 0 auto; padding: 48px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+<header>
+
+<h1 style="margin: 6px 0 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em;">Inspekcje gotowości operacyjnej</h1>
+<p style="margin: 8px 0 0; font-size: 14px; color: #535f65;">KW PSP w Lublinie · 2026</p>
+</header>
+<nav aria-label="Widok modułu" style="display: flex; flex-wrap: wrap; border-bottom: 1px solid #d3dadd; margin-top: -8px;">
+<a class="tab" href="Main.dc.html">Pulpit</a>
+<a class="tab" href="Zestawienie.dc.html">Zestawienie</a>
+<a class="tab" href="Plan.dc.html">Plan</a>
+<a class="tab" aria-current="page" href="Dokumenty.dc.html">Dokumenty</a>
+<a class="tab" href="Test.dc.html">Baza pytań</a>
+</nav>
+
+<section aria-label="Moje szkice inspekcji" style="display: flex; flex-direction: column; gap: 14px;">
+<p class="eb">Moje szkice</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px;">
+<sc-for list="{{ drafts }}" as="d" hint-placeholder-count="3">
+<button type="button" class="{{ d.cls }}" aria-pressed="{{ d.on }}" onClick="{{ d.pick }}">
+<span style="display: flex; justify-content: space-between; gap: 12px; align-items: baseline;"><span style="font-size: 12px; color: #535f65;">{{ d.kind }} · {{ d.when }}</span><span class="tag" style="{{ d.tagStyle }}">{{ d.vis }}</span></span>
+<span style="font-size: 17px; font-weight: 600;">{{ d.unit }}</span>
+<span style="display: flex; gap: 4px;"><sc-for list="{{ d.bar }}" as="b"><span style="{{ b.s }}"></span></sc-for></span>
+<span style="font-size: 13px; color: #535f65;">{{ d.stageName }}</span>
+</button>
+</sc-for>
+<button type="button" class="draft new" onClick="{{ addDraft }}"><span class="ms" aria-hidden="true">add</span><span style="font-size: 14px;">Nowy szkic</span></button>
+</div>
+</section>
+
+<section aria-labelledby="wiz-title" style="display: flex; flex-direction: column; gap: 24px; border-top: 2px solid #1c2427; padding-top: 24px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px 24px;">
+<div>
+<p class="eb">{{ cur.kind }} · {{ cur.when }}</p>
+<h2 id="wiz-title" style="margin: 6px 0 0; font-size: 28px; font-weight: 600; letter-spacing: -0.01em;">{{ cur.unit }}</h2>
+</div>
+<sc-if value="{{ canDelete }}" hint-placeholder-val="{{ true }}"><button type="button" class="ghost" onClick="{{ askDelete }}"><span class="ms" aria-hidden="true">delete</span>Usuń szkic</button></sc-if>
+</div>
+<sc-if value="{{ delAsk }}" hint-placeholder-val="{{ false }}">
+<div role="alertdialog" aria-label="Usunięcie szkicu" style="display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; padding: 16px 20px; border: 2px solid #b3261e; background: #ffffff;">
+<p style="margin: 0; flex: 1 1 360px; font-size: 14px;"><strong>Usunąć szkic „{{ cur.unit }}”?</strong> Znikną dane i dokumenty szkicu, także u członków zespołu. Tego nie da się cofnąć.</p>
+<button type="button" class="btn" style="background: #b3261e;" onClick="{{ doDelete }}">Usuń szkic</button>
+<button type="button" class="ghost" onClick="{{ cancelDelete }}">Anuluj</button>
+</div>
+</sc-if>
+
+<nav aria-label="Etapy inspekcji" class="steps">
+<sc-for list="{{ stages }}" as="s" hint-placeholder-count="5"><button type="button" class="{{ s.cls }}" aria-current="{{ s.aria }}" onClick="{{ s.pick }}"><span class="n">{{ s.no }}</span>{{ s.label }}</button></sc-for>
+</nav>
+
+<div style="display: flex; flex-direction: column; border-bottom: 1px solid #d3dadd;">
+<sc-for list="{{ subs }}" as="u" hint-placeholder-count="5">
+<sc-if value="{{ u.closed }}" hint-placeholder-val="{{ true }}">
+<button type="button" class="sub" onClick="{{ u.pick }}"><span class="ms" aria-hidden="true" style="{{ u.iconStyle }}">{{ u.icon }}</span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; font-weight: 600">{{ u.title }}</span></span><span class="ms" aria-hidden="true" style="color: #535f65">expand_more</span>
+</button>
+</sc-if>
+<sc-if value="{{ u.isOpen }}" hint-placeholder-val="{{ false }}">
+<div style="border-top: 2px solid #1c2427; padding: 20px 16px 28px; background: #e1e6e9; display: flex; flex-wrap: wrap; gap: 28px 40px; align-items: flex-start;">
+<div style="flex: 999 1 380px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; gap: 12px; align-items: center;"><span class="ms" aria-hidden="true" style="font-size: 28px;">{{ u.icon }}</span><div><p style="margin: 0; font-size: 20px; font-weight: 600;">{{ u.title }}</p><p style="margin: 2px 0 0; font-size: 13px; color: #535f65;">{{ u.basis }}</p></div></div>
+<sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
+<sc-if value="{{ f.isText }}" hint-placeholder-val="{{ true }}"><label class="fld">{{ f.label }}<input type="text" value="{{ f.v }}" onChange="{{ f.set }}"></label></sc-if>
+<sc-if value="{{ f.isArea }}" hint-placeholder-val="{{ false }}"><label class="fld">{{ f.label }}<textarea value="{{ f.v }}" onChange="{{ f.set }}"></textarea></label></sc-if>
+</sc-for>
+<sc-if value="{{ isTeam }}" hint-placeholder-val="{{ false }}">
+<div>
+<sc-for list="{{ team }}" as="t" hint-placeholder-count="5">
+<label class="ck"><input type="checkbox" checked="{{ t.on }}" onChange="{{ t.toggle }}"><span style="flex: 1;">{{ t.name }}<span style="display: block; font-size: 12px; color: #535f65;">{{ t.role }}</span></span><span class="tag" style="{{ t.accStyle }}">{{ t.acc }}</span></label>
+</sc-for>
+<sc-if value="{{ teamShort }}" hint-placeholder-val="{{ false }}"><p style="margin: 10px 0 0; font-size: 13px; color: #b3261e;">Co najmniej dwóch strażaków, przewodniczy oficer (§6).</p></sc-if>
+</div>
+</sc-if>
+<sc-if value="{{ isScore }}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: flex-end;">
+<div><p class="eb">Punkty</p><p style="margin: 6px 0 0; font-size: 44px; line-height: 1; font-weight: 600;">87</p></div>
+<div><p class="eb">Ocena</p><p style="margin: 6px 0 0; font-size: 22px; font-weight: 600;">4 dobry</p></div>
+<a class="btn" href="Kreator.dc.html"><span class="ms" aria-hidden="true">fact_check</span>Otwórz ocenę działów I–VI</a>
+</div>
+</sc-if>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+<sc-if value="{{ u.isDoc }}" hint-placeholder-val="{{ true }}"><button type="button" class="btn" onClick="{{ u.gen }}" disabled="{{ teamShort }}"><span class="ms" aria-hidden="true">picture_as_pdf</span>Generuj PDF</button><button type="button" class="ghost" onClick="{{ u.gen }}" disabled="{{ teamShort }}"><span class="ms" aria-hidden="true">description</span>DOCX</button></sc-if>
+<button type="button" class="ghost" onClick="{{ u.next }}">{{ u.nextLabel }}<span class="ms" aria-hidden="true">arrow_forward</span></button>
+</div>
+<sc-if value="{{ u.done }}" hint-placeholder-val="{{ false }}"><p style="margin: 0; font-size: 14px;">{{ u.doneLine }}</p></sc-if>
+</div>
+<sc-if value="{{ u.isDoc }}" hint-placeholder-val="{{ true }}">
+<div style="flex: 0 0 424px; max-width: 100%;">
+<div style="width: 422px; height: 596px; overflow: hidden; border: 1px solid #b4bec3; background: #ffffff;">
+<div class="pg" style="width: 794px; height: 1123px; box-sizing: border-box; padding: 37px 43px 40px; transform: scale(0.53); transform-origin: 0 0; font-size: 13px; line-height: 1.38; display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 24px;">
+<div style="display: flex; align-items: center; gap: 10px;">
+<img src="../assets/godlo-rp-kontur.svg" alt="Godło Rzeczypospolitej Polskiej" style="width: 41px; height: 42px; object-fit: contain;">
+<div style="font-size: 10px; line-height: 1.05; font-weight: 700; letter-spacing: 0.04em;">
+<p>KOMENDA WOJEWÓDZKA</p>
+<p>PAŃSTWOWEJ STRAŻY POŻARNEJ</p>
+<p>W LUBLINIE</p>
+</div>
+</div>
+<p style="padding-top: 2px; font-size: 11px;">{{ pv.place }}</p>
+</div>
+<div style="border-bottom: 2px solid #111; padding: 12px 0 6px;">
+<p style="font-size: 17px; font-weight: 700; letter-spacing: .02em; line-height: 1.1;">{{ pv.title }}</p>
+<p style="margin-top: 3px;">{{ pv.sub }}</p>
+</div>
+<p style="white-space: pre-line;">{{ pv.intro }}</p>
+<sc-if value="{{ pv.withTeam }}" hint-placeholder-val="{{ true }}"><div><sc-for list="{{ teamOn }}" as="t" hint-placeholder-count="3"><p style="padding: 4px 0; border-bottom: 1px solid #e3e3e3;">{{ t.no }}. {{ t.name }} — {{ t.fn }}</p></sc-for></div></sc-if>
+<sc-for list="{{ pv.rows }}" as="r" hint-placeholder-count="4"><div class="row"><b>{{ r.k }}</b><span style="white-space: pre-line;">{{ r.v }}</span></div></sc-for>
+<p style="white-space: pre-line;">{{ pv.outro }}</p>
+<div style="display: flex; justify-content: flex-end; margin-top: 28px;"><p style="width: 280px; border-top: 1px solid #111; padding-top: 3px; text-align: center;">{{ pv.sign }}</p></div>
+</div>
+</div>
+</div>
+</sc-if>
+</div>
+</sc-if>
+</sc-for>
+</div>
+
+<div style="display: flex; justify-content: space-between; gap: 12px;">
+<button type="button" class="ghost" onClick="{{ prevStage }}" disabled="{{ isFirst }}"><span class="ms" aria-hidden="true">arrow_back</span>{{ prevLabel }}</button>
+<button type="button" class="btn" onClick="{{ nextStage }}" disabled="{{ isLast }}">{{ nextLabel }}<span class="ms" aria-hidden="true">arrow_forward</span></button>
+</div>
+</section>
+
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.STAGES = ['Przygotowanie inspekcji', 'Inspekcja', 'Ocena', 'Protokół i podpisy', 'Po inspekcji'];
+    this.SUBS = [
+      ['unit', 0, 'Podmiot i termin', 'flag', '', false, [['unit', 'Podmiot', 'text', 'Ochotnicza Straż Pożarna w Nałęczowie (KSRG)'], ['kind', 'Rodzaj', 'text', 'OSP w KSRG · zał. 6, protokół zał. 9'], ['from', 'Termin od', 'text', '12.11.2026'], ['to', 'Termin do', 'text', '20.11.2026']]],
+      ['team', 0, 'Zespół inspekcyjny', 'groups', '§ 6–8', false, []],
+      ['auth', 0, 'Upoważnienie do przeprowadzenia IGO', 'verified', 'Załącznik nr 2 · podpisuje zarządzający', true, [['no', 'Numer upoważnienia', 'text', '42/2026'], ['scope', 'Zakres inspekcji', 'area', 'Alarmowanie; gotowość strażaków ratowników OSP; gotowość pojazdów, sprzętu ratowniczego i łączności; aktualność dokumentacji; stan wiedzy; ćwiczenie praktyczne; stan techniczny strażnicy — § 13 zarządzenia i metodyka z załącznika nr 6.']]],
+      ['exercise', 0, 'Założenie do ćwiczenia', 'local_fire_department', 'Załącznik nr 3 pkt 1.5', true, [['kindEv', 'Rodzaj zdarzenia', 'text', 'Pożar stodoły z zagrożeniem budynku mieszkalnego'], ['desc', 'Opis sytuacyjny', 'area', 'Nałęczów, ul. Lipowa 8. Pożar stodoły, wiatr w kierunku domu mieszkalnego, w budynku osoba starsza.'], ['sim', 'Pozoracja', 'text', '1 pozorant, wytwornica dymu']]],
+      ['tests', 0, 'Testy wiedzy i klucz', 'quiz', '§ 15 · 10 pytań z bazy KG', true, [['groups', 'Liczba testów', 'text', 'dowódcy 1 · ratownicy 3 · kierowcy 1'], ['mode', 'Forma', 'text', 'na papierze (generator)']]],
+      ['start', 1, 'Powiadomienie SK o rozpoczęciu', 'call', '§ 10', true, [['to', 'Stanowisko kierowania', 'text', 'SK KP PSP w Puławach'], ['time', 'Godzina', 'text', '12.11.2026, 17:30']]],
+      ['consent', 1, 'Zgoda na rejestrację obrazu', 'videocam', '§ 18 ust. 1–3 · opcjonalnie', true, [['list', 'Uczestnicy', 'area', 'dh Piotr Zięba\ndh Anna Grab\ndh Tomasz Jarząb\ndh Kamil Brzoza\ndh Ewa Wiąz']]],
+      ['stop', 1, 'Przerwanie lub odstąpienie', 'pause_circle', '§ 9 ust. 3 · § 16 · tylko gdy wystąpi', true, [['reason', 'Przyczyna', 'area', '']]],
+      ['score', 2, 'Ocena działów I–V', 'fact_check', 'Metodyka z załącznika nr 6', false, []],
+      ['protocol', 3, 'Protokół z inspekcji (2 egz.)', 'article', 'Załącznik nr 9 · do zarządzającego w 4 dni robocze', true, [['pages', 'Liczba stron', 'text', '4']]],
+      ['proposals', 3, 'Propozycje wniosków i zaleceń', 'checklist', 'Załącznik nr 3 pkt 3.4', true, [['list', 'Propozycje', 'area', '1. Uzupełnić sygnalizatory bezruchu — 31.12.2026\n2. Aktualizacja danych radiowych — 30.11.2026']]],
+      ['refusal', 3, 'Odmowa podpisu', 'block', '§ 18 ust. 9 · tylko przy odmowie', true, [['reasons', 'Powody', 'area', '']]],
+      ['speech', 4, 'Wystąpienie poinspekcyjne', 'send', '§ 18 ust. 11 · do wójta gminy, 14 dni', true, [['to', 'Adresat', 'text', 'Burmistrz Nałęczowa'], ['list', 'Wnioski i zalecenia', 'area', '1. Sygnalizatory bezruchu — 31.12.2026\n2. Dane radiowe — 30.11.2026']]],
+      ['done', 4, 'Informacja o realizacji zaleceń', 'task_alt', '§ 18 ust. 10 · od kierownika OSP', true, [['list', 'Stan realizacji', 'area', '']]]
+    ];
+    const values = {};
+    this.SUBS.forEach((u) => { values[u[0]] = {}; u[6].forEach((f) => { values[u[0]][f[0]] = f[3]; }); });
+    this.state = {
+      draft: 0, stage: 0, open: 'auth', values, docs: {}, history: [],
+      team: [true, true, false, true, false],
+      drafts: [
+        { unit: 'OSP Nałęczów', kind: 'OSP w KSRG', when: '12–20.11.2026', stage: 0, mine: true },
+        { unit: 'JRG 3 Lublin, zm. I', kind: 'JRG PSP', when: 'grudzień 2026', stage: 0, mine: true, solo: true },
+        { unit: 'SK KM PSP Biała Podlaska', kind: 'Stanowisko kierowania', when: '25.11.2026', stage: 1, mine: false }
+      ]
+    };
+  }
+  renderVals() {
+    const s = this.state;
+    const POOL = [['mł. bryg. Adam Lis', 'oficer · Ty', 'me'], ['st. kpt. Ewa Sowa', 'oficer · WKSR', 'acc'], ['kpt. Jan Kruk', 'oficer · Logistyka', 'none'], ['asp. sztab. Marek Dąb', 'aspirant · KP Puławy', 'acc'], ['dr Ewa Kos', 'ekspert zewnętrzny (§8)', 'none']];
+    const chosen = POOL.filter((p, i) => s.team[i]);
+    const withAcc = chosen.filter((p) => p[2] === 'acc');
+    const d = s.drafts[s.draft];
+    const solo = d.solo || withAcc.length === 0;
+    const drafts = s.drafts.map((x, i) => ({
+      ...x, on: i === s.draft, cls: 'draft' + (i === s.draft ? ' cur' : ''),
+      vis: x.solo ? 'tylko Ty' : x.mine ? 'Ty + zespół' : 'zespół',
+      tagStyle: x.solo ? '' : 'background: #1c2427; color: #ebeef0;',
+      stageName: 'Etap ' + (x.stage + 1) + ' z 5 · ' + this.STAGES[x.stage],
+      bar: this.STAGES.map((n, k) => ({ s: 'flex: 1; height: 4px; background: ' + (k <= x.stage ? '#1c2427' : '#c8ced1') + ';' })),
+      pick: () => this.setState({ draft: i, stage: x.stage, open: this.SUBS.find((u) => u[1] === x.stage)[0] })
+    }));
+    const stages = this.STAGES.map((label, i) => ({ label, no: i + 1, cls: i === s.stage ? 'cur' : i < s.stage ? 'done' : '', aria: i === s.stage ? 'step' : 'false', pick: () => this.setState({ stage: i, open: this.SUBS.find((u) => u[1] === i)[0] }) }));
+    const inStage = this.SUBS.filter((u) => u[1] === s.stage);
+    const v = s.values[s.open] || {};
+    const unitV = s.values.unit;
+    const gen = (u) => () => {
+      const no = u[0] === 'auth' ? s.values.auth.no : '—';
+      const when = '10.11.2026, 12:41';
+      this.setState({ docs: { ...s.docs, [u[0]]: when } });
+    };
+    const subs = inStage.map((u, k) => {
+      const isOpen = u[0] === s.open; const done = !!s.docs[u[0]];
+      const nextSub = inStage[k + 1];
+      return {
+        title: u[2], icon: u[3], basis: u[4], isDoc: u[5], isOpen, closed: !isOpen, done,
+        meta: done ? 'wygenerowano ' + s.docs[u[0]] : u[4],
+        st: u[5] ? (done ? 'gotowe' : 'do przygotowania') : (u[0] === 'score' ? '87 pkt · 4' : 'uzupełnione'),
+        stStyle: done || !u[5] ? '' : 'color: #535f65;',
+        iconStyle: done ? '' : 'color: #535f65;',
+        doneLine: done ? 'Wygenerowano ' + s.docs[u[0]] + (u[0] === 'auth' ? ' · nr ' + s.values.auth.no + ' w rejestrze upoważnień' : '') : '',
+        pick: () => this.setState({ open: u[0] }), gen: gen(u),
+        next: () => nextSub ? this.setState({ open: nextSub[0] }) : this.setState({ stage: Math.min(4, s.stage + 1), open: (this.SUBS.find((x) => x[1] === Math.min(4, s.stage + 1)) || u)[0] }),
+        nextLabel: nextSub ? 'Dalej: ' + nextSub[2] : (s.stage < 4 ? 'Dalej: ' + this.STAGES[s.stage + 1] : 'Zakończ')
+      };
+    });
+    const openSub = this.SUBS.find((u) => u[0] === s.open);
+    const fields = openSub[6].map((f) => ({ label: f[1], v: v[f[0]], isText: f[2] === 'text', isArea: f[2] === 'area', set: (e) => this.setState({ values: { ...s.values, [s.open]: { ...v, [f[0]]: e.target.value } } }) }));
+    const team = POOL.map((p, i) => ({ name: p[0], role: p[1], on: s.team[i], acc: p[2] === 'me' ? 'autor' : p[2] === 'acc' ? 'widzi szkic' : 'bez konta', accStyle: p[2] === 'none' ? 'border-color: #9aa5ab; color: #535f65;' : '', toggle: () => { if (p[2] === 'me') return; const t = s.team.slice(); t[i] = !t[i]; this.setState({ team: t }); } }));
+    const teamOn = chosen.map((p, i) => ({ no: i + 1, name: p[0], fn: i === 0 ? 'przewodniczący zespołu' : (p[2] === 'none' && p[1].indexOf('ekspert') >= 0 ? 'ekspert' : 'członek zespołu') }));
+    const teamShort = chosen.length < 2;
+    const KW = 'Komendant Wojewódzki PSP w Lublinie';
+    let pv;
+    if (s.open === 'auth') {
+      pv = { title: 'UPOWAŻNIENIE NR ' + v.no, sub: 'do przeprowadzenia inspekcji gotowości operacyjnej', issuer: KW, place: 'Lublin, 10 listopada 2026 r.', withTeam: true,
+        intro: 'Na podstawie zarządzenia nr 5 Komendanta Głównego Państwowej Straży Pożarnej z dnia 17 lipca 2024 r. w sprawie sposobu przeprowadzania inspekcji gotowości operacyjnej podmiotów krajowego systemu ratowniczo-gaśniczego powołuję zespół inspekcyjny w składzie:',
+        rows: [{ k: 'Upoważniam do inspekcji w', v: unitV.unit }, { k: 'W terminie', v: 'od ' + unitV.from + ' do ' + unitV.to }, { k: 'Zakres inspekcji', v: v.scope }],
+        outro: 'Upoważnienie jest ważne po okazaniu legitymacji służbowej funkcjonariusza upoważnionego do przeprowadzania inspekcji gotowości operacyjnej.', sign: 'podpis zarządzającego inspekcję' };
+    } else {
+      const SIGN = { speech: 'podpis Komendanta Wojewódzkiego PSP', consent: 'podpisy uczestników ćwiczenia', refusal: 'podpis kierownika podmiotu', done: 'podpis kierownika podmiotu' };
+      pv = { title: openSub[2].toUpperCase(), sub: unitV.unit, issuer: s.open === 'refusal' || s.open === 'done' ? 'Naczelnik OSP w Nałęczowie' : KW, place: 'Lublin, 10 listopada 2026 r.', withTeam: s.open === 'protocol', intro: '',
+        rows: openSub[6].map((f) => ({ k: f[1], v: v[f[0]] || '……………………………………' })), outro: '', sign: SIGN[s.open] || 'podpis przewodniczącego zespołu' };
+    }
+    const visIcon = solo ? 'lock' : 'group';
+    const visLine = solo ? 'Szkic widzisz tylko Ty' : 'Szkic widzisz Ty i ' + withAcc.map((p) => p[0]).join(', ') + ' · do zakończenia IGO nikt poza zespołem';
+    return {
+      canDelete: !!d.mine, delAsk: !!s.delAsk, askDelete: () => this.setState({ delAsk: true }), cancelDelete: () => this.setState({ delAsk: false }),
+      doDelete: () => { const left = s.drafts.filter((x, k) => k !== s.draft); const nx = left.length ? left : [{ unit: 'Nowa inspekcja', kind: 'wybierz podmiot', when: 'bez terminu', stage: 0, mine: true, solo: true }]; this.setState({ drafts: nx, draft: 0, stage: nx[0].stage, open: this.SUBS.find((u) => u[1] === nx[0].stage)[0], delAsk: false }); },
+      drafts, cur: { unit: d.unit, kind: d.kind, when: d.when }, stages, subs, fields, team, teamOn, teamShort,
+      isTeam: s.open === 'team', isScore: s.open === 'score', pv, visIcon, visLine,
+      addDraft: () => this.setState({ drafts: s.drafts.concat([{ unit: 'Nowa inspekcja', kind: 'wybierz podmiot', when: 'bez terminu', stage: 0, mine: true, solo: true }]), draft: s.drafts.length, stage: 0, open: 'unit' }),
+      prevStage: () => this.setState({ stage: Math.max(0, s.stage - 1), open: this.SUBS.find((u) => u[1] === Math.max(0, s.stage - 1))[0] }),
+      nextStage: () => this.setState({ stage: Math.min(4, s.stage + 1), open: this.SUBS.find((u) => u[1] === Math.min(4, s.stage + 1))[0] }),
+      isFirst: s.stage === 0, isLast: s.stage === 4,
+      prevLabel: s.stage > 0 ? this.STAGES[s.stage - 1] : 'Wstecz', nextLabel: s.stage < 4 ? this.STAGES[s.stage + 1] : 'Koniec'
+    };
+  }
+}
+</script>
+</body>
+</html>

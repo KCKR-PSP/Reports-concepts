@@ -11,6 +11,7 @@ z SWD-PSP.
 
 | Koncepcja | Strony |
 |---|---|
+| Inspekcje gotowości operacyjnej | `igo/index.html` (pulpit), dalej zestawienie, plan, kreator inspekcji JRG krok po kroku (stoper, automatyczna ocena), szkice i dokumenty, reguły oceny, baza pytań, test na telefonie, powiadomienia, e-dokumenty (upoważnienie, protokół, wystąpienie poinspekcyjne) i widok podmiotu inspekcjonowanego |
 | Karta jednostki OSP KSRG | `osp-ksrg/karta.html` (karta jednostki), `osp-ksrg/wnioski.html` (kreator i obieg wniosku KSRG) |
 | Działania międzynarodowe | `dzialania-miedzynarodowe/index.html`: wybór poziomu (KG PSP, KW PSP Poznań, KP PSP Chodzież, członek modułu), dalej moduły GFFF, GFFFV, USAR, DSIM i HCP klikalne jak w aplikacji; poziom zmienia pasek „Widok”. Dokumenty wyjazdu (XLSX, PDF) w `dzialania-miedzynarodowe/dokumenty/`. Stary adres `grupy-miedzynarodowe/` przekierowuje |
 
@@ -22,8 +23,9 @@ Na górze każdej strony jest pasek koncepcji z przełącznikami:
 ## Struktura
 
 ```text
-index.html             lista koncepcji (generowana)
-osp-ksrg/*.html        strony koncepcji (generowane)
+index.html             lista koncepcji jako kafelki pogrupowane działami (generowana)
+<koncepcja>/*.html     strony koncepcji (generowane)
+assets/tiles/          ilustracje kafli (z Reports)
 assets/dc-runtime.js   mały silnik plansz: {{ }}, sc-for, sc-if, onClick/onChange, setState
 src/<koncepcja>/       plansze źródłowe (.dc.html) wyeksportowane z kanwy
 tools/build.py         generator stron

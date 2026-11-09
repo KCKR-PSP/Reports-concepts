@@ -79,6 +79,8 @@ body.dark{background:#121518}
 .cbar select{min-height:32px;padding:0 8px;border:1px solid #535f65;border-radius:0;background:#1c2427;color:#ebeef0;font:inherit}
 .cbar a:focus-visible,.cbar select:focus-visible{outline:2px solid #ebeef0;outline-offset:2px}
 @media (max-width: 760px){.cbar{position:static}}
+body.framed #board{display:flex;justify-content:center;padding:32px 16px 64px;overflow-x:auto}
+body.framed #board > *{flex:none;box-shadow:0 1px 2px rgba(28,36,39,.12),0 8px 32px rgba(28,36,39,.10)}
 </style>
 </head>
 <body>
@@ -151,31 +153,31 @@ body.dark{background:#121518}
 <div style="display:flex;flex-direction:column;gap:28px">
 <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #d3dadd;padding-bottom:12px"><span class="cz-h3" style="margin:0">Skład wyjazdu</span><span style="font-size:14px;color:#535f65">Osoby {{k.p}} · Pojazdy {{veh}} · Sprzęt {{k.s}}</span></div>
 <div class="sch">
-<div class="sch-top"><sc-for list="{{top}}" as="s" hint-placeholder-count="1"><div class="sch-card">
+<div class="sch-top"><template data-sc="for" list="{{top}}" as="s" hint-placeholder-count="1"><div class="sch-card">
 <div class="sch-ttl"><span class="sch-nr">{{s.nr}}</span><span>{{s.fn}}</span></div>
-<div class="{{s.cp}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropp}}" onClick="{{s.clickp}}"><sc-if value="{{s.emptyp}}"><span class="ob-plus">+</span><span class="e1">wolne</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasp}}"><span class="sch-ini">{{s.ini}}</span><span class="sch-who"><b>{{s.pname}}</b><small>{{s.punit}}</small></span><span class="ob-x" onClick="{{s.clearp}}">×</span></sc-if></div>
-<sc-if value="{{s.hasType}}"><div class="{{s.cv}}" data-kind="v" data-type="{{s.type}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><sc-if value="{{s.emptyv}}"><span class="ob-plus">+</span><span class="e1">{{s.type}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasv}}"><span class="sch-veh">{{s.type}}</span><span>{{s.vname}}</span><span class="ob-x" onClick="{{s.clearv}}">×</span></sc-if></div></sc-if>
-<sc-if value="{{s.warn}}"><div class="sch-warn">{{s.warnText}}</div></sc-if>
-</div></sc-for></div>
+<div class="{{s.cp}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropp}}" onClick="{{s.clickp}}"><template data-sc="if" value="{{s.emptyp}}"><span class="ob-plus">+</span><span class="e1">wolne</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></template><template data-sc="if" value="{{s.hasp}}"><span class="sch-ini">{{s.ini}}</span><span class="sch-who"><b>{{s.pname}}</b><small>{{s.punit}}</small></span><span class="ob-x" onClick="{{s.clearp}}">×</span></template></div>
+<template data-sc="if" value="{{s.hasType}}"><div class="{{s.cv}}" data-kind="v" data-type="{{s.type}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><template data-sc="if" value="{{s.emptyv}}"><span class="ob-plus">+</span><span class="e1">{{s.type}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></template><template data-sc="if" value="{{s.hasv}}"><span class="sch-veh">{{s.type}}</span><span>{{s.vname}}</span><span class="ob-x" onClick="{{s.clearv}}">×</span></template></div></template>
+<template data-sc="if" value="{{s.warn}}"><div class="sch-warn">{{s.warnText}}</div></template>
+</div></template></div>
 <div class="sch-stem"></div>
-<div class="sch-cols"><sc-for list="{{cols}}" as="col" hint-placeholder-count="4"><div class="sch-col"><div class="sch-head">{{col.name}}<span>{{col.count}}</span></div><div class="sch-slots"><sc-for list="{{col.slots}}" as="s" hint-placeholder-count="4"><div class="sch-card">
+<div class="sch-cols"><template data-sc="for" list="{{cols}}" as="col" hint-placeholder-count="4"><div class="sch-col"><div class="sch-head">{{col.name}}<span>{{col.count}}</span></div><div class="sch-slots"><template data-sc="for" list="{{col.slots}}" as="s" hint-placeholder-count="4"><div class="sch-card">
 <div class="sch-ttl"><span class="sch-nr">{{s.nr}}</span><span>{{s.fn}}</span></div>
-<div class="{{s.cp}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropp}}" onClick="{{s.clickp}}"><sc-if value="{{s.emptyp}}"><span class="ob-plus">+</span><span class="e1">wolne</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasp}}"><span class="sch-ini">{{s.ini}}</span><span class="sch-who"><b>{{s.pname}}</b><small>{{s.punit}}</small></span><span class="ob-x" onClick="{{s.clearp}}">×</span></sc-if></div>
-<sc-if value="{{s.hasType}}"><div class="{{s.cv}}" data-kind="v" data-type="{{s.type}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><sc-if value="{{s.emptyv}}"><span class="ob-plus">+</span><span class="e1">{{s.type}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></sc-if><sc-if value="{{s.hasv}}"><span class="sch-veh">{{s.type}}</span><span>{{s.vname}}</span><span class="ob-x" onClick="{{s.clearv}}">×</span></sc-if></div></sc-if>
-<sc-if value="{{s.warn}}"><div class="sch-warn">{{s.warnText}}</div></sc-if>
-</div></sc-for></div></div></sc-for></div>
+<div class="{{s.cp}}" data-kind="p" data-fn="{{s.fn}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropp}}" onClick="{{s.clickp}}"><template data-sc="if" value="{{s.emptyp}}"><span class="ob-plus">+</span><span class="e1">wolne</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></template><template data-sc="if" value="{{s.hasp}}"><span class="sch-ini">{{s.ini}}</span><span class="sch-who"><b>{{s.pname}}</b><small>{{s.punit}}</small></span><span class="ob-x" onClick="{{s.clearp}}">×</span></template></div>
+<template data-sc="if" value="{{s.hasType}}"><div class="{{s.cv}}" data-kind="v" data-type="{{s.type}}" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{s.dropv}}" onClick="{{s.clickv}}"><template data-sc="if" value="{{s.emptyv}}"><span class="ob-plus">+</span><span class="e1">{{s.type}}</span><span class="e2">upuść tutaj</span><span class="e3">pasuje · upuść</span></template><template data-sc="if" value="{{s.hasv}}"><span class="sch-veh">{{s.type}}</span><span>{{s.vname}}</span><span class="ob-x" onClick="{{s.clearv}}">×</span></template></div></template>
+<template data-sc="if" value="{{s.warn}}"><div class="sch-warn">{{s.warnText}}</div></template>
+</div></template></div></div></template></div>
 </div>
-<section style="margin-top:12px"><div class="sch-head">Sprzęt dodatkowy<span>{{k.s}}</span></div><div class="{{xcls}}" data-kind="s" style="min-height:100px;flex-wrap:wrap;align-items:flex-start;align-content:flex-start;gap:10px;padding:14px;margin-top:16px" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{dropx}}" onClick="{{clickx}}"><sc-for list="{{extra}}" as="x" hint-placeholder-count="3"><span class="ob-chip">{{x.name}}<small>{{x.mass}}</small><span class="ob-x" style="margin-left:6px" onClick="{{x.clear}}">×</span></span></sc-for><span class="ob-plus">+</span><span class="e1">przeciągnij sprzęt z listy</span><span class="e2">upuść tutaj</span><span class="e3">upuść tutaj</span></div></section>
+<section style="margin-top:12px"><div class="sch-head">Sprzęt dodatkowy<span>{{k.s}}</span></div><div class="{{xcls}}" data-kind="s" style="min-height:100px;flex-wrap:wrap;align-items:flex-start;align-content:flex-start;gap:10px;padding:14px;margin-top:16px" onDragOver="{{allow}}" onDragEnter="{{enter}}" onDragLeave="{{leave}}" onDrop="{{dropx}}" onClick="{{clickx}}"><template data-sc="for" list="{{extra}}" as="x" hint-placeholder-count="3"><span class="ob-chip">{{x.name}}<small>{{x.mass}}</small><span class="ob-x" style="margin-left:6px" onClick="{{x.clear}}">×</span></span></template><span class="ob-plus">+</span><span class="e1">przeciągnij sprzęt z listy</span><span class="e2">upuść tutaj</span><span class="e3">upuść tutaj</span></div></section>
 </div>
 <aside style="display:flex;flex-direction:column;gap:22px;background:rgb(255 255 255/.6);padding:24px 22px 28px">
-<div style="display:flex;border-bottom:1px solid #d3dadd"><sc-for list="{{ctabs}}" as="t" hint-placeholder-count="2"><span class="{{t.cls}}" onClick="{{t.pick}}" style="cursor:pointer">{{t.label}}</span></sc-for></div>
+<div style="display:flex;border-bottom:1px solid #d3dadd"><template data-sc="for" list="{{ctabs}}" as="t" hint-placeholder-count="2"><span class="{{t.cls}}" onClick="{{t.pick}}" style="cursor:pointer">{{t.label}}</span></template></div>
 <span class="inp" style="height:34px">Szukaj osoby lub pojazdu</span>
 <span style="font-size:13px;color:#535f65">{{hint}}</span>
-<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<template data-sc="for" list="{{groups}}" as="g" hint-placeholder-count="3">
 <div style="display:flex;flex-direction:column;gap:10px"><span class="lbl">{{g.unit}}</span>
-<sc-for list="{{g.items}}" as="p" hint-placeholder-count="3"><div class="{{p.cls}}" draggable="true" onDragStart="{{p.start}}" onDragEnd="{{p.end}}" onClick="{{p.pick}}" style="flex-direction:row;align-items:center;gap:10px"><span class="ob-cand-ini">{{p.ini}}</span><span style="display:flex;flex-direction:column;gap:1px;min-width:0"><b style="font-weight:600">{{p.name}}</b><span style="color:#535f65">{{p.sub}}</span></span></div></sc-for>
+<template data-sc="for" list="{{g.items}}" as="p" hint-placeholder-count="3"><div class="{{p.cls}}" draggable="true" onDragStart="{{p.start}}" onDragEnd="{{p.end}}" onClick="{{p.pick}}" style="flex-direction:row;align-items:center;gap:10px"><span class="ob-cand-ini">{{p.ini}}</span><span style="display:flex;flex-direction:column;gap:1px;min-width:0"><b style="font-weight:600">{{p.name}}</b><span style="color:#535f65">{{p.sub}}</span></span></div></template>
 </div>
-</sc-for>
+</template>
 </aside>
 </div>
 <div style="display:flex;align-items:center;gap:12px;padding-top:28px;border-top:1px solid rgb(28 36 39/.12)"><a class="pillb" href="hcp-wyjazd-krok1.html">← Wstecz</a><span style="flex:1"></span><span class="pillb">Zapisz szkic</span><a class="pillp" href="hcp-wyjazd-krok3.html">Dalej: kontrola →</a></div>

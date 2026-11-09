@@ -1,6 +1,107 @@
 {
   "concepts": [
     {
+      "id": "igo",
+      "title": "Inspekcje gotowości operacyjnej",
+      "section": "Planowanie operacyjne",
+      "art": "exercise_monitoring.jpg",
+      "updated": "9 listopada 2026 r.",
+      "new": true,
+      "description": "IGO według zarządzenia nr 5 KG PSP (zm. nr 14): pulpit, zestawienie, plan i sprawozdanie, kreator inspekcji JRG liczący ocenę (stoper, BK/BKZ, test, ćwiczenie, korekta ±10), szkice widoczne tylko dla zespołu i e-dokumenty: upoważnienie, protokół, wystąpienie poinspekcyjne.",
+      "boards": [
+        {
+          "source": "Main.dc.html",
+          "page": "index.html",
+          "title": "Pulpit",
+          "controls": []
+        },
+        {
+          "source": "Zestawienie.dc.html",
+          "page": "zestawienie.html",
+          "title": "Zestawienie",
+          "controls": []
+        },
+        {
+          "source": "Plan.dc.html",
+          "page": "plan.html",
+          "title": "Plan i sprawozdanie",
+          "controls": []
+        },
+        {
+          "source": "Dokumenty.dc.html",
+          "page": "dokumenty.html",
+          "title": "Szkice i dokumenty",
+          "controls": []
+        },
+        {
+          "source": "Kreator.dc.html",
+          "page": "kreator.html",
+          "title": "Kreator JRG",
+          "controls": []
+        },
+        {
+          "source": "Reguly.dc.html",
+          "page": "reguly.html",
+          "title": "Reguły oceny",
+          "controls": []
+        },
+        {
+          "source": "Test.dc.html",
+          "page": "baza-pytan.html",
+          "title": "Baza pytań",
+          "controls": []
+        },
+        {
+          "source": "TestTelefon.dc.html",
+          "page": "test-telefon.html",
+          "title": "Test na telefonie",
+          "controls": [],
+          "framed": true
+        },
+        {
+          "source": "Powiadomienia.dc.html",
+          "page": "powiadomienia.html",
+          "title": "Powiadomienia",
+          "controls": [],
+          "framed": true
+        },
+        {
+          "source": "Protokol1.dc.html",
+          "page": "protokol.html",
+          "title": "Protokół · str. 1",
+          "controls": [],
+          "framed": true
+        },
+        {
+          "source": "Protokol2.dc.html",
+          "page": "protokol-ocena.html",
+          "title": "Protokół · ocena",
+          "controls": [],
+          "framed": true
+        },
+        {
+          "source": "Upowaznienie.dc.html",
+          "page": "upowaznienie.html",
+          "title": "Upoważnienie",
+          "controls": [],
+          "framed": true
+        },
+        {
+          "source": "Wystapienie.dc.html",
+          "page": "wystapienie.html",
+          "title": "Wystąpienie poinspekcyjne",
+          "controls": [],
+          "framed": true
+        },
+        {
+          "source": "Podmiot.dc.html",
+          "page": "podmiot.html",
+          "title": "Widok podmiotu",
+          "controls": []
+        }
+      ]
+    },
+    {
       "id": "osp-ksrg",
       "title": "Karta jednostki OSP KSRG",
       "description": "Karta jednej OSP z danymi z SWD-PSP poprawianymi przez KP, wymaganiami minimalnymi, IGO i wyjazdowością oraz kreator wniosku o włączenie, ponowne włączenie albo wyłączenie z KSRG z obiegiem KP → KW → KG.",
@@ -24,7 +125,10 @@
             "rola"
           ]
         }
-      ]
+      ],
+      "section": "Planowanie operacyjne",
+      "art": "fire_units.jpg",
+      "updated": "4 listopada 2026 r."
     },
     {
       "id": "dzialania-miedzynarodowe",
@@ -1124,7 +1228,10 @@
           "controls": []
         }
       ],
-      "nav": false
+      "nav": false,
+      "section": "Działania międzynarodowe",
+      "art": "usar.jpg",
+      "updated": "9 listopada 2026 r."
     }
   ]
 }

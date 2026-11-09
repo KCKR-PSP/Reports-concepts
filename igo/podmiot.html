@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Widok podmiotu · Koncepcje Reports</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+body{margin:0;background:#ebeef0}
+a{color:#1c2427}
+.eb{margin:0;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#535f65}
+.h2{margin:0;font-size:18px;font-weight:600}
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 20px;background:#1c2427;color:#ebeef0;font:inherit;font-size:14px;font-weight:600;border:0;cursor:pointer}
+.ghost{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #1c2427;color:#1c2427;font:inherit;font-size:14px;font-weight:500;background:none;cursor:pointer;text-decoration:none}
+.tb{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.tb th{font-size:12px;font-weight:500;color:#535f65;text-align:left;padding:8px;border-bottom:1px solid #d3dadd}
+.tb td{padding:12px 8px;border-bottom:1px solid #d3dadd;vertical-align:top}
+.fld{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#535f65}
+.fld textarea{min-height:96px;border:1px solid #b4bec3;background:#ebeef0;padding:10px;font:inherit;font-size:14px;color:#1c2427;border-radius:0}
+</style>
+
+<style>
+html,body{margin:0;background:#ebeef0}
+body.dark{background:#121518}
+.cbar{position:sticky;top:0;z-index:50;display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;padding:8px clamp(16px, 4vw, 40px);
+  background:#1c2427;color:#ebeef0;font:500 13px/1.3 'Instrument Sans',ui-sans-serif,system-ui,sans-serif}
+.cbar a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;min-height:36px}
+.cbar a:hover{text-decoration:underline}
+.cbar .ttl{font-weight:700}
+.cbar .tag{padding:3px 8px;border:1px solid #535f65;color:#a9b3b8;font-size:12px}
+.cbar .sp{flex:1}
+.cbar nav{display:flex;flex-wrap:wrap;gap:4px 16px}
+.cbar nav a[aria-current="page"]{font-weight:700;text-decoration:underline}
+.cbar label{display:inline-flex;align-items:center;gap:8px;color:#a9b3b8}
+.cbar select{min-height:32px;padding:0 8px;border:1px solid #535f65;border-radius:0;background:#1c2427;color:#ebeef0;font:inherit}
+.cbar a:focus-visible,.cbar select:focus-visible{outline:2px solid #ebeef0;outline-offset:2px}
+@media (max-width: 760px){.cbar{position:static}}
+body.framed #board{display:flex;justify-content:center;padding:32px 16px 64px;overflow-x:auto}
+body.framed #board > *{flex:none;box-shadow:0 1px 2px rgba(28,36,39,.12),0 8px 32px rgba(28,36,39,.10)}
+</style>
+</head>
+<body>
+<div class="cbar">
+<a href="../index.html">← Koncepcje Reports</a>
+<span class="ttl">Inspekcje gotowości operacyjnej</span>
+<span class="tag">Koncepcja · dane przykładowe</span>
+<nav aria-label="Plansze"><a href="index.html">Pulpit</a><a href="zestawienie.html">Zestawienie</a><a href="plan.html">Plan i sprawozdanie</a><a href="dokumenty.html">Szkice i dokumenty</a><a href="kreator.html">Kreator JRG</a><a href="reguly.html">Reguły oceny</a><a href="baza-pytan.html">Baza pytań</a><a href="test-telefon.html">Test na telefonie</a><a href="powiadomienia.html">Powiadomienia</a><a href="protokol.html">Protokół · str. 1</a><a href="protokol-ocena.html">Protokół · ocena</a><a href="upowaznienie.html">Upoważnienie</a><a href="wystapienie.html">Wystąpienie poinspekcyjne</a><a href="podmiot.html" aria-current="page">Widok podmiotu</a></nav>
+<span class="sp"></span>
+
+</div>
+<div id="board"></div>
+<template id="board-template">
+<div style="font-family: 'Instrument Sans', system-ui, sans-serif; color: #1c2427; background: #ebeef0; min-height: 100%;">
+<main style="max-width: 1360px; margin: 0 auto; padding: 48px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+<header>
+<p class="eb">JRG 2 KP PSP w Puławach · konto Dowódcy JRG</p>
+<h1 style="margin: 6px 0 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em;">Inspekcje mojej jednostki</h1>
+</header>
+<div style="display: flex; flex-wrap: wrap; gap: 32px 40px; align-items: flex-start;">
+<section style="flex: 1 1 420px; min-width: 0;">
+<table class="tb">
+<thead><tr><th scope="col">Data</th><th scope="col">Zmiana</th><th scope="col">Zarządzający</th><th scope="col" style="text-align: right;">Ocena</th></tr></thead>
+<tbody>
+<tr style="background: #e1e6e9;"><td>06.11.2026</td><td>II</td><td>KW PSP Lublin</td><td style="text-align: right; font-weight: 600;">4 · 87 pkt</td></tr>
+<tr><td>18.06.2026</td><td>I</td><td>KP PSP Puławy</td><td style="text-align: right;">5 · 95 pkt</td></tr>
+<tr><td>11.03.2026</td><td>III</td><td>KP PSP Puławy</td><td style="text-align: right;">4 · 84 pkt</td></tr>
+</tbody>
+</table>
+</section>
+<section style="flex: 999 1 640px; min-width: 0; display: flex; flex-direction: column; gap: 20px; border-top: 2px solid #1c2427; padding-top: 16px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: flex-end;">
+<div><p class="eb">PROTOKÓŁ&nbsp;</p><h2 class="h2" style="margin-top: 6px; font-size: 22px;">06.11.2026, zmiana II · 4 dobry</h2></div>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;"><a class="ghost" href="protokol.html">Protokół PDF</a><a class="ghost" href="wystapienie.html">Wystąpienie poinspekcyjne</a></div>
+</div>
+<div>
+<p class="h2" style="font-size: 15px; margin-bottom: 8px;">Zalecenia do realizacji</p>
+<table class="tb">
+<thead><tr><th scope="col">Zalecenie</th><th scope="col">Termin</th><th scope="col">Realizacja</th></tr></thead>
+<tbody>
+<tr><td>Uzupełnić zapisy w okresowej karcie pracy sprzętu silnikowego</td><td>30.11.2026</td><td>zrealizowane 10.11 · notatka</td></tr>
+<tr><td>Zabezpieczyć przeciwpoślizgowo schody drogi dobiegu</td><td>31.12.2026</td><td>w toku</td></tr>
+<tr><td>Doskonalenie zawodowe zmiany II z rozpoznania</td><td>31.01.2027</td><td>zaplanowane 14.12</td></tr>
+</tbody>
+</table>
+</div>
+<label class="fld">Uwagi kierownika do treści protokołu<textarea>Brak uwag.</textarea></label>
+<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+<button type="button" class="btn">Zapisz</button>
+
+</div>
+
+</section>
+</div>
+</main>
+</div>
+</template>
+<script src="../assets/dc-runtime.js"></script>
+<script>
+
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+
+(function () {
+  const props = {};
+  const applyTheme = () => document.body.classList.toggle('dark', props.theme === 'ciemny');
+  const board = mountBoard(document.getElementById('board'), document.getElementById('board-template'), Component, props);
+  applyTheme();
+  document.querySelectorAll('.cbar select[data-prop]').forEach((select) => select.addEventListener('change', () => {
+    props[select.dataset.prop] = select.value;
+    board.setProps({ [select.dataset.prop]: select.value });
+    applyTheme();
+  }));
+})();
+</script>
+</body>
+</html>

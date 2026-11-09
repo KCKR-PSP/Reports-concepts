@@ -44,19 +44,23 @@
     }
     if (node.nodeType !== Node.ELEMENT_NODE) return;
     const tag = node.localName;
-    if (tag === 'sc-for') {
+    // <sc-for>/<sc-if>, or <template data-sc="for|if"> (the build's form, safe inside tables).
+    const kind = tag === 'sc-for' || tag === 'sc-if' ? tag.slice(3) : tag === 'template' ? node.getAttribute('data-sc') : null;
+    const kids = tag === 'template' ? node.content.childNodes : node.childNodes;
+    if (kind === 'for') {
       const list = evaluate(whole(node.getAttribute('list')), scope) || [];
       const as = node.getAttribute('as');
       list.forEach((item, index) => {
         const inner = Object.create(scope);
         inner[as] = item;
         inner.index = index;
-        node.childNodes.forEach((child) => build(child, inner, parent));
+        inner.$index = index;
+        kids.forEach((child) => build(child, inner, parent));
       });
       return;
     }
-    if (tag === 'sc-if') {
-      if (evaluate(whole(node.getAttribute('value')), scope)) node.childNodes.forEach((child) => build(child, scope, parent));
+    if (kind === 'if') {
+      if (evaluate(whole(node.getAttribute('value')), scope)) kids.forEach((child) => build(child, scope, parent));
       return;
     }
     const element = document.createElementNS(node.namespaceURI, tag);
@@ -67,7 +71,7 @@
         const handler = evaluate(expr, scope);
         let event = attribute.name.slice(2).toLowerCase();
         // React-style onChange: text fields report every keystroke, so buttons enabled by them work on the first click.
-        const typing = tag === 'textarea' || (tag === 'input' && !/^(checkbox|radio|date|number|range|file)$/.test(node.getAttribute('type') || ''));
+        const typing = tag === 'textarea' || (tag === 'input' && !/^(checkbox|radio|date|range|file)$/.test(node.getAttribute('type') || ''));
         if (event === 'change' && typing) event = 'input';
         if (typeof handler === 'function') element.addEventListener(event, handler);
         continue;
@@ -94,6 +98,9 @@
     }
     setState(patch) {
       Object.assign(this.state, typeof patch === 'function' ? patch(this.state) : patch);
+      renderBoard();
+    }
+    forceUpdate() {
       renderBoard();
     }
   }
@@ -126,6 +133,8 @@
       window.scrollTo(scroll[0], scroll[1]);
     };
     renderBoard();
+    // Like React: lifecycle hook after the first render (timers, e.g. the IGO stopwatch).
+    if (typeof component.componentDidMount === 'function') component.componentDidMount();
     return {
       setProps(patch) {
         Object.assign(component.props, patch);
