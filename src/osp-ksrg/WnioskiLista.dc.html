@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Wnioski KSRG – kolejka</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.fx{--bg:#ebeef0;--fg:#1c2427;--mut:#535f65;--line:#d3dadd;--soft:#e1e6e9;--warn:#e2b53e;--alert:#b42318;font-family:'Instrument Sans',ui-sans-serif,system-ui,sans-serif;font-size:15px;line-height:1.45;color:var(--fg);background:var(--bg)}
+.fx.dark{--bg:#121518;--fg:#e6ecee;--mut:#a9b3b8;--line:#363d43;--soft:#22282c}
+:where(.fx) button{font:inherit;color:inherit}
+.fx a{color:var(--fg);text-decoration:none}
+.fx button:focus-visible,.fx a:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.crumb{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-left:-12px;padding:0 12px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.note{margin:0;font-size:13px;color:var(--mut)}
+.sec{margin:0;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.tabs{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.tab{background:none;border:0;border-bottom:2px solid transparent;margin:0 28px -1px 0;padding:12px 0;cursor:pointer;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.tab[aria-pressed="true"]{color:var(--fg);border-bottom-color:var(--fg)}
+.list{display:flex;flex-direction:column;font-size:14px}
+.gr{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) 120px minmax(0,1.3fr) minmax(0,1fr) 80px 24px;column-gap:16px;align-items:center;min-height:60px;padding:0 8px;margin:0 -8px;border-bottom:1px solid var(--line)}
+.gr > span{display:flex;flex-direction:column;justify-content:center;gap:2px;min-width:0}
+.gh{min-height:40px;border-bottom-color:var(--fg);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+a.gr:hover{background:var(--soft)}
+.sub{font-size:12.5px;color:var(--mut)}
+.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.steps{display:flex;gap:3px}
+.steps i{display:block;width:16px;height:4px;background:var(--line)}
+.steps i.done{background:var(--fg)}
+.steps i.now{background:var(--fg);opacity:.45}
+.mk{display:inline-block;width:10px;height:10px;box-sizing:border-box;border:1.5px solid var(--fg);flex:none}
+.mk.red{background:var(--alert);border-color:var(--alert)}
+.red{color:var(--alert);font-weight:700}
+.cd{display:inline-flex;align-items:center;padding:3px 7px;font-size:12px;line-height:1.2;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cd.warn{background:var(--warn);color:#1c2427}
+.cd.alert{background:var(--alert);color:#fff}
+.end{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr) auto;column-gap:16px;align-items:center;min-height:60px;border-bottom:1px solid var(--line);font-size:14px}
+.end > span{display:flex;align-items:center;gap:8px;min-width:0}
+.solid{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--fg);background:var(--fg);color:var(--bg) !important;padding:7px 14px;min-height:36px;cursor:pointer;font-size:13px;font-weight:600;white-space:nowrap}
+@media (max-width: 900px){.hide-s{display:none !important}.gr{grid-template-columns:minmax(0,1.5fr) minmax(0,1.2fr) 60px 24px}.end{grid-template-columns:minmax(0,1fr) auto}}
+</style>
+</helmet>
+<div class="fx {{ themeClass }}" style="min-height: 100%">
+<div style="max-width: 1360px; margin: 0 auto; padding: 24px clamp(16px, 4vw, 40px) 72px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px">
+
+<a class="crumb" href="Planowanie.dc.html"><svg width="32" height="12" viewBox="0 0 32 12" aria-hidden="true"><path d="M32 6H2M7 1L2 6l5 5" style="fill: none; stroke: currentColor; stroke-width: 1.25px"></path></svg>Planowanie operacyjne</a>
+
+<header>
+<h1 style="margin: 0; font-size: 34px; line-height: 1.15; font-weight: 600; letter-spacing: -0.01em">Wnioski KSRG</h1>
+<p style="margin: 8px 0 0; font-size: 14px; color: var(--mut)">{{ place }}</p>
+</header>
+
+<nav class="tabs" aria-label="Wnioski">
+<sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3"><button type="button" class="tab" aria-pressed="{{ t.on }}" onClick="{{ t.pick }}">{{ t.label }}</button></sc-for>
+</nav>
+
+<sc-if value="{{ showEnding }}" hint-placeholder-val="{{ true }}">
+<section aria-labelledby="end-h" style="display: flex; flex-direction: column; gap: 12px">
+<h2 id="end-h" class="sec">Kończy się włączenie, brak wniosku</h2>
+<div style="border-top: 1px solid var(--fg)">
+<sc-for list="{{ ending }}" as="e" hint-placeholder-count="2">
+<div class="end">
+<span style="font-weight: 600">{{ e.name }}</span>
+<span class="sub">gm. {{ e.gmina }}</span>
+<span class="num">do {{ e.until }} <span class="cd {{ e.cdCls }}">{{ e.cd }}</span></span>
+<a class="solid" href="Wnioski.dc.html">Rozpocznij wniosek</a>
+</div>
+</sc-for>
+</div>
+</section>
+</sc-if>
+
+<section aria-labelledby="apps-h" style="display: flex; flex-direction: column; gap: 12px">
+<sc-if value="{{ showEnding }}" hint-placeholder-val="{{ true }}"><h2 id="apps-h" class="sec">Wnioski</h2></sc-if>
+<div class="list" role="table" aria-label="Wnioski KSRG">
+<div class="gr gh" role="row"><span role="columnheader">Jednostka</span><span class="hide-s" role="columnheader">Rodzaj</span><span class="hide-s" role="columnheader">Termin</span><span role="columnheader">Etap</span><span class="hide-s" role="columnheader">Czeka u</span><span role="columnheader">Od</span><span></span></div>
+<sc-for list="{{ rows }}" as="r" hint-placeholder-count="5">
+<a class="gr" role="row" href="Wnioski.dc.html">
+<span role="cell"><span style="font-weight: 600">{{ r.name }}</span><span class="sub">gm. {{ r.gmina }} · pow. {{ r.county }}</span></span>
+<span class="hide-s" role="cell">{{ r.kind }}</span>
+<span class="hide-s num" role="cell">{{ r.term }}</span>
+<span role="cell"><span class="steps" aria-hidden="true"><sc-for list="{{ r.bars }}" as="b" hint-placeholder-count="4"><i class="{{ b }}"></i></sc-for></span><span style="display: flex; align-items: center; gap: 8px"><sc-if value="{{ r.returned }}" hint-placeholder-val="{{ false }}"><span class="mk red" aria-hidden="true"></span></sc-if><span class="{{ r.stateCls }}">{{ r.state }}</span></span></span>
+<span class="hide-s" role="cell">{{ r.at }}</span>
+<span class="num" role="cell">{{ r.since }}</span>
+<span aria-hidden="true">→</span>
+</a>
+</sc-for>
+</div>
+<sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}"><p class="note" style="padding-top: 8px">{{ emptyText }}</p></sc-if>
+</section>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"rola":{"editor":"enum","options":["KP PSP","KW PSP","KG PSP"],"default":"KP PSP","section":"Widok"},"theme":{"editor":"enum","options":["jasny","ciemny"],"default":"jasny","section":"Wygląd"},"$preview":{"width":1440,"height":1200}}'>
+// Kolejka wniosków KSRG w obszarze konta: KP – powiat, KW – województwo, KG – kraj (jak FireUnitsAccess).
+// „Do reakcji” = wnioski na etapie tego poziomu (KP: zwrócone; KW: przekazane przez KP; KG: wnioski KW),
+// a u KP dodatkowo OSP, którym włączenie kończy się w ciągu 6 miesięcy bez rozpoczętego wniosku. To samo liczy kafel.
+const TODAY = Date.UTC(2026, 10, 3);
+const INCLUDE = ['Porozumienie i karta', 'Wniosek do KG', 'Decyzja', 'Akt KSRG'];
+const EXCLUDE = ['Wniosek o wyłączenie', 'Wniosek do KG', 'Decyzja'];
+const KW = { mazowieckie: 'KW PSP Warszawa', wielkopolskie: 'KW PSP Poznań' };
+// [OSP, gmina, powiat, województwo, rodzaj, termin, etap 0–3, od (ISO), zwrócony, zakończony]
+const APPS = [
+  ['OSP Nowa Wieś', 'Baboszewo', 'płoński', 'mazowieckie', 'renew', '31.12.2027', 0, '2026-10-20', false, false],
+  ['OSP Dąbrowa', 'Joniec', 'płoński', 'mazowieckie', 'new', '30.04.2027', 0, '2026-10-30', true, false],
+  ['OSP Wola', 'Sochocin', 'płoński', 'mazowieckie', 'renew', '31.12.2027', 1, '2026-10-31', false, false],
+  ['OSP Grabowo', 'Glinojeck', 'ciechanowski', 'mazowieckie', 'renew', '31.12.2027', 1, '2026-10-28', false, false],
+  ['OSP Olszewo', 'Pomiechówek', 'nowodworski', 'mazowieckie', 'new', '30.04.2027', 2, '2026-10-29', false, false],
+  ['OSP Brzezinki', 'Nasielsk', 'nowodworski', 'mazowieckie', 'exclude', 'z dniem 01.01.2027', 2, '2026-10-27', false, false],
+  ['OSP Jeziory', 'Kórnik', 'poznański', 'wielkopolskie', 'renew', '31.12.2027', 2, '2026-11-02', false, false],
+  ['OSP Kępa', 'Czerwińsk nad Wisłą', 'płoński', 'mazowieckie', 'renew', '31.12.2031', 3, '2026-09-15', false, true]
+];
+const ENDING = [['OSP Stara Wieś', 'Płońsk', '2026-12-31'], ['OSP Zalesie', 'Załuski', '2027-04-30']];
+const KINDS = { new: 'Włączenie', renew: 'Ponowne włączenie', exclude: 'Wyłączenie' };
+const LEVEL = { 'KP PSP': 0, 'KW PSP': 1, 'KG PSP': 2 };
+const days = (iso) => Math.round((Date.UTC(+iso.slice(0, 4), +iso.slice(5, 7) - 1, +iso.slice(8, 10)) - TODAY) / 86400000);
+const plural = (n) => (n === 1 ? 'dzień' : 'dni');
+const dmy = (iso) => iso.slice(8, 10) + '.' + iso.slice(5, 7) + '.' + iso.slice(0, 4);
+
+class Component extends DCLogic {
+  state = { tab: 'todo' };
+
+  renderVals() {
+    const s = this.state;
+    const role = this.props.rola ?? 'KP PSP';
+    const level = LEVEL[role] ?? 0;
+    const inScope = (a) => (level === 0 ? a[2] === 'płoński' : level === 1 ? a[3] === 'mazowieckie' : true);
+    const mine = (a) => !a[9] && a[6] === level && (level !== 0 || a[8]);
+    const pick = { todo: mine, open: (a) => !a[9], done: (a) => a[9] }[s.tab];
+    const rows = APPS.filter((a) => inScope(a) && pick(a)).map(([name, gmina, county, voi, kind, term, stage, since, returned, done]) => {
+      const steps = kind === 'exclude' ? EXCLUDE : INCLUDE;
+      const at = done ? '—' : stage === 0 ? 'KP PSP (pow. ' + county + ')' : stage === 1 ? KW[voi] : 'KG PSP';
+      const wait = -days(since);
+      return {
+        name, gmina, county, kind: KINDS[kind], term: kind === 'exclude' ? term : 'do ' + term, at,
+        bars: steps.map((_, i) => (done || i < stage ? 'done' : i === stage ? 'now' : '')),
+        state: done ? 'Zakończony · decyzja nr 112/2026' : returned ? 'Zwrócony do poprawy' : steps[stage],
+        stateCls: returned ? 'red' : '', returned,
+        since: done ? dmy(since) : wait + ' ' + plural(wait)
+      };
+    });
+    const ending = ENDING.map(([name, gmina, until]) => {
+      const left = days(until);
+      return { name, gmina, until: dmy(until), cd: left + ' ' + plural(left), cdCls: left < 30 ? 'alert' : 'warn' };
+    });
+    const showEnding = level === 0 && s.tab === 'todo';
+    return {
+      themeClass: (this.props.theme ?? 'jasny') === 'ciemny' ? 'dark' : '',
+      place: ['powiat płoński', 'województwo mazowieckie', 'Cała Polska'][level],
+      tabs: [['todo', 'Do reakcji'], ['open', 'W toku'], ['done', 'Zakończone']].map(([k, label]) => ({ label, on: s.tab === k, pick: () => this.setState({ tab: k }) })),
+      showEnding, ending, rows, empty: rows.length === 0,
+      emptyText: s.tab === 'todo' ? 'Żaden wniosek nie czeka na ' + role + '.' : 'Brak wniosków.'
+    };
+  }
+}
+</script>
+</body>
+</html>

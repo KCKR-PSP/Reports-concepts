@@ -103,9 +103,34 @@
     },
     {
       "id": "osp-ksrg",
-      "title": "Karta jednostki OSP KSRG",
-      "description": "Karta jednej OSP z danymi z SWD-PSP poprawianymi przez KP, wymaganiami minimalnymi, IGO i wyjazdowością oraz kreator wniosku o włączenie, ponowne włączenie albo wyłączenie z KSRG z obiegiem KP → KW → KG.",
+      "title": "Karta jednostki OSP i wnioski KSRG",
+      "description": "Jak karta OSP i wnioski KSRG wchodzą do Planowania operacyjnego: strona zasobu z kaflem „Wnioski KSRG” w sekcji „Wymaga reakcji”, lista jednostek w powiecie z końcem włączenia, brakami wymagań i stanem wniosku, kolejka wniosków dla KP, KW i KG, karta jednostki z danymi SWD-PSP poprawianymi przez KP oraz kreator wniosku o włączenie, ponowne włączenie albo wyłączenie z obiegiem KP → KW → KG.",
       "boards": [
+        {
+          "source": "Planowanie.dc.html",
+          "page": "index.html",
+          "title": "Planowanie operacyjne",
+          "controls": [
+            "rola"
+          ]
+        },
+        {
+          "source": "Jednostki.dc.html",
+          "page": "jednostki.html",
+          "title": "Jednostki w powiecie",
+          "controls": [
+            "theme"
+          ]
+        },
+        {
+          "source": "WnioskiLista.dc.html",
+          "page": "wnioski-ksrg.html",
+          "title": "Wnioski KSRG",
+          "controls": [
+            "theme",
+            "rola"
+          ]
+        },
         {
           "source": "Main.dc.html",
           "page": "karta.html",
@@ -119,7 +144,7 @@
         {
           "source": "Wnioski.dc.html",
           "page": "wnioski.html",
-          "title": "Wnioski KSRG",
+          "title": "Wniosek",
           "controls": [
             "theme",
             "rola"
@@ -128,7 +153,8 @@
       ],
       "section": "Planowanie operacyjne",
       "art": "fire_units.jpg",
-      "updated": "4 listopada 2026 r."
+      "updated": "9 listopada 2026 r.",
+      "new": true
     },
     {
       "id": "dzialania-miedzynarodowe",
