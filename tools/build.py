@@ -6,6 +6,7 @@ Each board becomes a standalone page that runs on assets/dc-runtime.js. Links be
 
     python3 tools/build.py
 """
+import hashlib
 import html
 import json
 import re
@@ -13,6 +14,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / 'tools' / 'concepts.json').read_text(encoding='utf-8'))
+# Pages may serve a cached runtime for up to 10 minutes; a content hash in the URL makes every page load the runtime
+# it was built with, so an old cached runtime never runs a new board.
+RUNTIME_VERSION = hashlib.sha256((ROOT / 'assets' / 'dc-runtime.js').read_bytes()).hexdigest()[:10]
 PROP_LABELS = {'theme': 'Motyw', 'rola': 'Widok', 'stan': 'Stan danych', 'zagrozenie': 'Zagrożenie gminy'}
 
 SHELL_CSS = """
@@ -90,7 +94,7 @@ def page(concept: dict, board: dict, parts: dict, links: dict) -> str:
 </div>
 <div id="board"></div>
 <template id="board-template">{template}</template>
-<script src="../assets/dc-runtime.js"></script>
+<script src="../assets/dc-runtime.js?v={RUNTIME_VERSION}"></script>
 <script>
 {script}
 (function () {{
